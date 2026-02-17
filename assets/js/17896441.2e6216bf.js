@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktorque=self.webpackChunktorque||[]).push([["106"],{4057:function(e,t,r){r.d(t,{A:()=>a});var u=r(4848);r(6540);var c=r(5003),s=r(3341);let a={...c.A,ProductName:()=>{let{siteConfig:e}=(0,s.A)();return(0,u.jsx)(u.Fragment,{children:e.customFields.productName})}}}}]);
