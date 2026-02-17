@@ -586,7 +586,7 @@ grains:
           source:
             store: tf-repo
             path : scripts/verify-plan.sh
-          arguments: '{{.inputs.ID2}'          
+          arguments: '{{.inputs.ID2}}'          
         pre-tf-destroy:
           source:
             store: tf-repo
