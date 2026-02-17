@@ -34,7 +34,7 @@ const config = {
         docs: {
           routeBasePath: '/',
           // Please change this to your repo.
-          editUrl: 'https://github.com/zero-touch-foundry/zero-touch-foundry.github.io/tree/master/',
+          editUrl: 'https://github.com/zero-touch-foundry/zero-touch-foundry.github.io/tree/main/',
         },
         theme: {
           customCss: [
