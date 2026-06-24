@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 ---
 
-# Welcome to Quali <ProductName /> Documentation!
+# Welcome to the <ProductName /> Documentation!
 
 ## Your Complex Infrastructure, Delivered Faster & More Securely
 
