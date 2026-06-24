@@ -5,8 +5,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Jarvis',
-  tagline: 'Jarvis Online Help',
+  title: 'Stack Automation',
+  tagline: 'Stack Automation Online Help',
   url: 'https://jarvis-docs.qtorque.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -16,7 +16,7 @@ const config = {
   projectName: 'zero-touch-foundry.github.io', // Usually your repo name.
   deploymentBranch: 'gh-pages',
   customFields: {
-    productName: 'Jarvis',
+    productName: 'Stack Automation',
   },
   trailingSlash: false,
   future: {
