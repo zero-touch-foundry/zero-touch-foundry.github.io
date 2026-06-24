@@ -1,36 +1,36 @@
 ---
 sidebar_position: 15
-title: Environment Annotations
+title: Deployment Annotations
 ---
 
 :::tip __Important__
-Please note that the "Environment Annotations" feature will be deprecated as of end of 2024 and will no longer be supported or available.
+Please note that the "Deployment Annotations" feature will be deprecated as of end of 2024 and will no longer be supported or available.
 
-We recommend transitioning to our new "**Environment Labels**" solution, which offers enhanced capabilities and improved integration. 
+We recommend transitioning to our new "**Deployment Labels**" solution, which offers enhanced capabilities and improved integration. 
 
 Thank you for your understanding and support.
 :::
 
-## __Environment Annotations: What They Are and How you can leverage them to optimize processes__
+## __Deployment Annotations: What They Are and How you can leverage them to optimize processes__
 
-Environment annotations are labels or metadata that can be added to environments to provide additional information about them. Annotations can be used to define the purpose, status, or configuration of an environment, as well as to track changes or updates.
+Deployment annotations are labels or metadata that can be added to deployments to provide additional information about them. Annotations can be used to define the purpose, status, or configuration of an deployment, as well as to track changes or updates.
 
-Annotations in <ProductName /> are key-value pairs that can be added to an environment or resource using a specific syntax or format. They can be used to add descriptive information, such as the description of an environment, or to provide dynamic updates, such as the current status of a deployment or the results of a test.
+Annotations in <ProductName /> are key-value pairs that can be added to an deployment or resource using a specific syntax or format. They can be used to add descriptive information, such as the description of an deployment, or to provide dynamic updates, such as the current status of a deployment or the results of a test.
 
-Annotations can help teams manage and organize environments in <ProductName /> by providing an easy way to track and communicate important information about them. For example, annotations can be used to indicate the power-state status of virtual machines in the environment. 
+Annotations can help teams manage and organize deployments in <ProductName /> by providing an easy way to track and communicate important information about them. For example, annotations can be used to indicate the power-state status of virtual machines in the deployment. 
 
-Environment annotations are a powerful tool for managing and organizing environments, and can help teams streamline their software development and testing processes by providing clear and concise information about the resources they are working with.
+Deployment annotations are a powerful tool for managing and organizing deployments, and can help teams streamline their software development and testing processes by providing clear and concise information about the resources they are working with.
 
 > ![Locale Dropdown](/img/annotations.png)
 
-## __To create an environment annotation:__
+## __To create an deployment annotation:__
 
-Since environment annotations are __dynamic__ attributes of the environments, <ProductName /> uses __rego__ files and the policy engine to evaluate the annotation upon any chance in the environment. 
+Since deployment annotations are __dynamic__ attributes of the deployments, <ProductName /> uses __rego__ files and the policy engine to evaluate the annotation upon any chance in the deployment. 
 
 **Step 1: Create a rego file**
 
 1. In your git repository, create a rego file with __torque.annotation__ package name.
-2. The __input__ to the rego evaluation is the __introspection__ data from the environment. i.e a list of all the environment resources and their attributes, as a json object. The object will vary depending on the exact environment resources, but its overall structure will be as follows:
+2. The __input__ to the rego evaluation is the __introspection__ data from the deployment. i.e a list of all the deployment resources and their attributes, as a json object. The object will vary depending on the exact deployment resources, but its overall structure will be as follows:
     ```jsx title=introspection.json
     {
       "introspection_resources": [
@@ -57,10 +57,10 @@ Since environment annotations are __dynamic__ attributes of the environments, <P
     "set_annotations" = ["key" : "key1", "value" : "value1"]
     ```
 
-Let's take a look at a full example of how this rego file would look. In this evaluation file, we are evaluating the power state of virtual machines inside the environment. If there is even one virtual machine which is running, we will annotate the environment with "Power:On" annotation. If all of the virtual machines are stopped, the annotation will be "Power:Off".
+Let's take a look at a full example of how this rego file would look. In this evaluation file, we are evaluating the power state of virtual machines inside the deployment. If there is even one virtual machine which is running, we will annotate the deployment with "Power:On" annotation. If all of the virtual machines are stopped, the annotation will be "Power:Off".
 
 ```jsx title=power_state.rego
-package torque.annotations  // Use this as the first line to signal to <ProductName /> that this file is for evaluating environment annotations.
+package torque.annotations  // Use this as the first line to signal to <ProductName /> that this file is for evaluating deployment annotations.
 
 default set_annotations = [{"key": "power", "value": "off"}] // Unless we will find at least one running VM, we will return this default annotation of "Power:Off". 
 
@@ -74,7 +74,7 @@ set_annotations = [{"key": "power", "value": "on"}] {
 ```
 :::tip __Note__
 Currently the only supported annotations are "power:on", "power:off" and "power:torque.remove". We will add more annotations and open it for custom annotations soon.
-"torque.remove" is a general annotation value which may be used with any key. It signals to <ProductName /> to remove the annotation completely from the environment. A good example of when to use it is when the environment is ended.
+"torque.remove" is a general annotation value which may be used with any key. It signals to <ProductName /> to remove the annotation completely from the deployment. A good example of when to use it is when the deployment is ended.
 :::
 
 **Step 2: Import the rego file into <ProductName />**

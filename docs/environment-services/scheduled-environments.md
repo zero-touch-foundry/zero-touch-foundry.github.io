@@ -1,16 +1,16 @@
 ---
 sidebar_position: 18
-title: Scheduled Environments
+title: Scheduled Deployments
 ---
 
-Scheduled environments in <ProductName /> allow users to plan and automate environment deployments for future time slots. This capability is particularly valuable for organizations that need to coordinate resource usage, plan maintenance windows, or ensure environments are available at specific times for testing, demos, or development activities.
+Scheduled deployments in <ProductName /> allow users to plan and automate deployment deployments for future time slots. This capability is particularly valuable for organizations that need to coordinate resource usage, plan maintenance windows, or ensure deployments are available at specific times for testing, demos, or development activities.
 
 ## Overview
 
-Environment scheduling enables users to:
-- Schedule environment launches for future dates and times
+Deployment scheduling enables users to:
+- Schedule deployment launches for future dates and times
 - Reserve resources in advance to ensure availability
-- Automate environment lifecycle management around business schedules
+- Automate deployment lifecycle management around business schedules
 - Optimize resource utilization across teams and projects
 - Resolve scheduling conflicts with intelligent time slot recommendations
 
@@ -26,7 +26,7 @@ import pic1 from '/img/bp-policy-allow-scheduling.png';
 
 <img src={pic1} style={{width: 700}} />
 
-When this flag is enabled, users will see scheduling options when launching environments from that blueprint. When disabled, environments can only be launched immediately.
+When this flag is enabled, users will see scheduling options when launching deployments from that blueprint. When disabled, deployments can only be launched immediately.
 
 import pic2 from '/img/scheduled-env-launch-form.png';
 
@@ -36,20 +36,20 @@ import pic2 from '/img/scheduled-env-launch-form.png';
 
 ### Development Team Coordination
 
-**Scenario:** A development team needs their integration testing environment available for an important sprint planning meeting next Monday at 9 AM.
+**Scenario:** A development team needs their integration testing deployment available for an important sprint planning meeting next Monday at 9 AM.
 
-**Solution:** Schedule the environment to launch on Monday at 8:30 AM, giving the team a fresh environment ready for their 9 AM meeting.
+**Solution:** Schedule the deployment to launch on Monday at 8:30 AM, giving the team a fresh deployment ready for their 9 AM meeting.
 
 **Benefits:**
-- Ensures environment is ready before the meeting
-- Provides a clean, consistent testing environment
+- Ensures deployment is ready before the meeting
+- Provides a clean, consistent testing deployment
 - Allows time for pre-meeting validation and setup
 
-### Demo Environments
+### Demo Deployments
 
-**Scenario:** Sales teams need demo environments available during specific time windows for client presentations.
+**Scenario:** Sales teams need demo deployments available during specific time windows for client presentations.
 
-**Solution:** Schedule demo environments in advance to ensure they're running and configured properly before important client meetings.
+**Solution:** Schedule demo deployments in advance to ensure they're running and configured properly before important client meetings.
 
 **Benefits:**
 - Eliminates last-minute setup issues
@@ -58,9 +58,9 @@ import pic2 from '/img/scheduled-env-launch-form.png';
 
 ### Resource-Intensive Workloads
 
-**Scenario:** Data science teams need GPU-intensive environments for model training during off-peak hours to optimize costs.
+**Scenario:** Data science teams need GPU-intensive deployments for model training during off-peak hours to optimize costs.
 
-**Solution:** Schedule environments to launch during low-cost time windows (e.g., nights and weekends) when cloud provider rates are lower.
+**Solution:** Schedule deployments to launch during low-cost time windows (e.g., nights and weekends) when cloud provider rates are lower.
 
 **Implementation:**
 - Schedule a specific launch for 10 PM when GPU rates drop
@@ -69,9 +69,9 @@ import pic2 from '/img/scheduled-env-launch-form.png';
 
 ### Compliance and Testing Windows
 
-**Scenario:** Financial services company needs to run compliance testing in isolated environments during specific maintenance windows.
+**Scenario:** Financial services company needs to run compliance testing in isolated deployments during specific maintenance windows.
 
-**Solution:** Schedule compliant environments during approved maintenance windows, ensuring they don't conflict with production systems.
+**Solution:** Schedule compliant deployments during approved maintenance windows, ensuring they don't conflict with production systems.
 
 **Requirements:**
 - Strict time window enforcement
@@ -80,13 +80,13 @@ import pic2 from '/img/scheduled-env-launch-form.png';
 
 ## Custom Resource Inventory Integration
 
-Scheduled environments can leverage <ProductName />'s custom resource inventory to ensure that required resources are available at the scheduled time. This integration prevents scheduling conflicts and guarantees resource availability.
+Scheduled deployments can leverage <ProductName />'s custom resource inventory to ensure that required resources are available at the scheduled time. This integration prevents scheduling conflicts and guarantees resource availability.
 
 ### Resource Reservation Process
 
 1. **Resource Definition**: Define custom resources in the inventory (e.g., GPU instances, specialized hardware, licenses)
 2. **Capacity Planning**: Set desired capacity for each resource type in blueprints
-3. **Advance Booking**: When scheduling environments, <ProductName /> reserves the required resources
+3. **Advance Booking**: When scheduling deployments, <ProductName /> reserves the required resources
 4. **Conflict Prevention**: The system prevents overbooking by checking resource availability
 
 ### Example: GPU Resource Management
@@ -128,7 +128,7 @@ Here are some common "Resource Types" for scheduling:
 
 The system automatically detects conflicts when:
 - Requested resources are already reserved
-- Maximum concurrent environments limit would be exceeded
+- Maximum concurrent deployments limit would be exceeded
 - Blueprint capacity constraints would be violated
 - Custom resource inventory capacity is insufficient
 

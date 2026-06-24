@@ -50,15 +50,15 @@ This combination enables both reactive management and proactive automation, ensu
 
 ## Actions
 
-<ProductName /> provides a built-in set of **actions** you can run on specific cloud resources in the environment to optimize resource usage and achieve cost savings, security improvements, and performance benefits.
+<ProductName /> provides a built-in set of **actions** you can run on specific cloud resources in the deployment to optimize resource usage and achieve cost savings, security improvements, and performance benefits.
 
 ## Workflows
 
-**Workflows** take actions to the next level by providing scheduled automations that run on all resources of the same type in an environment.
+**Workflows** take actions to the next level by providing scheduled automations that run on all resources of the same type in an deployment.
 
 ### Common Workflow Examples
 
-- **Daily Shutdowns**: Power-off all VMs in the environment every day at 6PM
+- **Daily Shutdowns**: Power-off all VMs in the deployment every day at 6PM
 - **Weekend Scaling**: Pause (scale to minimum) development Kubernetes clusters every weekend
 - **Cost Optimization**: Automatically stop database instances during non-business hours
 - **Maintenance Windows**: Schedule restarts during low-usage periods
@@ -72,7 +72,7 @@ To learn how to create and manage workflows in your <ProductName /> account, vis
 
 ### Running Actions on Individual Resources
 
-1. **Switch to Resources View** in your environment
+1. **Switch to Resources View** in your deployment
 
 import pic2 from '/img/action-and-workflows-2.png';
 
@@ -165,8 +165,8 @@ For technical implementation details, refer to the comprehensive action support 
 
 ## Related Documentation
 
-- [Environment Publishing](/environment-services/environment-publishing) - Learn about publishing and managing environments
-- [Remote Access](/environment-services/remote-access) - Set up direct access to environment resources
+- [Deployment Publishing](/environment-services/environment-publishing) - Learn about publishing and managing deployments
+- [Remote Access](/environment-services/remote-access) - Set up direct access to deployment resources
 - [Cost Management](/environment-services/Cost) - Optimize your cloud spending
 - [Drift Detection](/environment-services/drift-and-update) - Handle configuration drift
-- [Scheduled Environments](/environment-services/scheduled-environments) - Automate environment lifecycle
+- [Scheduled Deployments](/environment-services/scheduled-environments) - Automate deployment lifecycle
