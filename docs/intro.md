@@ -28,7 +28,7 @@ hide_table_of_contents: true
 
 import pic1 from '/img/torque-high-level-architecture.png';
 
-<img src={pic1} alt="torque-high-level-architecture" style={{width: 900}} />
+<img src={pic1} alt="Stack Automtion high-level Architecture" style={{width: 900}} />
 
 
 ## <ProductName /> documentation quick navigation:

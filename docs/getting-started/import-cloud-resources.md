@@ -3,7 +3,7 @@ sidebar_position: 4
 title: Import Cloud Resources
 ---
 
-__Torque Control plane__ helps you to accelerate migration of existing cloud resources into fully managed <ProductName /> environments with a few simple steps regardless of how the resources were deploy in the cloud in the first place. 
+__<ProductName /> Control plane__ helps you to accelerate migration of existing cloud resources into fully managed <ProductName /> environments with a few simple steps regardless of how the resources were deploy in the cloud in the first place. 
 
 In the below article, we will cover the following steps for importing cloud resources into <ProductName /> using Terraform generation:
 1. Generate **Terraform code (modules)** representing your existing deployed resources in the cloud.

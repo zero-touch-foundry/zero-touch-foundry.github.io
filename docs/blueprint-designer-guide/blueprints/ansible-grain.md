@@ -266,7 +266,7 @@ __Example:__ Below is an example of a grains section of a blueprint, containing 
         store: assets
         path: ansible/hello_world.yaml
       agent:
-        name: my-torque-agent
+        name: my-management-server
       inventory-file:
         all:
           hosts:

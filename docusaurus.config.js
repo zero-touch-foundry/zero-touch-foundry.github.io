@@ -5,7 +5,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Stack Automation',
+  title: 'Stack Automation by Quali',
   tagline: 'Stack Automation Online Help',
   url: 'https://jarvis-docs.qtorque.io/',
   baseUrl: '/',
@@ -78,7 +78,7 @@ const config = {
     ({
       navbar: {
         logo: {
-          alt: 'Torque',
+          alt: 'Stack Automation by Quali',
           src: '/img/logo.png',
           srcDark: '/img/logo-dm.png',
         },

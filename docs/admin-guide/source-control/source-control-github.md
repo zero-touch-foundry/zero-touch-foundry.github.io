@@ -20,10 +20,10 @@ title: GitHub Source Control
 
 ## Ensure your organization has granted access to <ProductName />
 
-When connecting a repository, <ProductName /> installs an OAuth app called __Torque Control Plane__ on the organization. This app provides <ProductName /> with the necessary permissions to the organization's repositories. If <ProductName /> doesn't have access, you will be prompted to grant the proper authorizations when connecting the asset repository. The approved applications are listed in the [GitHub Applications](https://github.com/settings/applications) page. 
+When connecting a repository, <ProductName /> installs an OAuth app called __<ProductName /> Control Plane__ on the organization. This app provides <ProductName /> with the necessary permissions to the organization's repositories. If <ProductName /> doesn't have access, you will be prompted to grant the proper authorizations when connecting the asset repository. The approved applications are listed in the [GitHub Applications](https://github.com/settings/applications) page. 
 
   1. Go to [GitHub Applications](https://github.com/settings/applications).
-  2. Revoke any existing access to the __Quali Torque__ app.
+  2. Revoke any existing access to the __Quali <ProductName />__ app.
       > ![Locale Dropdown](/img/revoke-access.png)
   3. In <ProductName />, go to the space's __Settings > Repositories__ area and connect the repository.
   4. Authorize the organization. 

@@ -380,7 +380,7 @@ grains:
 
 ```
 
-__2. Location based on a repository (blueprints or assets) onboarded to Torque__: 
+__2. Location based on a repository (blueprints or assets) onboarded to <ProductName />__: 
 
 The name of the repository should be provided under the 'store' field, while the IaC code folder location should be specified under the path field. In the below example, nginx helm chart resides in the 'nginx' folder within a repository onboarded to <ProductName /> with the name 'web_servers'.
 
@@ -480,7 +480,7 @@ grains:
         name: eks-ohio # Required
         storage-size: 800 # Optional
         runner-namespace: my-namespace # Optional
-        service-account: torque-sa # Optional
+        service-account: my-serviceaccount # Optional
         isolated: true # Optional
  ```   
 

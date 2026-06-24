@@ -29,7 +29,7 @@ Now, that you have a new space configured, we will associate a repository to the
 
 1. In the __repository onboarding__ wizard, choose your VCS provider, provide the repository URL and click "Connect". <ProductName /> will open a new windows where you will be requested to authenticate to the VSC provider. VCS providers work differently, but usually, a token will be generated for your user and <ProductName /> will use that for any communication with that VCS. 
 
-2. Click "Discover Assets" to initiate the __Torque asset discovery process__ that will go over the repository and highlight the automation assets <ProductName /> discovered.
+2. Click "Discover Assets" to initiate the __<ProductName /> asset discovery process__ that will go over the repository and highlight the automation assets <ProductName /> discovered.
 3. To __generate a blueprint__ from one of the discovered assets, check the blueprint in the list and click on "Generate Blueprints"
 4. Click on "Connect an Agent"
 
