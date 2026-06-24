@@ -31,21 +31,8 @@ base_folder/
   playbook.yaml
 ```
 
-A variables file might have the following structure:
-
-```yaml
-variable1: test
-variable2:
-  - value1
-  - value2
-  - value3
-variable3:
-  test: "value1"
-  test2: "value2"
-  test3: '{{ name }}'
-```
-
 Below is an example of an auto-generated blueprint based on a discovered playbook and its variables file. This demonstrates how <ProductName /> can help you quickly scaffold a working Ansible blueprint:
+
 
 ```yaml
 spec_version: 2
@@ -57,18 +44,6 @@ inputs:
   variable1:
     type: string
     default: test
-  variable2:
-    type: list
-    default: 
-      - value1
-      - value2
-      - value3
-  variable3:
-    type: dict
-    default:
-      test: "value1"
-      test2: "value2"
-      test3: '{{ name }}'
 
 grains:
   ansible_playbook:
@@ -81,8 +56,6 @@ grains:
         name: '{{ .inputs.agent }}'
       inputs:
         - variable1: '{{ .inputs.variable1 }}'
-        - variable2: '{{ .inputs.variable2 }}'
-        - variable3: '{{ .inputs.variable3 }}'
       # The outputs section below is a placeholder. Review and update based on your playbook's actual outputs.
       outputs:
         - result
@@ -440,6 +413,35 @@ Note that this is a very simple example, and roles can be much more complex, con
 In this blueprint, when executing the `print_hello` Ansible grain, the `ansible-playbook` command will include the `--skip-tags deploy --version` flags specified in the `command-arguments` field.
 
 The `command-arguments` value can include any valid arguments that could be passed to `ansible-playbook`. This allows customizing things like tags to run/skip, handling behavior, displaying version info, and more.
+
+### `env-vars`
+
+The environment variables declared in the Ansible grain are available during playbook execution.
+
+Use this section to pass dynamic values (for example from parameters) or static environment settings required by your playbook or pre-run scripts.
+
+```yaml
+spec_version: 2
+description: Run an Ansible playbook with environment variables
+
+inputs:
+  agent:
+    type: agent
+
+grains:
+  configure-vm:
+    kind: ansible
+    spec:
+      source:
+        store: ansible-repo
+        path: ansible/configure-vm.yaml
+      agent:
+        name: '{{ .inputs.agent }}'
+      env-vars:
+        - ANSIBLE_HOST_KEY_CHECKING: 'False'
+        - CUSTOM_TOKEN: '{{ .params.token }}'
+      command-arguments: "--skip-tags deploy"
+```
 
 
 ### `scripts`

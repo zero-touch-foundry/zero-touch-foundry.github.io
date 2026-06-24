@@ -125,7 +125,9 @@ For __environment__ policies, the input is the following json object:
         {
             "name": "input_name",
             "type": "string",
-            "value": "input_value",
+            "value_v2": {
+                "value": "input_value"
+            }
             "sensitive": false, // true|false
             "description": null
         }
@@ -162,7 +164,9 @@ For __environment__ policies, the input is the following json object:
         "action_type": "Launch" // options: "Launch", "Extend"
     },
     "owner_active_environments_in_space": 1, // # of the current owner's active environments in space 
-    "owner_active_environments_in_account": 1,  //  # of the current owner's active environments in the account 
+    "owner_active_environments_in_account": 1,  //  # of the current owner's active environments in the account
+    "owner_active_environments_from_blueprint_in_space": 2, // total # of environments launched by the owner and using the blueprint 
+    "initiator_active_environments_from_blueprint_in_space": 1, // total # of environments launched by the owner or launcher and using the blueprint 
     "active_environments_in_space": 1, // total # of active environments in the space 
     "active_environments_in_account": 2 // total # of active environments in the account 
 }
@@ -213,7 +217,9 @@ For __consumption__ policies, the input is similar to the object in __environmen
         "action_type": "Launch" // options: "Launch", "Extend"
     },
     "owner_active_environments_in_space": 1, // # of the current owner's active environments in space 
-    "owner_active_environments_in_account": 1,  //  # of the current owner's active environments in the account 
+    "owner_active_environments_in_account": 1,  //  # of the current owner's active environments in the account
+    "owner_active_environments_from_blueprint_in_space": 2, // total # of environments launched by the owner and using the blueprint 
+    "initiator_active_environments_from_blueprint_in_space": 1, // total # of environments launched by the owner or launcher and using the blueprint 
     "active_environments_in_space": 1, // total # of active environments in the space 
     "active_environments_in_account": 2 // total # of active environments in the account 
 }

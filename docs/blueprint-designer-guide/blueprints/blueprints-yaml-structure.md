@@ -59,7 +59,7 @@ The input definition is composed out of the following fields:
   - ```string```
   - ```agent``` allows the environment end-user to select the agent that will deploy the grain(s) from a dropdown list. By default, all agents are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the agents. For details, see [agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent).
   - ```parameter``` will take the input's allowed values from the parameter-store, from a parameter with the name ```parameter-name```. The parameter can be defined either in the account level or in the space level. If the parameter's value is built as a comma separated list, <ProductName /> will convert them to a set of values and present it to the end-user as a drop down list of the values. See an example below. For more info about the parameter store, click [here](admin-guide/params.md).
-  - ```credentials``` allows the environment end-user to select the credentials that will be used to deploy the grain(s) from a dropdown list. By default, all credentials in the account are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the credentials. 
+  - ```credentials``` allows the environment end-user to select the credentials that will be used to deploy the grain(s) from a dropdown list. By default, all credentials in the account are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the credentials, or use ```allowed-credential-providers``` to filter by credential provider type.
   - ```file``` allows the environment end-user to upload one or more files from the launch form. The uploaded files are made available to the blueprint designer using the [`workspace-directories`](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#workspace-directories) section and the **env-storage** store - [See details below](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#file-input-type).
   - ```input-source``` allows the environment end-user to select from a list of values provided by a dynamic source. The source is defined in the [`input-sources`](/admin-guide/input-sources) section.
 - ```style``` (Optional): Defines how the input is presented to the user. For example:
@@ -115,8 +115,10 @@ For advanced input visibility control and organization, see the [customization](
 - ```default``` - (Optional) Value to be used in the <ProductName /> UI and will be used in case no other value provided for the input. If a default value is not defined, the environment end-user will need to provide one when launching the environment.
 - ```allowed-values``` converts the input into a dropdown list, allowing the environment end-user to select the appropriate value. If a ```default``` is specified, it must be included in the allowed values list. 
 - ```quick``` is an optional boolean value. Setting it to "true" or omitting it will cause the input to be presented to the end user in the "quick links" section of the environment. Setting it to "false" means it will not appear in that section.
+- ```searchable``` (Optional, ```input-source``` type with HTTP Server sources): When set to ```true```, the dropdown will wait for the user to type a search term instead of loading all values upfront. The search text can be passed to the source using ```{{ value }}``` in overrides.
 - ```pattern``` is an optional regular expression pattern that the input value must match. If provided, <ProductName /> will validate the user input against this pattern during environment launch and prevent launching if the input does not conform to the specified pattern.
 - ```validation-description``` is an optional user-friendly message or description that will be shown to the user if the provided input value does not match the specified `pattern`. This helps provide better guidance to the user on the expected input format or constraints.
+- ```allowed-credential-providers``` (Optional, ```credentials``` type): Filters the credentials dropdown by provider type. Supported providers are: ```artifactory```, ```aws```, ```azure```, ```intersight```, ```nexus_dashboard```, ```nviae```, ```redhat```, and ```vsphere```. [See example below](#credentials-input-type).
 
     **Example:**
 
@@ -184,6 +186,46 @@ inputs:
 
 We then configure a parameter with name: aws-allowed-regions and value "us-east-1,us-east2" .
 The end user will be presented with a drop down of these 2 values as the allowed values options.
+
+#### Credentials Input Type
+
+Use `allowed-credential-providers` with `type: credentials` to limit the credentials dropdown to specific provider types.
+
+:::note
+Credentials selected via `type: credentials` are injected to the grain runner as provider-specific environment variables.
+To make those environment variables available during execution, include the selected credential in the grain `authentication` block.
+:::
+
+**Example:**
+
+```yaml
+spec_version: 2
+description: |
+  Example of allowed-credential-providers usage in a grain.
+
+inputs:
+  agent:
+    type: agent
+
+  NGC API Key:
+    description: NVIDIA NGC API key
+    allowed-credential-providers:
+      - nvaie
+    type: credentials
+
+grains:
+  deploy-stack:
+    kind: shell
+    spec:
+      agent:
+        name: '{{ .inputs.agent }}'
+      authentication:
+        - '{{ .inputs.["NGC API Key"]}}'
+      activities:
+        deploy:
+          commands:
+            - echo "$NVAIE_API_KEY"
+```
 
 #### File Input Type
 
@@ -489,6 +531,154 @@ grains:
 The ability to use outputs from specific grain usually requires the grain deployment to finish successfully. designing a blueprint with output usually requires dependencies between the grains.
 :::
 
+### `when`
+
+Use `when` on a grain to control whether that grain runs or is skipped.
+
+:::warning Beta Feature
+Grain `when` is currently in beta.
+Behavior and schema details may change as the feature evolves.
+:::
+
+#### Skip or run a grain
+
+Use the `when` field on a grain to decide if that grain should run. If `when` evaluates to `false`, Torque skips the grain.
+
+Simple example:
+
+```yaml
+spec_version: 2
+description: Simple conditional execution with `when`
+
+inputs:
+  agent:
+    type: agent
+  deploy_app:
+    type: string
+    allowed-values: ["yes", "no"]
+    default: "yes"
+
+grains:
+  network:
+    kind: terraform
+    spec:
+      source: ...
+      agent:
+        name: '{{ .inputs.agent }}'
+
+  app:
+    kind: helm
+    when: '{% if .inputs.deploy_app == "yes" %} true {% else %} false {% endif %}'
+    depends-on: network
+    spec:
+      source: ...
+      agent:
+        name: '{{ .inputs.agent }}'
+```
+
+Common pattern: chain behavior based on `is_active`.
+
+```yaml
+grains:
+  step_a:
+    kind: terraform
+    when: '{% if .inputs.run_a == "yes" %} true {% else %} false {% endif %}'
+    spec: ...
+
+  step_b:
+    kind: shell
+    when: '{{ .grains.step_a.is_active }}'
+    depends-on: step_a
+    spec: ...
+```
+
+### `approvals`
+
+Use `approvals` on a grain when you need a human gate before that grain executes.
+
+:::warning Beta Feature
+Grain `approvals` is currently in beta.
+Behavior and schema details may change as the feature evolves.
+:::
+
+#### Human gate
+
+Use the `approvals` block directly under a grain (not under `condition`) to require approval before the grain executes.
+
+```yaml
+grains:
+  require_approval:
+    kind: blueprint
+    spec:
+      source: ...
+    approvals:
+      - name: manager-approval
+        message: 'This is a message to include in the approval request: {{ .inputs.tag }}'
+        channels:
+          - type: user
+            users:
+              - name@quali.com
+```
+
+You can define multiple channels per approval (for example `group` and `user`).
+
+#### Complex flow example (skip branches)
+
+The following example shows a data/dependency flow where some branches are skipped using `when`, while downstream grains use `is_active` to continue only if upstream grains actually ran:
+
+```yaml
+inputs:
+  agent:
+    type: agent
+  should:
+    type: string
+    allowed-values: ["yes", "no"]
+
+grains:
+  tf_seed:
+    kind: terraform
+    spec: ...
+
+  tg_bridge:
+    kind: terragrunt
+    when: '{{ .grains.tf_seed.is_active }}'
+    depends-on: tf_seed
+    spec: ...
+
+  skip_tf_noise:
+    kind: terraform
+    when: '{% if .inputs.should == "yes" %} true {% else %} false {% endif %}'
+    depends-on: tf_seed
+    spec: ...
+
+  skip_blueprint_branch:
+    kind: blueprint
+    when: '{{ .grains.skip_tf_noise.is_active }}'
+    depends-on: skip_tf_noise
+    spec: ...
+
+  skip_shell_cleanup:
+    kind: shell
+    when: '{{ .grains.skip_blueprint_branch.is_active }}'
+    depends-on: skip_blueprint_branch
+    spec: ...
+
+  skip_helm_shadow:
+    kind: helm
+    when: '{% if .inputs.should == "yes" %} true {% else %} false {% endif %}'
+    depends-on: tg_bridge
+    approvals:
+      - name: ops-approval
+        message: 'Approve skip branch deployment for {{ .inputs.should }}'
+        channels:
+          - type: group
+            groups:
+              - grain-conditions
+    spec: ...
+```
+
+This pattern keeps the blueprint readable while allowing optional branches and explicit human approvals where needed.
+
 
 
 ### `labels`
@@ -554,7 +744,12 @@ description: ...
 metadata:
   self-service: true
   display-name: "My Custom Blueprint"
-  icon: "database"
+  blueprint-labels:
+    - key: Validated
+    - key: Category
+      value: BMaaS
+  icon:
+    path: "graphics/linux.svg"
 
 grains: ...
 ```
@@ -577,14 +772,33 @@ metadata:
   display-name: "Production Web Application Stack"
 ```
 
-#### `icon`
+#### `blueprint-labels`
 
-Defines the icon that will be displayed for the blueprint in the <ProductName /> catalog. This helps users quickly identify and distinguish between different blueprints.
+Defines labels on the blueprint catalog item itself. Each entry supports either a single value label (key only) or a key/value pair.
+
+A special key named `blocked` can be used to prevent launching a blueprint, even when it is published in the catalog. When `blocked` is used with a `value`, the value is shown on the blueprint as the blocking message.
 
 ```yaml
 metadata:
-  icon: "database"
+  blueprint-labels:
+    - key: Validated
+    - key: Category
+      value: BMaaS
+    - key: blocked
+      value: "Coming Soon"
 ```
+
+#### `icon`
+
+Defines a custom icon for the blueprint catalog item.
+
+```yaml
+metadata:
+  icon:
+    path: "graphics/linux.svg"
+```
+
+Icons are discovered by default under the `graphics` directory. Setting an icon in the metadata does not work for "No Repo" blueprints.
 
 ## Grains inputs & outputs
 Inputs and outputs are used both in the blueprint level and in the grains level. Grains can use inputs and outputs to pass data between IaC components, validate information and eventually lead to reducing the amount of IaC components that needs to be maintained by the organization.
@@ -1248,31 +1462,213 @@ customization:
 
 #### Category-based Configuration
 
-Group related inputs into logical sections with conditional visibility:
+Group related inputs into logical `categories` and `sections`, with optional icons and `default_open` behavior:
 
 ```yaml
 customization:
   launch-form:
     categories:
       - name: 'Infrastructure Selection'      # Category display name
+        icon: layer                           # Optional category icon
+        sections:
+          - name: 'Compute'
+            icon: list                        # Optional section icon
+            default_open: true                # Optional, section expanded by default
+            inputs:
+              - name: 'infra_type'
+              - name: 'environment_name'
+                type: env-name                # Built-in environment name input
+          - name: 'Schedule'
+            icon: timer
+            type: duration                    # Built-in duration section
+      - name: 'Owners'
+        icon: email
         inputs:
-          - name: 'infra_type'               # Input within this category
-      - name: 'Database Configuration'       # Another category
+          - name: 'owner_mapping'
+            type: object                      # Render JSON object input
+            header: Name,Email                # Optional CSV headers for object rows
+```
+
+#### Complete launch-form example
+
+```yaml
+spec_version: 2
+
+customization:
+  launch-form:
+    categories:
+      - name: Request Details
+        icon: layer
+        sections:
+          - name: REQUESTOR INFORMATION
+            icon: list
+            default_open: true
+            inputs:
+              - name: REQUESTOR
+                type: owner
+              - name: ENVIRONMENT NAME
+                type: env-name
+          - name: ENVIRONMENT SCHEDULE
+            default_open: true
+            type: duration
+            icon: timer
+          - name: ENVIRONMENT CONFIGURATION
+            icon: tags
+            default_open: true
+            inputs:
+              - name: ID
+              - name: ENVIRONMENT TYPE
+              - name: SEAT COUNT
+              - name: USE CASE DESCRIPTION
+      - name: COLLABORATORS
+        icon: email
         inputs:
-          - name: 'db_instance_type'
-            visible: '{% if inputs.infra_type == "1" %} true {% else %} false {% endif %}'
-          - name: 'db_storage_size'
-            visible: '{% if inputs.infra_type == "1" %} true {% else %} false {% endif %}'
+          - name: COLLABORATORS
+            type: object
+            header: Name,Email,Address
+    steps:
+      tags:
+        visible: false
+      workflows:
+        visible: false
+      ownersAndCollaborators:
+        visible: false
+
+inputs:
+  ID:
+    type: string
+    default: ID-12345
+  ENVIRONMENT TYPE:
+    type: string
+    default: Development
+    allowed-values:
+      - Development
+      - Staging
+      - Production
+  SEAT COUNT:
+    type: string
+    default: '10'
+    pattern: ^([1-9][0-9]?|100)$
+    validation-description: The seat count must be a number between 1 and 100
+  USE CASE DESCRIPTION:
+    type: string
+    default: General training use case
+  COLLABORATORS:
+    type: string
+    default: |
+      [
+        {
+            "Name": "Name 1",
+            "Email": "name1@example.com",
+            "Address": "2506 E. 5th St., Austin, TX 78702"
+        },
+        {
+            "Name": "Name 2",
+            "Email": "name2@example.com",
+            "Address": "2512 E. 5th St., Austin, TX 78702"
+        }
+      ]
+
+grains: ...
 ```
 
 **Properties:**
 - **`inputs`**: Array of input configurations for flat organization
 - **`categories`**: Array of category objects for grouped organization
-  - **`name`**: Display name for the category section
-  - **`inputs`**: Array of inputs within this category
+  - **`name`**: Display name for the category
+  - **`icon`**: Optional category icon name
+  - **`inputs`**: Optional array of inputs directly under the category
+  - **`sections`**: Optional array of section objects inside the category
+    - **`name`**: Display name for the section
+    - **`icon`**: Optional section icon name
+    - **`default_open`**: Optional boolean. When `true`, the section is expanded by default.
+    - **`inputs`**: Optional array of inputs under the section
+    - **`type`**: Optional built-in section type (for example `duration`)
 - **Input Properties:**
-  - **`name`**: The input field name (must match an input defined in the blueprint's inputs section)
+  - **`name`**: The input field name (must match an input defined in the blueprint's inputs section unless using a built-in input type)
   - **`visible`**: Optional Liquid template expression that evaluates to `true` or `false` to control input visibility based on other input values
+  - **`allow-refresh`**: Optional boolean for `input-source` inputs. When set to `true`, presents a refresh button in the launch form so users can manually fetch the latest values from the input source.
+  - **`type`**: Optional customization input type. Supported values include:
+    - `duration` (duration selector)
+    - `env-name` (environment name selector)
+    - `object` (JSON object display/editor)
+    - `date` (date picker)
+    - `datetime` (date and time picker)
+  - **`header`**: Optional comma-separated header names for `object` type display
+
+#### `allow-refresh` customization input attribute example
+
+Use `allow-refresh: true` under `customization.launch-form` input entries to expose a refresh button in the launch form. This is useful when a manual fetch to an `input-source` input is needed (for example, due to connectivity issues).
+
+```yaml
+spec_version: 2
+description: allow-refresh customization example
+
+customization:
+  launch-form:
+    sections:
+      - name: Object Storage
+        inputs:
+          - name: bucket
+            allow-refresh: true
+          - name: object
+            allow-refresh: true
+
+inputs:
+  bucket:
+    type: input-source
+    source-name: list-buckets
+
+  object:
+    depends-on: bucket
+    type: input-source
+    source-name: list-objects
+    overrides:
+      - bucket_name: '{{ .inputs.bucket }}'
+```
+
+#### Date and datetime customization input type example
+
+```yaml
+spec_version: 2
+description: customization date and datetime input type example
+
+customization:
+  launch-form:
+    sections:
+      - name: Request Section
+        inputs:
+          - name: agent
+          - name: input1
+            type: date
+          - name: input2
+            type: datetime
+inputs:
+  agent:
+    type: agent
+  input1:
+    type: string
+  input2:
+    type: string
+grains:
+  validate:
+    kind: shell
+    spec:
+      agent:
+        name: '{{ .inputs.agent }}'
+      activities:
+        deploy:
+          commands:
+            - echo {{ .inputs.input1 }}
+            - echo {{ .inputs.input2 }}
+```
+
+Expected output:
+
+```text
+input1: 2025-03-19T00:00:00
+input2: 2025-05-25T18:30:41
+```
 
 The `visible` property uses Liquid templating syntax to create dynamic conditions. Common patterns include:
 - `{% if inputs.field_name == "value" %} true {% else %} false {% endif %}` - Show input when another field equals a specific value

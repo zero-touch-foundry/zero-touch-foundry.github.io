@@ -77,7 +77,7 @@ For groups that have this field set, users are assigned and unassigned automatic
 
 Users that do not come from an IdP (have a password) or come from an unsupported IdP (all but Okta and Azure AD) can still be added and removed manually from mapped groups.
 
-### Configuring Azure active directory (Entra) to include group information.
+### Configuring Azure Active Directory (Entra) to include group information.
 
 Assuming a working AAD SSO setup, the app in Azure needs to be configured to include the groups additional claim.
 In ‘App registration’ find the relevant app and go to Token configuration.
@@ -110,7 +110,7 @@ Assuming a working Okta configuration, to get group sync working we need to have
 
 This document will show how this is done when the IdP behind Okta happens to be Azure AD (in a SAML 2 configuration and not the OIDC/JWT flow as above), but it is probably similar for other IdPs.
 
-When configuring Azure AD to Okta, you usually set custom attribute in the profile editor to match claim coming from the IDP:
+When configuring Azure AD to Okta, you usually set a custom attribute in the profile editor to match the claim coming from the IDP:
 
 > ![Locale Dropdown](/img/groups-6.png)
 
@@ -123,8 +123,8 @@ The long URLs (claim names) are what you need to set as ‘external name’ in t
 
 > ![Locale Dropdown](/img/groups-8.png)
 
-On this screen you are also able to have Azure AD send group related information
-Click the “+Add a group clam” button and use the default setting.
+On this screen, you are also able to have Azure AD send group-related information
+Click the “+Add a group claim” button and use the default setting.
 
 In Okta, create a new attribute in the profile editor for groups (note the type is string array), the external name might be different from the example below.
 
@@ -150,17 +150,17 @@ This shows what to expect when using SAML-tracer:
 <ProductName /> supports the SCIM protocol for user provisioning and deprovisioning (group provisioning is currently not supported).
 User provisioning is the ability to create and delete users in your <ProductName /> account in real-time as they are created and deleted in the IdP (identity provider). When SCIM is configured, an http call will be issued from the IdP to <ProductName /> with each new user that is added or removed from the app on the IdP that is used to manage <ProductName /> users in the basic SSO process.
 
-User provisioning with SCIM is optional when configuring SSO. When it is not configured, users can still SSO login normally and their <ProductName /> user will be created "just in time" at the moment of login. details about the user are updated with each subsequent login. There are advantage to configuring User provisioning though.
+User provisioning with SCIM is optional when configuring SSO. When it is not configured, users can still SSO login normally and their <ProductName /> user will be created "just in time" at the moment of login. details about the user are updated with each subsequent login. There are advantages to configuring User provisioning, though.
 * Users are created in <ProductName /> when added in the IdP, potentially before their first log in. - This allows an admin to get a better picture of who are the users in the <ProductName /> account and to perform actions on them before the first time they logged in such as already associating them to spaces, setting them as collaborators on some environments and so on.
-* Users are deprovisioned - Normally, when a user is removed from the IdP, he can no longer login to the <ProductName /> account, but the <ProductName /> user still appears in the account. Deprovisioning means that one a user cannot SSO into a <ProductName /> account, he is removed from it.
+* Users are deprovisioned - Normally, when a user is removed from the IdP, they can no longer login to the <ProductName /> account, but the <ProductName /> user still appears in the account. Deprovisioning means that once a user cannot SSO into a <ProductName /> account, he is removed from it.
 
-The process of user provisioning/deprovisioning is one directional. changes to users in <ProductName /> do not affect the IdP.
+The process of user provisioning/deprovisioning is one directional. Changes to users in <ProductName /> do not affect the IdP.
 
 ### Relation to SSO
 User provisioning (SCIM) is an optional component of SSO and can be omitted, as mentioned above, but when active, it would create a new user in <ProductName /> to match a user created or associated in the IdP.
-The new user created is considered 'pending', meaning that this user has never actually logged in before and also that the only way for that user to login is via SSO (pending users do not have a password).
+The new user created is considered 'pending', meaning that this user has never actually logged in before, and also that the only way for that user to login is via SSO (pending users do not have a password).
 When that same user later logins with SSO for the first time, <ProductName /> identifies that this is the same user as the one created via provisioning and performs a normal login.
-When a user is removed from the IdP, they can no longer login to <ProductName />, if user provisioning was enabled at the time of deletion, then he is deleted from <ProductName />. Regardless, that user can no longer login to the account.
+When a user is removed from the IdP, they can no longer login to <ProductName />. If user provisioning was enabled at the time of deletion, then he is deleted from <ProductName />. Regardless, that user can no longer login to the account.
 The same app in the IdP is used for both SSO (e.g., using SAML) and for user provisioning.
 Note that while SSO is usually 
 
@@ -172,7 +172,7 @@ In order to set up user provisioning with SCIM, the following is needed.
 
 See [**<ProductName /> API Tokens**](/rest-api/torque_api_tokens) for generating a token.
 
-The process itself is slightly different for different identity providers, two example are provided below on how to configure SCIM in Okta and in Azure.
+The process itself is slightly different for different identity providers, two examples are provided below on how to configure SCIM in Okta and in Azure.
 
 ### Okta
 Login to Okta's admin console and locate the application that is used for SSO with <ProductName /> under "Applications" and then "Applications" again under it.
@@ -180,8 +180,8 @@ Under the 'General' tab, set the checkbox on "Enable SCIM provisioning"
 
 > ![Locale Dropdown](/img/scim-1.png)
 
-This should cause a new tab to appear on the application named "Provisioning". navigate to that tab.
-Under the provisioning tab ('Integration' settings) click edit and set the following:
+This should cause a new tab to appear on the application named "Provisioning". Navigate to that tab.
+Under the provisioning tab ('Integration' settings), click edit and set the following:
 SCIM connector base URL: https://portal.qtorque.io/api/scim
 Unique identifier field for users: userName
 Supported provisioning actions: set "Push New Users" and "Push Profile Updates" (the other checkboxes should remain unchecked)
@@ -189,12 +189,12 @@ Authentication Mode: HTTP header
 Authorization: This field should contain the long token generated above. Do not include word "Bearer" if it appears at the start of the token.
 
 Click "Test connector configuration"
-A screen similar to the below should appear.
-If the connection is unsuccessful an error message appears with additional details.
+A screen similar to the one below should appear.
+If the connection is unsuccessful, an error message appears with additional details.
 
 > ![Locale Dropdown](/img/scim-2.png)
 
-Click close on the dialog and "Save" at the button right.
+Click close on the dialog and "Save" on the bottom right button.
 
 The configured Provisioning screen should appear.
 
@@ -202,8 +202,8 @@ The configured Provisioning screen should appear.
 
 Other related settings should remain at their default settings.
 
-On the left hand side of the screen, under settings, there is a new tab called "To App", navigate to it.
-Click 'Edit' under "Provisioning to App" and Enable the checkboxes on "Create Users", "Update user attributes" and "Deactivate users". leave "Sync Password" unchecked. Click Save.
+On the left-hand side of the screen, under settings, there is a new tab called "To App", navigate to it.
+Click 'Edit' under "Provisioning to App" and enable the checkboxes on "Create Users", "Update user attributes", and "Deactivate users". Leave "Sync Password" unchecked. Click Save.
 
 > ![Locale Dropdown](/img/scim-4.png)
 
@@ -211,13 +211,13 @@ At this point, user provisioning should be working. Associate a user to the app 
 
 ### Azure active directory (Entra)
 Login to Azure and navigate to "Enterprise applications", then locate the application used for SSO with your <ProductName /> account.
-On the left hand side menu pick "Provisioning" and click "Get started"
+On the left-hand side menu, pick "Provisioning" and click "Get started".
 Set "Provisioning Mode" to Automatic.
-Under Admin Credential set the following.
+Under Admin Credential, set the following.
 Tenant URL: https://portal.qtorque.io/api/scim
-Secrete Token: This field should contain the long token generated above. Do not include word "Bearer" if it appears at the start of the token.
-Click "Test connection" a message should appear on the top right, confirming a successful connection.
-If the connection is unsuccessful an error message appears with additional details.
+Secret Token: This field should contain the long token generated above. Do not include the word "Bearer" if it appears at the start of the token.
+Click "Test connection", and a message should appear on the top right, confirming a successful connection.
+If the connection is unsuccessful, an error message appears with additional details.
 
 > ![Locale Dropdown](/img/scim-5.png)
 
@@ -227,10 +227,10 @@ Expand the "Mappings" section
 
 > ![Locale Dropdown](/img/scim-6.png)
 
-Click "Provision Microsoft Entra ID Groups". in the screen that appears set "Enabled" to false and click Save.
+Click "Provision Microsoft Entra ID Groups". In the screen that appears, set "Enabled" to false and click Save.
 Click the X at the top right to return to the screen in the screenshot above and observe that 'Enabled' is set to No under "Provision Microsoft Entra ID Groups" (May require a refresh)
 
-Return to the Overview tab and click "Start provisioning"
+Return to the Overview tab and click "Start provisioning".
 At this point, user provisioning should be working.
 Associate a user to the app normally (under the "Users and groups" tab) and observe that it gets created in the <ProductName /> account.
 * __Important note__: User provisioning is an offline process in Azure. Changes to user association may take up to 40 minutes to be provisioned. Provisioning logs may also take minutes to show changes.
@@ -270,7 +270,7 @@ To complete the configuration, once successfully registered an AzureAD applicati
 ### Group Synchronization
 The Azure AD SSO integration supports synchronizing user groups from Azure AD to the application. 
 
-See the See [**Configuring IdP for Synchronizing User Groups**](/admin-guide/sso#mapping-torque-user-groups-to-idp-groups) documentation for setup details.
+See the [**Configuring IdP for Synchronizing User Groups**](/admin-guide/sso#mapping-torque-user-groups-to-idp-groups) documentation for setup details.
 
 With this configuration, users will be able to seamlessly sign in to your private SaaS application using their Azure AD credentials, with new users automatically provisioned with pre-defined roles and spaces. 
 

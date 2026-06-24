@@ -32,6 +32,10 @@ The Shell grain is an asset-agnostic grain that allows you to run bash/python3 c
 spec_version: 2
 description: Run a simple shell grain
 
+inputs:
+  agent:
+    type: agent
+
 grains:
   validate:
     kind: shell
@@ -131,6 +135,38 @@ grains:
           commands:
             - "apt-get -y install git unzip curl"
             - "git clone {{ .inputs.repoUrl }}"
+```
+
+### `env-vars`
+
+The environment variables declared in the shell grain will be available while running shell commands in both the `deploy` and `destroy` activities.
+
+Use this section when your commands or scripts need runtime configuration, credentials, or feature flags.
+
+```yaml
+spec_version: 2
+description: Run shell commands with environment variables
+
+inputs:
+  agent:
+    type: agent
+
+grains:
+  run-shell:
+    kind: shell
+    spec:
+      agent:
+        name: '{{ .inputs.agent }}'
+      env-vars:
+        - ENVIRONMENT: production
+        - CUSTOM_TOKEN: '{{ .params.token }}'
+      activities:
+        deploy:
+          commands:
+            - 'echo "Running for $ENVIRONMENT"'
+        destroy:
+          commands:
+            - 'echo "Cleaning up $ENVIRONMENT"'
 ```
 
 ### `outputs`
