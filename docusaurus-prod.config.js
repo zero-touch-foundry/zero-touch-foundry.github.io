@@ -94,7 +94,7 @@ const config = {
     ({
       navbar: {
         logo: {
-          alt: 'Torque',
+          alt: 'Stack Automation by Quali',
           src: '/img/logo.png',
           srcDark: '/img/logo-dm.png',
         },
