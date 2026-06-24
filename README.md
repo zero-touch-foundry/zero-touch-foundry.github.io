@@ -1,24 +1,16 @@
-# Torque Docs
+# Stack Automation Documentation
 
-This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
+Official documentation site for [Stack Automation by Quali](https://www.quali.com/stack-automation/) — the self-service cloud environment platform that lets teams provision, manage, and govern infrastructure environments on demand.
 
-### Installation
+This site is built with [Docusaurus 3](https://docusaurus.io/) and covers:
 
-```
-$ npm install
-```
+- **Getting Started** — onboarding, authentication, and first environment
+- **Blueprints** — authoring Terraform, Ansible, Helm, and shell grains
+- **Catalog** — publishing and consuming self-service environments
+- **Policies** — cost controls, governance, and approval flows
+- **Integrations** — CI/CD pipelines, ITSM, and cloud providers
+- **API & CLI** — programmatic access and automation
 
-### Local Development
+## Contributing
 
-```
-$ npm start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-
-```
-$ npm run build
-```
-
-This command starts a local build of the project. When it completes successfully, you can run the built project using "npm run serve". This is good for testing both the build process and the generated production result.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, development workflow, and contribution guidelines.
