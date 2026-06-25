@@ -19,6 +19,12 @@ const config = {
     productName: 'Stack Automation',
   },
   trailingSlash: false,
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+      type: 'text/css',
+    },
+  ],
   future: {
     v4: true,
     experimental_faster: true,
@@ -92,21 +98,27 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        respectPrefersColorScheme: false,
+      },
       navbar: {
         logo: {
           alt: 'Stack Automation by Quali',
-          src: '/img/logo.png',
-          srcDark: '/img/logo-dm.png',
+          src: '/img/cisco-logo-blue.svg',
+          srcDark: '/img/cisco-logo-white.svg',
         },
         items: [
           {
+            label: 'Announcements',
             href: 'https://github.com/zero-touch-foundry/zero-touch-foundry.github.io/discussions/categories/announcements',
-            className: 'header-announcments-link',
+            className: 'header-link',
             position: 'right',
           },
           {
+            label: 'GitHub',
             href: 'https://github.com/zero-touch-foundry/zero-touch-foundry.github.io',
-            className: 'header-github-link',
+            className: 'header-link',
             position: 'right',
           },
         ],
