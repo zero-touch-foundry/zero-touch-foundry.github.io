@@ -103,6 +103,8 @@ const config = {
         respectPrefersColorScheme: false,
       },
       navbar: {
+        hideOnScroll: true,
+        title: 'Stack Automation by Quali',
         logo: {
           alt: 'Stack Automation by Quali',
           src: '/img/cisco-logo-blue.svg',
@@ -128,6 +130,10 @@ const config = {
           {
             title: 'Company',
             items: [
+              {
+                label: 'Quali Website',
+                href: 'https://www.quali.com/',
+              },
               {
                 label: 'Cisco Website',
                 href: 'https://www.cisco.com/',
