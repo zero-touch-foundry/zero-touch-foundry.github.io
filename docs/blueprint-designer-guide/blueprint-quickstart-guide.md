@@ -48,7 +48,6 @@ By enforcing usage of a source control repository, each blueprint in Stack Autom
 * The ability to retrieve or rollback to the contents of previous versions of the blueprint file
 
 :::tip __Tips__
-* If you are using VSCode to create and edit your blueprint file, we recommend using our official VSCode plugin (link here). For other IDEs, you can download our [official JSON schema](https://github.com/QualiTorque/torque-vs-code-extensions/blob/master/client/schemas/blueprint-spec2-schema.json) for the blueprint YAML and enforce it with your plugin of choice. 
 * When connecting a repository containing blueprint files to Stack Automation, it is possible to reference a branch of the repository and not its main, allowing designers the ability to test changes to blueprints before pushing them to the main/master branch and affecting the production catalog. 
 :::
 

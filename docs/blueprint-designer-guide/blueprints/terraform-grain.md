@@ -229,7 +229,7 @@ The `provider-overrides` block is a list where each item has:
 - `version` (optional): The version constraint for the provider
 - `attributes`: Key/value attributes to set on the provider block
 
-If `source` and `version` are omitted, Torque will only generate the provider override block and will inherit the provider configuration from the Terraform module's existing `required_providers` definition.
+If `source` and `version` are omitted, Stack Automation will only generate the provider override block and will inherit the provider configuration from the Terraform module's existing `required_providers` definition.
 
 This will generate the following Terraform code:
 

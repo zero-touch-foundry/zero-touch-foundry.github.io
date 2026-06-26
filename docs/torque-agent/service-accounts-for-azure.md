@@ -16,9 +16,9 @@ The basic process is as follows:
 - [__Azure Configuration__](#azure-configuration)
   - [__Prerequisites__](#prerequisites)
   - [__Configure the Azure Workload Identity__](#configure-the-azure-workload-identity)
-- [__Torque Configuration__](#torque-configuration)
+- [__Stack Automation Configuration__](#stack-automation-configuration)
   - [__Prerequisites__](#prerequisites-1)
-  - [__Configure the AKS authentication in Torque__](#configure-the-aks-authentication-in-torque)
+  - [__Configure the AKS authentication in Stack Automation__](#configure-the-aks-authentication-in-stack-automation)
 - [Video: Connecting a new agent and using it in a blueprint](#video-connecting-a-new-agent-and-using-it-in-a-blueprint)
 
 ## __Azure Configuration__
@@ -129,7 +129,7 @@ The basic process is as follows:
     az identity federated-credential create --name {federated_credential_name} --identity-name {managed_identity_name} --resource-group {managed_identity_resource_group} --issuer {AKS_cluster_OIDC_issuer_URL} --subject system:serviceaccount:{Torque_Environments_K8s_namespace}:{service_account_name}
     ```
 
-## __Torque Configuration__
+## __Stack Automation Configuration__
 
 ### __Prerequisites__
 
@@ -139,7 +139,7 @@ Have the following formation ready (from the previous section)
 * Subscription ID
 * The namespace where the Stack Automation environments will run (which you chose previously) and the service account name (which you also created in the previous step).
 
-### __Configure the AKS authentication in Torque__ 
+### __Configure the AKS authentication in Stack Automation__ 
 
 There are 2 ways to accomplish this:
 
