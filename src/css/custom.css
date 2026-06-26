@@ -154,6 +154,10 @@ body {
   margin-bottom: 0.35rem;
 }
 
+.menu__list-item.hidden {
+  display: none !important;
+}
+
 .theme-doc-sidebar-menu .menu__list-item {
   position: relative;
 }

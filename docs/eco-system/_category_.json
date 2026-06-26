@@ -1,4 +1,5 @@
 {
   "label": "Integrations",
-  "position": 8
+  "position": 8,
+  "className": "hidden"
 }
