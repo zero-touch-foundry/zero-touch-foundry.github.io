@@ -542,7 +542,7 @@ Behavior and schema details may change as the feature evolves.
 
 #### Skip or run a grain
 
-Use the `when` field on a grain to decide if that grain should run. If `when` evaluates to `false`, Torque skips the grain.
+Use the `when` field on a grain to decide if that grain should run. If `when` evaluates to `false`, <ProductName /> skips the grain.
 
 Simple example:
 
