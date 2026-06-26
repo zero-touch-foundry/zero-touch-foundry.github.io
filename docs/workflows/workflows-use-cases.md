@@ -518,7 +518,7 @@ grains:
 
 ---
 
-## <ProductName /> Built-in Workflows
+## Stack Automation Built-in Workflows
 
 :::info
 Usage example can be found [here](workflows-overview#torque-built-in-workflows)

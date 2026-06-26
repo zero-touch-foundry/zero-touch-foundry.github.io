@@ -5,18 +5,18 @@ title: Cross Account Provisioning (AWS)
 
 # Cross Account Provisioning in AWS
 
-<ProductName /> supports multiple options for provisioning resources across multiple AWS accounts. 
+Stack Automation supports multiple options for provisioning resources across multiple AWS accounts. 
 
 **Here are two common approaches**
-  - [Option A: <ProductName /> Agent in each account](#option-a-torque-agent-in-each-account)
-  - [Option B: Single <ProductName /> Agent in the Master Account](#option-b-single-torque-agent-in-the-master-account)
+  - [Option A: Stack Automation Agent in each account](#option-a-torque-agent-in-each-account)
+  - [Option B: Single Stack Automation Agent in the Master Account](#option-b-single-torque-agent-in-the-master-account)
 
 
-## Option A: <ProductName /> Agent in each account
+## Option A: Stack Automation Agent in each account
 
 ### Requirements and Setup
 
-- Each <ProductName /> Agent is sitting in a different AWS account.
+- Each Stack Automation Agent is sitting in a different AWS account.
 - Each Agent is deployed in a different EKS cluster.
 - OIDC is enabled on the clusters, and they each have a valid default service account with an IAM role annotation.
 
@@ -27,14 +27,14 @@ title: Cross Account Provisioning (AWS)
 
 ### Architectural Diagram
 
-> *Option A Diagram: Cross Accounts provisioning with <ProductName /> Agent in each account*
+> *Option A Diagram: Cross Accounts provisioning with Stack Automation Agent in each account*
 ![Option A Architectural Diagram](/img/cross-account-option-a.png)
 
-## Option B: Single <ProductName /> Agent in the Master Account
+## Option B: Single Stack Automation Agent in the Master Account
 
 ### Requirements and Setup
 
-- <ProductName /> agent is configured with a valid default service account that authenticates into an IAM role via OIDC (known as Master account role).
+- Stack Automation agent is configured with a valid default service account that authenticates into an IAM role via OIDC (known as Master account role).
 - Each target AWS account has an IAM role with an identical name, with a trust policy set up to allow the Master account role to assume it (known as Target account role).
 - These Target Account roles have the permissions necessary to perform the actions Terraform will describe on the respective account.
 - By utilizing identical names, the only difference in the IAM role ARNs is the account number.
@@ -70,7 +70,7 @@ provider "aws" {
 }
 ```
 
-**<ProductName /> Blueprint Example**
+**Stack Automation Blueprint Example**
 
 The Blueprint provides the user with a list of accounts to choose from, with a friendly text name for each account which is split out before passing the account number to Terraform.
 
@@ -108,11 +108,11 @@ grains:
 
 ### Architectural Diagram
 
-> *Option B Diagram: Cross Accounts provisioning with a Single <ProductName /> Agent in the Master Account
+> *Option B Diagram: Cross Accounts provisioning with a Single Stack Automation Agent in the Master Account
 ![Option B Architectural Diagram](/img/cross-account-option-b.png)
 
 ## Summary
 
 Both options provide flexibility in provisioning resources across multiple AWS accounts based on your specific requirements and setup. 
 
-Option A is suitable when you have separate EKS clusters for each account, while Option B allows you to manage multiple accounts from a single <ProductName /> agent in the master account.
+Option A is suitable when you have separate EKS clusters for each account, while Option B allows you to manage multiple accounts from a single Stack Automation agent in the master account.

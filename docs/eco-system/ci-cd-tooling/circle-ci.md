@@ -3,9 +3,9 @@ sidebar_position: 21
 title: CircleCI Plugin
 ---
 
-The [Quali <ProductName /> plugin](https://circleci.com/developer/orbs/orb/quali/torque) lets developers trigger application environments on-demand directly from their CircleCI pipelines. CircleCI users can easily integrate the <ProductName /> environments-as-a-service platform into their projects by utilizing by utilizing the <ProductName /> orb’s pre-defined commands.
+The [Quali Stack Automation plugin](https://circleci.com/developer/orbs/orb/quali/torque) lets developers trigger application environments on-demand directly from their CircleCI pipelines. CircleCI users can easily integrate the Stack Automation environments-as-a-service platform into their projects by utilizing by utilizing the Stack Automation orb’s pre-defined commands.
 
-To integrate <ProductName /> with the CircleCI plugin, make sure to complete the next few steps.
+To integrate Stack Automation with the CircleCI plugin, make sure to complete the next few steps.
 
 ## 1. Install
 
@@ -13,8 +13,8 @@ To integrate <ProductName /> with the CircleCI plugin, make sure to complete the
 2. Open the __Environment Variables__ page.
 3. Add the following three variables:
    
-   * __TORQUE_SERVER__: The URL of your <ProductName /> server (https://portal.qtorque.io).
-   * __TORQUE_SPACE__: The name of your space in <ProductName />.
+   * __TORQUE_SERVER__: The URL of your Stack Automation server (https://portal.qtorque.io).
+   * __TORQUE_SPACE__: The name of your space in Stack Automation.
    * __TORQUE_TOKEN__: Use the token you generate below
 4. Click the __Generate New Token__ button in the plugin's instructions pane.
 
@@ -31,7 +31,7 @@ __Using the torque orb in your config file__
 It is recommended to use the [latest release version](https://circleci.com/developer/orbs/orb/quali/torque).
 
 ## 3. Verify and launch
-__Use <ProductName />'s tasks in your CircleCI workflow__
+__Use Stack Automation's tasks in your CircleCI workflow__
 
-Add the __torque/start-sandbox__ and __torque/end-sandbox__ commands to start and stop the environment in <ProductName />. Review examples [here](https://circleci.com/developer/orbs/orb/quali/torque#usage-examples).
+Add the __torque/start-sandbox__ and __torque/end-sandbox__ commands to start and stop the environment in Stack Automation. Review examples [here](https://circleci.com/developer/orbs/orb/quali/torque#usage-examples).
 See the parameters list for orb behavior command customization [here](https://circleci.com/developer/orbs/orb/quali/torque#jobs).

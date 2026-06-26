@@ -4,7 +4,7 @@ title: Supported Platforms
 ---
 
 ## Cloud and Infrastructure Providers
-<ProductName /> supports installation of an agent over the following platforms:
+Stack Automation supports installation of an agent over the following platforms:
 
 * Microsoft Azure via [Azure Kubernetes Service](https://azure.microsoft.com/en-us/products/kubernetes-service) (AKS) 
 * Amazon Web Services (AWS) via [Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS)
@@ -14,9 +14,9 @@ title: Supported Platforms
 * Docker-based agent on VMWare vCenter
 
 ## Infrastructure as Code Frameworks
-<ProductName /> provides native support for IaC assets residing in a git repository. When connecting an IaC asset repository to <ProductName />, <ProductName /> maps your repository's assets, prompts you to select the ones you would like to use in <ProductName />, and auto-creates working blueprints out of the selected assets. Additionally, <ProductName /> allows you to insert custom Linux-script based automation as a component of a blueprint.
+Stack Automation provides native support for IaC assets residing in a git repository. When connecting an IaC asset repository to Stack Automation, Stack Automation maps your repository's assets, prompts you to select the ones you would like to use in Stack Automation, and auto-creates working blueprints out of the selected assets. Additionally, Stack Automation allows you to insert custom Linux-script based automation as a component of a blueprint.
 
-<ProductName /> supports the following IaC frameworks:
+Stack Automation supports the following IaC frameworks:
 * [Terraform](/blueprint-designer-guide/blueprints/terraform-grain.md)
 * [Kubernetes](/blueprint-designer-guide/blueprints/kubernetes-grain.md)
     * [Helm](/blueprint-designer-guide/blueprints/helm-grain.md)
@@ -48,7 +48,7 @@ For more details, see [Blueprint YAML](/blueprint-designer-guide/blueprints/blue
 \* Cloudformation drift reconciliation is in beta 
 
 ## CI/CD Tooling
-<ProductName /> enables you to integrate with various leading CI/CD tools such as Bamboo, Jenkins and TeamCity, to facilitate your application development activities.
+Stack Automation enables you to integrate with various leading CI/CD tools such as Bamboo, Jenkins and TeamCity, to facilitate your application development activities.
 
 * [Azure DevOps](/eco-system/ci-cd-tooling/azure-devops.md)
 * [CircleCI](/eco-system/ci-cd-tooling/circle-ci.md)

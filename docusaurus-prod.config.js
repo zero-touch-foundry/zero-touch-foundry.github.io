@@ -15,9 +15,6 @@ const config = {
   organizationName: 'zero-touch-foundry', // Usually your GitHub org/user name.
   projectName: 'zero-touch-foundry.github.io', // Usually your repo name.
   deploymentBranch: 'gh-pages',
-  customFields: {
-    productName: 'Stack Automation',
-  },
   trailingSlash: false,
   stylesheets: [
     {

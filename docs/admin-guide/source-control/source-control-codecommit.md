@@ -3,11 +3,11 @@ sidebar_position: 5
 title: CodeCommit Source Control
 ---
 
-<ProductName /> supports connecting assets, blueprints and policies repositories on CodeCommit out of the box. To connect a repository, you need to grant <ProductName /> access to your repository of interest. <ProductName /> will access the repo (read only) both from the <ProductName /> SAAS application on AWS as well as from the runners on your cluster. 
+Stack Automation supports connecting assets, blueprints and policies repositories on CodeCommit out of the box. To connect a repository, you need to grant Stack Automation access to your repository of interest. Stack Automation will access the repo (read only) both from the Stack Automation SAAS application on AWS as well as from the runners on your cluster. 
 
 ## Prerequisites
 
-1. Create a role for <ProductName /> to use which has permissions to connect to CodeCommit. To do that, follow the instructions:
+1. Create a role for Stack Automation to use which has permissions to connect to CodeCommit. To do that, follow the instructions:
    1. Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/.
    2. In the IAM console, in the navigation pane, choose "Roles", and then choose "Create Role".
    3. In Select trusted entities, choose "AWS account", and select "Another AWS account".
@@ -32,7 +32,7 @@ title: CodeCommit Source Control
     2.  📝***Take note of the the user name and password***.📝
 
 4.  Initialize your CodeCommit Repository
-    1.  CodeCommit does not have default files or a default branch until a file is committed, blocking <ProductName /> from adding this repo
+    1.  CodeCommit does not have default files or a default branch until a file is committed, blocking Stack Automation from adding this repo
     > ![Locale Dropdown](/img/code-commit/code-commit-uninit-branch.png)
     > ![Locale Dropdown](/img/code-commit/code-commit-uninit-code.png)
     2.  We recommend making a "blueprints" folder at the root of the repo with a single dummy yaml file. Please note the file extensions in the image below.
@@ -40,9 +40,9 @@ title: CodeCommit Source Control
     3.  Now we will verify the file is there and that the main branch has created. 
     > ![Locale Dropdown](/img/code-commit/code-commit-verify-code.png)
     > ![Locale Dropdown](/img/code-commit/code-commit-verify-branch.png)
-    4.  Finally we can now onboard the repo into <ProductName />!
+    4.  Finally we can now onboard the repo into Stack Automation!
 
-## Connecting a CodeCommit Repository to <ProductName />
+## Connecting a CodeCommit Repository to Stack Automation
 
 In your space, navigate to "Repositories" and click on "Add Repositories".
 Choose the CodeCommit icon and fill in the requested details from the pre-requisites. For region, use the region where the CodeCommit hosting this repo is.

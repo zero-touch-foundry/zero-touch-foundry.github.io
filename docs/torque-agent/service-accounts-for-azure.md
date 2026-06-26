@@ -8,7 +8,7 @@ If you're using an AKS cluster as your agent, and you want to run Terraform that
 For a step-by-step tutorial, see [Video: Connecting a new agent and using it in a blueprint](#video-connecting-a-new-agent-and-using-it-in-a-blueprint).
 
 :::tip __IMPORTANT__
-<ProductName /> does not support running the <ProductName /> Agent on an AKS cluster using [Burst Type VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable) as cluster worker nodes.  Please use a different VM type.
+Stack Automation does not support running the Stack Automation Agent on an AKS cluster using [Burst Type VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable) as cluster worker nodes.  Please use a different VM type.
 :::
 
 
@@ -35,7 +35,7 @@ The basic process is as follows:
     az extension add --name aks-preview
     az extension update --name aks-preview
     ```
-3. Command-line with [kubectl installed](https://kubernetes.io/docs/tasks/tools/#kubectl) connected the cluster where you installed the <ProductName /> agent.
+3. Command-line with [kubectl installed](https://kubernetes.io/docs/tasks/tools/#kubectl) connected the cluster where you installed the Stack Automation agent.
   To connect to the cluster use: 
     ```bash
     kubectl config use-context <your-cluster>
@@ -102,7 +102,7 @@ The basic process is as follows:
 8. Create a file called aks_workload_id_service_account.yaml with the below content:
 
   :::tip
-  Replace the \{property name\} with the corresponding values. For service account name, choose a new name. Take a note of the namespace that you select for <ProductName /> Environments (it will be in use in the next part - <ProductName /> configuration)
+  Replace the \{property name\} with the corresponding values. For service account name, choose a new name. Take a note of the namespace that you select for Stack Automation Environments (it will be in use in the next part - Stack Automation configuration)
   :::
  
   ```yaml
@@ -137,7 +137,7 @@ Have the following formation ready (from the previous section)
 
 * Tenant ID (displayed in the __Azure Active Directory > Overview__)
 * Subscription ID
-* The namespace where the <ProductName /> environments will run (which you chose previously) and the service account name (which you also created in the previous step).
+* The namespace where the Stack Automation environments will run (which you chose previously) and the service account name (which you also created in the previous step).
 
 ### __Configure the AKS authentication in Torque__ 
 
@@ -153,7 +153,7 @@ There are 2 ways to accomplish this:
     c. __Generate__ the "kubectl apply" command and run it in Azure CLI.
       > ![Locale Dropdown](/img/AKS-doc-2-a.png)
 
-    d. Return to <ProductName /> and wait for the connection status to change to a green "Connected!".
+    d. Return to Stack Automation and wait for the connection status to change to a green "Connected!".
     > ![Locale Dropdown](/img/AKS-doc-3.png)
 
     d. Click **Associate to Space** and connect the agent to one or more spaces. Select the namespace and the service account you configured in the previous step.

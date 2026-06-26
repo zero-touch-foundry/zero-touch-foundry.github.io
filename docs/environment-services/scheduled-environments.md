@@ -3,7 +3,7 @@ sidebar_position: 18
 title: Scheduled Deployments
 ---
 
-Scheduled deployments in <ProductName /> allow users to plan and automate deployment deployments for future time slots. This capability is particularly valuable for organizations that need to coordinate resource usage, plan maintenance windows, or ensure deployments are available at specific times for testing, demos, or development activities.
+Scheduled deployments in Stack Automation allow users to plan and automate deployment deployments for future time slots. This capability is particularly valuable for organizations that need to coordinate resource usage, plan maintenance windows, or ensure deployments are available at specific times for testing, demos, or development activities.
 
 ## Overview
 
@@ -80,13 +80,13 @@ import pic2 from '/img/scheduled-env-launch-form.png';
 
 ## Custom Resource Inventory Integration
 
-Scheduled deployments can leverage <ProductName />'s custom resource inventory to ensure that required resources are available at the scheduled time. This integration prevents scheduling conflicts and guarantees resource availability.
+Scheduled deployments can leverage Stack Automation's custom resource inventory to ensure that required resources are available at the scheduled time. This integration prevents scheduling conflicts and guarantees resource availability.
 
 ### Resource Reservation Process
 
 1. **Resource Definition**: Define custom resources in the inventory (e.g., GPU instances, specialized hardware, licenses)
 2. **Capacity Planning**: Set desired capacity for each resource type in blueprints
-3. **Advance Booking**: When scheduling deployments, <ProductName /> reserves the required resources
+3. **Advance Booking**: When scheduling deployments, Stack Automation reserves the required resources
 4. **Conflict Prevention**: The system prevents overbooking by checking resource availability
 
 ### Example: GPU Resource Management
@@ -122,7 +122,7 @@ Here are some common "Resource Types" for scheduling:
 
 ## Scheduling Conflict Resolution
 
-<ProductName /> provides intelligent conflict resolution when scheduling conflicts occur, offering users alternative time slots that meet their requirements.
+Stack Automation provides intelligent conflict resolution when scheduling conflicts occur, offering users alternative time slots that meet their requirements.
 
 ### Conflict Detection
 
@@ -134,7 +134,7 @@ The system automatically detects conflicts when:
 
 ### Next Available Time Slot
 
-When conflicts are detected, <ProductName /> offers the **"Next Available Time Slot"** feature:
+When conflicts are detected, Stack Automation offers the **"Next Available Time Slot"** feature:
 
 1. **Conflict Notification**: User is informed that their requested time slot is unavailable
 2. **Alternative Suggestions**: System presents the next available time slots that meet all requirements

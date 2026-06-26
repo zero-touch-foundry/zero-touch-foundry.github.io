@@ -3,13 +3,13 @@ sidebar_position: 4
 title: Import Cloud Resources
 ---
 
-__<ProductName /> Control plane__ helps you to accelerate migration of existing cloud resources into fully managed <ProductName /> environments with a few simple steps regardless of how the resources were deploy in the cloud in the first place. 
+__Stack Automation Control plane__ helps you to accelerate migration of existing cloud resources into fully managed Stack Automation environments with a few simple steps regardless of how the resources were deploy in the cloud in the first place. 
 
-In the below article, we will cover the following steps for importing cloud resources into <ProductName /> using Terraform generation:
+In the below article, we will cover the following steps for importing cloud resources into Stack Automation using Terraform generation:
 1. Generate **Terraform code (modules)** representing your existing deployed resources in the cloud.
 2. Generate **Terraform state file** that represent the deployment status.
-3. Generate **<ProductName /> blueprint** that uses the Terraform code as an automation grain. 
-4. Import your cloud resources into a fully managed **<ProductName /> Environment**.
+3. Generate **Stack Automation blueprint** that uses the Terraform code as an automation grain. 
+4. Import your cloud resources into a fully managed **Stack Automation Environment**.
 
 :::info
 NOTE: This guide will focus on AWS workloads as an example, but it's possible to use it for other cloud providers (cloud and on-prem), network providers, monitoring systems and more.
@@ -19,12 +19,12 @@ NOTE: This guide will focus on AWS workloads as an example, but it's possible to
 ![import flow](/img/tf-export.png)
 
 
-# Importing an Environment into <ProductName />
+# Importing an Environment into Stack Automation
 
-This guide walks you through the process of importing an existing environment into <ProductName />, starting from resource curation to final import using the API. Follow these steps to successfully onboard an environment into <ProductName />.
+This guide walks you through the process of importing an existing environment into Stack Automation, starting from resource curation to final import using the API. Follow these steps to successfully onboard an environment into Stack Automation.
 
 #### Step 1: Curate and codify a Resource
-- Start by curating the resource you want to manage in <ProductName />. After curating, you'll obtain the Terraform files and the corresponding `tfstate` file.
+- Start by curating the resource you want to manage in Stack Automation. After curating, you'll obtain the Terraform files and the corresponding `tfstate` file.
 
 #### Step 2: Edit the Providers File
 - Open the `providers` file within the Terraform files and remove the following sensitive credentials:
@@ -39,7 +39,7 @@ This guide walks you through the process of importing an existing environment in
 
 
 #### Step 4: Create a Matching Blueprint
-- Create a corresponding <ProductName /> blueprint for the environment, named `curate-example.yaml`. Here's an example blueprint:
+- Create a corresponding Stack Automation blueprint for the environment, named `curate-example.yaml`. Here's an example blueprint:
 
   ```yaml
   spec_version: 2
@@ -67,8 +67,8 @@ This guide walks you through the process of importing an existing environment in
 
 
 #### Step 6: Use the Import API
-- To import the environment using the <ProductName /> API, make the following POST request using `curl`.
-- The API response will include the `environment-id`. After importing, you will see an import step, followed by an apply step with <ProductName /> tags applied to the environment.
+- To import the environment using the Stack Automation API, make the following POST request using `curl`.
+- The API response will include the `environment-id`. After importing, you will see an import step, followed by an apply step with Stack Automation tags applied to the environment.
 
   ```bash
   curl -X POST "https://portal.qtorque.io/api/spaces/{space_name}/environments/import_using_blueprint" \
@@ -102,7 +102,7 @@ This guide walks you through the process of importing an existing environment in
   ```
 
 ### Important Considerations
-- **Destroying Resources**: If you are importing a resource that already exists in the cloud, keep in mind that ending the environment in <ProductName /> will destroy the resource.
+- **Destroying Resources**: If you are importing a resource that already exists in the cloud, keep in mind that ending the environment in Stack Automation will destroy the resource.
 - To avoid unintended deletion, you can release the environment by running the following API command using `curl`:
   
   ```bash
@@ -148,9 +148,9 @@ To import Terraform states from another account that cannot be accessed directly
 ---
 
 :::info
-1. Make sure to provide the <ProductName /> authentication token. This can be a short or long-token
-2. The source section points to the blueprint generated and the repository name onboarded to <ProductName />.
+1. Make sure to provide the Stack Automation authentication token. This can be a short or long-token
+2. The source section points to the blueprint generated and the repository name onboarded to Stack Automation.
 3. The backend section added in under the grain should point to the state file exported and uploaded to the backend of choice.
 :::
 
-By following these steps, you'll be able to successfully import and manage an environment in <ProductName /> while ensuring security and state management.
+By following these steps, you'll be able to successfully import and manage an environment in Stack Automation while ensuring security and state management.

@@ -5,61 +5,61 @@ title: Service Now
 
 ## __Flow overview__
 
-<ProductName /> has a built-in integration with Service Now for approval flow. If your organization is using Service Now for ITSM, you can configure the integration and perform your approval flow through your Service Now portal.
+Stack Automation has a built-in integration with Service Now for approval flow. If your organization is using Service Now for ITSM, you can configure the integration and perform your approval flow through your Service Now portal.
 
 > ![Locale Dropdown](/img/service_now_flow.png)
 
 ## __Prerequisites__
-In order to configure the ServiceNow integration, you will need to have the <ProductName /> Integration XML file. Please contact <ProductName /> Support to get this file.
+In order to configure the ServiceNow integration, you will need to have the Stack Automation Integration XML file. Please contact Stack Automation Support to get this file.
 
 
-## 1. Install the ServiceNow <ProductName /> Application
+## 1. Install the ServiceNow Stack Automation Application
 
    1. In Service Now, Go to -> `Retrieved Update Sets`
-   2. In the bottom, there is a link: `Import Update Set from XML` click it, and choose the file you received from <ProductName /> support. 
+   2. In the bottom, there is a link: `Import Update Set from XML` click it, and choose the file you received from Stack Automation support. 
    3. Select the record and press on `Preview Update Set` and then `commit`
 
-## 2. Create a service user for <ProductName />
+## 2. Create a service user for Stack Automation
 
-   1. In Service Now, Create a dedicated user for <ProductName /> integration. This user does not need any special permissions in ServiceNow, just to be able to login to the system.
+   1. In Service Now, Create a dedicated user for Stack Automation integration. This user does not need any special permissions in ServiceNow, just to be able to login to the system.
    2. Take note of the username and password of this user, you will need this information in the next steps.
 
 ## 3. Approval Channel Configuration
 
-1. In <ProductName />:
+1. In Stack Automation:
 
-   1. You will need a user in Toruqe that will be the approver for the approval channel. Note, currently only one approver can be assigned to each approval channel. The user can be one of your existing users, or a new one which can serve as a service user. This user does not have to be a real user in <ProductName />, it is just a user for the purpose of this integration. This user needs to be a member of the space(s) where you want these approvals to be created. 
+   1. You will need a user in Toruqe that will be the approver for the approval channel. Note, currently only one approver can be assigned to each approval channel. The user can be one of your existing users, or a new one which can serve as a service user. This user does not have to be a real user in Stack Automation, it is just a user for the purpose of this integration. This user needs to be a member of the space(s) where you want these approvals to be created. 
    To create a new user you should invite the new user via email. 
-   2. Log in to the <ProductName /> UI as the approver user from step 1, and create an API token. See [Generating a new <ProductName /> API Token](/rest-api/torque_api_tokens.md) . Take note of the generated Token.
+   2. Log in to the Stack Automation UI as the approver user from step 1, and create an API token. See [Generating a new Stack Automation API Token](/rest-api/torque_api_tokens.md) . Take note of the generated Token.
 
 2. In ServiceNow:
    
-     1. **Update <ProductName /> API token** :  Go to `sys_properties.list` and update `Torque_Token` with the value of the generated API token.
-     2. **Update <ProductName /> Base URL** Go to `Connection & Credential Aliases` and click on `<ProductName />`
+     1. **Update Stack Automation API token** :  Go to `sys_properties.list` and update `Torque_Token` with the value of the generated API token.
+     2. **Update Stack Automation Base URL** Go to `Connection & Credential Aliases` and click on `Stack Automation`
      3. Add a new connection by clicking the `New` button:
      > ![Locale Dropdown](/img/service_now_new.png)
      4. In case you have a connection just edit the record with the correct URL:
      > ![Locale Dropdown](/img/service_now_url.png)
 
-3. In <ProductName />:
+3. In Stack Automation:
 
      1. Navigate to `Administration` -> `Approval Channels`
      2. On the top right corner, click on `Add Channel`.
      3. Fill a name and description of your choice and click on the ServiceNow icon.
      4. Fill the following details:
         1. ServiceNow address URL - your base service now tenant URL. For example: https://mytenant.service-now.com/
-        2. Username - The <ProductName /> dedicated ServiceNow user which you created in [Step 2](#2-create-a-service-user-for-torque)
-        3. Password - The <ProductName /> dedicated ServiceNow password of the same user
-        4. Approvers - the <ProductName /> approver user which you selected/created in step 3.1. It must be the same user to which the <ProductName /> token belongs.
+        2. Username - The Stack Automation dedicated ServiceNow user which you created in [Step 2](#2-create-a-service-user-for-torque)
+        3. Password - The Stack Automation dedicated ServiceNow password of the same user
+        4. Approvers - the Stack Automation approver user which you selected/created in step 3.1. It must be the same user to which the Stack Automation token belongs.
 
 
 4. In ServiceNow: Review Approval Flow template
 
-   1. Go to `Flow Designer -> Flows` and select type in the searchbox for “<ProductName /> Request”.
+   1. Go to `Flow Designer -> Flows` and select type in the searchbox for “Stack Automation Request”.
    2. Select it and configure approvers under `Ask for Approval` action:
    > ![Locale Dropdown](/img/service_now_torque_request.png)
 
-The approvers don't have to be <ProductName /> users.
+The approvers don't have to be Stack Automation users.
 
 5. In ServiceNow: View approval flow
 

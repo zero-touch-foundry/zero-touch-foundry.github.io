@@ -3,29 +3,29 @@ sidebar_position: 18
 title: TeamCity Plugin
 ---
 
-The [Quali <ProductName /> plugin](https://plugins.jetbrains.com/plugin/18582-torque) lets developers trigger application environments on-demand directly from their TeamCity pipelines. TeamCity users can easily integrate the <ProductName /> environments-as-a-service platform into their projects by utilizing the <ProductName /> plugin’s pre-defined commands.
+The [Quali Stack Automation plugin](https://plugins.jetbrains.com/plugin/18582-torque) lets developers trigger application environments on-demand directly from their TeamCity pipelines. TeamCity users can easily integrate the Stack Automation environments-as-a-service platform into their projects by utilizing the Stack Automation plugin’s pre-defined commands.
 
-To integrate <ProductName /> with the Spinnaker plugin, make sure to complete the next few steps.
+To integrate Stack Automation with the Spinnaker plugin, make sure to complete the next few steps.
 
 ## 1. Install
 
-1. Open the <ProductName /> Plugin page in the Jetbrains marketplace.
-2. Download the latest version of the <ProductName /> plugin.
+1. Open the Stack Automation Plugin page in the Jetbrains marketplace.
+2. Download the latest version of the Stack Automation plugin.
 3. Open the TeamCity web UI as an administrator and perform the following steps:
    * Browse to the __Administration > Plugins__ page.
    * Click the __Upload plugin__ zip and upload the __*teamcity-torque-plugin.zip*__. A warning message is displayed recommending that you restart the TeamCity Server.
    * Click __Restart__ and wait for TeamCity to initiate.
 4. To verify that the installation is successfully completed:
    * Browse to the __Administration > Plugins List__ page.
-   * Under the __External plugins__ section, verify that the <ProductName /> Plugin appears with no warnings.
+   * Under the __External plugins__ section, verify that the Stack Automation Plugin appears with no warnings.
    * Open the __Projects Overview__ page and open any project.
    * Click __Edit Project Settings__.
-   * Under the left __General Settings__ list, a <ProductName /> option appears (the tab will appear only if TeamCity was restarted as described in step 3).
+   * Under the left __General Settings__ list, a Stack Automation option appears (the tab will appear only if TeamCity was restarted as described in step 3).
 
 ## 2. Configure
 
 1. Open TeamCity as Administrator.
-2. Open the Project Administration page and click the <ProductName /> tab.
+2. Open the Project Administration page and click the Stack Automation tab.
 3. Click Connect.
 4. Under the General Configuration section, enter the following parameters:
     * __Torque Server URL__: https://portal.qtorque.com

@@ -15,7 +15,7 @@ title: Actions and Workflows
 
 ## Overview
 
-Managing cloud resources efficiently is critical for modern organizations. Leaving resources running when not in use can lead to significant waste and security risks. <ProductName />'s Actions and Workflows provide automated solutions to optimize your cloud infrastructure.
+Managing cloud resources efficiently is critical for modern organizations. Leaving resources running when not in use can lead to significant waste and security risks. Stack Automation's Actions and Workflows provide automated solutions to optimize your cloud infrastructure.
 
 ### Why Resource Management Matters
 
@@ -39,9 +39,9 @@ Managing cloud resources efficiently is critical for modern organizations. Leavi
 - Improve overall system performance and responsiveness
 - Optimize resource allocation across your infrastructure
 
-### <ProductName />'s Solution
+### Stack Automation's Solution
 
-<ProductName /> provides comprehensive resource management through two complementary approaches:
+Stack Automation provides comprehensive resource management through two complementary approaches:
 
 - **🎯 Actions** - Execute immediate operations on specific resources (power on/off, restart, connect)
 - **⏰ Workflows** - Schedule automated operations across resource groups (daily shutdowns, weekend scaling)
@@ -50,7 +50,7 @@ This combination enables both reactive management and proactive automation, ensu
 
 ## Actions
 
-<ProductName /> provides a built-in set of **actions** you can run on specific cloud resources in the deployment to optimize resource usage and achieve cost savings, security improvements, and performance benefits.
+Stack Automation provides a built-in set of **actions** you can run on specific cloud resources in the deployment to optimize resource usage and achieve cost savings, security improvements, and performance benefits.
 
 ## Workflows
 
@@ -65,7 +65,7 @@ This combination enables both reactive management and proactive automation, ensu
 
 :::info
 **Learn More About Workflows**
-To learn how to create and manage workflows in your <ProductName /> account, visit our [Workflows Overview](/workflows/workflows-overview) guide.
+To learn how to create and manage workflows in your Stack Automation account, visit our [Workflows Overview](/workflows/workflows-overview) guide.
 :::
 
 ## How to Execute Actions and Workflows
@@ -108,13 +108,13 @@ Learn how to create scheduled automations with [built-in actions](/workflows/wor
 
 ### Supported Actions by Resource Type
 
-<ProductName /> provides the following built-in actions that you can run on specific cloud resources:
+Stack Automation provides the following built-in actions that you can run on specific cloud resources:
 
 **Virtual Machines:**
 - **Power On** - Start instances
 - **Power Off** - Stop instances  
 - **Restart** - Reboot instances
-- **Connect** - Create RDP/SSH connections directly from <ProductName /> UI
+- **Connect** - Create RDP/SSH connections directly from Stack Automation UI
 
 **Database Servers:**
 - **Stop** - Temporarily stop database instances
@@ -147,7 +147,7 @@ For technical implementation details, refer to the comprehensive action support 
 |  | Restart VM | AWS | Terraform | `aws_instance` | Restart an EC2 instance | - |
 |  |  |  | CloudFormation | `AWS::EC2::Instance` |  |  |
 |  |  | Azure | Terraform | `azurerm_virtual_machine` | Restart an Azure VM | - |
-|  | Connect to VM | AWS | Terraform | `aws_instance` | Creates RDP/SSH connection directly from <ProductName /> UI | - |
+|  | Connect to VM | AWS | Terraform | `aws_instance` | Creates RDP/SSH connection directly from Stack Automation UI | - |
 |  |  | AWS | CloudFormation | `AWS::EC2::Instance` |  |  |
 |  |  | Azure | Terraform | `azurerm_virtual_machine` |  |  |
 | **Databases** | Stop RDS Instance | AWS | Terraform | `aws_db_instance` | Temporarily stop an RDS instance | RDS restarts after 7 days if not repeated |

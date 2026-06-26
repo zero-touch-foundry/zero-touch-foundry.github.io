@@ -3,11 +3,11 @@ sidebar_position: 2
 title: Self-Managed GitLab
 ---
 
-<ProductName /> supports connecting to self-managed GitLab repositories, allowing you to discover and manage assets stored in your on-premises GitLab instance.
+Stack Automation supports connecting to self-managed GitLab repositories, allowing you to discover and manage assets stored in your on-premises GitLab instance.
 
 ## Prerequisites
 
-1. **Agent Installation**: You must have the <ProductName /> Agent installed with access to your self-managed GitLab instance.
+1. **Agent Installation**: You must have the Stack Automation Agent installed with access to your self-managed GitLab instance.
 2. **GitLab Access Token**: You will need a GitLab Personal Access Token with the following permission scopes:
    1.  `api`
    2.  `read_api`
@@ -26,4 +26,4 @@ title: Self-Managed GitLab
 
 > ![Add a repository](/img/gitlab-connect.png)
 
-With a self-managed GitLab repository configured in <ProductName />, you can seamlessly manage and version control your assets stored in your on-premises GitLab instance.
+With a self-managed GitLab repository configured in Stack Automation, you can seamlessly manage and version control your assets stored in your on-premises GitLab instance.

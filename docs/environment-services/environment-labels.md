@@ -11,7 +11,7 @@ Deployment Labels are metadata tags that can be assigned to different deployment
 ## Concept
 Each deployment label is a value or a combination of a key and a value. For example, a label could be `purpose:production`, where "purpose" is the key and "production" is the value. Another example can be 'Kubernetes' as a value of a label indicating the deployment is a Kubernetes cluster.
  
-Deployment Labels in <ProductName /> are a powerful tool to streamline deployment management by allowing users to tag, filter, and organize deployments effectively. Implementing a consistent labeling strategy will enhance visibility, management efficiency, and collaboration within your organization.
+Deployment Labels in Stack Automation are a powerful tool to streamline deployment management by allowing users to tag, filter, and organize deployments effectively. Implementing a consistent labeling strategy will enhance visibility, management efficiency, and collaboration within your organization.
  
 ### Flexible Categorization 
 Deployment labels allow you to categorize deployments in any way that suits your organizational needs. Common examples include:
@@ -28,14 +28,14 @@ Labels can be utilized in scripts or automation tools to perform operations on s
  
 ## Usage
 ### Creating and Assigning Labels
-Labels can be assigned when creating a new deployment or added to existing deployments via the `<ProductName /> dashboard` or `API`.
+Labels can be assigned when creating a new deployment or added to existing deployments via the `Stack Automation dashboard` or `API`.
 > ![img](/img/env-labels-create.png)
 
 ### Best Practices
 * It's recommended to establish a consistent labeling strategy within your organization to ensure labels are meaningful and useful.
 * Agree on standard keys and values that everyone should use.
 
-There are a few system reserved labels in <ProductName /> that are used to mark certain states. Here is a list of the system labels:
+There are a few system reserved labels in Stack Automation that are used to mark certain states. Here is a list of the system labels:
 * `Drift Detected`
 * `Pending Updates`
 * `EaC:Active`

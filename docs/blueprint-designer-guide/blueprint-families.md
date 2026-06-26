@@ -118,4 +118,4 @@ Users see one **Web Application** entry in the catalog. At launch, they select t
 
 - [Blueprint YAML Overview](/blueprint-designer-guide/blueprints/blueprints-overview)
 - [Blueprint Publishing](/blueprint-designer-guide/blueprint-publishing)
-- [<ProductName /> Assets Markers](/blueprint-designer-guide/torque-assets-markers)
+- [Stack Automation Assets Markers](/blueprint-designer-guide/torque-assets-markers)

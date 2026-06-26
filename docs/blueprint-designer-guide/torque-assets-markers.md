@@ -3,34 +3,34 @@ sidebar_position: 18
 title: Assets Markers
 ---
 
-# <ProductName /> Markers for Asset Discovery
+# Stack Automation Markers for Asset Discovery
 
 ## Overview
 
-<ProductName /> Markers is a feature designed to enhance the discovery and management of <ProductName />-related assets, including Blueprints, Environments, Instructions, Workflows, and Layouts. This capability improves asset scanning efficiency and provides better organization for repositories with multiple <ProductName /> assets.
+Stack Automation Markers is a feature designed to enhance the discovery and management of Stack Automation-related assets, including Blueprints, Environments, Instructions, Workflows, and Layouts. This capability improves asset scanning efficiency and provides better organization for repositories with multiple Stack Automation assets.
 
 ## How It Works
 
-<ProductName /> Markers use special marker files to indicate directories containing <ProductName /> assets. These marker files help <ProductName /> focus its scanning efforts on relevant directories, optimizing the asset discovery process.
+Stack Automation Markers use special marker files to indicate directories containing Stack Automation assets. These marker files help Stack Automation focus its scanning efforts on relevant directories, optimizing the asset discovery process.
 
 ### Marker File Implementation
 
-- Marker files have specific extensions to indicate different <ProductName /> asset types:
+- Marker files have specific extensions to indicate different Stack Automation asset types:
   - `.environments`
   - `.blueprints`
   - `.workflows`
   - `.layouts`
   - `.instructions`
 - Marker files should have no filename, only the extension (e.g., `.blueprints`)
-- Place marker files in the Git directories that <ProductName /> will scan for changes and assets
+- Place marker files in the Git directories that Stack Automation will scan for changes and assets
 
 :::note
-For `.instructions` <ProductName /> will recursively scan for `image` and `.md` files.
+For `.instructions` Stack Automation will recursively scan for `image` and `.md` files.
 :::
 
 :::info
 1. `Multiple Marker` files can not coexist in the same directory
-2. <ProductName /> will still scan the default directory naming convention at root. (e.g., `blueprints/`, `environmnets/`, etc.)
+2. Stack Automation will still scan the default directory naming convention at root. (e.g., `blueprints/`, `environmnets/`, etc.)
 :::
 
 
@@ -73,7 +73,7 @@ app/
 
 ## Optimized Scanning Process
 
-- <ProductName /> scans only directories containing <ProductName /> marker files for associated assets
+- Stack Automation scans only directories containing Stack Automation marker files for associated assets
 - This approach reduces scanning time and resource usage
 - Eliminates the need to parse all files in the repository, improving performance
 
@@ -81,35 +81,35 @@ app/
 
 - Improved repository organization and asset management
 - Reduced scanning time and resource usage
-- Clear indication of <ProductName />-related asset locations
-- Flexibility in structuring repositories with multiple <ProductName /> assets
+- Clear indication of Stack Automation-related asset locations
+- Flexibility in structuring repositories with multiple Stack Automation assets
 - Enhanced support for GitOps workflows
 
 ## Implementation Considerations
 
-- The <ProductName /> scanning algorithm has been updated to recognize and utilize marker files
-- Documentation and guidelines are available for users on how to implement and use <ProductName /> markers
-- Backward compatibility with existing <ProductName /> implementations is ensured
+- The Stack Automation scanning algorithm has been updated to recognize and utilize marker files
+- Documentation and guidelines are available for users on how to implement and use Stack Automation markers
+- Backward compatibility with existing Stack Automation implementations is ensured
 
 ## Getting Started
 
-To start using <ProductName /> Markers in your repository:
+To start using Stack Automation Markers in your repository:
 
-1. Identify the directories containing <ProductName /> assets (Blueprints, Environments, etc.)
+1. Identify the directories containing Stack Automation assets (Blueprints, Environments, etc.)
 2. Add the appropriate marker file to each directory (e.g., `.blueprints`, `.environments`)
 3. Ensure your asset files are properly named and located within the marked directories
 4. Commit and push your changes to the repository
-5. <ProductName /> will automatically detect and use the new marker system on the next scan
+5. Stack Automation will automatically detect and use the new marker system on the next scan
 
 ## Best Practices
 
 - Use marker files consistently across your repositories
 - Organize your assets logically within your repository structure
-- Avoid placing unrelated files in directories with <ProductName /> markers
+- Avoid placing unrelated files in directories with Stack Automation markers
 - Regularly review and update your marker placement as your repository evolves
 
 ## Conclusion
 
-<ProductName /> Markers provide an efficient and flexible way to manage <ProductName /> assets within your Git repositories. By adopting this feature, you can improve your asset organization, reduce scanning times, and enhance your overall GitOps workflow.
+Stack Automation Markers provide an efficient and flexible way to manage Stack Automation assets within your Git repositories. By adopting this feature, you can improve your asset organization, reduce scanning times, and enhance your overall GitOps workflow.
 
-For more information or assistance, please refer to the <ProductName /> documentation or contact our support team.
+For more information or assistance, please refer to the Stack Automation documentation or contact our support team.

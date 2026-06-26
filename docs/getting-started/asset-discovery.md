@@ -3,10 +3,10 @@ sidebar_position: 8
 title: Asset Discovery
 ---
 
-<ProductName /> needs access to your relevant git repositories to read your Terraform modules or Helm charts.
-<ProductName /> supports 4 version control systems: GitHub, GitLab, BitBucket, and Azure DevOps.
+Stack Automation needs access to your relevant git repositories to read your Terraform modules or Helm charts.
+Stack Automation supports 4 version control systems: GitHub, GitLab, BitBucket, and Azure DevOps.
 
-Once a repository is connected, <ProductName /> will automatically discover the assets in it (Terraform modules, Helm charts, Kubernetes manifests, CloudFormation templates, and batch scripts). See the full list [here](/overview/supported-platforms) and will ask you to select the assets to be used for the blueprints. After you select the relevant assets, <ProductName /> will automatically generate initial blueprints from your assets.
+Once a repository is connected, Stack Automation will automatically discover the assets in it (Terraform modules, Helm charts, Kubernetes manifests, CloudFormation templates, and batch scripts). See the full list [here](/overview/supported-platforms) and will ask you to select the assets to be used for the blueprints. After you select the relevant assets, Stack Automation will automatically generate initial blueprints from your assets.
 
 :::tip __Note__:
 
@@ -20,7 +20,7 @@ Click an auto-generated blueprint to view the resulting yaml file. You can custo
     
     To connect an Azure DevOps repo, use this format: `https://dev.azure.com/{organization}/{project}/_git/{repositoryName}`.
 
-3. Now that your repository is connected, click __Discover Assets__ to have <ProductName /> auto-generate blueprints out of the suitable assets.
+3. Now that your repository is connected, click __Discover Assets__ to have Stack Automation auto-generate blueprints out of the suitable assets.
   > ![Locale Dropdown](/img/discover-assets-2.png)
 4. Next, go to the __Blueprints__ page and publish the new blueprints.
   > ![Locale Dropdown](/img/publish-blueprint.png)

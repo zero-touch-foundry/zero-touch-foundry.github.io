@@ -11,10 +11,10 @@ The Configuration page consolidates key system settings and administrative confi
 
 ### 1. White Labeling
 
-Customize the <ProductName /> interface with your organization's branding by uploading a custom logo. This ensures a **consistent and professional** look throughout the platform.
+Customize the Stack Automation interface with your organization's branding by uploading a custom logo. This ensures a **consistent and professional** look throughout the platform.
 
 This feature allows you to:  
-- Replace the default <ProductName /> logo across the system.  
+- Replace the default Stack Automation logo across the system.  
 - Upload three logo types: Favicon, Wide Logo, and Square Logo.  
   
 **How to upload your logo**
@@ -55,13 +55,13 @@ This feature allows you to create and manage announcement banners to notify user
 
 ### 3. Audit Logs
 
-<ProductName />’s **Audit Logs** provide comprehensive tracking of key platform activities, helping you monitor user behavior, investigate security risks, and maintain compliance.  
+Stack Automation’s **Audit Logs** provide comprehensive tracking of key platform activities, helping you monitor user behavior, investigate security risks, and maintain compliance.  
 Options include:  
 - ElasticSearch: With built-in **Elastic Stack integration**, you can forward audit data for real-time analysis and reporting.  
-- <ProductName /> Audit: Forward logs to <ProductName />, and retain for 18 months..  
+- Stack Automation Audit: Forward logs to Stack Automation, and retain for 18 months..  
   
 **How to set up an Audit Log destination**  
-📖 Learn more about [<ProductName /> Audit](/governance/audit-log/audit-log-configuration)
+📖 Learn more about [Stack Automation Audit](/governance/audit-log/audit-log-configuration)
   
 info 🔒  Audit log integration is  available for **Enterprise plans only** and requires a specific licensing feature.
 
@@ -69,21 +69,21 @@ info 🔒  Audit log integration is  available for **Enterprise plans only** and
 
 ### 4. Copilot Settings
 
-Enable <ProductName />’s AI-powered assistant to provide recommendations and enhance workflow automation, within your account.  
+Enable Stack Automation’s AI-powered assistant to provide recommendations and enhance workflow automation, within your account.  
   
 These settings include 2 features:  
-**1. <ProductName /> Copilot** – Easily navigate <ProductName /> with our AI chatbot, always accessible and leveraging the official documentation for swift exploration.  
+**1. Stack Automation Copilot** – Easily navigate Stack Automation with our AI chatbot, always accessible and leveraging the official documentation for swift exploration.  
 (This feature is based on a 3rd party tool called DocsBot)  
 ![DocsBot](/img/docsbot.png)
 
-**How to enable <ProductName /> Copilot**
+**How to enable Stack Automation Copilot**
 
 1.  Navigate to **Configuration > Copilot Settings**.
-2.  Toggle on the ‘<ProductName /> Copilot’ toggle to show the AI chatbot button at the top header, next to the rest of the utilities.
+2.  Toggle on the ‘Stack Automation Copilot’ toggle to show the AI chatbot button at the top header, next to the rest of the utilities.
 3.  Toggle off to hide the AI chatbot and to prevent access from all users.
 
 **2. Cloud Copilot** – Your internal AI assistance to create and customize Blueprints, auto-generate descriptions, and resolve live environment errors.  
-This AI assistant tool is subject to the [<ProductName /> MSA](https://www.quali.com/legal-torque-master-subscription-agreement/) and requires user consent.  
+This AI assistant tool is subject to the [Stack Automation MSA](https://www.quali.com/legal-torque-master-subscription-agreement/) and requires user consent.  
   
 With this feature you can:  
 - **Auto-generate descriptions** for blueprints, to effortlessly expand the details on every blueprint in the account.  
@@ -100,7 +100,7 @@ With this feature you can:
 
 1.  Navigate to **Configuration > Copilot Settings**.
 2.  Under the ‘Cloud Copilot’ section > click on the **‘AI Provider’ button** to select where to host your AI Data while using Copilot:  
-    - Host in **<ProductName />’s Open AI  
+    - Host in **Stack Automation’s Open AI  
     **There’s no further configuration, just click ‘Connect’  
     - Host in your own **Azure OpenAI service  
     **You’ll have to provide: API key, Endpoint URL, GPT-4o deployment name, and GPT-4o mini deployment name.  
@@ -134,8 +134,8 @@ info 🔒  SSO Login is optionally available for **Enterprise plans only**.
 
 ### 6. Email Reports  
 Subscribe to the ‘Weekly Digest’, a summary email providing key account activity insights.  
-<ProductName />'s weekly digest reports condense the most important information from a week's worth of data collected in <ProductName />, making it easier for administrators to quickly understand the most critical developments.  
-The <ProductName /> ‘Weekly Digest’ emails are being sent to administrators and will highlight:
+Stack Automation's weekly digest reports condense the most important information from a week's worth of data collected in Stack Automation, making it easier for administrators to quickly understand the most critical developments.  
+The Stack Automation ‘Weekly Digest’ emails are being sent to administrators and will highlight:
 
 -   Cloud usage
 -   Users activity
@@ -190,9 +190,9 @@ When enabled by the account admin:
 
 ### 9.	Experimental Features
 
-Experimental Features give account administrators early access to upcoming capabilities in <ProductName /> that are still in development. These features are in a **beta** or **testing phase** and may not yet be fully supported or stable.
+Experimental Features give account administrators early access to upcoming capabilities in Stack Automation that are still in development. These features are in a **beta** or **testing phase** and may not yet be fully supported or stable.
 
-This settings gives **<ProductName /> administrators early visibility and hands-on access** to major upcoming features and UI changes—allowing them to explore, prepare, and influence what’s coming before it rolls out to all users.
+This settings gives **Stack Automation administrators early visibility and hands-on access** to major upcoming features and UI changes—allowing them to explore, prepare, and influence what’s coming before it rolls out to all users.
  
 
 **What You Need to Know**
@@ -202,7 +202,7 @@ This settings gives **<ProductName /> administrators early visibility and hands-
 - 📆 Each experiment includes a defined **trial period** with a description of what’s new.
 - 📩 Admins can provide feedback via:
   -> A **survey form** linked within the experiment.
-  -> A **support ticket** submitted through the <ProductName /> support system.
+  -> A **support ticket** submitted through the Stack Automation support system.
 
   
 **How to Use Experimental Features**
@@ -221,7 +221,7 @@ Once the experiment ends:
 -	You’ll receive updates in the product and via release notes.
  
 
-🛠 **Note**: Enabling experimental features is a great way to influence <ProductName />’s roadmap and help improve future releases.
+🛠 **Note**: Enabling experimental features is a great way to influence Stack Automation’s roadmap and help improve future releases.
 
 info 🔒  Experimental Features are optionally available for **Enterprise plans only**.
 
