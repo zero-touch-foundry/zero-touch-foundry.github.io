@@ -11,7 +11,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon-cisco.ico',
   organizationName: 'zero-touch-foundry', // Usually your GitHub org/user name.
   projectName: 'zero-touch-foundry.github.io', // Usually your repo name.
   deploymentBranch: 'gh-pages',
