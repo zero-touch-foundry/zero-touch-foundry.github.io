@@ -17,7 +17,7 @@ This report empowers users to answer key questions such as:
 - How is each cloud account contributing to the total bill ?
 - How is the total bill divided between the different spaces, blueprints and users? 
 - Are there users who spend significantly more then their colleagues? 
-- What are the most expensive environments?
+- What are the most expensive deployments?
 - What are the most expensive blueprints?
 
 Let's look at an example:
@@ -30,17 +30,17 @@ We can now [cross-filter](/reports/using-reports#cross-filtering) by this space 
 
 ## The Realized Savings Report
 
-The Realized Savings Report provides a comprehensive overview of the cost savings achieved through the use of Stack Automation. By employing Stack Automation's Workflows after the deployment of environments, users can efficiently (manually or automatically) start and stop cloud resources within an environment when they are not in use. When resources are stopped, users avoid incurring costs, resulting in tangible savings on cloud expenses.
+The Realized Savings Report provides a comprehensive overview of the cost savings achieved through the use of Stack Automation. By employing Stack Automation's Workflows after the deployment of deployments, users can efficiently (manually or automatically) start and stop cloud resources within a deployment when they are not in use. When resources are stopped, users avoid incurring costs, resulting in tangible savings on cloud expenses.
 
-Stack Automation actively monitors the status of resources in each environment, distinguishing between running and stopped states. The occurrences where resources are stopped, facilitated by Stack Automation actions, contribute to the realized savings. The report offers a macroscopic view of overall savings, allowing users to comprehend the impact of their actions and workflows.
+Stack Automation actively monitors the status of resources in each deployment, distinguishing between running and stopped states. The occurrences where resources are stopped, facilitated by Stack Automation actions, contribute to the realized savings. The report offers a macroscopic view of overall savings, allowing users to comprehend the impact of their actions and workflows.
 
 > ![Locale Dropdown](/img/reports-realized-1.png)
 
-Users can zoom in on specific environments to gain a detailed understanding of their savings patterns:
+Users can zoom in on specific deployments to gain a detailed understanding of their savings patterns:
 
 > ![Locale Dropdown](/img/reports-realized-2.png)
 
-In the provided example, an environment comprising 8 virtual machines exhibited intermittent power states over the past week, predominantly in a powered-off state, with one day of continuous operation. By accessing the environment, users can inspect workflows and actions to assess whether this behavior aligns with expectations or if optimization opportunities exist.
+In the provided example, a deployment comprising 8 virtual machines exhibited intermittent power states over the past week, predominantly in a powered-off state, with one day of continuous operation. By accessing the deployment, users can inspect workflows and actions to assess whether this behavior aligns with expectations or if optimization opportunities exist.
 
 Moreover, users can delve into specific resources to examine their individual behaviors and contribute to a more granular analysis.
 
@@ -68,7 +68,7 @@ Hence the savings for this resource is 3.20$ for the analyzed period of time.
 
 ## The Potential Savings Report
 
-Detecting inactivity of cloud resources is a crucial aspect of optimizing cost and resource utilization within cloud environments. Stack Automation leverages advanced machine learning techniques as part of its monitoring mechanisms to accurately identify periods when cloud resources remain inactive or underutilized.
+Detecting inactivity of cloud resources is a crucial aspect of optimizing cost and resource utilization within cloud deployments. Stack Automation leverages advanced machine learning techniques as part of its monitoring mechanisms to accurately identify periods when cloud resources remain inactive or underutilized.
 
 This intelligent analysis reveals to users the specific timeframes during which they can take actions or create workflows to automatically stop or scale down resources. This proactive approach, guided by machine learning insights, enables users to minimize unnecessary costs associated with idle cloud resources.
 
@@ -90,13 +90,13 @@ Moving to the **Resources waste** chart allows for the identification of optimiz
 
 In the provided example, several areas for improvement are observable. A few examples:
 
-1. VM1 remained idle for 190 hours, powered off for 98 hours, and was never used by environment users.
+1. VM1 remained idle for 190 hours, powered off for 98 hours, and was never used by deployment users.
 2. VM2 was active for only 1 hour.
 3. VM3 was idle for 157 hours.
    
 To optimize these scenarios:
 
-1. Assess whether VM1 is necessary in every environment. If it's only required in certain environments with the same blueprint, consider creating a blueprint without this resource. Launch environments not needing VM1 from the new blueprint, eliminating the cost of VM1 in those instances.
+1. Assess whether VM1 is necessary in every deployment. If it's only required in certain deployments with the same blueprint, consider creating a blueprint without this resource. Start a deployment not needing VM1 from the new blueprint, eliminating the cost of VM1 in those instances.
 2. Initialize VM2 to be turned off, manually activating it only when necessary, and promptly turning it off afterward.
 3. Investigate the idle time of VM3. Does it align with off-hours or weekends? Configure a workflow to automatically power off VM3 during non-operational periods.
 

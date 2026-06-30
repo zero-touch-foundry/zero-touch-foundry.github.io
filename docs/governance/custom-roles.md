@@ -15,7 +15,7 @@ Custom roles allow you to define your own roles for specific usage in your organ
 
 When defining a new custom role, you will need to provide the following details:
 
-- **Name**: The name of the custom role (e.g., "FinOps Analyst").
+- **Name**: The name of the custom role (e.g., "FinOps").
 - **Description**: A short description of the role's purpose.
 - **Role Template**: Decide whether the new role will be an account-level or space-level role, and select an existing role as a base template for the new role's permissions.
 

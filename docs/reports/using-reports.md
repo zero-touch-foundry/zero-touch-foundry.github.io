@@ -14,7 +14,7 @@ On the top of every report you can find the **filter**.
 - **Time range** controls the total time frame that will be presented in the report.
 - **Time scope** controls the grouping of events into smaller buckets of time.
 - **Space** allows you to filter a specific space. The entire data in the report will be filtered. This is relevant only to account level reports. Space level reports are already filtered by the space.
-- **ENV_ID** allows you to focus on a single environment throughout the report.
+- **ENV_ID** allows you to focus on a single deployment throughout the report.
 
 ## Chart Options ##
 
@@ -27,7 +27,7 @@ On the top right corner of every chart you will find the chart options:
 ## Filtering by Legend Items ##
 
 Clicking on an item in the legend will filter it **out** and re-scale the chart according to the remaining legend items. You can filter out multiple legend items.
-For example, clicking on "Terminate" in the legend on the following chart will filter out all terminated environments and show only the ones that are not terminated.
+For example, clicking on "Terminate" in the legend on the following chart will filter out all terminated deployments and show only the ones that are not terminated.
 
 > ![Locale Dropdown](/img/reports-legend.png) 
 > ![Locale Dropdown](/img/reports-legend-2.png)
@@ -40,11 +40,11 @@ Cross filtering on a chart will impact the entire report.
 The way to achieve cross filtering is by clicking on the **value** in the graph which you want to filter by.
 The chosen value will be applied as a filter across the entire report.
 
-For example, if you want to filter the entire report by specific environment status (Terminate Failed): 
+For example, if you want to filter the entire report by specific deployment status (Terminate Failed): 
 
 > ![Locale Dropdown](/img/reports-cross-filter-1.png)
 
-Clicking on the green area with the value of 57 will filter the entire report to these 57 environments:
+Clicking on the green area with the value of 57 will filter the entire report to these 57 deployments:
 
 > ![Locale Dropdown](/img/reports-cross-filter-2.png)
 
@@ -55,8 +55,8 @@ Note the cross filter sign now next to the chart filters:
 To clear the cross filter, click on the cross filter sign. 
 
 
-## The Environments Table ##
+## The Deployments Table ##
 
-At the end of each report you can find the environments table.
-The environments are the main entity in Stack Automation, and this table can be used to drill into the details of interesting data. From the environments table you can directly access each environment to investigate it.
+At the end of each report you can find the deployments table.
+The deployments are the main entity in Stack Automation, and this table can be used to drill into the details of interesting data. From the deployments table you can directly access each deployment to investigate it.
 

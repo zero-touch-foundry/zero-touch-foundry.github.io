@@ -4,11 +4,11 @@ title: Terraform AKS/Azure Authentication
 ---
 
 
-If you're using an AKS cluster as your agent, and you want to run Terraform that deploys resources on Azure, you can use a Azure Workload Identity (valid for AKS clusters version 1.22+) that allows the cluster to securely authenticate with Azure using K8s service account and an Open ID connect (OIDC) token.
+If you're using an AKS cluster for your management server, and you want to run Terraform that deploys resources on Azure, you can use a Azure Workload Identity (valid for AKS clusters version 1.22+) that allows the cluster to securely authenticate with Azure using K8s service account and an Open ID connect (OIDC) token.
 For a step-by-step tutorial, see [Video: Connecting a new agent and using it in a blueprint](#video-connecting-a-new-agent-and-using-it-in-a-blueprint).
 
 :::tip __IMPORTANT__
-Stack Automation does not support running the Stack Automation Agent on an AKS cluster using [Burst Type VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable) as cluster worker nodes.  Please use a different VM type.
+Stack Automation does not support running the Stack Automation Management Server on an AKS cluster using [Burst Type VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable) as cluster worker nodes.  Please use a different VM type.
 :::
 
 
@@ -102,7 +102,7 @@ The basic process is as follows:
 8. Create a file called aks_workload_id_service_account.yaml with the below content:
 
   :::tip
-  Replace the \{property name\} with the corresponding values. For service account name, choose a new name. Take a note of the namespace that you select for Stack Automation Environments (it will be in use in the next part - Stack Automation configuration)
+  Replace the \{property name\} with the corresponding values. For service account name, choose a new name. Take a note of the namespace that you select for Stack Automation Deployments (it will be in use in the next part - Stack Automation configuration)
   :::
  
   ```yaml
@@ -114,7 +114,7 @@ The basic process is as follows:
     labels:
       azure.workload.identity/use: "true"
     name: {New_Service_Account_Name}
-    namespace: {Torque_Environments_K8s_Namespace} 
+    namespace: {Stack_Automation_Deployments_K8s_Namespace} 
   ```
 
 9. Apply the file on your AKS Cluster
@@ -126,7 +126,7 @@ The basic process is as follows:
 10. Establish federated identity credential (Allow the AKS Cluster's OIDC provider access to the Managed Identity via the service account)
 
     ```bash
-    az identity federated-credential create --name {federated_credential_name} --identity-name {managed_identity_name} --resource-group {managed_identity_resource_group} --issuer {AKS_cluster_OIDC_issuer_URL} --subject system:serviceaccount:{Torque_Environments_K8s_namespace}:{service_account_name}
+    az identity federated-credential create --name {federated_credential_name} --identity-name {managed_identity_name} --resource-group {managed_identity_resource_group} --issuer {AKS_cluster_OIDC_issuer_URL} --subject system:serviceaccount:{Stack_Automation_Deployments_K8s_Namespace}:{service_account_name}
     ```
 
 ## __Stack Automation Configuration__
@@ -169,7 +169,7 @@ There are 2 ways to accomplish this:
           ...
         namespace:
         agent:
-          name: {aks_torque_agent_name}
+          name: {aks_management_server_name}
           service account: {new_service_account_name} # this is the k8s service account created above    
         ```
 
@@ -182,6 +182,6 @@ There are 2 ways to accomplish this:
           ```
 
 ### __Video: Connecting a new agent and using it in a blueprint__
-<video controls width="75%">
+<video controls width="500px" height="400px">
   <source src="/img/connect azure agent.mp4"/>
 </video>

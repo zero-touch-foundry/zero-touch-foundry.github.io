@@ -3,14 +3,14 @@ sidebar_position: 6
 title: Hosting on Azure VMSS
 ---
 
-The Stack Automation agent can be hosted in various ways, one of them is Virtual Machine Scale Sets (VMSS). Azure Virtual Machine Scale Sets let you create and manage a group of load balanced VMs, and the number of VM instances can automatically increase or decrease in response to demand or a defined schedule. Instead of using Stack Automation Kubernetes agent, Azure VMSS will utilize Stack Automation Docker.
+The Stack Automation management server can be hosted in various ways, one of them is Virtual Machine Scale Sets (VMSS). Azure Virtual Machine Scale Sets let you create and manage a group of load balanced VMs, and the number of VM instances can automatically increase or decrease in response to demand or a defined schedule. Instead of using Stack Automation Kubernetes agent, Azure VMSS will utilize Stack Automation Docker.
 
-#### Stack Automation Agent prerequisites for VMSS
-1. Stack Automation Agent installation ZIP
+#### Stack Automation Management Server prerequisites for VMSS
+1. Stack Automation Management Server installation ZIP
     1. Open Stack Automation self-service web interface as an admin user
-    2. Navigate to the "Administration" section and open the "Agents" tab
-    3. Add a New Agent in the top right corner
-    4. Select vCenter, then "Docker" and provide a name for the new agent (**copy the name aside** as we'll use it later on in the configuration process)
+    2. Navigate to the "Resources" section and select the "Management Servers" menu item
+    3. Add a New Management Server in the top right corner
+    4. Select On-Premises VM, vCenter, then "Docker" and provide a name for the new agent (**copy the name aside** as we'll use it later on in the configuration process)
     5. Click "skip for now" 
 2. Stack Automation API long token - Stack Automation long token allows API access without the need to refresh token once it's expires. It's possible to use the API references or the Stack Automation self-service web interface to generate such a token.
 

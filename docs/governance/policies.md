@@ -6,15 +6,15 @@ title: Policies
 Stack Automation role: Account admin
 
 ## Why use policies?
-Using policies for the consumption of environments offers a multitude of benefits that empower organizations to optimize their cloud usage. Firstly, policies allow for effective cost control by setting limits on resource consumption, ensuring that cloud spending remains within budgetary constraints. Moreover, these policies enable the efficient management of resources by capping the number of concurrent resources per user, preventing resource sprawl, and ensuring fair allocation. Additionally, policies can restrict the duration of an environments uptime, enhancing security and minimizing the risk of unused resources running indefinitely. In sum, the implementation of policies for environment consumption not only fosters financial prudence but also enhances resource governance and security, making it an invaluable asset in the realm of cloud management.
+Using policies for the consumption of deployments offers a multitude of benefits that empower organizations to optimize their cloud usage. Firstly, policies allow for effective cost control by setting limits on resource consumption, ensuring that cloud spending remain within budgetary constraints. Moreover, these policies enable the efficient management of resources by capping the number of concurrent resources per user, preventing resource sprawl, and ensuring fair allocation. Additionally, policies can restrict the duration of an deployments uptime, enhancing security and minimizing the risk of unused resources running indefinitely. In sum, the implementation of policies for deployment consumption not only fosters financial prudence but also enhances resource governance and security, making it an invaluable asset in the realm of cloud management.
 
-Stack Automation policies are triggered as part of the environment deployment pipeline for specific environment lifecycle events (launch, extend environment for example) or during the deployment of environments (e.g. when evaluating a Terraform module included in the environment). Stack Automation policies are powered by OPA (Open Policy Agent). For a step-by-step tutorial, see [Video: Stack Automation policies (end-to-end)](#video-torque-policies-end-to-end-tutorial).
+Stack Automation policies are triggered as part of the deployment pipeline for specific lifecycle events (launch or extend deployment duration for example) or during the provisioning of deployments (e.g. when evaluating a Terraform module included in the deployment). Stack Automation policies are powered by OPA (Open Policy Agent). For a step-by-step tutorial, see [Video: Stack Automation policies (end-to-end)](#video-torque-policies-end-to-end-tutorial).
 
 ## Example Use Cases
 You can use Stack Automation policies for cost and consumption control. Examples include:
-- Limiting the maximal duration of environments
-- Limiting the concurrent number of environments per user
-- Limiting the total cost of environments
+- Limiting the maximal duration of deployments
+- Limiting the concurrent number of deployments per user
+- Limiting the total cost of deployments
 - And more.
 
 **In this article:**
@@ -37,7 +37,7 @@ You can use Stack Automation policies for cost and consumption control. Examples
 
 
 ## How policies work
-Policies are based on two basic elements: trigger and context. Trigger determines when the policy is activated, and context is the data the policy needs to get ("input" in OPA terms). The context is provided automatically by Stack Automation. Users can also define user data ("data" in OPA terms) in the Stack Automation policy. The context (or input) is the actual environment data the end user is trying to deploy, and the user data sets values to the limitations imposed by the admin who set up the policy.
+Policies are based on two basic elements: trigger and context. Trigger determines when the policy is activated, and context is the data the policy needs to get ("input" in OPA terms). The context is provided automatically by Stack Automation. Users can also define user data ("data" in OPA terms) in the Stack Automation policy. The context (or input) is the actual deployment data the end user is trying to deploy, and the user data sets values to the limitations imposed by the admin who set up the policy.
 
 Stack Automation supports 3 types of triggers, which are defined by the package being used in the policy's .rego file:
 -	Consumption policies (triggered on catalog launch). To define a consumption policy, the ".rego" file must use the package name __torque.consumption__

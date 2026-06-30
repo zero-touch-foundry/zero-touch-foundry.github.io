@@ -3,11 +3,11 @@ sidebar_position: 2
 title: REST API
 ---
 
-The Stack Automation REST API allows client applications to perform some of the actions you can perform in Stack Automation's web UI application and automate the consumption of Stack Automation environments as part of a CI/CD process. Available actions include: 
+The Stack Automation REST API allows client applications to perform some of the actions you can perform in Stack Automation's web UI application and automate the consumption of Stack Automation deployments as part of a CI/CD process. Available actions include: 
 * Get/validate/publish blueprints
 * Update/delete editable blueprints
 * Manage blueprint policy
-* Launch/manage environments
+* Launch/manage deployments
 * Get/create agents
 * Manage account security policies
 * Manage Stack Automation settings*

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Install an Agent on your Kubernetes Cluster
+title: Install a Management Server on your Kubernetes Cluster
 ---
 
 ## Prerequisites

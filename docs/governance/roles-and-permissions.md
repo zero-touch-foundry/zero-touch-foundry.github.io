@@ -24,7 +24,7 @@ A user can be a member of multiple groups. Stack Automation will calculate the s
 
 A group can be assigned multiple roles in multiple spaces and a single account level role. 
 
-Group management is performed from the "Account Settings" menu. 
+Group management is performed from the "User Management" page. 
 
 If your Stack Automation account is configured to use SSO for authentication, the assignment of SSO users to groups in Stack Automation can be synchronized automatically from the IdP assignments (currently supported in Okta and Azure active directory).
 
@@ -43,7 +43,7 @@ As such, there are 4 roles in Stack Automation:
 * **Space Member** is the end-user of the environment. This user browses the blueprint catalog and launches the environment they need. Typical examples of a space member include a developer who is tasked with creating the blueprint, and a QA specialist who needs to run validation tests before pushing the updates to production.
 
 | Permission      | Description |Account admin | Space admin | Space developer   | Space member |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| ----------- | ----------- | :--------: | :--------: | :--------: | :--------: |
 | Manage account	   |1. Config audit log target.<br />2. Delete the account.<br />3. View account usage and cost.| ![Locale Dropdown](/img/green-dot.png)      |||||
 | [Manage agents](/torque-agent/Install-and-connect-self-hosted-agent)	   |Install new Stack Automation agents (requires K8s cluster or Vcenter access), delete agents, edit agents properties.| ![Locale Dropdown](/img/green-dot.png)      |||||
 | [Manage cloud accounts for cost collection](/governance/cost-tracking/cost)	   |Add/remove cloud accounts for Stack Automation to collect environment cost from.| ![Locale Dropdown](/img/green-dot.png)      |||||

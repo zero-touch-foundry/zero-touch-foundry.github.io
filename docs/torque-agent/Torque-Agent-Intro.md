@@ -1,13 +1,14 @@
 ---
 sidebar_position: 1
-title: What is an Agent? 
+title: What is a Management Server? 
+hide_table_of_contents: true
 ---
 
-The Stack Automation Agent is a small piece of code which is installed on your cloud and is used to communicate between your Stack Automation SAAS tenant and your cloud.
-The agent uses only outbound communication with Stack Automation SAAS. The agent is stateless and very thin.
-The agent is "always on" and runs all the time, checking with Stack Automation for new tasks to perform.
+The Stack Automation Management Server is a small piece of code (an agent) which is installed on your cloud and is used to communicate between your Stack Automation SAAS tenant and your cloud.
+The management server uses only outbound communication with Stack Automation SAAS. It is stateless and very thin.
+The management server is intended to be "always on" and runs all the time, checking with Stack Automation for new tasks to perform.
 
-When the agent receives a message about a new task (launch an environment) it will spawn one or more runners that will launch the specific grain and then terminate. Runners may not need to be spawned if a suitable runner is already running.
+When it receives a message about a new task (e.g. when a deployment starts) it will spawn one or more runners that will launch the specific grain and then terminate. Runners may not need to be spawned if a suitable runner is already running.
 
 The following diagram depicts the connectivity between the agent and Stack Automation SAAS:
 
