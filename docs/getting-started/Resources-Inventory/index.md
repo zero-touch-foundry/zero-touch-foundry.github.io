@@ -1,0 +1,32 @@
+---
+title: Overview
+sidebar_label: Overview
+sidebar_position: 1
+description: The Stack Automation provider-and-capability model and key inventory concepts.
+---
+
+# Overview
+
+Stack Automation Resources Inventory gives you a single, governed view of every infrastructure and cloud endpoint your organization connects to. Each entry in the inventory is a **provider** — a connection to a cloud account, virtualization platform, Kubernetes cluster, or infrastructure controller — that doubles as a **target** for discovery and deployment operations.
+
+Providers are typed on creation (for example AWS, Azure, vCenter, Intersight, Kubernetes, GCP, or Custom). A provider's type determines which **capabilities** it can offer. The two core capabilities are:
+
+- **Discovery** — the provider can be scanned to enumerate the resources it manages (for example blades, rack units, virtual machines, or cloud objects), which are then browsable inside the inventory.
+- **Deploy** — the provider can be used as a target for deploying blueprints and environments.
+
+The inventory surface aggregates health and distribution metrics across all providers so operators can quickly assess coverage, spot unhealthy connections, and understand which capabilities are active across the estate.
+
+<!-- ![Resources > Inventory — full inventory page with metrics cards and provider list](./images/inventory-overview.png) -->
+
+---
+
+## Key concepts
+
+| Term | Description |
+|------|-------------|
+| **Provider** | A connection to an external system (cloud, virtualization, Kubernetes, infrastructure controller). Each provider is also a deployment target. |
+| **Provider Type** | The category selected at creation (AWS, Azure, vCenter, Intersight, Kubernetes, GCP, Custom). Determines available capabilities. |
+| **Capability** | A function a provider exposes — primarily Discovery and Deploy. Availability depends on provider type and configuration. |
+| **Resource** | An individual item discovered under a provider (e.g., a Blade, Rack Unit, VM, or cloud object). |
+| **Deployment Space** | The space(s) a provider is shared with; controls which blueprints can use the provider's content. |
+| **Capability Health** | A rolled-up indicator of how many providers have a working Discovery or Deploy capability. |
