@@ -1,0 +1,27 @@
+[user]
+	name = Edan Evantal
+	email = evantal@gmail.com
+
+[core]
+	editor = code --wait
+	autocrlf = true
+
+[credential]
+	helper = manager-core
+
+[init]
+	defaultBranch = main
+
+[merge]
+	tool = vscode
+
+[diff]
+	tool = vscode
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	lg = log --oneline --graph --decorate --all
+	pom = push origin main
