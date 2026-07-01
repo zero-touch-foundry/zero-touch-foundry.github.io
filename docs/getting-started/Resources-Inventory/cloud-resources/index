@@ -36,9 +36,9 @@ Stack Automation Cloud Resources offers a suite of features to help you manage y
 
 To begin using Stack Automation Resources Inventory, you must connect your cloud account. Currently, AWS and Azure clouds are supported.
 
-### Supported cloud providers
-* [AWS](./cloud-resources/aws-setup)
-* [Azure](./cloud-resources/azure-setup)
+<-- ### Supported cloud providers -->
+<-- * [AWS](./cloud-resources/aws-setup) -->
+<-- * [Azure](./cloud-resources/azure-setup) -->
 
 ---
 

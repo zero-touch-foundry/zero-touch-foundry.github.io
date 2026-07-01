@@ -24,7 +24,7 @@ When you use our services, you trust us with your personal information. At Quali
     * [Parameters](/admin-guide/params) (optional) 
 * Ongoing usage data 
     * Deployments history  
-        * Cloud resources deployed as part of the deployment. See [Launch Your Blueprint](/getting-started/getting-started-with-terraform)
+        * Cloud resources deployed as part of the deployment.<!-- See [Launch Your Blueprint](/getting-started/getting-started-with-terraform)-->
         * Events 
     * [Cost](/governance/cost-tracking/cost) information (optional) 
     * [Audit Log events](/governance/audit-log/events)

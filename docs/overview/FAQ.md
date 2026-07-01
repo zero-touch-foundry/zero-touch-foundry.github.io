@@ -27,7 +27,7 @@ While you can manage deployments directly, Stack Automation provides significant
 
 * **Usage Visibility**: Comprehensive visibility into resource usage, costs, and environment health with detailed analytics and reporting that help optimize your infrastructure spend and performance. View [reports overview](/reports/reports-overview) and [activity and adoption reports](/reports/activity-and-adoption).
 
-* **Lower Error Rate → Higher Adoption**: By providing standardized, tested deployment patterns and automated validation, Stack Automation significantly reduces deployment errors, leading to higher developer confidence and faster adoption of infrastructure automation practices. See our [blueprint quickstart guide](/blueprint-designer-guide/blueprint-quickstart-guide) and [getting started guides](/getting-started/getting-started-with-terraform).
+* **Lower Error Rate → Higher Adoption**: By providing standardized, tested deployment patterns and automated validation, Stack Automation significantly reduces deployment errors, leading to higher developer confidence and faster adoption of infrastructure automation practices. See our [blueprint quickstart guide](/blueprint-designer-guide/blueprint-quickstart-guide) <!--and [getting started guides](/getting-started/getting-started-with-terraform)-->.
 
 ---
 
@@ -187,4 +187,4 @@ Learn more about [drift detection and updates](/environment-services/drift-and-u
 #### Does Stack Automation support Kubernetes Resources?
 Yes. Stack Automation supports Kubernetes resources through its Helm and Kubernetes grains/runners. The platform can act as a control plane for Kubernetes resources, allowing users to manage and provision these resources through the Stack Automation interface. This enables integration with Custom Resources and supports Kubernetes-native platform engineering experiences.
 
-See our [Kubernetes getting started guide](/getting-started/getting-started-with-kubernetes) and [Kubernetes as a Service example](/example-blueprints/k8s-as-a-service).
+<!--See our [Kubernetes getting started guide](/getting-started/getting-started-with-kubernetes) and [Kubernetes as a Service example](/example-blueprints/k8s-as-a-service).-->
