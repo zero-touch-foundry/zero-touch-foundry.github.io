@@ -62,7 +62,7 @@ In the **Generate Agent** step, fill in the details Stack Automation needs to bu
 ![Generate Management Server details form](/img/generate-agent-details.png)
 
 | Field | Required | Description | Example |
-| --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- |
 | **Management Server Name** | Yes | A unique, human-readable name for the management server. | `mgmt-vcenter-97` |
 | **VM Hostname** | Yes | The hostname to assign to the deployed virtual machine. | `mgmt-vcenter-97` |
 | **IP Address** | Yes | The static IP address the management server will use. | `192.168.1.10` |
