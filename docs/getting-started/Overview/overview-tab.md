@@ -1,8 +1,6 @@
 ---
 id: overview-tab
-title: Overview
 sidebar_position: 1
-sidebar_label: Overview
 description: Documentation for the Overview tab on the Stack Automation admin Overview page.
 ---
 
