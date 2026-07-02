@@ -57,7 +57,7 @@ grains:
 The `scope` field in a Stack Automation workflow determines where the workflow is available. There are two possible values for the `scope` field:
 
 1. `space`: Workflows with this scope are available at the space level, and can be triggered and executed without any dependencies.
-2. `env`: Workflows with this scope are available at the environment level. This means that they can be triggered and executed for the entire environment. These workflows can be used to automate and orchestrate processes that involve multiple resources within the environment.
+2. `env`: Workflows with this scope are available at the deployment level. This means that they can be triggered and executed for the entire deployment. These workflows can be used to automate and orchestrate processes that involve multiple resources within the deployment.
 3. `env_resource`: Workflows with this scope will be available at the resource level (e.g. for a VM or DB). The type of resource for which the workflow will be available is defined by the `resource-types` field. Only resources that match the specified resource types will have access to these workflows. This allows for more granular control and customization of workflows based on specific resource types.
 
 ### `resource-types`
@@ -82,9 +82,9 @@ By specifying the appropriate scope for your workflows, you can ensure that they
 
 ### `labels-selector`
 
-The `labels-selector` field can be used to "attach" workflows to `Blueprints` or running `Environments` that have matching labels.
+The `labels-selector` field can be used to "attach" workflows to `Blueprints` or active `Deployments` that have matching labels.
 
-In case `labels-selector` field is not defined, the workflow will be available to all of the `Blueprints` and running `Environments`.
+In case `labels-selector` field is not defined, the workflow will be available to all of the `Blueprints` and active `Deployments`.
 
 The `labels-selector` supports two types of conditions:
 1. **`and` condition**: Use the `and` operator between labels to specify that all labels must match.
@@ -115,7 +115,7 @@ Workflows can be triggered by various types of events or schedules:
    - `overridable`: Optional field to allow end-users to override the cron
 2. `manual`: Manually triggered workflows, optionally restricted to specific user groups.
    -  `groups`: Optional field to allow only users in the specified groups to run the workflow
-3. `event`: Environment events can be events such as drift detected, updates detected, approval requests, and more. The events include:
+3. `event`: Deployment events can be events such as drift detected, updates detected, approval requests, and more. The events include:
    - `Drift Detected`
    - `Updates Detected`
    - `Approval Request Approved`
@@ -199,7 +199,7 @@ grains: ...
 
 ### `bindings`
 
-In a workflow, you can define bindings to access environment and resource information. Bindings are automatic variables that provide context to the workflow. The available bindings depend on the scope of the workflow.
+In a workflow, you can define bindings to access deployment and resource information. Bindings are automatic variables that provide context to the workflow. The available bindings depend on the scope of the workflow.
 
 For both `env` and `env_resource` scope workflows, accessing the env ("bound entity") inputs and outputs, will be as follow:
 * `{{ .bindings.inputs.<the env input name> }}`
@@ -209,7 +209,7 @@ For `env` scoped workflow, the env `introspection` can be access like so:
 * `{{ bindings.resource_type.<the resource type>.attributes.<the attribute>}}`
 
 :::info
-If more than 1 resource type like this exists in this environment, then we take the first one.
+If more than 1 resource type like this exists in this deployment, then we take the first one.
 :::
 
 For `env_resource` scoped workflow, the env `introspection` can be access like so:
@@ -273,7 +273,7 @@ grains:
 ### Environment `contract.json`
 
 
-When a workflow is executed with a specific scope, the environment **context** JSON object is provided in a file called `contract.json`. This file is accessible from the Runner and contains information about the environment, such as its ID, name, owner email, inputs and all grains introspection data.
+When a workflow is executed with a specific scope, the deployment **context** JSON object is provided in a file called `contract.json`. This file is accessible from the Runner and contains information about the deployment, such as its ID, name, owner email, inputs and all grains introspection data.
 
 For workflows with scope `env`, the following automatic variables are available:
 - `bindings.environment_id`
@@ -612,20 +612,20 @@ grains:
         name: '{{ .inputs.agent }}'
 ``` 
 
-## Environment References Support
+## Deployment References Support
 
-Workflows support `env_references` similar to blueprints, allowing workflows to reference and consume published environments. For more information about environment publishing and references, see [Environment Publishing](/environment-services/environment-publishing).
+Workflows support `env_references` similar to blueprints, allowing workflows to reference and consume published deployments. For more information about environment publishing and references, see [Deployment Publishing](/environment-services/environment-publishing).
 
 :::info Supported scenarios
-- **Manual workflows**: Workflows with `env_references` can be launched manually, and users can specify the environment reference values during execution
-- **Automatic workflows on launch**: Environments with automatic workflows (cron/event triggers) that have `env_references` defined can be launched successfully with the reference values specified at environment launch time
-- **Post-launch automatic workflows**: Automatic workflows with `env_references` that are attached to an active environment after its launch (e.g., when enabled in a space) will not be able to run because there is no mechanism to specify `env_references` values after the environment is already active
+- **Manual workflows**: Workflows with `env_references` can be launched manually, and users can specify the deployment reference values during execution
+- **Automatic workflows on launch**: Deployments with automatic workflows (cron/event triggers) that have `env_references` defined can be launched successfully with the reference values specified at deployment launch time
+- **Post-launch automatic workflows**: Automatic workflows with `env_references` that are attached to an active deployment after its launch (e.g., when enabled in a space) will not be able to run because there is no mechanism to specify `env_references` values after the deployment is already active
 :::
 
-**Example workflow with environment references:**
+**Example workflow with deployment references:**
 ```yaml
 spec_version: 2
-description: Workflow that references a shared VPC environment
+description: Workflow that references a shared VPC deployment
 
 env_references:
   shared_vpc:
