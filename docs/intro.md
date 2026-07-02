@@ -19,7 +19,7 @@ hide_table_of_contents: true
 ### Want to learn more? Watch this quick Stack Automation demo or visit the [Quali website](https://quali.com)!
 
 <div margin="30px">
-<iframe class="vidyard_iframe" title="Demo: Introduction to Quali Stack Automation" src="//play.vidyard.com/uQeFtoF8LjEEMMCy5vjmSG.html?" width="640" height="360" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+<iframe class="vidyard_iframe" title="Demo: Introduction to Quali Stack Automation" src="//play.vidyard.com/6D9i14QUNS92ydrtbxvaFs.html?" width="888" height="500" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
 </div>
 
 <br/>
