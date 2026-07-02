@@ -7,8 +7,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Stack Automation by Quali',
   tagline: 'Stack Automation Online Help',
-  url: 'https://jarvis-docs.qtorque.io/',
-  baseUrl: '/',
+  url: 'https://jarvis.qtorque.io/',
+  baseUrl: '/help/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon-cisco.ico',
