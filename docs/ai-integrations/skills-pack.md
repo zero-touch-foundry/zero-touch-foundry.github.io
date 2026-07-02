@@ -1,0 +1,65 @@
+# Install the Skills Pack
+
+The **Skills Pack** adds ready-made **blueprint and Infrastructure-as-Code (IaC) skills**
+to your AI agents. Where the MCP server gives an agent the *ability to act* on Stack
+Automation, the Skills Pack gives it the *know-how*: reusable instructions and patterns for
+authoring blueprints, writing Terraform/IaC, and following your organization's conventions
+— so the agent produces higher-quality, on-standard results with less prompting.
+
+> **Note:** Skills are packaged instructions that ride alongside the MCP server. Install the
+> Skills Pack **in addition to** connecting a tool via one of the other integrations — the
+> MCP connection lets the agent act; the Skills Pack teaches it how to do so well.
+
+## Prerequisites
+
+- A connected AI tool — set one up first via
+  [Claude Cowork](claude-cowork.md), [OpenAI Codex](openai-codex.md),
+  [VS Code + Copilot](vscode-copilot.md), or [MCP Server Config](mcp-server-config.md).
+- A Stack Automation **API token**
+
+## Install
+
+1. Open the **Skills Pack** panel in **Admin → Agents → AI Integrations** and click
+   **Setup**.
+2. Follow the steps shown in the panel to add the Skills Pack to your agent. The exact
+   steps depend on the client:
+   - **Claude Cowork:** the Stack Automation plugin already bundles the skills, so they are
+     available once the plugin is added. See [Connect Claude Cowork](claude-cowork.md).
+   - **Codex / VS Code / other MCP clients:** add the Skills Pack alongside the
+     `stack-automation` MCP server as directed in the panel.
+3. Start a new session in your agent so the new skills are loaded.
+
+When you're done, tick **"I've completed the setup — mark as connected"** in the panel.
+
+## What you get
+
+- **Blueprint authoring skills** — guidance for structuring single- and multi-asset
+  blueprints, inputs, outputs, and dependencies.
+- **IaC skills** — patterns for writing and wiring Terraform and other IaC so it deploys
+  cleanly as a Stack Automation blueprint.
+- **Convention-aware output** — the agent follows the naming, tagging, and structure
+  conventions the pack encodes, reducing review cycles.
+
+## Operate
+
+With the Skills Pack installed, ask your agent to *create* or *improve* infrastructure, and
+it will apply the packaged expertise automatically:
+
+- "Author a Stack Automation blueprint for a three-tier web app with a managed database."
+- "Turn the Terraform in this repo into a Stack Automation blueprint following our
+  conventions."
+- "Review this blueprint and suggest improvements for reusability."
+- "Scaffold an IaC module for an EKS cluster and deploy it as a blueprint."
+
+## Troubleshooting
+
+- **Skills don't seem to apply.** Start a fresh agent session after installing, and confirm
+  the pack shows as connected in the panel.
+- **Agent can author but can't deploy.** Authoring comes from the Skills Pack; deploying
+  requires an active MCP connection — verify your MCP integration is connected.
+
+## Related
+
+- [AI Integrations overview](index.md)
+- [Claude Cowork](claude-cowork.md)
+- [MCP Server Config](mcp-server-config.md)
