@@ -6,7 +6,7 @@ description: Documentation for the Overview tab on the Stack Automation admin Ov
 
 # Overview Tab
 
-The **Overview** tab is the default landing view of the **Overview** page in the Stack Automation admin console (`https://stackautomation.cisco.com/admin/overview`). It gives administrators a at-a-glance summary of the health, cost, and catalog of their Stack Automation deployment.
+The **Overview** tab is the default landing view of the **Overview** page in the Stack Automation admin console. It gives administrators a at-a-glance summary of the health, cost, and catalog of their Stack Automation deployment.
 
 ![Overview tab dashboard](/img/overview-tab.png)
 

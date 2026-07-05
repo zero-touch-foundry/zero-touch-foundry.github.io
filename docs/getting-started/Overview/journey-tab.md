@@ -6,7 +6,7 @@ description: Documentation for the Journey tab on the Stack Automation admin Ove
 
 # Journey Tab
 
-The **Journey** tab lives next to **Overview** on the Stack Automation admin Overview page (`https://stackautomation.cisco.com/admin/overview#journey`). It tracks the user's onboarding progress through a guided "Getting Started" checklist.
+The **Journey** tab lives next to **Overview** on the Stack Automation admin Overview page. It tracks the user's onboarding progress through a guided "Getting Started" checklist.
 
 ## Purpose
 
