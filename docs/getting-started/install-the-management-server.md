@@ -115,7 +115,7 @@ Return to **Administration → Resources → Management Servers**. Your new serv
 
 ## What's next (optional)
 
-A connected management server is fully functional on its own, but to start deploying environments from blueprints you'll typically pair it with a space and a repository.
+A connected management server is fully functional on its own, but to start deploying from blueprints you'll typically pair it with a space and a repository.
 
 ### Associate the management server with a space
 
@@ -127,13 +127,6 @@ Spaces are logically separate areas that group agents, repositories, and permitt
 
 ### Launch blueprints from a repository
 
-Once a management server is associated with a space, you can connect a repository to that space, discover its automation assets, and generate blueprints from them. Publishing a blueprint to the space catalog lets end-users launch environments — Stack Automation will execute those deployments through the associated management server.
+Once a management server is associated with a space, you can connect a repository to that space, discover its automation assets, and generate blueprints from them. Publishing a blueprint to the space catalog lets end-users launch deployments — Stack Automation will execute those deployments through the associated management server.
 
-For the full workflow, see the guides on creating a space, connecting a repository, and launching an environment.
-
-<!--
-Screenshots referenced above should be placed in an `img/` folder next to this file:
-  - img/management-servers-list.png   (the Management Servers list page)
-  - img/setup-cloud-or-onprem.png     (Setup step: Cloud vs On-Premises)
-  - img/generate-agent-details.png    (Generate Management Server details form)
--->
+For the full workflow, see the guides on creating a space, connecting a repository, and launching a deployment.
