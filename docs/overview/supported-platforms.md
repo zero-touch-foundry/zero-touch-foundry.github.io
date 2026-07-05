@@ -23,7 +23,7 @@ Stack Automation supports the following IaC frameworks:
 * [AWS CloudFormation](/blueprint-designer-guide/blueprints/cloudformation-grain.md)
 * [Ansible](/blueprint-designer-guide/blueprints/ansible-grain.md)
 * [CloudShell](/blueprint-designer-guide/blueprints/cloudshell-grain.md)
-* [Shell](/blueprint-designer-guide/blueprints/shell-grain.md) - (asset-agnostic grain that allows you to run bash/python3 commands as part of your environment’s launch and/or teardown)
+* [Shell](/blueprint-designer-guide/blueprints/shell-grain.md) - (asset-agnostic grain that allows you to run bash/python3 commands as part of your deployment’s launch and/or teardown)
 
 
 This table lists the capabilities supported for each IaC or container technology. 
@@ -47,6 +47,7 @@ For more details, see [Blueprint YAML](/blueprint-designer-guide/blueprints/blue
 
 \* Cloudformation drift reconciliation is in beta 
 
+<!--
 ## CI/CD Tooling
 Stack Automation enables you to integrate with various leading CI/CD tools such as Bamboo, Jenkins and TeamCity, to facilitate your application development activities.
 
@@ -56,5 +57,4 @@ Stack Automation enables you to integrate with various leading CI/CD tools such 
 * [Spinnaker](/eco-system/ci-cd-tooling/spinnaker.md)
 * [TeamCity](/eco-system/ci-cd-tooling/teamcity.md)
 * [Jenkins](/eco-system/ci-cd-tooling/jenkins.md)
-* Bamboo (coming soon)
-* Jira (coming soon)
+-->

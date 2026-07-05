@@ -12,20 +12,20 @@ title: FAQ
 While you can manage deployments directly, Stack Automation provides significant advantages across multiple dimensions. Here are the key factors that make Stack Automation a valuable addition to your infrastructure toolkit:
 
 **Core Capabilities:**
-* **Lifecycle Management**: Complete environment lifecycle management from provisioning to decommissioning, including automated scheduling, renewal policies, and graceful shutdown procedures that ensure nothing is left behind on the cloud. Learn more about [scheduled environments](/environment-services/scheduled-environments) and [environment management](/environment-services/environment-publishing).
+* **Lifecycle Management**: Complete deployment lifecycle management from provisioning to decommissioning, including automated scheduling, renewal policies, and graceful shutdown procedures that ensure nothing is left behind on the cloud. Learn more about [scheduled environments](/environment-services/scheduled-environments) and [deployment management](/environment-services/environment-publishing).
 
 * **IaC Orchestration**: Stack Automation provides sophisticated Infrastructure as Code orchestration that goes beyond basic deployment, managing complex dependencies and multi-technology stacks with ease across different cloud providers and tools. Explore our [blueprint designer guide](/blueprint-designer-guide/blueprint-quickstart-guide) and [multi-technology orchestration examples](/example-blueprints/application-orchestration).
 
 * **Governance**: Unified security and policy management that protects your admin credentials within Stack Automation agents, enables team collaboration through spaces, and enforces organizational standards and compliance requirements automatically across all deployments. Read about [policies](/governance/policies), [roles and permissions](/governance/roles-and-permissions), and [Stack Automation agents](/torque-agent/Stack Automation-Agent-Intro).
 
 **Additional Capabilities:**
-* **Cost Management**: Automatic cleanup of cloud resources when environments are no longer needed, plus comprehensive cost tracking with detailed analytics and forecasting. Stack Automation attaches tags to every cloud resource for powerful monitoring and cost optimization. Learn more about [cost tracking](/governance/cost-tracking/configuring-cost-aws) and [cloud efficiency reports](/reports/cloud-efficiency).
+* **Cost Management**: Automatic cleanup of cloud resources when deployments are no longer needed, plus comprehensive cost tracking with detailed analytics and forecasting. Stack Automation attaches tags to every cloud resource for powerful monitoring and cost optimization. Learn more about [cost tracking](/governance/cost-tracking/configuring-cost-aws) and [cloud efficiency reports](/reports/cloud-efficiency).
 
-* **Day 2 Automation with Context**: Unlike simple CI/CD pipelines, Stack Automation understands the full context of your environments and automates ongoing operations like scaling, updates, and maintenance with full awareness of your infrastructure state. Explore [actions and workflows](/environment-services/actions-and-workflows) and [drift detection](/environment-services/drift-and-update).
+* **Day 2 Automation with Context**: Unlike simple CI/CD pipelines, Stack Automation understands the full context of your deployments and automates ongoing operations like scaling, updates, and maintenance with full awareness of your infrastructure state. Explore [actions and workflows](/environment-services/actions-and-workflows) and [drift detection](/environment-services/drift-and-update).
 
-* **Discovery and Curation**: Native capability to scan existing cloud environments and generate Infrastructure as Code representations of current resources, allowing you to bring brownfield infrastructure under management and standardize your deployments. Get started with [discovering your assets](/getting-started/asset-discovery) and [importing cloud resources](/getting-started/import-cloud-resources).
+* **Discovery and Curation**: Native capability to scan existing cloud deployments and generate Infrastructure as Code representations of current resources, allowing you to bring brownfield infrastructure under management and standardize your deployments. Get started with [discovering your assets](/getting-started/asset-discovery) and [importing cloud resources](/getting-started/import-cloud-resources).
 
-* **Usage Visibility**: Comprehensive visibility into resource usage, costs, and environment health with detailed analytics and reporting that help optimize your infrastructure spend and performance. View [reports overview](/reports/reports-overview) and [activity and adoption reports](/reports/activity-and-adoption).
+* **Usage Visibility**: Comprehensive visibility into resource usage, costs, and deployment health with detailed analytics and reporting that help optimize your infrastructure spend and performance. View [reports overview](/reports/reports-overview) and [activity and adoption reports](/reports/activity-and-adoption).
 
 * **Lower Error Rate → Higher Adoption**: By providing standardized, tested deployment patterns and automated validation, Stack Automation significantly reduces deployment errors, leading to higher developer confidence and faster adoption of infrastructure automation practices. See our [blueprint quickstart guide](/blueprint-designer-guide/blueprint-quickstart-guide) <!--and [getting started guides](/getting-started/getting-started-with-terraform)-->.
 
@@ -53,21 +53,21 @@ Click [here](/overview/supported-platforms#cicd-tooling) and follow our document
 #### How do you protect my access credentials?
 It's no secret that working with the cloud requires the use of very powerful admin credentials, which can cause some serious damage if they fall in the wrong hands. In Stack Automation, your admin credentials are safely tucked away in the system, within what we call **Stack Automation agents**, which allow Stack Automation to access and use the Kubernetes cluster on the cloud. 
 
-The blueprints reference the agents but otherwise cannot access the credentials. Same goes for the end-user and CI/CD tool - the end-users who launch the environments don't have access to the actual Azure keys from the token.
+The blueprints reference the agents but otherwise cannot access the credentials. Same goes for the end-user and CI/CD tool - the end-users who launch the deployments don't have access to the actual Azure keys from the token.
 
 Learn more about [Stack Automation agents](/torque-agent/Stack Automation-Agent-Intro), [service accounts for AWS](/torque-agent/service-accounts-for-aws), [service accounts for Azure](/torque-agent/service-accounts-for-azure), and [advanced security settings](/torque-agent/advanced-settings).
 
 ---
 
-## Environment Management
+## Deployment Management
 
-#### What happens when I no longer need the environment?
-Stack Automation environments have a duration period, which automatically ends the environment, deleting all the environment's cloud artifacts from the cluster. In addition, Stack Automation allows you to manually end the environment at any time directly from the Stack Automation application. The bottom line is that nothing from the environment is left on the cloud.
+#### What happens when I no longer need the deployment?
+Stack Automation deployments have a duration period, which automatically ends the deployment, deleting all the deployment's cloud artifacts from the cluster. In addition, Stack Automation allows you to manually end the deployment at any time directly from the Stack Automation application. The bottom line is that nothing from the deployment is left on the cloud.
 
-Learn more about [scheduled environments](/environment-services/scheduled-environments) and [environment lifecycle management](/environment-services/environment-publishing).
+Learn more about [scheduled deployments](/environment-services/scheduled-environments) and [deployment lifecycle management](/environment-services/environment-publishing).
 
-#### Can I limit the duration of environments?
-Of course! The blueprint designer reserves the right to set a duration policy, per blueprint, which sets the maximum duration for that particular blueprint. So you can limit the blueprint to a certain time frame, which is especially useful for high-cost blueprints, or let it run indefinitely for environments that need to be online at all times.
+#### Can I limit the duration of deployments?
+Of course! The blueprint designer reserves the right to set a duration policy, per blueprint, which sets the maximum duration for that particular blueprint. So you can limit the blueprint to a certain time frame, which is especially useful for high-cost blueprints, or let it run indefinitely for deployments that need to be online at all times.
 
 See our guide on [policies](/governance/policies) and [blueprint configuration](/blueprint-designer-guide/blueprints/blueprints-yaml-structure).
 
@@ -75,23 +75,23 @@ See our guide on [policies](/governance/policies) and [blueprint configuration](
 
 ## Scaling and Performance
 
-#### What scale can Stack Automation support in production environments?
+#### What scale can Stack Automation support in production deployments?
 
 Stack Automation's elastic architecture has been proven to handle enterprise-scale workloads across multiple dimensions in production:
 
 **User Scale:**
 - **Multi-tenant SaaS**: Supports hundreds of thousands of users across the platform
 - **Enterprise Organizations**: Large customers managing thousands of developers and infrastructure teams
-- **Concurrent Operations**: Real-world deployments handling 7,000+ concurrent environments weekly
+- **Concurrent Operations**: Real-world deployments handling 7,000+ concurrent deployments weekly
 
 **Infrastructure Scale:**
 - **Resource Management**: Platform manages 100+ million cloud resources in production
-- **Environment Volume**: 10+ million environments created and managed
+- **Deployment Volume**: 10+ million deployments created and managed
 - **Multi-Cloud Footprint**: Spans AWS, Azure, GCP, and hybrid cloud deployments at massive scale
 
 **Performance in Production:**
-- **Concurrent Environments**: Enterprise customers routinely run 7,000 concurrent environments per week
-- **Resource Density**: Each environment averages 2-5 compute resources, demonstrating efficient resource orchestration
+- **Concurrent Deployment**: Enterprise customers routinely run 7,000 concurrent deployments per week
+- **Resource Density**: Each deployment averages 2-5 compute resources, demonstrating efficient resource orchestration
 - **Horizontal Scaling**: Linear scaling based on Kubernetes cluster capacity with no architectural bottlenecks
 
 **Technical Scalability:**
@@ -102,9 +102,9 @@ Stack Automation's elastic architecture has been proven to handle enterprise-sca
 **Enterprise-Grade Operations:**
 - **Multi-Tenant Isolation**: Secure space-based segregation supporting large organizational structures
 - **API-First Integration**: Handles machine-to-machine operations at enterprise scale
-- **Governance at Scale**: Policy enforcement and compliance across thousands of environments and users
+- **Governance at Scale**: Policy enforcement and compliance across thousands of deployments and users
 
-The platform's proven track record demonstrates it can support organizations of any size, from small teams to Fortune 500 enterprises managing complex, multi-cloud environments with millions of resources and thousands of concurrent operations.
+The platform's proven track record demonstrates it can support organizations of any size, from small teams to Fortune 500 enterprises managing complex, multi-cloud deployments with millions of resources and thousands of concurrent operations.
 
 #### How does Stack Automation efficiently handle external service integrations at scale?
 
@@ -171,7 +171,7 @@ Yes! Stack Automation offers a robust API-first approach, allowing for seamless 
 ## Brownfield & Day 2 Operations
 
 #### Can Stack Automation discover and generate IaC code from existing cloud resources?
-Yes. This is natively supported through Stack Automation's **Curate** feature. Curate can scan existing cloud environments and generate Terraform code that represents the current state of the resources. 
+Yes. This is natively supported through Stack Automation's **Curate** feature. Curate can scan existing cloud deployments and generate Terraform code that represents the current state of the resources. 
 
 Currently, the generated code is in Terraform format. While there is no native support for converting it to Kubernetes-native formats like Crossplane, the generated Terraform code can be used as a starting point for further customization.
 
@@ -180,11 +180,9 @@ Stack Automation also supports native Kubernetes resources through its Helm and 
 Get started with [discovering your assets](/getting-started/asset-discovery) and [importing cloud resources](/getting-started/import-cloud-resources).
 
 #### How does Stack Automation handle continuous reconciliation and drift detection?
-Stack Automation periodically checks the state of the resources against the desired state defined in the Terraform code. Continuous reconciliation is handled through Stack Automation's **Drift Detection** feature and is executed using Stack Automation's runners. This allows the platform to automatically detect and correct configuration drift in live environments.
+Stack Automation periodically checks the state of the resources against the desired state defined in the Terraform code. Continuous reconciliation is handled through Stack Automation's **Drift Detection** feature and is executed using Stack Automation's runners. This allows the platform to automatically detect and correct configuration drift in live deployments.
 
 Learn more about [drift detection and updates](/environment-services/drift-and-update) and [Day 2 operations](/environment-services/actions-and-workflows).
 
 #### Does Stack Automation support Kubernetes Resources?
 Yes. Stack Automation supports Kubernetes resources through its Helm and Kubernetes grains/runners. The platform can act as a control plane for Kubernetes resources, allowing users to manage and provision these resources through the Stack Automation interface. This enables integration with Custom Resources and supports Kubernetes-native platform engineering experiences.
-
-<!--See our [Kubernetes getting started guide](/getting-started/getting-started-with-kubernetes) and [Kubernetes as a Service example](/example-blueprints/k8s-as-a-service).-->

@@ -5,7 +5,7 @@ sidebar_position: 6
 
 # Architecture
 
-![Locale Dropdown](/img/torque-arch.png)
+<!-- ![Locale Dropdown](/img/torque-arch.png) -->
 
 Stack Automation is a comprehensive environment-as-a-service platform designed to bridge the gap between infrastructure complexity and user accessibility. The platform operates across three core domains that work together to deliver governed, self-service infrastructure and application deployment capabilities.
 
@@ -18,40 +18,40 @@ The curation domain focuses on connecting to existing automation and Infrastruct
 - **Asset Repository Integration**: Connect to existing source control repositories containing [Terraform](/blueprint-designer-guide/blueprints/terraform-grain.md) modules, [AWS CloudFormation](/blueprint-designer-guide/blueprints/cloudformation-grain.md) templates, [Helm](/blueprint-designer-guide/blueprints/helm-grain.md) charts, [Kubernetes](/blueprint-designer-guide/blueprints/kubernetes-grain.md) manifests, [Shell](/blueprint-designer-guide/blueprints/shell-grain.md) scripts, and [Ansible](/blueprint-designer-guide/blueprints/ansible-grain.md) playbooks
 - **Cloud Provider Connectivity**: Seamless integration with [Amazon Web Services (AWS)](https://aws.amazon.com/), [Microsoft Azure](https://azure.microsoft.com/), [Google Cloud Platform (GCP)](https://cloud.google.com/), [Oracle Cloud Infrastructure (OCI)](https://www.oracle.com/cloud/), VMware vCenter/vSphere, and Kubernetes clusters
 - **Resource Inventory**: Comprehensive discovery and cataloging of existing cloud and on-premises resources
-- **Blueprint Creation**: Transform individual assets into reusable blueprints for standardized deployments across all environments
+- **Blueprint Creation**: Transform individual assets into reusable blueprints for standardized deployments across all deployments
 
 ### 2. Operate
-The operation domain leverages Quali agents deployed on customer premises (or Quali-managed) to handle resource provisioning, environment state management, and lifecycle orchestration with governed access controls.
+The operation domain leverages Quali agents deployed on customer premises (or Quali-managed) to handle resource provisioning, deployment state management, and lifecycle orchestration with governed access controls.
 
 **Key Capabilities:**
 - **Stack Automation Execution Agents**: Lightweight, container-based instances deployed on Kubernetes clusters or Docker hosts that communicate with Stack Automation backend to execute deployment tasks
   - **Agent Deployment Options**: [Amazon EKS](https://aws.amazon.com/eks/), [Azure Kubernetes Service](https://azure.microsoft.com/en-us/products/kubernetes-service), [Google GKE](https://cloud.google.com/kubernetes-engine), [Oracle OKE](https://www.oracle.com/cloud/cloud-native/container-engine-kubernetes/), self-managed Kubernetes, and Docker hosts (on-premises)
   - **Built-in Quali Agent**: Pre-configured execution agent for [Terraform](/blueprint-designer-guide/blueprints/terraform-grain.md) and [AWS CloudFormation](/blueprint-designer-guide/blueprints/cloudformation-grain.md) deployments without requiring custom agent deployment
-- **Environment Lifecycle Management**: Complete state management from provisioning through decommissioning
-- **Day-2 Operations**: Ongoing environment management including updates, drift detection, and maintenance workflows
+- **Deployment Lifecycle Management**: Complete state management from provisioning through decommissioning
+- **Day-2 Operations**: Ongoing deployment management including updates, drift detection, and maintenance workflows
 - **Governed Access**: Role-based access controls and policy enforcement throughout the operational lifecycle
 
 ### 3. Self-Service
 The self-service domain provides a governed catalog with policy-driven access controls, enabling users to deploy cloud and on-premises infrastructure with one-click simplicity.
 
 **Key Capabilities:**
-- **Governed Catalog**: Rich environment catalog with built-in governance through policies, approval flows, and strong RBAC
+- **Governed Catalog**: Rich solutions catalog with built-in governance through policies, approval flows, and strong RBAC
 - **One-Click Deployment**: Simplified deployment of complex infrastructure and services including:
   - Cloud and on-premises infrastructure
   - Container deployments and orchestration
   - Application lifecycle management
 - **Policy Engine**: Comprehensive governance framework ensuring compliance and cost control
 - **Approval Workflows**: Customizable approval processes integrated with IT Service Management platforms
-- **Developer Ecosystem Integration**: Native integration with CI/CD tools, developer environments, and DevOps workflows
+- **Developer Ecosystem Integration**: Native integration with CI/CD tools, developer deployments, and DevOps workflows
 
-## Multi-Environment Support
+## Multi-Deployment Support
 
 Stack Automation supports comprehensive deployment across all infrastructure types:
 - **Public Cloud**: AWS, Azure, GCP, Oracle Cloud
 - **Private Cloud**: VMware vCenter/vSphere, OpenStack
 - **Hybrid Cloud**: Mixed cloud and on-premises deployments
 - **Container Platforms**: Kubernetes, Docker, container orchestration platforms
-- **On-Premises**: Physical infrastructure, virtualized environments
+- **On-Premises**: Physical infrastructure, virtualized deployments
 
 ## Deployment Models
 
@@ -71,15 +71,16 @@ Stack Automation is available in three flexible deployment models to meet divers
 
 ### 3. Private Instance (On-Premises)
 - **Complete Control**: Full control over infrastructure, data, and operations
-- **Air-Gapped Support**: Deployment in disconnected or highly secure environments
+- **Air-Gapped Support**: Deployment in disconnected or highly secure deployments
 - **Custom Integration**: Deep integration with existing enterprise systems and workflows
 - **Self-Managed**: Customer-controlled deployment, maintenance, and operations
 
 ## Integration Ecosystem
 
 ### Notification Engines
-Automated notifications for environment lifecycle events through:
+Automated notifications for deployment lifecycle events through:
 - Email notifications
+- Webex notifications
 - [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software) integration
 - [Slack](https://slack.com) integration
 - [Custom webhooks](/admin-guide/notifications) for third-party systems

@@ -9,16 +9,16 @@ Before you start on your Stack Automation journey, please take a moment to famil
 
     * [**Grain**](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#grains) - The Stack Automation representation of an asset (e.g. Terraform module or Helm chart). Each grain contains all the information required to deploy the asset, such as inputs and versions, as well as a reference to the location of the asset's code (repository).
 
-    * **Environment** - An environment is a live instance of a blueprint. It contains the cloud infrastructure and application(s) that were deployed from the blueprint. The environment has a defined duration that can be manually extended or ended, as well as links to its applications, automation commands to run on the different cloud resources.
+    * **Deployment** - A deployment is a live instance of a blueprint. It contains the cloud infrastructure and application(s) that were deployed from the blueprint. The deployment has a defined duration that can be manually extended or ended, as well as links to its applications, automation commands to run on the different cloud resources.
 
     * **Repository** - A git-based folder containing the IaC assets, container files and multi-asset blueprints that make up the Stack Automation self-service catalog, and are consumed by your end-users. For details, see [Architecture](/overview/Architecture).
 
-* **Policies** - Stack Automation policies allow setting an additional layer of governance on top of blueprints and the environments they deploy. These include:
+* **Policies** - Stack Automation policies allow setting an additional layer of governance on top of blueprints and the active deployments. These include:
     * [Blueprint consumption policies](/blueprint-designer-guide/blueprint-consumption-policies) allow blueprint designers to set maximum duration guardrails (for high-cost environments perhaps).
     * [Policies](/governance/policies) allow the Stack Automation account admin to set account-level limitations on AWS-created environments.
 
 * **Space** - A logically separate area that contains an association to one or more agents, asset repositories, a blueprint repository and Ci/CD plugins. Spaces can be used to logically separate between teams, projects, or even development lifecycle stages and allow the relevant end-users, administrators and blueprint designers to access only the relevant blueprints and environments.
 
-* [**Tag**](/governance/tags) - A key-value pairing that is set by Stack Automation to all of the resources and infrastructure entities provisioned by an environment (example: Owner = John.D@somecompany.com) There are 2 types of tags: System tags and custom tags. System tags are tags that are defined by Stack Automation (for example, environment id, space name, etc) while the users define the custom tags according to their needs.
+* [**Tag**](/governance/tags) - A key-value pairing that is set by Stack Automation to all of the resources and infrastructure entities provisioned in a deployment (example: Owner = John.D@somecompany.com). There are 2 types of tags: System tags and custom tags. System tags are tags that are defined by Stack Automation (for example, environment id, space name, etc) while the users define the custom tags according to their needs.
 
 * [**Agent**](/torque-agent/Stack Automation-Agent-Intro) - A Stack Automation automation agent that runs as a pod inside your designated Kubernetes cluster. This agent communicates with the Stack Automation backend and is permitted to perform certain actions on your Kubernetes cluster. For more details, see [Architecture](/overview/Architecture).
