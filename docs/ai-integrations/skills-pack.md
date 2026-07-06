@@ -51,6 +51,49 @@ it will apply the packaged expertise automatically:
 - "Review this blueprint and suggest improvements for reusability."
 - "Scaffold an IaC module for an EKS cluster and deploy it as a blueprint."
 
+## Client setup examples
+
+Use these examples to add the `stack-automation` MCP server in common clients.
+
+### Claude Code (CLI)
+
+Run:
+
+```bash
+claude mcp add --transport http stack-automation https://stackautomation.cisco.com/mcp \
+  -H "Authorization: Bearer <your-token>"
+```
+
+Then start a new Claude session so the updated MCP configuration and skills are loaded.
+
+### VS Code
+
+If your VS Code MCP client supports adding servers from the Command Palette:
+
+1. Open **Command Palette**.
+2. Run **MCP: Add Server** (or the equivalent command in your MCP extension).
+3. Choose **HTTP** transport.
+4. Set server name to `stack-automation`.
+5. Set URL to `https://stackautomation.cisco.com/mcp`.
+6. Add header `Authorization: Bearer <your-token>`.
+7. Restart the agent/chat session in VS Code.
+
+If your MCP client uses a JSON config file, add an entry equivalent to:
+
+```json
+{
+  "mcpServers": {
+    "stack-automation": {
+      "transport": "http",
+      "url": "https://stackautomation.cisco.com/mcp",
+      "headers": {
+        "Authorization": "Bearer <your-token>"
+      }
+    }
+  }
+}
+```
+
 ## Troubleshooting
 
 - **Skills don't seem to apply.** Start a fresh agent session after installing, and confirm
