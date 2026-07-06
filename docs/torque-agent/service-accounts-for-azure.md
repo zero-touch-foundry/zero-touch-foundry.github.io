@@ -158,9 +158,6 @@ There are 2 ways to accomplish this:
     e. Return to Stack Automation and wait for the connection status to change to a green **Connected**.
     > ![Locale Dropdown](/img/AKS-doc-3.png)
 
-    f. Click **Associate to Space** and connect the management server to one or more spaces. Select the namespace and the service account you configured in the previous step.
-      > ![Locale Dropdown](/img/AKS-doc-4.png)
-
 
 2. You may override the default credentials defined for the AKS management server, or define the credentials if no credentials were configured as the default.
   
@@ -182,7 +179,7 @@ There are 2 ways to accomplish this:
           ARM_TENANT_ID: <Tenant_ID>
           ARM_CLIENT_ID: <Client_ID>
           ```
-
+<!--
 ### __Video: Connecting a new management server and using it in a blueprint__
 
 :::note
@@ -192,3 +189,4 @@ This video was recorded against the previous "Connect a Cloud" wizard and needs 
 <video controls width="500px" height="400px">
   <source src="/img/connect azure agent.mp4"/>
 </video>
+-->
