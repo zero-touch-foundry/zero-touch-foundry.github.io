@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Management Server Requirements
 ---
 
-# Agent Requirements
+# Management Server Requirements
 
 The Stack Automation Management Server is a lightweight, Docker-based execution component that handles deployment provisioning and lifecycle management. This page outlines the infrastructure requirements and specifications needed to run the Stack Automation management server.
 
@@ -65,7 +65,7 @@ For running the management server on Kubernetes, you'll need:
 - **Kubernetes Version**: 1.20 or later
 - **Node Resources**: At least one node with 2 vCPUs and 4GB RAM available
 - **Storage Class**: Default storage class configured for persistent volumes
-- **RBAC**: Enabled (required for agent permissions)
+- **RBAC**: Enabled (required for management server permissions)
 
 **Supported Kubernetes Platforms:**
 - Amazon EKS
@@ -87,12 +87,12 @@ When deploying to Kubernetes, the management server is installed using a manifes
 
 ### Core Components
 
-1. **Namespace** - Dedicated namespace for agent isolation
-2. **ServiceAccount** - Identity for the agent pods
+1. **Namespace** - Dedicated namespace for management server isolation
+2. **ServiceAccount** - Identity for the management server pods
 3. **ClusterRoles** - Permissions for cluster-level and namespace-level operations
 4. **ClusterRoleBindings** - Binding service account to required roles
 5. **Secret** - Stores cluster token and logging configuration
-6. **Deployment** - Manages agent replicas (default: 2 replicas for high availability)
+6. **Deployment** - Manages management server replicas (default: 2 replicas for high availability)
 
 ### Management Server Permissions
 
@@ -158,7 +158,7 @@ spec:
 ### High Availability
 
 For production deployments, consider:
-- **Multiple Replicas**: Deploy 2+ agent replicas for redundancy
+- **Multiple Replicas**: Deploy 2+ management server replicas for redundancy
 - **Node Distribution**: Use pod anti-affinity to distribute replicas across nodes
 - **Resource Limits**: Set appropriate limits to prevent resource contention
 
@@ -176,7 +176,7 @@ The management server capacity depends on:
 
 ## Scaling Table (Quick Reference)
 
-The table below provides recommended starting points for management server deployment sizing based on the number of concurrent deployments and average workload complexity. Use these as guidelines and adjust based on observed agent CPU/memory usage and provisioning times.
+The table below provides recommended starting points for management server deployment sizing based on the number of concurrent deployments and average workload complexity. Use these as guidelines and adjust based on observed management server CPU/memory usage and provisioning times.
 
 | Concurrent Deployments | Tier | Management Server Replicas | Node Pool / VM Size Recommendation | Notes |
 |:------------------------|:-----|:---------------|:-----------------------------------|:------|
@@ -189,11 +189,11 @@ Notes:
 - "Concurrent Deployments" refers to deployments actively provisioning or heavily operating at the same time.
 - Management Server replica counts assume default management server resource requests/limits (100m CPU / 200Mi memory). Increase per-server resources for heavy or long-running workloads.
 - For Kubernetes, use PodDisruptionBudgets, anti-affinity, and multiple replicas across failure domains to ensure availability.
-- Monitor agent pod CPU/memory and adjust cluster autoscaler and node sizes accordingly.
+- Monitor management server pod CPU/memory and adjust cluster autoscaler and node sizes accordingly.
 
 ## Getting Started
 
-Once you've prepared your infrastructure, proceed with agent installation:
+Once you've prepared your infrastructure, proceed with management server installation:
 
 - **Docker Host**: See [Stack Automation Docker Management Server](/torque-agent/torque-docker-agent.md)
 - **Kubernetes Cluster**: See [Install and Connect Self-Hosted Management Server](/torque-agent/Install-and-connect-self-hosted-agent.md)
@@ -201,6 +201,6 @@ Once you've prepared your infrastructure, proceed with agent installation:
 ## Additional Resources
 
 - [What is a Stack Automation Management Server?](/torque-agent/Torque-Agent-Intro.md)
-- [Advanced Agent Settings](/torque-agent/advanced-settings.md)
+- [Advanced Management Server Settings](/torque-agent/advanced-settings.md)
 - [Network Requirements](/torque-agent/torque-outbound-ports.md)
 - [Azure VMSS Deployment](/torque-agent/torque-agent-on-azure-vmss.md)

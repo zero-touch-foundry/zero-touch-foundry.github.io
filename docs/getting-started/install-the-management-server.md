@@ -19,14 +19,14 @@ In this guide we will cover:
 - (Optional) Associating the management server with a space and launching blueprints from a repository
 
 :::info What is a management server?
-The management server is a lightweight orchestration component deployed in your own environment. Once connected, it appears in **Administration → Resources → Management Servers**, where you can monitor its **health** (Connected / Disconnected), **type**, **version**, and **IP**. Stack Automation supports several management-server types, including virtual machine images (**OVA**), managed Kubernetes (for example **EKS**), **Docker**, and self-managed Kubernetes.
+The management server is a lightweight orchestration component deployed in your own environment. Once connected, it appears in **Resources → Management Servers**, where you can monitor its **health** (Connected / Disconnected), **type**, **version**, and **IP**. Stack Automation supports several management-server types, including virtual machine images (**OVA**), managed Kubernetes (for example **EKS**), **Docker**, and self-managed Kubernetes.
 :::
 
 ---
 
 ## Step #1: Open the Management Servers page
 
-1. Navigate to **Administration → Resources → Management Servers**.
+1. Navigate to **Resources → Management Servers**.
 2. Review the list of existing management servers. The page shows an at-a-glance **Health** and **Type** breakdown, plus a table with each server's **Name**, **Status**, **Type**, **Version**, and **IP**.
 3. Click **New Management Server** in the top-right corner to open the **Connect a Management Server** wizard.
 
@@ -107,7 +107,7 @@ It may take up to a couple of minutes for a freshly deployed management server t
 
 ### Verify the connection
 
-Return to **Administration → Resources → Management Servers**. Your new server should appear in the list with a green **Connected** status. If it still shows **Disconnected** after a few minutes, confirm that the VM is powered on and that it has outbound network access (and correct proxy settings, if configured) to reach your Stack Automation tenant.
+Return to **Resources → Management Servers**. Your new server should appear in the list with a green **Connected** status. If it still shows **Disconnected** after a few minutes, confirm that the VM is powered on and that it has outbound network access (and correct proxy settings, if configured) to reach your Stack Automation tenant.
 
 🎉 That's it — your management server is connected and ready to deploy blueprints from the Solution Hub.
 
@@ -123,7 +123,7 @@ Spaces are logically separate areas that group agents, repositories, and permitt
 
 1. From the management server's actions menu (or the post-connection dialog), choose **Associate to space**.
 2. Select the target space.
-3. Set the **default namespace** and **service account** that Stack Automation will use to deploy workloads through this server. These defaults can be changed later in **Administration → Resources → Management Servers**.
+3. Set the **default namespace** and **service account** that Stack Automation will use to deploy workloads through this server. These defaults can be changed later in **Resources → Management Servers**.
 
 ### Launch blueprints from a repository
 

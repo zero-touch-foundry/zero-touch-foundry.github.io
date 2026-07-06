@@ -5,7 +5,7 @@ title: Terraform AKS/Azure Authentication
 
 
 If you're using an AKS cluster for your management server, and you want to run Terraform that deploys resources on Azure, you can use a Azure Workload Identity (valid for AKS clusters version 1.22+) that allows the cluster to securely authenticate with Azure using K8s service account and an Open ID connect (OIDC) token.
-For a step-by-step tutorial, see [Video: Connecting a new agent and using it in a blueprint](#video-connecting-a-new-agent-and-using-it-in-a-blueprint).
+For a step-by-step tutorial, see [Video: Connecting a new management server and using it in a blueprint](#video-connecting-a-new-management-server-and-using-it-in-a-blueprint).
 
 :::tip __IMPORTANT__
 Stack Automation does not support running the Stack Automation Management Server on an AKS cluster using [Burst Type VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable) as cluster worker nodes.  Please use a different VM type.
@@ -19,7 +19,7 @@ The basic process is as follows:
 - [__Stack Automation Configuration__](#stack-automation-configuration)
   - [__Prerequisites__](#prerequisites-1)
   - [__Configure the AKS authentication in Stack Automation__](#configure-the-aks-authentication-in-stack-automation)
-- [Video: Connecting a new agent and using it in a blueprint](#video-connecting-a-new-agent-and-using-it-in-a-blueprint)
+- [Video: Connecting a new management server and using it in a blueprint](#video-connecting-a-new-management-server-and-using-it-in-a-blueprint)
 
 ## __Azure Configuration__
 
@@ -35,7 +35,7 @@ The basic process is as follows:
     az extension add --name aks-preview
     az extension update --name aks-preview
     ```
-3. Command-line with [kubectl installed](https://kubernetes.io/docs/tasks/tools/#kubectl) connected the cluster where you installed the Stack Automation agent.
+3. Command-line with [kubectl installed](https://kubernetes.io/docs/tasks/tools/#kubectl) connected the cluster where you installed the Stack Automation management server.
   To connect to the cluster use: 
     ```bash
     kubectl config use-context <your-cluster>
@@ -137,30 +137,32 @@ Have the following formation ready (from the previous section)
 
 * Tenant ID (displayed in the __Azure Active Directory > Overview__)
 * Subscription ID
-* The namespace where the Stack Automation environments will run (which you chose previously) and the service account name (which you also created in the previous step).
+* The namespace where the Stack Automation deployments will run (which you chose previously) and the service account name (which you also created in the previous step).
 
 ### __Configure the AKS authentication in Stack Automation__ 
 
 There are 2 ways to accomplish this:
 
-1. (Recommended) When adding a new AKS agent, you can provide the **default tenant Id**, and when attaching it a space you can provide the **default_subscription**.
+1. (Recommended) When adding a new AKS management server, you can provide the **Azure Tenant ID**, and when attaching it to a space you can provide the **default_subscription**.
 
-    a. From the **Administration** menu, select **Cloud Accounts** and then **Connect a Cloud**.
-    
-    b. Choose "Azure" then "AKS" and fill the information:
-    > ![Locale Dropdown](/img/AKS-doc-2.png)
+    a. Navigate to **Resources → Management Servers** and click **New Management Server** in the top-right corner to open the **Connect a Management Server** wizard.
 
-    c. __Generate__ the "kubectl apply" command and run it in Azure CLI.
+    b. In the **Setup** step, choose **Cloud**, then **Public Cloud**, then select the **Azure** tile, and click **Next**.
+    > ![Setup step: Azure selected under Public Cloud](/img/AKS-doc-2.png)
+
+    c. In the **Generate Agent** step, give the management server a name and, optionally, the **Azure Tenant ID**, then click **Next**.
       > ![Locale Dropdown](/img/AKS-doc-2-a.png)
 
-    d. Return to Stack Automation and wait for the connection status to change to a green "Connected!".
+    d. On the **Installation Instructions** step, copy the generated `kubectl apply` command and run it in Azure CLI against your AKS cluster.
+
+    e. Return to Stack Automation and wait for the connection status to change to a green **Connected**.
     > ![Locale Dropdown](/img/AKS-doc-3.png)
 
-    d. Click **Associate to Space** and connect the agent to one or more spaces. Select the namespace and the service account you configured in the previous step.
+    f. Click **Associate to Space** and connect the management server to one or more spaces. Select the namespace and the service account you configured in the previous step.
       > ![Locale Dropdown](/img/AKS-doc-4.png)
 
 
-2. You may override the default credentials defined for the AKS agent, or define the credentials if no credentials were configured as the default.
+2. You may override the default credentials defined for the AKS management server, or define the credentials if no credentials were configured as the default.
   
     a. In the Terraform grain, specify the service-account name under spec > agent:
       ```yaml title=
@@ -173,7 +175,7 @@ There are 2 ways to accomplish this:
           service account: {new_service_account_name} # this is the k8s service account created above    
         ```
 
-    b. Under `env-vars`, add the following (will override the default definition of the AKS agent):
+    b. Under `env-vars`, add the following (will override the default definition of the AKS management server):
           
           ```jsx title=
           ARM_SUBSCRIPTION_ID: <Subscription_ID>
@@ -181,7 +183,12 @@ There are 2 ways to accomplish this:
           ARM_CLIENT_ID: <Client_ID>
           ```
 
-### __Video: Connecting a new agent and using it in a blueprint__
+### __Video: Connecting a new management server and using it in a blueprint__
+
+:::note
+This video was recorded against the previous "Connect a Cloud" wizard and needs to be re-recorded against the current Management Servers UI described above.
+:::
+
 <video controls width="500px" height="400px">
   <source src="/img/connect azure agent.mp4"/>
 </video>

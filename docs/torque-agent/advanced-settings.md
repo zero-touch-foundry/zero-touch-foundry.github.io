@@ -108,7 +108,7 @@ grains:
         name: '{{ .inputs.agent }}'
         kubernetes:
           pod-labels:
-            - app: quali-torque
+            - app: quali-stack-automation
             - app.kubernetes.io/managed-by: Helm
             - app_cmdb_id: A1234567
             - app_pod_name: quali-torque
@@ -151,7 +151,7 @@ grains:
         name: '{{ .inputs.agent }}'
         kubernetes:
           pod-annotations:
-            - app: quali-torque
+            - app: quali-stack-automation
             - app_cmdb_id: A1755468
 
 ```
@@ -184,5 +184,5 @@ grains:
         name:
         kubernetes:
           node-selector:
-            - app: torque
+            - app: stack-automation
 ```

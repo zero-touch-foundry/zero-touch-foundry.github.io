@@ -10,7 +10,7 @@ The management server is intended to be "always on" and runs all the time, check
 
 When it receives a message about a new task (e.g. when a deployment starts) it will spawn one or more runners that will launch the specific grain and then terminate. Runners may not need to be spawned if a suitable runner is already running.
 
-The following diagram depicts the connectivity between the agent and Stack Automation SAAS:
+The following diagram depicts the connectivity between the management server and Stack Automation SAAS:
 
 import pic1 from '/img/agent_connectivity.png';
 
