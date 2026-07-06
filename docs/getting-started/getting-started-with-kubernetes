@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Install our Agent
+title: Install our Management Server
 ---
 __Stack Automation Control plane__ offers centralized orchestration and management for Kubernetes orchestration tools such as Kubernetes manifest, Helm and Crossplane. In this guide, we will go over some of Stack Automation basic features allowing quick onboarding of Kubernetes automation assets into the platform, standardization of Kubernetes orchestration using blueprints and securing deployment process using tagging, policies and RBAC.
 
@@ -8,13 +8,13 @@ In this quick-start guide, we will cover the following topics:
 1. Create a new Stack Automation Space
 2. Onboard a GitHub repository and discover the automation assets in it
 3. Generate your first blueprint and modify it to include deployment credentials
-4. Launch a blueprint and get access to the deployed resource in the newly created environment
+4. Launch a blueprint and get access to the deployed resource in the newly created deployment
 
 > NOTE: This guide will focus on Kubernetes manifest and Helm orchestration, [click here](/overview/supported-platforms.md) for more information about Stack Automation supported platform.
 
 ## Step #1: Create a space
 :::info
-__Spaces__ are logically separate area that contains an association to one or more agents, asset and blueprint repositories and set of permitted users. Spaces can be used to logically separate between teams, projects, or even development lifecycle stages and allow the relevant end-users, administrators and blueprint designers to access only the relevant blueprints and environments.
+__Spaces__ are logically separate area that contains an association to one or more management servers, asset and blueprint repositories and set of permitted users. Spaces can be used to logically separate between teams, projects, or even development lifecycle stages and allow the relevant end-users, administrators and blueprint designers to access only the relevant blueprints and deployments.
 :::
 
 1. To create a new space, use one of the following methods: 
@@ -31,18 +31,18 @@ Now, that you have a new space configured, we will associate a repository to the
 
 2. Click "Discover Assets" to initiate the __Stack Automation asset discovery process__ that will go over the repository and highlight the automation assets Stack Automation discovered.
 3. To __generate a blueprint__ from one of the discovered assets, check the blueprint in the list and click on "Generate Blueprints"
-4. Click on "Connect an Agent"
+4. Click on "Connect a Management Server"
 
 
 import pic1 from '/img/getting-repository-onboarding.gif';
 
 <img src={pic1} style={{width: 700}} />
 
-## Step #3: Install an Agent
-In this step, we will configure a Stack Automation agent that will execute, manage and monitor the Kubernetes workload we discovered and plan to deploy.
+## Step #3: Install a Management Server
+In this step, we will configure a Stack Automation management server that will execute, manage and monitor the Kubernetes workload we discovered and plan to deploy.
 
-1. In the "Connect an agent" dialog, select the __"Install new self hosted agent"__ and click "Next". Now, you are required to choose one of the supported cloud providers managed Kubernetes service or a self-managed Kubernetes cluster. Choose one of the options, In this example, we will use AWS EKS.
-2. Provide a new for the agent, and click "Next"
+1. In the "Connect a Management Server" dialog, select the __"Install new self-hosted management server"__ and click "Next". Now, you are required to choose one of the supported cloud providers managed Kubernetes service or a self-managed Kubernetes cluster. Choose one of the options, In this example, we will use AWS EKS.
+2. Provide a new for the management server, and click "Next"
 3. Click on "Generate", this will generate a CLI command based on ```kubectl``` that you can now execute on the Kubernetes cluster. Here is an example output of the command. 
 
 
@@ -52,20 +52,20 @@ import pic2 from '/img/k8s-agent-connected.png';
 
 
 :::info
-The command creates a new namespaces, and deploys the Stack Automation agent in it. It might take up to 2 minutes for the Agent to get up and running, so want for the Stack Automation self-service indication to make sure the agent is connected.
+The command creates a new namespaces, and deploys the Stack Automation management server in it. It might take up to 2 minutes for the Management Server to get up and running, so want for the Stack Automation self-service indication to make sure the management server is connected.
 
-1. Now, it's associate our newly connected agent with our space. Click the "Associate to space".
-2. The space is already selected for you, but, you still need to set the default namespace and service-account that will be used by Stack Automation to deploy workloads into the cluster. It's always possible to change the default values in the "Administration" section under the "Agents" section.
+1. Now, it's associate our newly connected management server with our space. Click the "Associate to space".
+2. The space is already selected for you, but, you still need to set the default namespace and service-account that will be used by Stack Automation to deploy workloads into the cluster. It's always possible to change the default values in the "Administration" section under the "Management Servers" section.
 :::
 
-## Step #4: Launch an Environment
+## Step #4: Launch a Deployment
 
- 🚀🚀 Congrats! you are finally now ready to launch your first environment!  🚀🚀
+ 🚀🚀 Congrats! you are finally now ready to launch your first deployment!  🚀🚀
 
 1. To expose the new blueprint into the __Space catalog__, navigate into the __Blueprints__ page and toggle the  __Publish__ option.
 2. Navigate to the __Catalog__ and click the __Launch__ button on the blueprint card.
-3. Specify the environment's name, duration, tags and inputs - note that some of the inputs may be the authentication information required for AWS or Azure as describes in step #3.
-4. Optionally assign collaborators to the environment. While everyone in the space has "read" permission to its environments, only the environment's owner and collaborators can perform actions that change the environment: extend end the environment, reconcile or update resource changes, etc. When launching the environment, the new owner/collaborators will receive a notification email if you have [Notifications](/admin-guide/notifications) configured in the space.
+3. Specify the deployment's name, duration, tags and inputs - note that some of the inputs may be the authentication information required for AWS or Azure as describes in step #3.
+4. Optionally assign collaborators to the deployment. While everyone in the space has "read" permission to its deployments, only the deployment's owner and collaborators can perform actions that change the deployment: extend end the deployment, reconcile or update resource changes, etc. When launching the deployment, the new owner/collaborators will receive a notification email if you have [Notifications](/admin-guide/notifications) configured in the space.
 5. Finally, click __Launch__.
-6. Wait until the environment is active and use as needed. URLs to the environment's applications are typically provided as outputs - these can be found in the environment's __Quicklinks__ on the right pane.
-7. Check out the __Resources__ pane to get details about your environment's resources. Use this tab to understand what assets each grain spun up, get connection details to specific resources, and more.
+6. Wait until the deployment is active and use as needed. URLs to the deployment's applications are typically provided as outputs - these can be found in the deployment's __Quicklinks__ on the right pane.
+7. Check out the __Resources__ pane to get details about your deployment's resources. Use this tab to understand what assets each grain spun up, get connection details to specific resources, and more.

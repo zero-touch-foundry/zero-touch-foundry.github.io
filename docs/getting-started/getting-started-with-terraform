@@ -8,13 +8,13 @@ In this quick-start guide, we will cover the following topics:
 1. Create a new Stack Automation Space
 2. Onboard a GitHub repository and discover the automation assets in it
 3. Generate your first blueprint and modify it to include deployment credentials
-4. Launch a blueprint and get access to the deployed resource in the newly created environment
+4. Launch a blueprint and get access to the deployed resource in the newly created deployment
 
 > NOTE: This guide will focus on AWS and Azure Terraform workloads, [click here](/overview/supported-platforms.md) for more information about Stack Automation supported platform.
 
 ## Step #1: Create a space
 :::info
-__Spaces__ are logically separate area that contains an association to one or more agents, asset and blueprint repositories and set of permitted users. Spaces can be used to logically separate between teams, projects, or even development lifecycle stages and allow the relevant end-users, administrators and blueprint designers to access only the relevant blueprints and environments.
+__Spaces__ are logically separate area that contains an association to one or more management servers, asset and blueprint repositories and set of permitted users. Spaces can be used to logically separate between teams, projects, or even development lifecycle stages and allow the relevant end-users, administrators and blueprint designers to access only the relevant blueprints and deployments.
 :::
 
 1. To create a new space, use one of the following methods: 
@@ -34,23 +34,23 @@ Now, that you have a new space configured, we will associate a repository to the
 
 2. Click "Discover Assets" to initiate the __Stack Automation asset discovery process__ that will go over the repository and highlight the automation assets Stack Automation discovered.
 3. To __generate a blueprint__ from one of the discovered assets, check the blueprint in the list and click on "Generate Blueprints"
-4. Click on "Connect an Agent"
+4. Click on "Connect a Management Server"
 
 > ![Onboard Repository](/img/getting-repository-onboarding.gif)
 
-## Step #3: Set Quali Agent
-In this step, we will configure our newly created blueprint (Created in step #2) to use "Quali Hosted Agent"
+## Step #3: Set Quali Management Server
+In this step, we will configure our newly created blueprint (Created in step #2) to use "Quali Hosted Management Server"
 
 :::info
-__Quali Hosted Agent__ is a free pre-configured agent hosted by Quali allowing you to execute automation without the need to install, configure and maintain a "self hosted agent". In case you wish to use your own agent, follow the steps in [this](/torque-agent/Install-and-connect-self-hosted-agent) article and continue to step #4 in this article once you fully configured your agent.
+__Quali Hosted Management Server__ is a free pre-configured management server hosted by Quali allowing you to execute automation without the need to install, configure and maintain a "self-hosted management server". In case you wish to use your own management server, follow the steps in [this](/torque-agent/Install-and-connect-self-hosted-agent) article and continue to step #4 in this article once you fully configured your management server.
 :::
 
-1. In the "Connect an agent" dialog, select the __"Quali Hosted Agent"__. This will associate the "Quali Hosted Agent" with the newly created space allowing automation in the space to be execute on it.
+1. In the "Connect a Management Server" dialog, select the __"Quali Hosted Management Server"__. This will associate the "Quali Hosted Management Server" with the newly created space allowing automation in the space to be execute on it.
 2. Open one of the generated blueprints generated in the previous steps by clicking on it's name in the "blueprints name". You will see the blueprint YAML generated for the automation asset. The YAML contains all the inputs and outputs of the Terraform module alongside  some additional information about the location of the automation asset in the VCS repository.
 3. In the following step, we will modify the blueprint using the __YAML editor__ adding authentication information for AWS or Azure so our Terraform module will be executed on them. This section is AWS or Azure specific, so make sure to follow the section matching your cloud provider.
 
-### AWS authentication 
-The Quali-hosted agent needs your __AWS credentials__ to provision the environment on your AWS account. We will edit the blueprint to add the AWS credentials as environment variables, and expose them as inputs so it will be easier to provide them upon launch of a new environment. Editing the blueprint in the blueprint editor provides syntax highlighting, auto-correcting and live validation of the YAML and data provided. Make sure to click on "Save Changes" when updating the YAML to make sure the blueprint is saved in Stack Automation.
+### AWS authentication
+The Quali-hosted management server needs your __AWS credentials__ to provision the deployment on your AWS account. We will edit the blueprint to add the AWS credentials as environment variables, and expose them as inputs so it will be easier to provide them upon launch of a new deployment. Editing the blueprint in the blueprint editor provides syntax highlighting, auto-correcting and live validation of the YAML and data provided. Make sure to click on "Save Changes" when updating the YAML to make sure the blueprint is saved in Stack Automation.
 
 1. Add the following inputs under the input section of the blueprint:
 
@@ -71,8 +71,8 @@ The Quali-hosted agent needs your __AWS credentials__ to provision the environme
     ```
 
 
-### Azure authentication 
-The Quali-hosted agent needs your __Azure credentials__ to provision the environment on your Azure account. We will edit the blueprint to add the Azure credentials as environment variables, and expose them as inputs so it will be easier to provide them upon launch of a new environment. Editing the blueprint in the blueprint editor provides syntax highlighting, auto-correcting and live validation of the YAML and data provided. Make sure to click on "Save Changes" when updating the YAML to make sure the blueprint is saved in Stack Automation.
+### Azure authentication
+The Quali-hosted management server needs your __Azure credentials__ to provision the deployment on your Azure account. We will edit the blueprint to add the Azure credentials as environment variables, and expose them as inputs so it will be easier to provide them upon launch of a new deployment. Editing the blueprint in the blueprint editor provides syntax highlighting, auto-correcting and live validation of the YAML and data provided. Make sure to click on "Save Changes" when updating the YAML to make sure the blueprint is saved in Stack Automation.
 
 
 1. Add the following inputs under the input section of the blueprint:
@@ -96,19 +96,19 @@ The Quali-hosted agent needs your __Azure credentials__ to provision the environ
       - ARM_TENANT_ID: '{{ .inputs.ARM_TENANT_ID }}'        
     ```
 
-## Step #4: Launch an Environment
+## Step #4: Launch a Deployment
 
 At this point, you have done the following:
 * Created a new space
 * Connected an asset repository and auto-generated blueprints out of some assets
-* Associated an agent that will handle the deployment and teardown of the environments
+* Associated a management server that will handle the provisioning and teardown of the deployments
 
- 🚀🚀 You are finally now ready to launch your first environment!  🚀🚀
+ 🚀🚀 You are finally now ready to launch your first deployment!  🚀🚀
 
 1. To expose the new blueprint into the __Space catalog__, navigate into the __Blueprints__ page and toggle the  __Publish__ option.
 2. Navigate to the __Catalog__ and click the __Launch__ button on the blueprint card.
-3. Specify the environment's name, duration, tags and inputs - note that some of the inputs may be the authentication information required for AWS or Azure as describes in step #3.
-4. Optionally assign collaborators to the environment. While everyone in the space has "read" permission to its environments, only the environment's owner and collaborators can perform actions that change the environment: extend end the environment, reconcile or update resource changes, etc. When launching the environment, the new owner/collaborators will receive a notification email if you have [Notifications](/admin-guide/notifications) configured in the space.
+3. Specify the deployment's name, duration, tags and inputs - note that some of the inputs may be the authentication information required for AWS or Azure as describes in step #3.
+4. Optionally assign collaborators to the deployment. While everyone in the space has "read" permission to its deployments, only the deployment's owner and collaborators can perform actions that change the deployment: extend end the deployment, reconcile or update resource changes, etc. When launching the deployment, the new owner/collaborators will receive a notification email if you have [Notifications](/admin-guide/notifications) configured in the space.
 5. Finally, click __Launch__.
-6. Wait until the environment is active and use as needed. URLs to the environment's applications are typically provided as outputs - these can be found in the environment's __Quicklinks__ on the right pane.
-7. Check out the __Resources__ pane to get details about your environment's resources. Use this tab to understand what assets each grain spun up, get connection details to specific resources, and more.
+6. Wait until the deployment is active and use as needed. URLs to the deployment's applications are typically provided as outputs - these can be found in the deployment's __Quicklinks__ on the right pane.
+7. Check out the __Resources__ pane to get details about your deployment's resources. Use this tab to understand what assets each grain spun up, get connection details to specific resources, and more.

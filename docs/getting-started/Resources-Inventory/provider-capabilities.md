@@ -19,7 +19,7 @@ When **Discovery** is enabled, Stack Automation scans the provider and inventori
 
 ## Deploy
 
-When **Deploy** is enabled, the provider can serve as a target for deploying blueprints and environments. Deploy generally requires write-level credentials and may use a separate credential set when **Multiple Credentials Set** is selected.
+When **Deploy** is enabled, the provider can serve as a target for deploying blueprints and launching deployments. Deploy generally requires write-level credentials and may use a separate credential set when **Multiple Credentials Set** is selected.
 
 ## Capability health
 

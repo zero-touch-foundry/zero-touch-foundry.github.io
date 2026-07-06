@@ -120,7 +120,7 @@ A connected management server is fully functional on its own, but to start deplo
 
 ### Associate the management server with a space
 
-Spaces are logically separate areas that group agents, repositories, and permitted users. To let a space deploy through your new management server:
+Spaces are logically separate areas that group management servers, repositories, and permitted users. To let a space deploy through your new management server:
 
 1. From the management server's actions menu (or the post-connection dialog), choose **Associate to space**.
 2. Select the target space.

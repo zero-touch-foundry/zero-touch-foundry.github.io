@@ -12,7 +12,7 @@ Stack Automation Resources Inventory gives you a single, governed view of every 
 Providers are typed on creation (for example AWS, Azure, vCenter, Intersight, Kubernetes, GCP, or Custom). A provider's type determines which **capabilities** it can offer. The two core capabilities are:
 
 - **Discovery** — the provider can be scanned to enumerate the resources it manages (for example blades, rack units, virtual machines, or cloud objects), which are then browsable inside the inventory.
-- **Deploy** — the provider can be used as a target for deploying blueprints and environments.
+- **Deploy** — the provider can be used as a target for deploying blueprints and launching deployments.
 
 The inventory surface aggregates health and distribution metrics across all providers so operators can quickly assess coverage, spot unhealthy connections, and understand which capabilities are active across the estate.
 

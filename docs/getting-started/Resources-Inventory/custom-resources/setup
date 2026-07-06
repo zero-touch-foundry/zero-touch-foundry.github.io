@@ -44,7 +44,7 @@ import pic1 from '/img/custom-resource-1.png';
 
 ## Create Resource Instances
 
-After defining resource types, create concrete instances that can be reserved by environments.
+After defining resource types, create concrete instances that can be reserved by deployments.
 
 ### Adding Resource Instances
 
@@ -111,7 +111,7 @@ grains:
 ### Test Resource Reservation
 
 1. Create a test blueprint with resource requirements
-2. Launch an environment using the blueprint
+2. Launch a deployment using the blueprint
 3. Verify resources are properly reserved
 4. Check that resource data is accessible in grains
 
@@ -157,7 +157,7 @@ grains:
 ### Monitoring Resource Usage
 
 1. **Resource Dashboard**: Monitor resource utilization and availability
-2. **Reservation History**: Track which environments reserved which resources
+2. **Reservation History**: Track which deployments reserved which resources
 3. **Capacity Planning**: Analyze usage patterns for capacity planning
 
 ## Next Steps
