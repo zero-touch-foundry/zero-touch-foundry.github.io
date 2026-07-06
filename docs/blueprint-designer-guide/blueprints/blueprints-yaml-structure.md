@@ -3,7 +3,7 @@ sidebar_position: 4
 title: Blueprint YAML Structure
 ---
 
-The Stack Automation's blueprint YAML is the main blueprint definition file. It contains general information about the environment as well as the grains that make up the environment's applications and services. The blueprint YAML is published to end-users in Stack Automation's blueprint catalog.
+The Stack Automation's blueprint YAML is the main blueprint definition file. It contains general information about the deployment as well as the grains that make up the deployment's applications and services. The blueprint YAML is published to end-users in Stack Automation's blueprint catalog.
 
 ## The Blueprint spec
 
@@ -15,7 +15,7 @@ spec_version: 2
 ```
 
 ### `description`
-The blueprint’s description is an optional but recommended field. Blueprint description will be presented in the Stack Automation's UI and API so users consuming environment will have more information about the blueprints to batter match their business need to the available set of blueprints published in the account catalog.
+The blueprint’s description is an optional but recommended field. Blueprint description will be presented in the Stack Automation's UI and API so users consuming the deployment will have more information about the blueprints to batter match their business need to the available set of blueprints published in the account catalog.
 
 
 ```yaml
@@ -50,21 +50,21 @@ instructions:
 
 
 ### `inputs`
-Blueprint designers can publish blueprint inputs to their end-users to add flexibility while launching a new environment from the blueprints, without altering the blueprint code itself. Input data can be later used in the blueprint to control orchestration, pass information to automation processes, and more.
+Blueprint designers can publish blueprint inputs to their end-users to add flexibility while launching a new deployment from the blueprints, without altering the blueprint code itself. Input data can be later used in the blueprint to control orchestration, pass information to automation processes, and more.
 
 The input definition is composed out of the following fields: 
 - The input name
 - ```description``` is presented to all users in the Stack Automation UI and API's (Optional)
 - ```type``` of the input. Options are:
   - ```string```
-  - ```agent``` allows the environment end-user to select the agent that will deploy the grain(s) from a dropdown list. By default, all agents are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the agents. For details, see [agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent).
+  - ```agent``` allows the deployment end-user to select the management server that will deploy the grain(s) from a dropdown list. By default, all management servers are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the management servers. For details, see [agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent).
   - ```parameter``` will take the input's allowed values from the parameter-store, from a parameter with the name ```parameter-name```. The parameter can be defined either in the account level or in the space level. If the parameter's value is built as a comma separated list, Stack Automation will convert them to a set of values and present it to the end-user as a drop down list of the values. See an example below. For more info about the parameter store, click [here](admin-guide/params.md).
-  - ```credentials``` allows the environment end-user to select the credentials that will be used to deploy the grain(s) from a dropdown list. By default, all credentials in the account are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the credentials, or use ```allowed-credential-providers``` to filter by credential provider type.
-  - ```file``` allows the environment end-user to upload one or more files from the launch form. The uploaded files are made available to the blueprint designer using the [`workspace-directories`](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#workspace-directories) section and the **env-storage** store - [See details below](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#file-input-type).
-  - ```input-source``` allows the environment end-user to select from a list of values provided by a dynamic source. The source is defined in the [`input-sources`](/admin-guide/input-sources) section.
+  - ```credentials``` allows the deployment end-user to select the credentials that will be used to deploy the grain(s) from a dropdown list. By default, all credentials in the account are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the credentials, or use ```allowed-credential-providers``` to filter by credential provider type.
+  - ```file``` allows the deployment end-user to upload one or more files from the launch form. The uploaded files are made available to the blueprint designer using the [`workspace-directories`](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#workspace-directories) section and the **env-storage** store - [See details below](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#file-input-type).
+  - ```input-source``` allows the deployment end-user to select from a list of values provided by a dynamic source. The source is defined in the [`input-sources`](/admin-guide/input-sources) section.
 - ```style``` (Optional): Defines how the input is presented to the user. For example:
   - ```radio``` displays the allowed values as radio buttons. This is useful for binary or mutually exclusive choices. The input `type` must be `string` when using this style.
-  - ```duration``` displays a duration input selector (such as environment duration selector). The duration time is in ISO 8601 format: `"P{days}DT{hours}H{minutes}M{seconds}S"`. For example:
+  - ```duration``` displays a duration input selector (such as deployment duration selector). The duration time is in ISO 8601 format: `"P{days}DT{hours}H{minutes}M{seconds}S"`. For example:
     - `P0DT2H3M4S` translates to 0 days, 2 hours, 3 minutes, and 4 seconds
     - `P1DT8H` translates to 1 day and 8 hours
     - `PT30M` translates to 30 minutes
@@ -112,11 +112,11 @@ For advanced input visibility control and organization, see the [customization](
         description: 'GPU types'
     ```
 - ```sensitive```: ```true``` masks the value behind asterisks in the UI and API. (Default is ```false```) 
-- ```default``` - (Optional) Value to be used in the Stack Automation UI and will be used in case no other value provided for the input. If a default value is not defined, the environment end-user will need to provide one when launching the environment.
-- ```allowed-values``` converts the input into a dropdown list, allowing the environment end-user to select the appropriate value. If a ```default``` is specified, it must be included in the allowed values list. 
-- ```quick``` is an optional boolean value. Setting it to "true" or omitting it will cause the input to be presented to the end user in the "quick links" section of the environment. Setting it to "false" means it will not appear in that section.
+- ```default``` - (Optional) Value to be used in the Stack Automation UI and will be used in case no other value provided for the input. If a default value is not defined, the deployment end-user will need to provide one when launching the deployment.
+- ```allowed-values``` converts the input into a dropdown list, allowing the deployment end-user to select the appropriate value. If a ```default``` is specified, it must be included in the allowed values list. 
+- ```quick``` is an optional boolean value. Setting it to "true" or omitting it will cause the input to be presented to the end user in the "quick links" section of the deployment. Setting it to "false" means it will not appear in that section.
 - ```searchable``` (Optional, ```input-source``` type with HTTP Server sources): When set to ```true```, the dropdown will wait for the user to type a search term instead of loading all values upfront. The search text can be passed to the source using ```{{ value }}``` in overrides.
-- ```pattern``` is an optional regular expression pattern that the input value must match. If provided, Stack Automation will validate the user input against this pattern during environment launch and prevent launching if the input does not conform to the specified pattern.
+- ```pattern``` is an optional regular expression pattern that the input value must match. If provided, Stack Automation will validate the user input against this pattern during deployment launch and prevent launching if the input does not conform to the specified pattern.
 - ```validation-description``` is an optional user-friendly message or description that will be shown to the user if the provided input value does not match the specified `pattern`. This helps provide better guidance to the user on the expected input format or constraints.
 - ```allowed-credential-providers``` (Optional, ```credentials``` type): Filters the credentials dropdown by provider type. Supported providers are: ```artifactory```, ```aws```, ```azure```, ```intersight```, ```nexus_dashboard```, ```nviae```, ```redhat```, and ```vsphere```. [See example below](#credentials-input-type).
 
@@ -132,7 +132,7 @@ For advanced input visibility control and organization, see the [customization](
       agent:
         type: agent
         allowed-values: [NY, Tokyo, London]
-        description: "Select your site's agent."
+        description: "Select your site's management server."
       email_address:
         type: string
         description: "Enter a valid email address"
@@ -229,7 +229,7 @@ grains:
 
 #### File Input Type
 
-The `file` input type allows users to upload files from the launch form. These files are made available to the blueprint designer using the [`workspace-directories`](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#workspace-directories) section and the `env-storage` store. This is useful for scenarios where the environment requires user-provided files (such as configuration, data, or scripts) at launch time.
+The `file` input type allows users to upload files from the launch form. These files are made available to the blueprint designer using the [`workspace-directories`](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#workspace-directories) section and the `env-storage` store. This is useful for scenarios where the deployment requires user-provided files (such as configuration, data, or scripts) at launch time.
 
 **File input fields:**
 - `type: file` (required)
@@ -272,13 +272,13 @@ grains:
 ```
 
 **How it works:**
-- The user uploads up to 2 `.txt` files (each up to 1MB) when launching the environment.
-- The files are made available in the environment as a workspace directory using the `env-storage` store and the input name.
+- The user uploads up to 2 `.txt` files (each up to 1MB) when launching the deployment.
+- The files are made available in the deployment as a workspace directory using the `env-storage` store and the input name.
 - The grain can access the uploaded files using the specified directory name (e.g., `$SOURCE_DIR`).
 
 
 ### `outputs`
-Outputs exposes information about your newly deployed environment and make it available for the environment's end-user or automation processes. Outputs will usually be available at the end of the environment's initialization and accessible throughout the environment lifecycle.
+Outputs exposes information about your newly created deployment and make it available for the deployment's end-user or automation processes. Outputs will usually be available at the end of the deployment's initialization and accessible throughout the deployment lifecycle.
 
 Outputs are a dictionary composed by the output name and the output value.
 
@@ -292,7 +292,7 @@ outputs:
     value: '{{ .grains.mysql.outputs.hostname }}'
 ```
 
-The ```quick: true``` attribute is optional and defaults to false. Setting it to `true` will cause the specific output to be presented in the __Quick Access__ section of the environment for ease of use.
+The ```quick: true``` attribute is optional and defaults to false. Setting it to `true` will cause the specific output to be presented in the __Quick Access__ section of the deployment for ease of use.
 
 :::info
 The example above includes some of the Stack Automation's YAML templating engine capabilities allowing the blueprint designer more flexibility and leads to less code that will require maintenance. More examples for templating will be described [Stack Automation Templating engine](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#torque-templating-engine).
@@ -323,7 +323,7 @@ grains:
 
 
 ### `grains`
-Grains are the basic building blocks of a blueprint utilizing infrastructure as code (IaC) assets or automation processes to orchestrate the desired environment. In many organization, the blueprint designers will have a predefined set of grains they can use in blueprints provided by the IT/Ops/DevOps or platform team. 
+Grains are the basic building blocks of a blueprint utilizing infrastructure as code (IaC) assets or automation processes to orchestrate the desired deployment. In many organization, the blueprint designers will have a predefined set of grains they can use in blueprints provided by the IT/Ops/DevOps or platform team. 
 
 The basic grain template is composed out of the grain name, kind, inputs and output. specific grains might support other features that are technology specific.
 
@@ -362,7 +362,7 @@ The following grains are available:
 
 ### `source`
 
-Sources are repositories storing IaC, CM or other configuration technology that will be utilized by Stack Automation to launch and operate an environment. Stack Automation supports multiple ways to define grain sources. 
+Sources are repositories storing IaC, CM or other configuration technology that will be utilized by Stack Automation to launch and operate a deployment. Stack Automation supports multiple ways to define grain sources. 
 Sources can be defined in the following ways:
 
 __1. Direct link to a source control folder__:
@@ -429,9 +429,9 @@ grains:
 
 ### `agent`
 
-The ```agent``` defines the agent that will deploy the grain. While different grains behave differently, it's important to choose the right agent for a grain to make sure authentication, networking and configuration is all properly configured. Different grains in the same blueprint can use different agents to allow maximum flexibility during the orchestration processes.
+The ```agent``` defines the management server that will deploy the grain. While different grains behave differently, it's important to choose the right management server for a grain to make sure authentication, networking and configuration is all properly configured. Different grains in the same blueprint can use different management servers to allow maximum flexibility during the orchestration processes.
 
-You can specify the agent in two ways:
+You can specify the management server in two ways:
 - Literally. For example:
 
 ```yaml 
@@ -444,7 +444,7 @@ grains:
         name: my-agent
  ``` 
 
-- Using an input of type "agent", which allows the environment end-user to select the agent to use from a dropdown list. For details, see the [blueprint yaml's inputs](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#inputs) section.
+- Using an input of type "agent", which allows the deployment end-user to select the management server to use from a dropdown list. For details, see the [blueprint yaml's inputs](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#inputs) section.
 
 ```yaml 
 grains:
@@ -456,19 +456,19 @@ grains:
  ```  
 
 :::info
-Agents gives the flexibility of deploying the same blueprints over different cloud accounts and cloud vendors. For example, the same blueprint can be utilized for Azure or GCP simply by exposing the agent as a blueprint input, from which the end-user to choose their preferred cloud provider, each represented with a different agent.
+Management servers give the flexibility of deploying the same blueprints over different cloud accounts and cloud vendors. For example, the same blueprint can be utilized for Azure or GCP simply by exposing the management server as a blueprint input, from which the end-user to choose their preferred cloud provider, each represented with a different management server.
 :::
 
-The agent's configuration must include:
+The management server's configuration must include:
 * **name** - the given name for the kubernetes cluster configured under the cloud account area where the grain will be executed.
 
 
-Optionally, the agent configuration may include:
-* **storage-size** - Set the size of storage allocated to this grain. The size is in MB. The size must be smaller than the overall storage size which was defined in the [agent settings](torque-agent/advanced-settings.md). If not defined, Stack Automation will use the default size. This is an advanced configuration option, it is recommended to consult with Stack Automation's support team before making a change.
-* **runner-namespace** - The namespace where the runner pod will be provisioned. If not defined, the runners will be provisioned in the default namespace defined in the agent level. This is an advanced configuration option, it is recommended to consult with Stack Automation's support team before making a change.
+Optionally, the management server configuration may include:
+* **storage-size** - Set the size of storage allocated to this grain. The size is in MB. The size must be smaller than the overall storage size which was defined in the [management server settings](torque-agent/advanced-settings.md). If not defined, Stack Automation will use the default size. This is an advanced configuration option, it is recommended to consult with Stack Automation's support team before making a change.
+* **runner-namespace** - The namespace where the runner pod will be provisioned. If not defined, the runners will be provisioned in the default namespace defined in the management server level. This is an advanced configuration option, it is recommended to consult with Stack Automation's support team before making a change.
 * **service-account** - The service-account name configured within the kubernetes cluster that will be used to execute the grain. A kubernetes 
-service account provides an identity for processes that run in a pod. If not specified, Stack Automation will use the default service account defined for the agent. The service account must be defined in the runner namespace.
-* **isolated** - A boolean value (`true` or `false`) indicating whether the grain should run in isolation on a runner. If not defined, the default is determined internally based on the configuration (e.g., if agent's storage class supports `ReadWriteMany`, the default is `false`).
+service account provides an identity for processes that run in a pod. If not specified, Stack Automation will use the default service account defined for the management server. The service account must be defined in the runner namespace.
+* **isolated** - A boolean value (`true` or `false`) indicating whether the grain should run in isolation on a runner. If not defined, the default is determined internally based on the configuration (e.g., if the management server's storage class supports `ReadWriteMany`, the default is `false`).
 
 ```yaml 
 grains:
@@ -683,13 +683,13 @@ This pattern keeps the blueprint readable while allowing optional branches and e
 
 ### `labels`
 
-The labels block in your blueprint YAML structure allows you to attach metadata to environments created from the blueprint. Each label is a key-value pair. 
+The labels block in your blueprint YAML structure allows you to attach metadata to deployments created from the blueprint. Each label is a key-value pair. 
 
-Labels can be static, like `key: value`, or dynamic, using input variables like `version: '{{ .inputs.version }}'`. In the dynamic case, the value of the label is determined by the value provided for the version input when the blueprint is used to create an environment. This enables customization of environments based on user-defined inputs.
+Labels can be static, like `key: value`, or dynamic, using input variables like `version: '{{ .inputs.version }}'`. In the dynamic case, the value of the label is determined by the value provided for the version input when the blueprint is used to create a deployment. This enables customization of deployments based on user-defined inputs.
 
 :::note
-1. The labels are applied to the environment, not the blueprint itself, and won't appear as part of the catalog item's metadata. 
-2. The environment labels will be merged with any blueprint labels already defined.
+1. The labels are applied to the deployment, not the blueprint itself, and won't appear as part of the catalog item's metadata. 
+2. The deployment labels will be merged with any blueprint labels already defined.
 :::
 
 
@@ -729,7 +729,7 @@ layout:
     - grain_name_2
 ```
 
-The **layout** element is where the blueprint references the layout that will be applied to environments created from it. To learn more, visit [layouts](blueprint-designer-guide/layouts/layouts.md)
+The **layout** element is where the blueprint references the layout that will be applied to deployments created from it. To learn more, visit [layouts](blueprint-designer-guide/layouts/layouts.md)
 
 The **exclude-from-layout** element is optional, use it in case you need to apply the layout only to part of the grains but not all of them.
 
@@ -756,7 +756,7 @@ grains: ...
 
 #### `self-service`
 
-Controls whether the blueprint is available for self-service deployment by end users. When set to `true`, users can deploy environments from this blueprint directly. When set to `false`, the blueprint may require additional approval or administrative intervention.
+Controls whether the blueprint is available for self-service deployment by end users. When set to `true`, users can launch deployments from this blueprint directly. When set to `false`, the blueprint may require additional approval or administrative intervention.
 
 ```yaml
 metadata:
@@ -1153,7 +1153,7 @@ In the below example the [downcase](https://shopify.github.io/liquid/filters/dow
 For details and examples of how to use the parameters from the parameter store inside blueprints, check [this article](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#parameters).
 
 ### Dynamic Attributes
-Blueprint designers might need extra details about the account, space or environment during the environment's orchestration. Stack Automation provides dynamic attributes which are pre-defined parameters blueprints designers can use. The currently supported dynamic attributes are:
+Blueprint designers might need extra details about the account, space or deployment during the deployment's orchestration. Stack Automation provides dynamic attributes which are pre-defined parameters blueprints designers can use. The currently supported dynamic attributes are:
 
 - `envId`
 - `blueprintName`
@@ -1177,7 +1177,7 @@ The dynamic attributes calculation is case insensitive so you can use either "en
 
 
 ### Parameters
-Stack Automation's [Parameters](/admin-guide/params) store allows admins to set pre-defined account/space-level parameters. Blueprint designers can use the parameters in the blueprint YAML, instead of inputs if they don't want the environment end-user to provide the value, but also don't want to hard-code it in the blueprint.
+Stack Automation's [Parameters](/admin-guide/params) store allows admins to set pre-defined account/space-level parameters. Blueprint designers can use the parameters in the blueprint YAML, instead of inputs if they don't want the deployment end-user to provide the value, but also don't want to hard-code it in the blueprint.
 
 The syntax is: ```{{ .params.param-value }}```
 
@@ -1302,7 +1302,7 @@ Artifactory is a popular binary repository manager that can store and manage var
 
 Using Artifactory as a binary repository in Stack Automation provides several benefits:
 
-1. **Centralized Artifact Management**: Artifactory acts as a centralized repository for all your binary artifacts, making it easier to manage and distribute them across multiple environments.
+1. **Centralized Artifact Management**: Artifactory acts as a centralized repository for all your binary artifacts, making it easier to manage and distribute them across multiple deployments.
 
 2. **Version Control**: Artifactory supports versioning and tagging of artifacts, allowing you to track changes and roll back to previous versions if needed.
 
@@ -1443,7 +1443,7 @@ customization:
 
 ### `launch-form`
 
-Controls the visibility and organization of input fields in the environment launch form. This enables conditional display of inputs and grouping of related inputs into categories for better user experience.
+Controls the visibility and organization of input fields in the deployment launch form. This enables conditional display of inputs and grouping of related inputs into categories for better user experience.
 
 #### Input-based Configuration
 

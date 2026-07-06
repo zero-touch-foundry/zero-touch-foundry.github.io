@@ -7,7 +7,7 @@ The Kubernetes grain allows you to deploy native Kubernetes manifests and manife
 
 ## Tools and technologies
 
-The following tools and technologies are installed out of the box on our agents in the Kubernetes pods and can be used when designing Kubernetes deployments:
+The following tools and technologies are installed out of the box on our management servers in the Kubernetes pods and can be used when designing Kubernetes deployments:
 
 * dotnet
 * curl
@@ -18,9 +18,9 @@ The following tools and technologies are installed out of the box on our agents 
 
 :::warning Important
 * The target namespace must exist in the cluster prior to deployment
-* The namespace must not be equal to the namespaces used by Stack Automation for agent deployments
+* The namespace must not be equal to the namespaces used by Stack Automation for management server deployments
 * Ensure the service account has sufficient permissions to create/read/delete everything in the manifest, including secrets and volumes
-* Currently, it is not possible to launch multiple concurrent environments from the same blueprint on the same namespace because the manifest resources are static and their names are not unique
+* Currently, it is not possible to launch multiple concurrent deployments from the same blueprint on the same namespace because the manifest resources are static and their names are not unique
 :::
 
 ## Usage example
@@ -92,7 +92,7 @@ Please see [the grain source](/blueprint-designer-guide/blueprints/blueprints-ya
 
 ### `agent`
 
-The agent executing the Kubernetes grain must have access to the target Kubernetes cluster and appropriate permissions to deploy resources in the specified namespace.
+The management server executing the Kubernetes grain must have access to the target Kubernetes cluster and appropriate permissions to deploy resources in the specified namespace.
 
 Please see [the grain agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent) for more details.
 
@@ -115,9 +115,9 @@ grains:
 ```
 
 :::info
-* Launching concurrent environments with a Kubernetes grain is not supported for the same namespace
-* Ensure the Stack Automation agent has permissions to use the target namespace
-* The namespace must not be equal to namespaces used by Stack Automation for agent deployments
+* Launching concurrent deployments with a Kubernetes grain is not supported for the same namespace
+* Ensure the Stack Automation management server has permissions to use the target namespace
+* The namespace must not be equal to namespaces used by Stack Automation for management server deployments
 :::
 
 ### `tags`

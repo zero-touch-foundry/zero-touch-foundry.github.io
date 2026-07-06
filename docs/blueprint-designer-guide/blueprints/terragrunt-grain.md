@@ -8,7 +8,7 @@ title: The Terragrunt Grain
 The Terragrunt grain is Stack Automation's native support for [Terragrunt](https://terragrunt.gruntwork.io/) modules. Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules and keeping your configurations DRY. Stack Automation allows designers to use Terragrunt-specific features to easily orchestrate self-developed and community Terragrunt modules in a standard way and share them as building blocks.
 
 ## Tools and technologies
-The following tools and technologies are installed out of the box on our agents in the Kubernetes pods and can be used when writing Terragrunt grain scripts (pre/post, etc.):
+The following tools and technologies are installed out of the box on our management servers in the Kubernetes pods and can be used when writing Terragrunt grain scripts (pre/post, etc.):
 
 - terragrunt
 - terraform
@@ -39,7 +39,7 @@ grains:
 ```
 
 ### `agent`
-Please see [the grain agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent) for more details. The agent block specifies the agent to use for executing the Terragrunt module. You can reference an input to dynamically specify the agent.
+Please see [the grain agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent) for more details. The agent block specifies the management server to use for executing the Terragrunt module. You can reference an input to dynamically specify the management server.
 
 ```yaml
 agent:

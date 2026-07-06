@@ -3,14 +3,14 @@ sidebar_position: 4
 title: Blueprint Families
 ---
 
-A **blueprint family** groups related blueprints together so catalog users can choose between variations of an environment from a single catalog entry. Instead of browsing multiple individual blueprints, a user selects the family and picks the right variation for their needs.
+A **blueprint family** groups related blueprints together so catalog users can choose between variations of a deployment from a single catalog entry. Instead of browsing multiple individual blueprints, a user selects the family and picks the right variation for their needs.
 
 ## When to use families
 
-Families work well when you have multiple blueprints that represent different implementations of the same environment type. Common examples:
+Families work well when you have multiple blueprints that represent different implementations of the same deployment type. Common examples:
 
 - **Multi-cloud deployments** — the same application stack deployed to AWS, Azure, or GCP, where each variation has its own inputs and cloud-specific infrastructure
-- **Environment tiers** — dev, staging, and production flavors of the same application, or small/medium/large resource configurations
+- **Deployment tiers** — dev, staging, and production flavors of the same application, or small/medium/large resource configurations
 
 Grouping these under one family keeps the catalog clean and surfaces the right options at launch time without cluttering the catalog with near-duplicate entries.
 
@@ -18,7 +18,7 @@ Grouping these under one family keeps the catalog clean and surfaces the right o
 
 A family is itself a valid blueprint file. It lives in the same `blueprints` folder as your other blueprints (or any folder with a `.blueprints` marker). When published to the catalog, it appears alongside regular blueprints.
 
-The family YAML does not contain grains. Instead, it defines a `family` section that lists its **member blueprints** by name. Each member points to a blueprint YAML file in your repository. Members can have entirely different inputs, grains, and target infrastructure — they only need to represent the same logical environment. 
+The family YAML does not contain grains. Instead, it defines a `family` section that lists its **member blueprints** by name. Each member points to a blueprint YAML file in your repository. Members can have entirely different inputs, grains, and target infrastructure — they only need to represent the same logical deployment. 
 
 :::tip
 Once a blueprint becomes a family member, consider unpublishing it as a standalone blueprint. If left published, it will appear twice in the catalog — once on its own and once inside the family.
@@ -32,7 +32,7 @@ spec_version: 2
 description: A blueprint family
 
 metadata:
-  display-name: My App Environments
+  display-name: My App Deployments
   icon: 
     path: graphics/myicon.png
   self-service: true
@@ -41,7 +41,7 @@ metadata:
       value: 'platform'
 
 instructions:
-  text: "Select the environment tier that matches your needs."
+  text: "Select the deployment tier that matches your needs."
 
 family:
   members:

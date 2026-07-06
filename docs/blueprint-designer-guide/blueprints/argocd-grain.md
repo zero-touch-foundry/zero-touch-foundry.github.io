@@ -15,7 +15,7 @@ The following fields are required:
 - **Engine Description**: (Optional) A description for easy identification.
 - **Server URL**: The URL of your ArgoCD server (e.g., `https://argocd.example.com`).
 - **Token**: The authentication token for accessing the ArgoCD API.
-- **Discovery Agent**: The Stack Automation agent responsible for ongoing monitoring of tracked applications.
+- **Discovery Agent**: The Stack Automation management server responsible for ongoing monitoring of tracked applications.
 - **Polling Interval (seconds)**: How often Stack Automation polls ArgoCD for application status and health.
 
 ### Obtaining the ArgoCD Token
@@ -42,7 +42,7 @@ The ArgoCD grain is often used in conjunction with the [Helm grain](/blueprint-d
 ### 2. Capture and Extend Workloads
 
 - Use the ArgoCD grain to capture existing app workloads.
-- Add more resources to the environment by chaining additional grains or blueprints, such as ingress configuration, secrets injection, or monitoring.
+- Add more resources to the deployment by chaining additional grains or blueprints, such as ingress configuration, secrets injection, or monitoring.
 
 **Example Blueprint Sequence:**
 ```
@@ -52,7 +52,7 @@ argo-app (ArgoCD grain)
    -> monitoring (Helm/ArgoCD grain)
 ```
 
-This approach allows you to build complex, multi-step environments where ArgoCD manages the core application, and Stack Automation blueprints extend and enhance the deployment with additional resources and integrations.
+This approach allows you to build complex, multi-step deployments where ArgoCD manages the core application, and Stack Automation blueprints extend and enhance the deployment with additional resources and integrations.
 
 
 ## Usage example

@@ -3,11 +3,11 @@ sidebar_position: 16
 title: The Shell Grain
 ---
 
-The Shell grain is an asset-agnostic grain that allows you to run bash/python3 commands as part of your environment's launch and/or teardown.The commands section allows to execute bash/python3 code or files stored in one of the space's repositories as part of the launch and/or end of the environment. The Shell grain has two command types - `deploy` for running code at the launch of the environment, and `destroy` for running code as part of the environment's teardown.It's useful if you need to prepare or clean up your environment's cloud infrastructure as part of the deployment. For example, you could use this grain to run "datree" validations on a Kubernetes grain's asset, or perhaps back up/clone a DB before environment deployment.
+The Shell grain is an asset-agnostic grain that allows you to run bash/python3 commands as part of your deployment's launch and/or teardown.The commands section allows to execute bash/python3 code or files stored in one of the space's repositories as part of the launch and/or end of the deployment. The Shell grain has two command types - `deploy` for running code at the launch of the deployment, and `destroy` for running code as part of the deployment's teardown.It's useful if you need to prepare or clean up your deployment's cloud infrastructure as part of the deployment. For example, you could use this grain to run "datree" validations on a Kubernetes grain's asset, or perhaps back up/clone a DB before deployment.
 
 ## Tools and Technologies
 
-The following tools and technologies are installed out of the box on our agents in the Kubernetes pods and can be used when writing grain scripts:
+The following tools and technologies are installed out of the box on our management servers in the Kubernetes pods and can be used when writing grain scripts:
 
 * dotnet
 * python3
@@ -22,7 +22,7 @@ The following tools and technologies are installed out of the box on our agents 
 * awscli
 
 
-The Shell grain is an asset-agnostic grain that allows you to run bash/python3 commands as part of your environment’s launch and/or teardown. It’s useful if you need to prepare or clean up your environment’s cloud infrastructure as part of the deployment. For example, you could use this grain to run "datree" validations on a Kubernetes grain’s asset, or perhaps back up/clone a DB before environment deployment.
+The Shell grain is an asset-agnostic grain that allows you to run bash/python3 commands as part of your deployment's launch and/or teardown. It's useful if you need to prepare or clean up your deployment's cloud infrastructure as part of the deployment. For example, you could use this grain to run "datree" validations on a Kubernetes grain's asset, or perhaps back up/clone a DB before deployment.
 
 ## Usage Examples
 
@@ -297,11 +297,11 @@ cluster_id=cluster-production-xyz789
 
 ### `activities`
 
-The `activities` section defines the lifecycle hooks for the shell grain. It contains the actual commands to be executed during different phases of the environment lifecycle.
+The `activities` section defines the lifecycle hooks for the shell grain. It contains the actual commands to be executed during different phases of the deployment lifecycle.
 
 #### `deploy`
 
-The `deploy` activity contains commands that are executed during the environment launch phase. This is where you place initialization scripts, setup commands, or any operations needed to prepare your environment.
+The `deploy` activity contains commands that are executed during the deployment launch phase. This is where you place initialization scripts, setup commands, or any operations needed to prepare your deployment.
 
 ```yaml
 grains:
@@ -324,7 +324,7 @@ grains:
 
 #### `destroy`
 
-The `destroy` activity contains commands that are executed during the environment teardown phase. This is where you place cleanup scripts, backup operations, or any operations needed to properly clean up your environment.
+The `destroy` activity contains commands that are executed during the deployment teardown phase. This is where you place cleanup scripts, backup operations, or any operations needed to properly clean up your deployment.
 
 ```yaml
 grains:
@@ -388,7 +388,7 @@ Files referenced in the `files` section are downloaded to the working directory 
 :::
 
 ### `commands`
-The commands section allows to execute bash/python3 code or files stored in one of the space's repositories as part of the launch and/or end of the environment. The Shell grain has two command types - __deploy__ for running code at the launch of the environment, and __destroy__ for running code as part of the environment’s teardown. 
+The commands section allows to execute bash/python3 code or files stored in one of the space's repositories as part of the launch and/or end of the deployment. The Shell grain has two command types - __deploy__ for running code at the launch of the deployment, and __destroy__ for running code as part of the deployment's teardown. 
 
 ```yaml
 grains:

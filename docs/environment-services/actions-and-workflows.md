@@ -54,7 +54,7 @@ Stack Automation provides a built-in set of **actions** you can run on specific 
 
 ## Workflows
 
-**Workflows** take actions to the next level by providing scheduled automations that run on all resources of the same type in an deployment.
+**Workflows** take actions to the next level by providing scheduled automations that run on all resources of the same type in a deployment.
 
 ### Common Workflow Examples
 

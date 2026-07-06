@@ -3,7 +3,7 @@ sidebar_position: 18
 title: Scheduled Deployments
 ---
 
-Scheduled deployments in Stack Automation allow users to plan and automate deployment deployments for future time slots. This capability is particularly valuable for organizations that need to coordinate resource usage, plan maintenance windows, or ensure deployments are available at specific times for testing, demos, or development activities.
+Scheduled deployments in Stack Automation allow users to plan and automate deployment launches for future time slots. This capability is particularly valuable for organizations that need to coordinate resource usage, plan maintenance windows, or ensure deployments are available at specific times for testing, demos, or development activities.
 
 ## Overview
 

@@ -9,7 +9,7 @@ The Deployment Publishing feature provides infrastructure teams with the capabil
 
 ## Concept
 
-Deployment Publishing establishes a mechanism to designate an deployment as "published," thereby rendering it accessible for reuse across different spaces or within the same space. Published deployments can function as foundational inputs for the deployment of other deployments, thus promoting a cohesive integration among interdependent deployments.
+Deployment Publishing establishes a mechanism to designate a deployment as "published," thereby rendering it accessible for reuse across different spaces or within the same space. Published deployments can function as foundational inputs for the deployment of other deployments, thus promoting a cohesive integration among interdependent deployments.
 
 ### Key Concepts
 - **Lifecycle Management**: While published deployments retain independent lifecycle governance, they remain accessible as inputs for use in other deployments, supporting a structured approach to lifecycle dependencies.
@@ -20,11 +20,11 @@ Deployment Publishing establishes a mechanism to designate an deployment as "pub
 
 ## Usage
 
-### Publishing an Deployment
+### Publishing a Deployment
 
-To publish an deployment:
+To publish a deployment:
 
-1. Utilize the API or the user interface (UI) to designate an deployment as published.
+1. Utilize the API or the user interface (UI) to designate a deployment as published.
 2. Configure the accessibility scope:
    - **All Spaces**: Grants access to the deployment across all spaces within the account.
    - **Specific Spaces**: Restricts access solely to the designated spaces.
@@ -32,16 +32,16 @@ To publish an deployment:
 4. Ensure that the deployment is in either the "Active" or "Updating" state before publishing, as only deployments in these states can be published.
 
 :::info
-When an deployment is published, it is automatically available within its source space. Additional spaces may be specified as required.
+When a deployment is published, it is automatically available within its source space. Additional spaces may be specified as required.
 :::
 
 import pic1 from '/img/env-pub-usage.png';
 
 > <img src={pic1} alt="env-pub-usage" style={{width: 400}} />
 
-### Unpublishing an Deployment
+### Unpublishing a Deployment
 
-- Utilize the dedicated API or UI to unpublish an deployment.
+- Utilize the dedicated API or UI to unpublish a deployment.
 - If the deployment maintains active connections to other deployments, a warning will be issued; however, the unpublishing operation will still proceed.
 - Deployments are automatically unpublished upon their termination.
 

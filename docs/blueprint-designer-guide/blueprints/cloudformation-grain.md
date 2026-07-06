@@ -159,7 +159,7 @@ grains:
 ```
 
 :::info
-The service account needs to be annotated by an AWS role ARN to be assumed by Stack Automation. If not provided, Stack Automation will try to use the default service account of the agent.
+The service account needs to be annotated by an AWS role ARN to be assumed by Stack Automation. If not provided, Stack Automation will try to use the default service account of the management server.
 :::
 
 ### `template-storage`

@@ -26,7 +26,7 @@ layout:
     - grain_name_2
 ```
 
-- The **layout** element is where the blueprint references the layout that will be applied to environments created from it.
+- The **layout** element is where the blueprint references the layout that will be applied to deployments created from it.
   - *source* is similar to the source element in the blueprint yaml. See [source](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#source) for more details.
 
 - The **exclude-from-layout** element is optional, use it in case you need to apply the layout only to part of the grains but not all of them.

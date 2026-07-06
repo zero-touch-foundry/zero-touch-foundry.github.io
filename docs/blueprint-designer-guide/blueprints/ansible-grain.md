@@ -7,7 +7,7 @@ The Ansible grain is Stack Automation’s native support for orchestrating the e
 
 ## Tools and technologies
 
-The following tools and technologies are installed out of the box on our agents in the Kubernetes pods and can be used when designing ansible playbook execution:
+The following tools and technologies are installed out of the box on our management servers in the Kubernetes pods and can be used when designing ansible playbook execution:
 
 * dotnet
 * git

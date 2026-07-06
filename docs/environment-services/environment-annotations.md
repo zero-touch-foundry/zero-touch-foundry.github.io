@@ -13,9 +13,9 @@ Thank you for your understanding and support.
 
 ## __Deployment Annotations: What They Are and How you can leverage them to optimize processes__
 
-Deployment annotations are labels or metadata that can be added to deployments to provide additional information about them. Annotations can be used to define the purpose, status, or configuration of an deployment, as well as to track changes or updates.
+Deployment annotations are labels or metadata that can be added to deployments to provide additional information about them. Annotations can be used to define the purpose, status, or configuration of a deployment, as well as to track changes or updates.
 
-Annotations in Stack Automation are key-value pairs that can be added to an deployment or resource using a specific syntax or format. They can be used to add descriptive information, such as the description of an deployment, or to provide dynamic updates, such as the current status of a deployment or the results of a test.
+Annotations in Stack Automation are key-value pairs that can be added to a deployment or resource using a specific syntax or format. They can be used to add descriptive information, such as the description of a deployment, or to provide dynamic updates, such as the current status of a deployment or the results of a test.
 
 Annotations can help teams manage and organize deployments in Stack Automation by providing an easy way to track and communicate important information about them. For example, annotations can be used to indicate the power-state status of virtual machines in the deployment. 
 
@@ -23,7 +23,7 @@ Deployment annotations are a powerful tool for managing and organizing deploymen
 
 > ![Locale Dropdown](/img/annotations.png)
 
-## __To create an deployment annotation:__
+## __To create a deployment annotation:__
 
 Since deployment annotations are __dynamic__ attributes of the deployments, Stack Automation uses __rego__ files and the policy engine to evaluate the annotation upon any chance in the deployment. 
 

@@ -4,11 +4,11 @@ title: Blueprint Design
 ---
 
 ## What is a Stack Automation blueprint?
-A blueprint is a template for provisioning an environment that contains references to different IaC Components ("Grains") that together define the applications, cloud infrastructure, networking and policies that make up a specific environment to be deployed. Blueprints are stored as source-controlled YAML files, and each grain in a blueprint is a reference to one IaC or automation file (for example, a Terraform module or a Helm chart) that will be deployed as part of the environment, and the component's designated inputs, outputs and execution information. 
+A blueprint is a template for provisioning a deployment that contains references to different IaC Components ("Grains") that together define the applications, cloud infrastructure, networking and policies that make up a specific deployment. Blueprints are stored as source-controlled YAML files, and each grain in a blueprint is a reference to one IaC or automation file (for example, a Terraform module or a Helm chart) that will be deployed as part of the deployment, and the component's designated inputs, outputs and execution information. 
 
-A blueprint also contains the orchestration between the grains (provisioning order and dependencies, shared parameter storage, environment duration policies, tag values, etc.), and when launched, deploys a whole environment, from the infrastructure layer to the application itself. 
+A blueprint also contains the orchestration between the grains (provisioning order and dependencies, shared parameter storage, deployment duration policies, tag values, etc.), and when launched, deploys a whole stack, from the infrastructure layer to the application itself. 
 
-You can have Stack Automation discover (i.e. generate) blueprints out of your existing Terraform, Helm, CloudFormation, or other supported IaC assets, or you can develop more sophisticated blueprints that deploy a complex environment comprising multiple grains and/or nested blueprints.
+You can have Stack Automation discover (i.e. generate) blueprints out of your existing Terraform, Helm, CloudFormation, or other supported IaC assets, or you can develop more sophisticated blueprints that deploy a complex deployment comprising multiple grains and/or nested blueprints.
 
 ## Option A: Let Stack Automation generate blueprints from your assets
 When developing a new blueprint, Stack Automation provides you with the ability to automatically discover the different IaC and Automation assets in your connected source control repository, and generate a blueprint for a single asset (or generate multiple single-asset blueprints in one go). 
@@ -31,16 +31,16 @@ import pic2 from '/img/select-assets.png';
  
 Stack Automation creates a blueprint YAML for each selected asset, and lists the blueprints in your space’s __Blueprints__ page. 
   
-3. You can click the blueprint to open it in the embedded VSCode editor. In this editor you can view the blueprint's contents, modify it, preview changes after modification, save the changes, and launch an environment from the blueprint.
+3. You can click the blueprint to open it in the embedded VSCode editor. In this editor you can view the blueprint's contents, modify it, preview changes after modification, save the changes, and launch a deployment from the blueprint.
 
 4. (Optional) You can set the blueprint's max duration policy, default duration, attach labels and colors to visually group blueprints according to shared  characteristics, or set the blueprint's tag values.
 
 5. __Publish__ the blueprints to your space's catalog and you’re good to go.
 
-You and your space’s users can now launch environments from these blueprints via the **Catalog**. 
+You and your space’s users can now launch deployments from these blueprints via the **Catalog**. 
 
 ## Option B: Create a multi-asset blueprint in your source control repository
-So far, we’ve learned how to create single-asset blueprints via auto-generation. But what if you want to create an application-stack environment? This is easily done by having multiple grains in a single blueprint or nesting an existing blueprint within a master blueprint as a grain. To create such a blueprint, you will need an IDE environment that has access to a clone of your repository, in which you can create the new blueprint's YAML file and edit it, and then commit it into your repository and push the changes to the remote repository from which Stack Automation will automatically synchronize the new blueprint.
+So far, we’ve learned how to create single-asset blueprints via auto-generation. But what if you want to create an application-stack deployment? This is easily done by having multiple grains in a single blueprint or nesting an existing blueprint within a master blueprint as a grain. To create such a blueprint, you will need an IDE environment that has access to a clone of your repository, in which you can create the new blueprint's YAML file and edit it, and then commit it into your repository and push the changes to the remote repository from which Stack Automation will automatically synchronize the new blueprint.
 
 By enforcing usage of a source control repository, each blueprint in Stack Automation will have:
 * A full history of tracked changes
@@ -56,7 +56,7 @@ __To create a multi-asset blueprint:__
 2. Download the blueprint as a file from Stack Automation.
   > ![Locale Dropdown](/img/download_blueprint-yaml.png)
 3. Save the file in the "/blueprints" folder in your cloned repository (create it if it doesn't exist) and rename it to the name of the new blueprint.
-4. Modify the grain type and spec to reflect the new component of your environment. For example:
+4. Modify the grain type and spec to reflect the new component of your deployment. For example:
   
 ```yaml
 grains:
@@ -73,12 +73,12 @@ grains:
    * Use the sample structure for that grain type in the corresponding page in [The Blueprint YAML](/blueprint-designer-guide/blueprints/blueprints-overview).
 6. If grains depend on each other, add a ```depends-on``` section to the grain (in the top level, next to ```kind:``` and ```spec:```) and provide the names of the dependent grains in a comma-separated list. 
 7. Once a grain depends on another grain, the output values from that grain can be used as values for any of the grain's inputs or attributes using the syntax ```{{ .grains.grain_name.outputs.output_name}}```, see the examples below. 
-8. Customize the ```inputs``` and ```outputs``` sections of the blueprint to contain only the relevant inputs that the entire environment needs, and to reflect the outputs from the grains that you would like to make available to the environment's end-user.
+8. Customize the ```inputs``` and ```outputs``` sections of the blueprint to contain only the relevant inputs that the entire deployment needs, and to reflect the outputs from the grains that you would like to make available to the deployment's end-user.
 
 ## Removing a blueprint
 As mentioned above, there are two types of blueprints, auto-generated blueprints (stored in Stack Automation) and source-controlled blueprints (stored in your repository). 
 
-* To delete a stored-in-torque Blueprint, in the **Blueprints** tab, click on the Blueprint and then click the __Delete__ button on the top right corner.
+* To delete a stored-in-Stack-Automation Blueprint, in the **Blueprints** tab, click on the Blueprint and then click the __Delete__ button on the top right corner.
 * To delete a "repository" Blueprint, simply delete the blueprint file from the repository's branch that the Stack Automation space is connected to.
 
 ## Example multi-grain blueprint 1: Helm Application with MySQL and S3 Deployed by Terraform

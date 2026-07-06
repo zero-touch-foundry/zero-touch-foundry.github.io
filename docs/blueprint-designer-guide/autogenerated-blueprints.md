@@ -11,17 +11,17 @@ Stack Automation auto-generated blueprints based on your assets (Terraform modul
 - **spec_version** should not be changed. 
 - **description** may be changed to a better description for your blueprint.
 - **inputs**: Stack Automation generates the inputs based on the inputs in your module. The blueprint inputs are presented to the end user when they launch the blueprint, so they can fill out the inputs and/or override any defaults. These inputs will be the module's inputs upon deployment. 
-Remove any inputs you don't want to expose in the deployed environment.
+Remove any inputs you don't want to expose in the deployment.
 
 ### Terraform-specific fields
 
 Stack Automation currently supports only simple types as blueprint inputs for Terraform (string, boolean and numbers). The inputs that have been auto-generated for you are all "simple type" inputs from your module.
 
 ### agent
-- **agent**: The kubernetes execution agent that will deploy the environment.
+- **agent**: The kubernetes execution management server that will run the deployment.
 
-- **outputs**: Stack Automation generates the outputs based on the outputs of your module. The blueprint's outputs are presented to the end user when they are ready (in the deployed environment). 
-Remove any outputs you don't want to expose when the environment is deployed.
+- **outputs**: Stack Automation generates the outputs based on the outputs of your module. The blueprint's outputs are presented to the end user when they are ready (in the deployment). 
+Remove any outputs you don't want to expose when the deployment is created.
 - **tf-version**: The terraform version to be used to deploy the module. Change it according to your needs. 
 
 ### Helm auto-generated blueprints
@@ -50,7 +50,7 @@ If you have dependencies, add the command `dep up`.
 
 ### Editing auto-generated blueprints
 
-In this section, we'll learn how to edit our auto-generated blueprints in Stack Automation. While Stack Automation conveniently auto-generated blueprints out of your assets, these blueprints may be missing some minor details, like the cluster namespace and execution agent to use, Terraform version, Helm commands to run, etc.
+In this section, we'll learn how to edit our auto-generated blueprints in Stack Automation. While Stack Automation conveniently auto-generated blueprints out of your assets, these blueprints may be missing some minor details, like the cluster namespace and execution management server to use, Terraform version, Helm commands to run, etc.
 
 :::tip __Note__
 Stack Automation only saves the latest version. So if you need versioning, you're welcome to add the modified blueprint to your __/blueprints__ repository.
