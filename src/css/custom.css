@@ -92,8 +92,7 @@ body {
   background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid var(--site-border);
   box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
-  backdrop-filter: blur(18px);
-}
+} 
 
 .navbar__brand {
   gap: 0.875rem;
@@ -108,7 +107,7 @@ body {
 .navbar__link {
   font-weight: 600;
   color: var(--site-text);
-}
+} 
 
 .header-link {
   border: 1px solid transparent;
