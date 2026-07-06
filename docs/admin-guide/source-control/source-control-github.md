@@ -3,11 +3,11 @@ sidebar_position: 1
 title: GitHub Source Control
 ---
 
-Stack Automation supports connecting asset/blueprint repositories on GitHub out of the box. However, to connect a repository, you must have access to the repository and grant Stack Automation permission to the repository's organization, as explained below. For details about connecting a repository, see [Discover Your Assets](/getting-started/asset-discovery). You should be able to sign in with an account on any one of these online services and immediately get going with connecting asset repositories and launching environments.
+Stack Automation supports connecting asset/blueprint repositories on GitHub out of the box. However, to connect a repository, you must have access to the repository and grant Stack Automation permission to the repository's organization, as explained below. For details about connecting a repository, see [Discover Your Assets](/getting-started/asset-discovery). You should be able to sign in with an account on any one of these online services and immediately get going with connecting asset repositories and launching deployments.
 
 **In this article:**
 - [Ensure your account is added to the GitHub organization you're connecting](#ensure-your-account-is-added-to-the-github-organization-youre-connecting)
-- [Ensure your organization has granted access to Stack Automation](#ensure-your-organization-has-granted-access-to-torque)
+- [Ensure your organization has granted access to Stack Automation](#ensure-your-organization-has-granted-access-to-stack-automation)
 - [Token expiration and revocation](#token-expiration-and-revocation)
 
 **This article refers to the SAAS version of GitHub (github.com). If you're using self hosted GitHub Enterprise, check [here](/admin-guide/source-control/Self%20Hosted%20Repositories/overview)**.
@@ -33,7 +33,7 @@ When connecting a repository, Stack Automation installs an OAuth app called __St
 
   5. Enter your account's password and confirm the action. 
      * If you're not an administrator in the organization, ask the administrator to grant access to the app in the [GitHub Applications](https://github.com/settings/applications) page. 
-     * If you already authorized the __Torque Control Plane__ app without also granting access to an organization with repositories you want to connect, click the app's name in the GitHub Applications page, and in the __Organization access__ section, click the organization's __Request__ button.
+     * If you already authorized the __Stack Automation Control Plane__ app without also granting access to an organization with repositories you want to connect, click the app's name in the GitHub Applications page, and in the __Organization access__ section, click the organization's __Request__ button.
      > ![Locale Dropdown](/img/request-org-access.png)
   
   The Stack Automation app is granted the necessary permissions and the repository is connected.

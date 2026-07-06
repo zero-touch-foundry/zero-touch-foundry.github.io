@@ -7,7 +7,7 @@ title: Input Sources
 
 ## Overview
 The **Input Sources** feature is a significant enhancement for Stack Automation users, providing a more dynamic and flexible way to retrieve and manage input values from external data sources. Whether you're dealing with multiple S3 buckets or preparing for future integrations with other external sources, this feature streamlines your workflow and ensures your configurations are always up-to-date.  
-During the launch environment process, this feature simplifies the handling of multiple data sources by using a single configuration template, and allowing real-time listing of S3 bucket objects.
+During the launch deployment process, this feature simplifies the handling of multiple data sources by using a single configuration template, and allowing real-time listing of S3 bucket objects.
 
 ## Key Benefits
 * **Real-Time Data Access:** Retrieve up-to-date values from external sources such as S3 buckets or HTTP servers, ensuring that your configurations are always in sync with the latest data.
@@ -93,7 +93,7 @@ Below is an example SVG diagram illustrating the architecture for using an HTTP 
 
 | Field                | Description                                                                 | Allow Overrides |
 |----------------------|-----------------------------------------------------------------------------|-----------------|
-| Agent                | Agent to proxy all calls through                                            | No              |
+| Management Server    | Management Server to proxy all calls through                               | No              |
 | Authority            | URL of your HTTP server (protocol & hostname)                               | No              |
 | Path                 | (Optional) API path of your HTTP server                                     | No              |
 | Query                | (Optional) Query string for your HTTP server                                | No              |
@@ -175,7 +175,7 @@ Modifying or deleting an Input Source may cause blueprints that use the Input So
    - Shared Spaces  
 
 2. **HTTP Server Input Source Setup:**  
-   - Agent  
+   - Management Server  
    - Authority  
    - Path (optional)  
    - Query (optional)  
@@ -200,7 +200,7 @@ To use an input source in a blueprint:
 1. **Define the Input:** In your blueprint YAML, define an input with the type `input-source`.
 2. **Reference the Source:** Use the `source-name` attribute to reference the created input source.
 3. **Specify Dependencies (if any):** Use the `depends-on` and `overrides` attributes to manage dynamic dependencies, such as bucket names or object keys.
-4. **Retrieve and Use Values:** The blueprint will now dynamically retrieve and display the values from the specified input source when launching the environment.
+4. **Retrieve and Use Values:** The blueprint will now dynamically retrieve and display the values from the specified input source when launching the deployment.
 
 **Example YAML snippet** (S3):
 

@@ -2,14 +2,14 @@
 sidebar_position: 1
 title: Using Self-Managed source control providers
 ---
-Stack Automation can integrate with any source control provider, whether it's a public SaaS platform (e.g., github.com) or a self-managed instance running on your premises. When using a self-managed source control provider, the communication between Stack Automation and the source control server is fully contained within your site, happening between the Stack Automation agent installed on your cluster and the source control server installed on your premises.
+Stack Automation can integrate with any source control provider, whether it's a public SaaS platform (e.g., github.com) or a self-managed instance running on your premises. When using a self-managed source control provider, the communication between Stack Automation and the source control server is fully contained within your site, happening between the Stack Automation management server installed on your cluster and the source control server installed on your premises.
 
 > ![Self-Hosted Repositories](/img/self-hosted-repos.png)
 
 
 There are three steps when configuring Stack Automation to read from a self-hosted source control provider:
 
-1. **Install an Agent**
+1. **Install a Management Server**
 2. **Generate a Personal Access Token**
 3. **Add your repositories to Stack Automation** (Can be done from the Stack Automation UI, API, or Stack Automation Terraform Provider)
 

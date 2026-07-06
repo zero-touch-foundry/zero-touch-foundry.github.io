@@ -3,7 +3,7 @@ sidebar_position: 15
 title: Notifications
 ---
 
-Stack Automation Notifications enable space admins to define notifications for environment lifecycle events and environment owner/collaborator changes. The notifications will be sent to your email address, Teams or Slack chats, or the automation tool of your choice. You can define multiple notifications for different communication tools and for different channels in the same communication tool. 
+Stack Automation Notifications enable space admins to define notifications for deployment lifecycle events and deployment owner/collaborator changes. The notifications will be sent to your email address, Teams or Slack chats, or the automation tool of your choice. You can define multiple notifications for different communication tools and for different channels in the same communication tool. 
 
 Supported events:
 

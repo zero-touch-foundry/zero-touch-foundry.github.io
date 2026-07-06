@@ -4,14 +4,14 @@ title: Supported Platforms
 ---
 
 ## Cloud and Infrastructure Providers
-Stack Automation supports installation of an agent over the following platforms:
+Stack Automation supports installation of a Management Server over the following platforms:
 
 * Microsoft Azure via [Azure Kubernetes Service](https://azure.microsoft.com/en-us/products/kubernetes-service) (AKS) 
 * Amazon Web Services (AWS) via [Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS)
 * Google Cloud Platform (GCP) via [GCP Kubernetes Engine](https://cloud.google.com/kubernetes-engine) (GKE)
 * Oracle Cloud Infrastructure (OCI) via [OCI Kubernetes Engine](https://www.oracle.com/cloud/cloud-native/container-engine-kubernetes/) (OKE)
 * Self-managed Kubernetes Cluster
-* Docker-based agent on VMWare vCenter
+* Docker-based Management Server on VMWare vCenter
 
 ## Infrastructure as Code Frameworks
 Stack Automation provides native support for IaC assets residing in a git repository. When connecting an IaC asset repository to Stack Automation, Stack Automation maps your repository's assets, prompts you to select the ones you would like to use in Stack Automation, and auto-creates working blueprints out of the selected assets. Additionally, Stack Automation allows you to insert custom Linux-script based automation as a component of a blueprint.

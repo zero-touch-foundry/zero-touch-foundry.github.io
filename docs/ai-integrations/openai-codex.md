@@ -2,7 +2,7 @@
 
 **OpenAI Codex** is a terminal-based coding agent (available as a CLI and an IDE
 extension). Connecting it to Stack Automation registers the Stack Automation MCP server as
-a tool Codex can call, so you can query and drive your environments from the same terminal
+a tool Codex can call, so you can query and drive your deployments from the same terminal
 where you write code.
 
 Setup is a short install script plus one environment variable for your token.
@@ -56,11 +56,11 @@ routes them to the `stack-automation` MCP server.
 
 - "Launch the `terraform-vpc` blueprint in the `staging` space."
 - "Show the outputs of my most recent deployment."
-- "Tear down the environment named `pr-1423-preview`."
+- "Tear down the deployment named `pr-1423-preview`."
 - "Generate a Terraform module and then deploy it as a blueprint in Stack Automation."
 
 Combining Codex's code generation with Stack Automation deployment lets you go from
-Infrastructure-as-Code to a running environment in a single conversation.
+Infrastructure-as-Code to a running deployment in a single conversation.
 
 ## Troubleshooting
 

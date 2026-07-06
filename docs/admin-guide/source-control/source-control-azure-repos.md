@@ -3,12 +3,12 @@ sidebar_position: 3
 title: Azure Repos Source Control
 ---
 
-Stack Automation supports connecting asset/blueprint repositories on Azure Repos out of the box. However, to connect a repository, you must have access to the repository and grant Stack Automation permission to the repository's organization, as explained below. For details about connecting a repository, see [Discover Your Assets](/getting-started/asset-discovery). You should be able to sign in with an account on any one of these online services and immediately get going with connecting asset repositories and launching environments.
+Stack Automation supports connecting asset/blueprint repositories on Azure Repos out of the box. However, to connect a repository, you must have access to the repository and grant Stack Automation permission to the repository's organization, as explained below. For details about connecting a repository, see [Discover Your Assets](/getting-started/asset-discovery). You should be able to sign in with an account on any one of these online services and immediately get going with connecting asset repositories and launching deployments.
 
 **This article refers to the SAAS version of Azure Repos. If you're using Azure Repos behind your firewall, check [here](/admin-guide/source-control/Self%20Hosted%20Repositories/overview)**.
 
 
-When connecting a repository, Stack Automation’s OAuth app (**QTorque Portal**) asks for permissions to access repositories on your organization. 
+When connecting a repository, Stack Automation’s OAuth app (**Stack Automation Control Plane**) asks for permissions to access repositories on your organization. 
 If Stack Automation doesn't have access, you will be prompted to grant the proper authorizations when connecting the asset repository. The approved applications are listed in the Azure Applications page (https://dev.azure.com/{you_org}/_usersSettings/authorizations).
 
 1. In Stack Automation, go to the space's Settings > Repositories area and connect the repository. Note that the repository URL should be in the correct format: https://dev.azure.com/{org_name}/{project_name}/_git/{repo_name}

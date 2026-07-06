@@ -6,7 +6,7 @@ title: Main Features and Capabilities
 ## Orchestration
 
 * __Blueprint YAML__: Deployment plans are stored in YAML files. Stack Automation can generate a single-asset blueprint YAMLs for each IaC or container technology file in your repository, while multi-asset blueprints can easily be written in YAML files stored in your source control repositories.
-* __Policies__: [Limit environment durations](/blueprint-designer-guide/blueprint-consumption-policies) and apply [OPA security policies](/governance/policies) to deployments.
+* __Policies__: [Limit deployment durations](/blueprint-designer-guide/blueprint-consumption-policies) and apply [OPA security policies](/governance/policies) to deployments.
 * __Spaces__ and __Role-based Access Control (RBAC)__: Set up a space for different business units, teams, and projects. Assign assets, [users and roles](/governance/roles-and-permissions) to the users, limiting capabilities based on their needs and access only to the blueprints and deployments that apply to that space. 
 * Secret management in Stack Automation: Stack Automation manages Secrets in 3 different ways 
     * __Parameter Store__: Stack Automation contains a built-in Parameter Store that allows space admins and account admins to store both sensitive and non-sensitive key-value based information in a centralized location that can be accessed by blueprint designers via the Liquid engine. 

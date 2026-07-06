@@ -11,9 +11,9 @@ This is done by integrating your organization's identity provider with Stack Aut
 
 **In this article:**
 * [How this works](/admin-guide/sso#how-this-works)
-* [Integrating your IdP with Stack Automation](/admin-guide/sso#integrating-your-idp-with-torque)
+* [Integrating your IdP with Stack Automation](/admin-guide/sso#integrating-your-idp-with-stack-automation)
 * [Associating a user to multiple spaces](/admin-guide/sso#associating-a-user-to-multiple-spaces)
-* [Mapping Stack Automation user groups to IdP groups](/admin-guide/sso#mapping-torque-user-groups-to-idp-groups)
+* [Mapping Stack Automation user groups to IdP groups](/admin-guide/sso#mapping-stack-automation-user-groups-to-idp-groups)
 * [User provisioning with SCIM](/admin-guide/sso#user-provisioning-with-scim)
 
 ## How this works
@@ -151,7 +151,7 @@ Stack Automation supports the SCIM protocol for user provisioning and deprovisio
 User provisioning is the ability to create and delete users in your Stack Automation account in real-time as they are created and deleted in the IdP (identity provider). When SCIM is configured, an http call will be issued from the IdP to Stack Automation with each new user that is added or removed from the app on the IdP that is used to manage Stack Automation users in the basic SSO process.
 
 User provisioning with SCIM is optional when configuring SSO. When it is not configured, users can still SSO login normally and their Stack Automation user will be created "just in time" at the moment of login. details about the user are updated with each subsequent login. There are advantages to configuring User provisioning, though.
-* Users are created in Stack Automation when added in the IdP, potentially before their first log in. - This allows an admin to get a better picture of who are the users in the Stack Automation account and to perform actions on them before the first time they logged in such as already associating them to spaces, setting them as collaborators on some environments and so on.
+* Users are created in Stack Automation when added in the IdP, potentially before their first log in. - This allows an admin to get a better picture of who are the users in the Stack Automation account and to perform actions on them before the first time they logged in such as already associating them to spaces, setting them as collaborators on some deployments and so on.
 * Users are deprovisioned - Normally, when a user is removed from the IdP, they can no longer login to the Stack Automation account, but the Stack Automation user still appears in the account. Deprovisioning means that once a user cannot SSO into a Stack Automation account, he is removed from it.
 
 The process of user provisioning/deprovisioning is one directional. Changes to users in Stack Automation do not affect the IdP.
@@ -182,7 +182,7 @@ Under the 'General' tab, set the checkbox on "Enable SCIM provisioning"
 
 This should cause a new tab to appear on the application named "Provisioning". Navigate to that tab.
 Under the provisioning tab ('Integration' settings), click edit and set the following:
-SCIM connector base URL: https://portal.qtorque.io/api/scim
+SCIM connector base URL: https://stackautomation.cisco.com/api/scim
 Unique identifier field for users: userName
 Supported provisioning actions: set "Push New Users" and "Push Profile Updates" (the other checkboxes should remain unchecked)
 Authentication Mode: HTTP header
@@ -214,7 +214,7 @@ Login to Azure and navigate to "Enterprise applications", then locate the applic
 On the left-hand side menu, pick "Provisioning" and click "Get started".
 Set "Provisioning Mode" to Automatic.
 Under Admin Credential, set the following.
-Tenant URL: https://portal.qtorque.io/api/scim
+Tenant URL: https://stackautomation.cisco.com/api/scim
 Secret Token: This field should contain the long token generated above. Do not include the word "Bearer" if it appears at the start of the token.
 Click "Test connection", and a message should appear on the top right, confirming a successful connection.
 If the connection is unsuccessful, an error message appears with additional details.
@@ -259,7 +259,7 @@ In the Azure portal, go to Azure Active Directory > App registrations
 Select your app registration and note the Application (client) ID shown under 'Essentials'.
 
 In the app's 'Authentication' section, add a redirect URL matching your application instance URL in the format:
-```https://your_app_instance.qtorque.io/api/accounts/idp-callback```
+```https://your_app_instance.stackautomation.cisco.com/api/accounts/idp-callback```
 
 ### Configurations needed
 To complete the configuration, once successfully registered an AzureAD application, you'll need to provider the following to your Stack Automation Account Manager/Tech support:
@@ -270,7 +270,7 @@ To complete the configuration, once successfully registered an AzureAD applicati
 ### Group Synchronization
 The Azure AD SSO integration supports synchronizing user groups from Azure AD to the application. 
 
-See the [**Configuring IdP for Synchronizing User Groups**](/admin-guide/sso#mapping-torque-user-groups-to-idp-groups) documentation for setup details.
+See the [**Configuring IdP for Synchronizing User Groups**](/admin-guide/sso#mapping-stack-automation-user-groups-to-idp-groups) documentation for setup details.
 
 With this configuration, users will be able to seamlessly sign in to your private SaaS application using their Azure AD credentials, with new users automatically provisioned with pre-defined roles and spaces. 
 

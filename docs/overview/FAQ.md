@@ -12,11 +12,11 @@ title: FAQ
 While you can manage deployments directly, Stack Automation provides significant advantages across multiple dimensions. Here are the key factors that make Stack Automation a valuable addition to your infrastructure toolkit:
 
 **Core Capabilities:**
-* **Lifecycle Management**: Complete deployment lifecycle management from provisioning to decommissioning, including automated scheduling, renewal policies, and graceful shutdown procedures that ensure nothing is left behind on the cloud. Learn more about [scheduled environments](/environment-services/scheduled-environments) and [deployment management](/environment-services/environment-publishing).
+* **Lifecycle Management**: Complete deployment lifecycle management from provisioning to decommissioning, including automated scheduling, renewal policies, and graceful shutdown procedures that ensure nothing is left behind on the cloud. Learn more about [scheduled deployments](/environment-services/scheduled-environments) and [deployment management](/environment-services/environment-publishing).
 
 * **IaC Orchestration**: Stack Automation provides sophisticated Infrastructure as Code orchestration that goes beyond basic deployment, managing complex dependencies and multi-technology stacks with ease across different cloud providers and tools. Explore our [blueprint designer guide](/blueprint-designer-guide/blueprint-quickstart-guide) and [multi-technology orchestration examples](/example-blueprints/application-orchestration).
 
-* **Governance**: Unified security and policy management that protects your admin credentials within Stack Automation agents, enables team collaboration through spaces, and enforces organizational standards and compliance requirements automatically across all deployments. Read about [policies](/governance/policies), [roles and permissions](/governance/roles-and-permissions), and [Stack Automation agents](/torque-agent/Torque-Agent-Intro).
+* **Governance**: Unified security and policy management that protects your admin credentials within Stack Automation Management Servers, enables team collaboration through spaces, and enforces organizational standards and compliance requirements automatically across all deployments. Read about [policies](/governance/policies), [roles and permissions](/governance/roles-and-permissions), and [Stack Automation Management Servers](/torque-agent/Torque-Agent-Intro).
 
 **Additional Capabilities:**
 * **Cost Management**: Automatic cleanup of cloud resources when deployments are no longer needed, plus comprehensive cost tracking with detailed analytics and forecasting. Stack Automation attaches tags to every cloud resource for powerful monitoring and cost optimization. Learn more about [cost tracking](/governance/cost-tracking/configuring-cost-aws) and [cloud efficiency reports](/reports/cloud-efficiency).
@@ -51,11 +51,11 @@ Absolutely! Stack Automation supports integration with some of the leading CI/CD
 Click [here](/overview/supported-platforms#cicd-tooling) and follow our documentation to set up your pipelines and start seeing value.
 
 #### How do you protect my access credentials?
-It's no secret that working with the cloud requires the use of very powerful admin credentials, which can cause some serious damage if they fall in the wrong hands. In Stack Automation, your admin credentials are safely tucked away in the system, within what we call **Stack Automation agents**, which allow Stack Automation to access and use the Kubernetes cluster on the cloud. 
+It's no secret that working with the cloud requires the use of very powerful admin credentials, which can cause some serious damage if they fall in the wrong hands. In Stack Automation, your admin credentials are safely tucked away in the system, within what we call **Stack Automation Management Servers**, which allow Stack Automation to access and use the Kubernetes cluster on the cloud. 
 
-The blueprints reference the agents but otherwise cannot access the credentials. Same goes for the end-user and CI/CD tool - the end-users who launch the deployments don't have access to the actual Azure keys from the token.
+The blueprints reference the Management Servers but otherwise cannot access the credentials. Same goes for the end-user and CI/CD tool - the end-users who launch the deployments don't have access to the actual Azure keys from the token.
 
-Learn more about [Stack Automation agents](/torque-agent/Torque-Agent-Intro), [service accounts for AWS](/torque-agent/service-accounts-for-aws), [service accounts for Azure](/torque-agent/service-accounts-for-azure), and [advanced security settings](/torque-agent/advanced-settings).
+Learn more about [Stack Automation Management Servers](/torque-agent/Torque-Agent-Intro), [service accounts for AWS](/torque-agent/service-accounts-for-aws), [service accounts for Azure](/torque-agent/service-accounts-for-azure), and [advanced security settings](/torque-agent/advanced-settings).
 
 ---
 

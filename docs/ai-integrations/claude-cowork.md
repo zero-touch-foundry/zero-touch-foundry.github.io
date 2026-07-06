@@ -1,7 +1,7 @@
 # Connect Claude Cowork
 
 **Claude Cowork** is Anthropic's desktop AI agent for knowledge work. Connecting it to
-Stack Automation lets you manage spaces, launch blueprints, and inspect environments in
+Stack Automation lets you manage spaces, launch blueprints, and inspect deployments in
 plain language from the Cowork desktop experience — no terminal or editor required.
 
 Stack Automation ships a ready-made **plugin** (bundled MCP server + skills) that you add
@@ -45,7 +45,7 @@ right Stack Automation tools automatically.
 
 - "Show me all spaces I have access to in Stack Automation."
 - "Launch the `aws-eks-sandbox` blueprint in the `dev` space and tell me when it's ready."
-- "Which of my environments are still running, and how long have they been up?"
+- "Which of my deployments are still running, and how long have they been up?"
 - "My last deployment failed — pull the error and summarize the likely cause."
 
 Because the agent acts through your API token, every action respects your Stack Automation

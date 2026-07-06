@@ -58,9 +58,9 @@ Once the server is registered, your client can call Stack Automation tools from 
 **Everyday examples:**
 
 - "Launch the `terraform-vpc` blueprint in the `staging` space."
-- "List my running environments and their costs."
+- "List my running deployments and their costs."
 - "Show why deployment `d-8842` failed."
-- "Extend the lease on environment `pr-1423-preview` by 4 hours."
+- "Extend the lease on deployment `pr-1423-preview` by 4 hours."
 
 ## Client notes
 

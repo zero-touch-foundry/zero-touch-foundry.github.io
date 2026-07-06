@@ -7,7 +7,7 @@ Stack Automation supports connecting to self-managed BitBucket repositories, all
 
 ## Prerequisites
 
-1. **Agent Installation**: You must have the Stack Automation Agent installed with access to your self-managed BitBucket instance.
+1. **Management Server Installation**: You must have the Stack Automation Management Server installed with access to your self-managed BitBucket instance.
 2. **BitBucket Access Token**: You will need a BitBucket Personal Access Token with the following permission scopes:
    1.  `api`
    2.  `read.api`

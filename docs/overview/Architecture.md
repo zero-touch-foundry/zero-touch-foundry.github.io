@@ -21,12 +21,12 @@ The curation domain focuses on connecting to existing automation and Infrastruct
 - **Blueprint Creation**: Transform individual assets into reusable blueprints for standardized deployments across all deployments
 
 ### 2. Operate
-The operation domain leverages Quali agents deployed on customer premises (or Quali-managed) to handle resource provisioning, deployment state management, and lifecycle orchestration with governed access controls.
+The operation domain leverages Quali Management Servers deployed on customer premises (or Quali-managed) to handle resource provisioning, deployment state management, and lifecycle orchestration with governed access controls.
 
 **Key Capabilities:**
-- **Stack Automation Execution Agents**: Lightweight, container-based instances deployed on Kubernetes clusters or Docker hosts that communicate with Stack Automation backend to execute deployment tasks
-  - **Agent Deployment Options**: [Amazon EKS](https://aws.amazon.com/eks/), [Azure Kubernetes Service](https://azure.microsoft.com/en-us/products/kubernetes-service), [Google GKE](https://cloud.google.com/kubernetes-engine), [Oracle OKE](https://www.oracle.com/cloud/cloud-native/container-engine-kubernetes/), self-managed Kubernetes, and Docker hosts (on-premises)
-  - **Built-in Quali Agent**: Pre-configured execution agent for [Terraform](/blueprint-designer-guide/blueprints/terraform-grain.md) and [AWS CloudFormation](/blueprint-designer-guide/blueprints/cloudformation-grain.md) deployments without requiring custom agent deployment
+- **Stack Automation Management Servers**: Lightweight, container-based instances deployed on Kubernetes clusters or Docker hosts that communicate with the Stack Automation backend to execute deployment tasks
+  - **Management Server Hosting Options**: [Amazon EKS](https://aws.amazon.com/eks/), [Azure Kubernetes Service](https://azure.microsoft.com/en-us/products/kubernetes-service), [Google GKE](https://cloud.google.com/kubernetes-engine), [Oracle OKE](https://www.oracle.com/cloud/cloud-native/container-engine-kubernetes/), self-managed Kubernetes, and Docker hosts (on-premises)
+  - **Built-in Quali Management Server**: A pre-configured Management Server for [Terraform](/blueprint-designer-guide/blueprints/terraform-grain.md) and [AWS CloudFormation](/blueprint-designer-guide/blueprints/cloudformation-grain.md) deployments, requiring no custom Management Server setup
 - **Deployment Lifecycle Management**: Complete state management from provisioning through decommissioning
 - **Day-2 Operations**: Ongoing deployment management including updates, drift detection, and maintenance workflows
 - **Governed Access**: Role-based access controls and policy enforcement throughout the operational lifecycle
