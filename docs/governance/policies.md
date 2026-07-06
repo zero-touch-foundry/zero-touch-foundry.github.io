@@ -8,7 +8,7 @@ Stack Automation role: Account admin
 ## Why use policies?
 Using policies for the consumption of deployments offers a multitude of benefits that empower organizations to optimize their cloud usage. Firstly, policies allow for effective cost control by setting limits on resource consumption, ensuring that cloud spending remain within budgetary constraints. Moreover, these policies enable the efficient management of resources by capping the number of concurrent resources per user, preventing resource sprawl, and ensuring fair allocation. Additionally, policies can restrict a deployment's uptime duration, enhancing security and minimizing the risk of unused resources running indefinitely. In sum, the implementation of policies for deployment consumption not only fosters financial prudence but also enhances resource governance and security, making it an invaluable asset in the realm of cloud management.
 
-Stack Automation policies are triggered as part of the deployment pipeline for specific lifecycle events (launch or extend deployment duration for example) or during the provisioning of deployments (e.g. when evaluating a Terraform module included in the deployment). Stack Automation policies are powered by OPA (Open Policy Agent). For a step-by-step tutorial, see [Video: Stack Automation policies (end-to-end)](#video-torque-policies-end-to-end-tutorial).
+Stack Automation policies are triggered as part of the deployment pipeline for specific lifecycle events (launch or extend deployment duration for example) or during the provisioning of deployments (e.g. when evaluating a Terraform module included in the deployment). Stack Automation policies are powered by OPA (Open Policy Agent). For a step-by-step tutorial, see [Video: Stack Automation policies (end-to-end)](#video-stack-automation-policies-end-to-end-tutorial).
 
 ## Example Use Cases
 You can use Stack Automation policies for cost and consumption control. Examples include:
@@ -22,10 +22,10 @@ You can use Stack Automation policies for cost and consumption control. Examples
 - [Example Use Cases](#example-use-cases)
 - [How policies work](#how-policies-work)
 - [Policy labels](#policy-labels)
-- [Stack Automation built-in policies](#torque-built-in-policies)
+- [Stack Automation built-in policies](#stack-automation-built-in-policies)
 - [Custom policies](#custom-policies)
   - [Developing your own policies](#developing-your-own-policies)
-    - [__Developing Stack Automation policies__](#developing-torque-policies)
+    - [__Developing Stack Automation policies__](#developing-stack-automation-policies)
     - [__Inputs__](#inputs)
     - [__data__](#data)
     - [__Rego restricted functions__](#rego-restricted-functions)
@@ -33,7 +33,7 @@ You can use Stack Automation policies for cost and consumption control. Examples
 - [How to set up a policy](#how-to-set-up-a-policy)
 - [Duplicate a policy](#duplicate-a-policy)
 - [Updating policies](#updating-policies)
-- [Video: Stack Automation policies (end-to-end tutorial)](#video-torque-policies-end-to-end-tutorial)
+- [Video: Stack Automation policies (end-to-end tutorial)](#video-stack-automation-policies-end-to-end-tutorial)
 
 
 ## How policies work
@@ -41,7 +41,7 @@ Policies are based on two basic elements: trigger and context. Trigger determine
 
 Stack Automation supports 3 types of triggers, which are defined by the package being used in the policy's .rego file:
 -	Consumption policies (triggered on catalog launch). To define a consumption policy, the ".rego" file must use the package name __torque.consumption__
--	Environment lifecycle policies (triggered on launch after completing the launch dialog, or extend). To define an environment lifecycle policy, the ".rego" file must use the package name __torque.environment__
+-	Deployment lifecycle policies (triggered on launch after completing the launch dialog, or extend). To define a deployment lifecycle policy, the ".rego" file must use the package name __torque.environment__
 -	Terraform evaluation policies (triggered on terraform plan for terraform grains). To define a terraform plan evaluation policy, the ".rego" file must use the package name __torque.terraform_plan__
 
 :::tip Note
@@ -52,19 +52,19 @@ Policies are applied on the space or account level, as explained in [How to set 
 There are 5 labels that will be automatically applied to policies in Stack Automation, in the __Policies__ administration page:
 
 * __Built-in__ label is assigned to policies that come out of the box with Stack Automation. For details about the policies, see [https://github.com/QualiTorque/opa](https://github.com/QualiTorque/opa)
-* __Terraform__ label is assigned to policies that evaluate the Terraform plan on the environment's Terraform grain. These policies are triggered when Stack Automation deploys the Terraform grain's plan during the environment's initialization
-* __Environment__ label is assigned to policies that are triggered when the environment is launched (upon completing the launch wizard) or extended 
+* __Terraform__ label is assigned to policies that evaluate the Terraform plan on the deployment's Terraform grain. These policies are triggered when Stack Automation deploys the Terraform grain's plan during the deployment's initialization
+* __Environment__ label is assigned to policies that are triggered when the deployment is launched (upon completing the launch wizard) or extended 
 * __Consumption__ label is assigned to policies that are triggered when the catalog item is clicked 
-* __Approval__ label is assigned to policies that could require approval to launch the environment
-* __Annotations__ label is assigned to files that are used to evaluate dynamic environment annotations. See [Environment Annotations](/environment-services/environment-annotations.md).
+* __Approval__ label is assigned to policies that could require approval to launch the deployment
+* __Annotations__ label is assigned to files that are used to evaluate dynamic deployment annotations. See [Environment Annotations](/environment-services/environment-annotations.md).
 
 > ![Locale Dropdown](/img/policy-labels.png)
 
 ## Stack Automation built-in policies 
-Stack Automation provides many built-in policies, both for environment lifecycle and Terraform plan evaluation, which represent some of the more common use cases when deploying environments. Some examples include:
+Stack Automation provides many built-in policies, both for deployment lifecycle and Terraform plan evaluation, which represent some of the more common use cases for deployments. Some examples include:
 * Allow only specific AWS instance types to be used
 * Allow deploying only to specific Azure locations
-* Allow only environments with an expected cost of < 10$
+* Allow only deployments with an expected cost of < 10$
 
 ## Custom policies
 
@@ -94,7 +94,7 @@ For example, an __environment__ policy can look like this:
     ```jsx
     package torque.environment
 
-    result = { "decision": "Denied", "reason": "Environment duration exceeds 5 hours" } if {
+    result = { "decision": "Denied", "reason": "Deployment duration exceeds 5 hours" } if {
         input.duration_minutes > 300
     } 
     ```
@@ -157,25 +157,25 @@ For __environment__ policies, the input is the following json object:
         "space_roles": ["role3", "role4"],
     },
     "is_git_environment": false,
-    "entity_name": "my-env", //environment name
+    "entity_name": "my-env", //deployment name
     "action_identifier": {
         "entity_type": "Environment",
         "entity_id": null,
         "action_type": "Launch" // options: "Launch", "Extend"
     },
-    "owner_active_environments_in_space": 1, // # of the current owner's active environments in space 
-    "owner_active_environments_in_account": 1,  //  # of the current owner's active environments in the account
-    "owner_active_environments_from_blueprint_in_space": 2, // total # of environments launched by the owner and using the blueprint 
-    "initiator_active_environments_from_blueprint_in_space": 1, // total # of environments launched by the owner or launcher and using the blueprint 
-    "active_environments_in_space": 1, // total # of active environments in the space 
-    "active_environments_in_account": 2 // total # of active environments in the account 
+    "owner_active_environments_in_space": 1, // # of the current owner's active deployments in space 
+    "owner_active_environments_in_account": 1,  //  # of the current owner's active deployments in the account
+    "owner_active_environments_from_blueprint_in_space": 2, // total # of deployments launched by the owner and using the blueprint 
+    "initiator_active_environments_from_blueprint_in_space": 1, // total # of deployments launched by the owner or launcher and using the blueprint 
+    "active_environments_in_space": 1, // total # of active deployments in the space 
+    "active_environments_in_account": 2 // total # of active deployments in the account 
 }
 ```
 
 **Usage example:**
 
-```jsx title="A policy that denies environments with a requested duration over 3 hours:"
-result = { "decision": "Denied", "reason": "Requested environment duration exceeds 180 minutes" } if {
+```jsx title="A policy that denies deployments with a requested duration over 3 hours:"
+result = { "decision": "Denied", "reason": "Requested deployment duration exceeds 180 minutes" } if {
    input.duration_minutes > 180
 } 
 ```
@@ -210,18 +210,18 @@ For __consumption__ policies, the input is similar to the object in __environmen
         "space_roles": ["role3", "role4"],
     },
     "is_git_environment": false,
-    "entity_name": "my-env", //environment name
+    "entity_name": "my-env", //deployment name
     "action_identifier": {
         "entity_type": "Environment",
         "entity_id": null,
         "action_type": "Launch" // options: "Launch", "Extend"
     },
-    "owner_active_environments_in_space": 1, // # of the current owner's active environments in space 
-    "owner_active_environments_in_account": 1,  //  # of the current owner's active environments in the account
-    "owner_active_environments_from_blueprint_in_space": 2, // total # of environments launched by the owner and using the blueprint 
-    "initiator_active_environments_from_blueprint_in_space": 1, // total # of environments launched by the owner or launcher and using the blueprint 
-    "active_environments_in_space": 1, // total # of active environments in the space 
-    "active_environments_in_account": 2 // total # of active environments in the account 
+    "owner_active_environments_in_space": 1, // # of the current owner's active deployments in space 
+    "owner_active_environments_in_account": 1,  //  # of the current owner's active deployments in the account
+    "owner_active_environments_from_blueprint_in_space": 2, // total # of deployments launched by the owner and using the blueprint 
+    "initiator_active_environments_from_blueprint_in_space": 1, // total # of deployments launched by the owner or launcher and using the blueprint 
+    "active_environments_in_space": 1, // total # of active deployments in the space 
+    "active_environments_in_account": 2 // total # of active deployments in the account 
 }
 ```
 
@@ -232,8 +232,8 @@ The *data* object is the user-defined inputs that will also be passed to OPA for
 
 For example, the policy can look like this:
 
-```jsx title="A policy that denies environments with a requested duration that is longer than defined in the *data* object:"
-result = { "decision": "Denied", "reason": "Environment duration exceeds the configured max duration" } if {
+```jsx title="A policy that denies deployments with a requested duration that is longer than defined in the *data* object:"
+result = { "decision": "Denied", "reason": "Deployment duration exceeds the configured max duration" } if {
    input.duration_minutes > data.max_duration_minutes
 } 
 ```
@@ -244,7 +244,7 @@ In Stack Automation, it would look like this:
 
 > ![Locale Dropdown](/img/policy_data.png)
 
-So you can enter whichever value you want as the maximum duration to be enforced on environments.
+So you can enter whichever value you want as the maximum duration to be enforced on deployments.
 
 #### __Rego restricted functions__
 
@@ -265,9 +265,9 @@ For more details on how to develop policies, see [OPA documentation](https://www
 
 ## Approval policies
 
-Stack Automation allows you to configure your policy with conditions that will trigger manual approval of an environment request by a set of designated approvers via multiple optional channels: email, Microsoft Teams or Slack channels, ServiceNow and more. 
+Stack Automation allows you to configure your policy with conditions that will trigger manual approval of a deployment request by a set of designated approvers via multiple optional channels: email, Microsoft Teams or Slack channels, ServiceNow and more. 
 
-For example, you could have an approval policy that sets the max_duration for environments at 3 hours, so attempting to launch an environment with a duration that is longer than 3 hours will require approval.
+For example, you could have an approval policy that sets the max_duration for deployments at 3 hours, so attempting to launch a deployment with a duration that is longer than 3 hours will require approval.
 
 :::tip Notes
 Approvers are defined in the __[Approval Channels](/governance/approval-channels)__ administration page.

@@ -58,33 +58,33 @@ These events are captured by Audit Log. All events are of type "string".
 
 |Event                   |Description|Scopes                             |Data (parameters)  |
 |------------------------|---------------------------------|-----------------------------------|--------------------------------------------|
-|Collaborators Added|Collaborators were added to an environment.|Account/Space/Environment|- list of new collaborators|
-|Collaborators Removed|Environment's collaborators were removed.|Account/Space/Environment|- list of removed collaborators|
-|Drift Detected|Environment's resources were modified externally.|Account/Space/Environment|- Grain|
-|Drift Reconcile Started|Environment's __Reconcile__ operation was initiated to reset the environment to its original state.|Account/Space/Environment|- Grain|
-|Drift Reconcile Completed|Environment's Reconcile operation completed.|Account/Space/Environment|- Grain|
-|Environment Extended|Environment's duration was extended.|Account/Space/Environment|- Extension Duration|
-|Environment Launch Started|Environment was launched.|Account/Space/Environment|- is_sample: "true" indicates that the environment was created from a sample blueprint|
-|Environment Launch Completed|Environment's launch completed and the environment's state changed to Active.|Account/Space/Environment|- is_sample: "true" indicates that the environment was created from a sample blueprint<br />- Duration|
-|Termination Started|Environment's termination was initiated.|Account/Space/Environment||
-|Termination Completed|Environment's termination completed.|Account/Space/Environment||
-|Force Terminate|Environment was force terminated immediately.|Account/Space/Environment||
-|Owner changed|Environment's owner was changed.|Account/Space/Environment|- New owner|
+|Collaborators Added|Collaborators were added to a deployment.|Account/Space/Environment|- list of new collaborators|
+|Collaborators Removed|Deployment's collaborators were removed.|Account/Space/Environment|- list of removed collaborators|
+|Drift Detected|Deployment's resources were modified externally.|Account/Space/Environment|- Grain|
+|Drift Reconcile Started|Deployment's __Reconcile__ operation was initiated to reset the deployment to its original state.|Account/Space/Environment|- Grain|
+|Drift Reconcile Completed|Deployment's Reconcile operation completed.|Account/Space/Environment|- Grain|
+|Environment Extended|Deployment's duration was extended.|Account/Space/Environment|- Extension Duration|
+|Environment Launch Started|Deployment was launched.|Account/Space/Environment|- is_sample: "true" indicates that the deployment was created from a sample blueprint|
+|Environment Launch Completed|Deployment's launch completed and the deployment's state changed to Active.|Account/Space/Environment|- is_sample: "true" indicates that the deployment was created from a sample blueprint<br />- Duration|
+|Termination Started|Deployment's termination was initiated.|Account/Space/Environment||
+|Termination Completed|Deployment's termination completed.|Account/Space/Environment||
+|Force Terminate|Deployment was force terminated immediately.|Account/Space/Environment||
+|Owner changed|Deployment's owner was changed.|Account/Space/Environment|- New owner|
 |Updates Detected|Stack Automation detected a change in the asset files in the repository.|Account/Space/Environment|- Grain|
-|Update Started|Environment's update was initiated by the user to update the environment with the latest changes to the asset files.|Account/Space/Environment|- Grain|
-|Update Complete|Environment was updated.|Account/Space/Environment|- Grain|
-|Update Dismissed|User dismissed updates to the asset files, choosing to leave their environment as is.|Account/Space/Environment|- Grain|
+|Update Started|Deployment's update was initiated by the user to update the deployment with the latest changes to the asset files.|Account/Space/Environment|- Grain|
+|Update Complete|Deployment was updated.|Account/Space/Environment|- Grain|
+|Update Dismissed|User dismissed updates to the asset files, choosing to leave their deployment as is.|Account/Space/Environment|- Grain|
 
-## Host/Agent
+## Host/Management Server
 
 |Event                   |Description||Scopes                             |Data (parameters)                                 |
 |------------------------|-------------------------------|-----------------------------------|--------------------------------------------|
-|Added to Space|Added an agent to a space.|Account/Space|- Host name<br />- Cloud<br />- Type (Docker, K8s), Space|
-|Created|Created a new agent.|Account|- Host name<br />- Cloud<br />- Type (Docker, K8s)|
-|Connected|Agent was successfully connected to the cluster.|Account|- host_name<br />- Type (Docker, K8s)|
-|Deleted|Agent was deleted from Stack Automation.|Account|- Host name<br />- Cloud<br />- Type (Docker, K8s)|
-|Removed From Space|Agent was removed from a space.|Account/Space|- Host name<br />- Cloud<br />- Type (Docker, K8s), Space|
-|Renamed| Agent's name was changed.|Account|-old_host_name<br />- new_host_name<br />- type|
+|Added to Space|Added a management server to a space.|Account/Space|- Host name<br />- Cloud<br />- Type (Docker, K8s), Space|
+|Created|Created a new management server.|Account|- Host name<br />- Cloud<br />- Type (Docker, K8s)|
+|Connected|Management server was successfully connected to the cluster.|Account|- host_name<br />- Type (Docker, K8s)|
+|Deleted|Management server was deleted from Stack Automation.|Account|- Host name<br />- Cloud<br />- Type (Docker, K8s)|
+|Removed From Space|Management server was removed from a space.|Account/Space|- Host name<br />- Cloud<br />- Type (Docker, K8s), Space|
+|Renamed| Management server's name was changed.|Account|-old_host_name<br />- new_host_name<br />- type|
 
 ## Notification
 
@@ -166,4 +166,4 @@ These events are captured by Audit Log. All events are of type "string".
 |Disabled| Disabled a workflow.|Account |- Name|
 |Enabled| Enabled a workflow.|Account |- Name|
 |Ended|Workflow's execution ended at the completion of all its actions. |Account/Environment |- Name<br />- Actor (User/Schedule)<br />-If the actor is User, user details (email) is displayed|
-|Invoked|Workflow was triggered, either by the workflow's defined schedule or manually by the environment end-user. |Account/Environment |- Name<br />- Actor (User/Schedule)<br />- If the actor is User, user details (email) is displayed|
+|Invoked|Workflow was triggered, either by the workflow's defined schedule or manually by the deployment end-user. |Account/Environment |- Name<br />- Actor (User/Schedule)<br />- If the actor is User, user details (email) is displayed|

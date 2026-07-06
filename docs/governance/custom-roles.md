@@ -40,25 +40,25 @@ In the main Roles screen, you can also compare role permissions to identify diff
 ## Use Case Examples
 
 ### Example 1: FinOps Role
-A FinOps role can be created to allow users to view cost dashboards and reports, but not to launch or terminate environments.
+A FinOps role can be created to allow users to view cost dashboards and reports, but not to launch or terminate deployments.
 
 - **Name**: FinOps Analyst
-- **Description**: Can view cost data and reports, but cannot modify environments.
-- **Permissions**: View cost dashboard, view reports, view environments (read-only).
+- **Description**: Can view cost data and reports, but cannot modify deployments.
+- **Permissions**: View cost dashboard, view reports, view deployments (read-only).
 
 ### Example 2: Security Auditor
-A Security Auditor role can be created to allow users to view environment configurations and audit logs, but not to make any changes.
+A Security Auditor role can be created to allow users to view deployment configurations and audit logs, but not to make any changes.
 
 - **Name**: Security Auditor
-- **Description**: Can view all environment configurations and audit logs.
-- **Permissions**: View environments, view audit logs, view blueprints (read-only).
+- **Description**: Can view all deployment configurations and audit logs.
+- **Permissions**: View deployments, view audit logs, view blueprints (read-only).
 
 ### Example 3: Limited Operator
-A Limited Operator role can be created to allow users to launch and terminate environments, but not to modify blueprints or manage users.
+A Limited Operator role can be created to allow users to launch and terminate deployments, but not to modify blueprints or manage users.
 
 - **Name**: Limited Operator
-- **Description**: Can launch and terminate environments only.
-- **Permissions**: Launch environments, terminate environments.
+- **Description**: Can launch and terminate deployments only.
+- **Permissions**: Launch deployments, terminate deployments.
 
 ## Managing Custom Roles
 

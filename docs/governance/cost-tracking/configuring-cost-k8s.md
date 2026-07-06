@@ -4,7 +4,7 @@ title: Configuring Cost for K8s
 ---
 
 
-Stack Automation collects cost data using cost collection targets, which are managed in the __Administration__ page's __Cloud Accounts__ tab. For AWS and Azure clouds, you must first add a cost collection target, however for K8s, Stack Automation automatically creates a cost collection target when an agent is installed on the cluster. 
+Stack Automation collects cost data using cost collection targets, which are managed in the __Administration__ page's __Cloud Accounts__ tab. For AWS and Azure clouds, you must first add a cost collection target, however for K8s, Stack Automation automatically creates a cost collection target when a management server is installed on the cluster. 
 
 Follow the next steps to start collecting cost on your K8s cluster:
 
@@ -13,7 +13,7 @@ Follow the next steps to start collecting cost on your K8s cluster:
       * For deployment instructions, see: https://www.kubecost.com/install.html#show-instructions
       * Make sure the kubecost default namespace is used (Namespace kubecost)
 2. Validate the relevant cost collection target:
-   1. Identify the relevant cost collection target. Its name will be the same name as the agent installed on the cluster. 
+   1. Identify the relevant cost collection target. Its name will be the same name as the management server installed on the cluster. 
    2. Click the cost collection target's 3 dot menu and select __Validate__ to make sure it works (i.e. cost data can be collected).
       * If validation fails, perform the procedure described in [Troubleshooting](#troubleshooting).
 3. Enable the relevant cost collection target:
