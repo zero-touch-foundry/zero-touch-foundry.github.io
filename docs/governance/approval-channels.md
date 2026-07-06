@@ -15,6 +15,6 @@ __To create an approval channel:__
 3. Give the approval channel a __Name__ and optionally a __Description__.
 4. Select the channel - Teams, Webex, Email or Service Now.
 5. For Teams and Webex, enter the __Webhook address__.
-6. For Service Now, please see [the following article](/eco-system/itsm-tools/service-now.md) for instructions.
+<!-- 6. For Service Now, please see [the following article](/eco-system/itsm-tools/service-now.md) for instructions. -->
 7. Select the __Approvers__.
 8. Click __Save__.

@@ -85,9 +85,11 @@ Automated notifications for deployment lifecycle events through:
 - [Slack](https://slack.com) integration
 - [Custom webhooks](/admin-guide/notifications) for third-party systems
 
+<!--
 ### Developer Tools
 - **CI/CD Integration**: [Azure DevOps](/eco-system/ci-cd-tooling/azure-devops.md), [CircleCI](/eco-system/ci-cd-tooling/circle-ci.md), [Jenkins](/eco-system/ci-cd-tooling/jenkins.md), [GitHub Actions](/eco-system/ci-cd-tooling/github-actions.md), [Spinnaker](/eco-system/ci-cd-tooling/spinnaker.md), TeamCity, Bamboo CI
 - **Development Interface**: [VSCode Extension](/eco-system/dev-tools/vs-plugin.md), [Stack Automation CLI](/eco-system/dev-tools/torque-cli.md), comprehensive [REST API](/rest-api/rest-api.md)
+-->
 
 ### ITSM Integration
 Enterprise-grade integration with IT Service Management platforms:
