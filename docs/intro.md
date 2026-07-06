@@ -16,7 +16,7 @@ hide_table_of_contents: true
 
 **Stack Automation** leverages your existing version control systems, public cloud providers, Infrastructure as Code (IaC), containers, and manifests to provide centralized orchestration, automation, self-service, security, monitoring and cost management all within a GitOps mindset.
 
-### Want to learn more? Watch this quick Stack Automation demo or visit the [Quali website](https://quali.com)!
+### Want to learn more? Watch this quick Stack Automation demo or visit the [Stack Automation website](https://www.cisco.com/site/us/en/solutions/data-center/stack-automation-quali/index.html)!
 
 <div margin="30px">
 <iframe class="vidyard_iframe" title="Demo: Introduction to Quali Stack Automation" src="//play.vidyard.com/6D9i14QUNS92ydrtbxvaFs.html?" width="888" height="500" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
@@ -32,7 +32,7 @@ import pic1 from '/img/torque-high-level-architecture.png';
 
 
 ## Stack Automation documentation quick navigation:
-* [Stack Automation Pricing](https://www.quali.com/pricing/)
+<!-- * [Stack Automation Pricing](https://www.quali.com/pricing/) -->
 * [CI/CD Solutions](/overview/supported-platforms)
 * [Infrastructure as Code](/overview/supported-platforms)
 * [Infrastructure Providers](/overview/supported-platforms)

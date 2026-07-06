@@ -5,7 +5,7 @@ sidebar_position: 12
 description: This section describes the way to integrate AI agents with Stack Automation.
 ---
 
-# AI Integrations (MCP Server)
+# AI Integrations
 
 Connect your AI tools to Stack Automation.
 
