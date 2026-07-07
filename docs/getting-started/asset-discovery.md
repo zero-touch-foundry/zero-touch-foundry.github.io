@@ -20,9 +20,8 @@ Click an auto-generated blueprint to view the resulting yaml file. You can custo
     
     To connect an Azure DevOps repo, use this format: `https://dev.azure.com/{organization}/{project}/_git/{repositoryName}`.
 
-3. Now that your repository is connected, click __Discover Assets__ to have Stack Automation auto-generate blueprints out of the suitable assets.
-  > ![Locale Dropdown](/img/discover-assets-2.png)
-4. Next, go to the __Blueprints__ page and publish the new blueprints.
-  > ![Locale Dropdown](/img/publish-blueprint.png)
+    > ![Connect Repo](/img/getting-repository-onboarding.png)
 
-   If you encounter a permissions problem, follow the steps in [GitHub](/admin-guide/source-control/source-control-github) or [GitLab](/admin-guide/source-control/source-control-gitlab).
+3. After you click on the **Connect** button, Stack Automation will import any IaC assets, blueprints and workflows from this repository.
+
+4. Next, go to the Assets page, and publish (show in Solutions Hub) any relevant blueprint or IaC asset. You can also mark these assets as building-blocks, to be used inside other blueprints later on.

@@ -34,7 +34,7 @@ Now, that you have a new space configured, we will associate a repository to the
 4. Click on "Connect a Management Server"
 
 
-import pic1 from '/img/getting-repository-onboarding.gif';
+import pic1 from '/img/getting-repository-onboarding.png';
 
 <img src={pic1} style={{width: 700}} />
 
@@ -46,7 +46,7 @@ In this step, we will configure a Stack Automation management server that will e
 3. Click on "Generate", this will generate a CLI command based on ```kubectl``` that you can now execute on the Kubernetes cluster. Here is an example output of the command. 
 
 
-import pic2 from '/img/k8s-agent-connected.png';
+import pic2 from '/img/agent-connected-status.png';
 
 <img src={pic2} style={{width: 700}} />
 
