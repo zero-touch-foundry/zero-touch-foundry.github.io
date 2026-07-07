@@ -80,13 +80,10 @@ Currently the only supported annotations are "power:on", "power:off" and "power:
 **Step 2: Import the rego file into Stack Automation**
 
 1. If the git repository where the relevant rego file resides was not yet connected to Stack Automation, perform the following :
-   1. Go to __Administration > Policy Repositories__ and click __Add a Repository__.
+   1. Go to __Governance > Policy Repositories__ and click __Add a Repository__.
    2. Select the git repository, specify the repository's URL, and give it a name.
    > ![Locale Dropdown](/img/repository-information.png)
    3. Click __Connect__. Provide authorization credentials if the repository is private.
-
-    A green checkmark next to the repository's URL indicates that the repository has been added successfully.
-      > ![Locale Dropdown](/img/repository-connection.png)
 2. On the added (or existing) repository where the file resides, Click __Discover Policies__.
 3. Select the policies you want to import into Stack Automation, and click __Generate Policies__.
    > ![Locale Dropdown](/img/policy-import.png)

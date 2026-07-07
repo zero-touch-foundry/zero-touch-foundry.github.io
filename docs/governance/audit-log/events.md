@@ -77,7 +77,7 @@ These events are captured by Audit Log. All events are of type "string".
 
 ## Host/Management Server
 
-|Event                   |Description||Scopes                             |Data (parameters)                                 |
+|Event                   |Description|Scopes                             |Data (parameters)                                 |
 |------------------------|-------------------------------|-----------------------------------|--------------------------------------------|
 |Added to Space|Added a management server to a space.|Account/Space|- Host name<br />- Cloud<br />- Type (Docker, K8s), Space|
 |Created|Created a new management server.|Account|- Host name<br />- Cloud<br />- Type (Docker, K8s)|

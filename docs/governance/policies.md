@@ -275,14 +275,12 @@ Approvers are defined in the __[Approval Channels](/governance/approval-channels
 
 ## How to set up a policy
 
-1. Go to __Administration > Policy Repositories__ and click __Add a Repository__.
+1. Go to __Governance > Policy Repositories__ and click __Add a Repository__.
 2. Select the git repository, specify the repository's URL, and give it a name.
    > ![Locale Dropdown](/img/repository-information.png)
 3. Click __Connect__. Provide authorization credentials if the repository is private.
-
-   A green checkmark next to the repository's URL indicates that the repository has been added successfully.
-      > ![Locale Dropdown](/img/repository-connection.png)
-4. Click __Discover Policies__.
+4. From the repository menu, click on the Discover Policies to import existing policies.
+   > ![Locale Dropdown](/img/discover-policies-menu.png)
 5. Select the policies you want to import into Stack Automation and click __Generate Policies__.
    > ![Locale Dropdown](/img/policy-import.png)
 
@@ -318,8 +316,10 @@ Clicking on the policy there is an option to update the rego:
 If there is no change in the data object format, the update is completed and applied across the account. However, if there is a change in the data object, we cannot complete the update until the user will complete the change of the data object, otherwise the policy will start failing and will cause a disruption for the account users. Therefore, when Stack Automation detects a change in the format of the data object, it will load the new data object structure and wait for the user to modify it.
 Once done, the user needs to invoke the "update-rego" again and at this point it will complete successfully as the rego code and the data format match.
 
+<!-- 
 ## Video: Stack Automation policies (end-to-end tutorial)
 
 <video controls width="75%">
   <source src="/img/policies-full.mp4"/>
-</video>
+</video> 
+-->
