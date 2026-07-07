@@ -3,6 +3,16 @@ sidebar_position: 5
 title: Auto-generated Blueprints
 ---
 
+<!--
+HIDDEN (extension dropped intentionally, mirrors the pattern used elsewhere in this repo for
+not-yet-updated pages): this page describes the old "backend-only, non-git, embedded VSCode-style
+editor" auto-generated blueprint flow, which no longer matches the product. The current model
+generates blueprints behind the scenes when a user enables the "Solution Hub" or "Building Block"
+toggle on an IaC asset or blueprint (see blueprint-quickstart-guide.md Option A). Kept here in case
+any of the field-reference content below (Terraform/Helm auto-generated field descriptions) is
+useful to fold into the rewritten docs later.
+-->
+
 ## Stack Automation auto-generated blueprints
 Stack Automation auto-generated blueprints based on your assets (Terraform modules, Helm Charts). However, you may need to adjust these blueprints to your specific needs. You can modify auto-generated blueprints directly in Stack Automation or in your preferred editor.
 

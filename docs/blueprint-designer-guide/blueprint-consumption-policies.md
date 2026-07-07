@@ -7,11 +7,12 @@ As the blueprint designer, you can define the blueprint's default and max durati
 
 **To set the blueprint's policy:** 
 
-1. In the **Blueprints** page, click the blueprint's more actions menu and select **Manage Policies**. 
-2. In the dialog box, set the default duration as appropriate:
-    * __Active deployment limit__: Set a permitted amount for active Deployments that could be launched from this Blueprint.
-    * __Max Duration__: Set the max duration or select **Unlimited** to allow the deployment end user to run the deployment indefinitely.Note that end-users will still have the option to end or extend the deployment at any time, regardless of its runtime policy.
+1. In the **Blueprints** page, open the blueprint and select its **Policies** tab.
+2. Set the consumption and duration settings as appropriate:
+    * __Allow Scheduling__: Enable end-users to set up future launch times for this blueprint.
+    * __Active deployment limit__: Set a permitted amount for active Deployments that could be launched from this Blueprint, or leave **Unlimited**.
     * __Ephemeral or Always on__: Choose whether to provide an ephemeral option when launching the Blueprint or an always on option. When choosing an ephemeral option you are requested to provide the below additional information.
+    * __Maximum Duration__: Set the max duration or select **Unlimited** to allow the deployment end user to run the deployment indefinitely. Note that end-users will still have the option to end or extend the deployment at any time, regardless of its runtime policy.
     * __Default Duration__: Set the default duration that is used when launching a new deployment.
     * __Default Extend Duration__: Set the default duration when end-users extend the deployment.
 3. Click __Apply__.
