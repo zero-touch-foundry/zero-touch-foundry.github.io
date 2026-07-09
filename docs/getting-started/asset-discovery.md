@@ -6,7 +6,7 @@ title: Asset Discovery
 Stack Automation needs access to your relevant git repositories to read your Terraform modules or Helm charts.
 Stack Automation supports 4 version control systems: GitHub, GitLab, BitBucket, and Azure DevOps.
 
-Once a repository is connected, Stack Automation will automatically discover the assets in it (Terraform modules, Helm charts, Kubernetes manifests, CloudFormation templates, and batch scripts). See the full list [here](/overview/supported-platforms) and will ask you to select the assets to be used for the blueprints. After you select the relevant assets, Stack Automation will automatically generate initial blueprints from your assets.
+Once a repository is connected, Stack Automation will automatically discover the assets in it (Terraform modules, Helm charts, Kubernetes manifests, CloudFormation templates, and batch scripts. See the full list [here](/overview/supported-platforms).) and will ask you to select the assets to be used for the blueprints. After you select the relevant assets, Stack Automation will automatically generate initial blueprints from your assets.
 
 :::tip __Note__:
 
