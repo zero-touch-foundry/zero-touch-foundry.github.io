@@ -24,13 +24,13 @@ To enable scheduling for a blueprint, administrators must configure the "Allow S
 
 import pic1 from '/img/bp-policy-allow-scheduling.png';
 
-<img src={pic1} style={{width: 700}} />
+<img src={pic1} style={{width: 600}} />
 
 When this flag is enabled, users will see scheduling options when launching deployments from that blueprint. When disabled, deployments can only be launched immediately.
 
 import pic2 from '/img/scheduled-env-launch-form.png';
 
-<img src={pic2} style={{width: 700}} />
+<img src={pic2} style={{width: 600}} />
 
 ## Use Cases
 
@@ -144,6 +144,6 @@ When conflicts are detected, Stack Automation offers the **"Next Available Time 
    - Blueprint constraints
    - Custom resource needs
 
-![img](/img/scheduling-conflict-resolution.png)
+<!-- ![img](/img/scheduling-conflict-resolution.png) -->
 
 This comprehensive scheduling system ensures efficient resource utilization while providing the flexibility teams need to coordinate their development and testing activities effectively.
