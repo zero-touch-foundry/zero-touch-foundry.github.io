@@ -21,7 +21,7 @@ Annotations can help teams manage and organize deployments in Stack Automation b
 
 Deployment annotations are a powerful tool for managing and organizing deployments, and can help teams streamline their software development and testing processes by providing clear and concise information about the resources they are working with.
 
-> ![Locale Dropdown](/img/annotations.png)
+<!-- > ![Locale Dropdown](/img/annotations.png) -->
 
 ## __To create a deployment annotation:__
 
