@@ -25,7 +25,7 @@ Deployment annotations are a powerful tool for managing and organizing deploymen
 
 ## __To create a deployment annotation:__
 
-Since deployment annotations are __dynamic__ attributes of the deployments, Stack Automation uses __rego__ files and the policy engine to evaluate the annotation upon any chance in the deployment. 
+Since deployment annotations are __dynamic__ attributes of the deployments, Stack Automation uses __rego__ files and the policy engine to evaluate the annotation upon any change in the deployment. 
 
 **Step 1: Create a rego file**
 
