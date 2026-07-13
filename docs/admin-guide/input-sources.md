@@ -84,7 +84,7 @@ The HTTP Server input source is a powerful feature that allows you to connect to
 
 #### Example Architecture Diagram
 
-Below is an example SVG diagram illustrating the architecture for using an HTTP Server as an input source:
+Below is an example diagram illustrating the architecture for using an HTTP Server as an input source:
 
 ![HTTP Server Input Source Architecture](/img/http-input-source.svg)
 
