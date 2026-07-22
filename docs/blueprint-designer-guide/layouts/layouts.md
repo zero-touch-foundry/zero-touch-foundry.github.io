@@ -5,6 +5,8 @@ title: The layout yaml
 
 With the layout yaml file, you can customize the way end users see resources and their properties, both on the table view as well as the resource cards (catalog).
 
+For environment dashboard cards customization, see [Dynamic Cards (Environment Layout)](/blueprint-designer-guide/layouts/dynamic-cards-environment-layout).
+
 Example use-cases:
 - Hide specific resources from the end users view due to security considerations or simplicity
 - Only show specific resources
