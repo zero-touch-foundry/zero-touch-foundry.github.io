@@ -7,9 +7,9 @@ Now that you understand how Stack Automation works, it's time to understand how 
 
 **In this article:**
 
-- [Groups in Stack Automation](#groups-in-torque)
-- [Roles in Stack Automation](#roles-in-torque)
-- [Invite Users to Stack Automation](#invite-users-to-torque)
+- [Groups in Stack Automation](#groups-in-stack-automation)
+- [Roles in Stack Automation](#roles-in-stack-automation)
+- [Invite Users to Stack Automation](#invite-users-to-stack-automation)
 - [Add Existing Users to Your Space](#add-existing-users-to-your-space)
 - [Adding Users Without Invitation](#adding-users-without-invitation)
 
@@ -28,7 +28,7 @@ Group management is performed from the "User Management" page.
 
 If your Stack Automation account is configured to use SSO for authentication, the assignment of SSO users to groups in Stack Automation can be synchronized automatically from the IdP assignments (currently supported in Okta and Azure active directory).
 
-For detailed instructions on how to map Stack Automation user groups to your IdP groups, click [here](/admin-guide/sso#mapping-torque-user-groups-to-idp-groups).
+For detailed instructions on how to map Stack Automation user groups to your IdP groups, click [here](/admin-guide/sso#mapping-stack-automation-user-groups-to-idp-groups).
 
 ## Roles in Stack Automation
 
@@ -39,15 +39,15 @@ There are two account-level roles: Account Admins and Account Members. Account A
 As such, there are 4 roles in Stack Automation:
 * **Account Admin** has full permissions in all Stack Automation spaces, and can access the Administration area, which is not accessible to space admins. The account admin is responsible for setting up Stack Automation for the first time, general supervision and ongoing maintenance. This includes account-level responsibilities, like inviting users to the Stack Automation account, creating spaces, and adding cloud account and Kubernetes compute services, general supervision and ongoing maintenance, and must be able to operate as a space administrator.
 * **Space Admin** has admin access to specific space(s). This user performs space-level administration, like managing the space's users and their roles, linking the blueprint repository, managing the space policies and tags, and viewing cost data. 
-* **Space Developer** tracks the space's usage and cost. As such, this user also manages the tags that are attached to each cloud resource launched as part of the space's environments.
-* **Space Member** is the end-user of the environment. This user browses the blueprint catalog and launches the environment they need. Typical examples of a space member include a developer who is tasked with creating the blueprint, and a QA specialist who needs to run validation tests before pushing the updates to production.
+* **Space Developer** tracks the space's usage and cost. As such, this user also manages the tags that are attached to each cloud resource launched as part of the space's deployments.
+* **Space Member** is the end-user of the deployment. This user browses the blueprint catalog and launches the deployment they need. Typical examples of a space member include a developer who is tasked with creating the blueprint, and a QA specialist who needs to run validation tests before pushing the updates to production.
 
 | Permission      | Description |Account admin | Space admin | Space developer   | Space member |
 | ----------- | ----------- | :--------: | :--------: | :--------: | :--------: |
 | Manage account	   |1. Config audit log target.<br />2. Delete the account.<br />3. View account usage and cost.| ![Locale Dropdown](/img/green-dot.png)      |||||
-| [Manage agents](/torque-agent/Install-and-connect-self-hosted-agent)	   |Install new Stack Automation agents (requires K8s cluster or Vcenter access), delete agents, edit agents properties.| ![Locale Dropdown](/img/green-dot.png)      |||||
-| [Manage cloud accounts for cost collection](/governance/cost-tracking/cost)	   |Add/remove cloud accounts for Stack Automation to collect environment cost from.| ![Locale Dropdown](/img/green-dot.png)      |||||
-| Manage spaces	   |1. Create/delete/rename spaces.<br />2. Associate/remove agents to/from spaces.| ![Locale Dropdown](/img/green-dot.png)        |||||
+| [Manage management servers](/torque-agent/Install-and-connect-self-hosted-agent)	   |Install new Stack Automation management servers (requires K8s cluster or Vcenter access), delete management servers, edit management server properties.| ![Locale Dropdown](/img/green-dot.png)      |||||
+| [Manage cloud accounts for cost collection](/governance/cost-tracking/cost)	   |Add/remove cloud accounts for Stack Automation to collect deployment cost from.| ![Locale Dropdown](/img/green-dot.png)      |||||
+| Manage spaces	   |1. Create/delete/rename spaces.<br />2. Associate/remove management servers to/from spaces.| ![Locale Dropdown](/img/green-dot.png)        |||||
 | Manage users	   |Invite users to Stack Automation, cancel users invitations, add users to space, change users roles.| ![Locale Dropdown](/img/green-dot.png)        ||||
 | [Manage account parameters](/admin-guide/params)	   |Create/update/delete names and values of parameters, which are available across the account.| ![Locale Dropdown](/img/green-dot.png)        |||||
 | [Manage credentials](/admin-guide/credentials)	   |Create/update/delete credentials to cloud accounts, which can later be used for infra provisioning, cost or actions.| ![Locale Dropdown](/img/green-dot.png)        |||||
@@ -62,8 +62,8 @@ As such, there are 4 roles in Stack Automation:
 | [Manage space users and roles](#add-existing-users-to-your-space)	   |Add Stack Automation users to a space and set their role in the space.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)|||
 | [Manage space blueprints](/blueprint-designer-guide/blueprint-quickstart-guide)	   |1. Modify the contents of a blueprint that resides in Stack Automation (not in source control) or delete it.<br />2. Edit blueprint metadata (labels, icons).| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)||
 | [Manage blueprint tags](/governance/tags)	   |Set blueprint-specific values for tags defined by the account admin for the "blueprint" scope.| ![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)||
-| Force terminate environment    |Terminate a blueprint that failed normal termination while ignoring previous errors.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)||
-| View agents	   |View the list of Stack Automation agents connected to an account.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|||
+| Force terminate deployment    |Terminate a blueprint that failed normal termination while ignoring previous errors.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)||
+| View management servers	   |View the list of Stack Automation management servers connected to an account.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|||
 | View space users	   |View the list of users in a space.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|||
 | View space repositories	   |View the list of repositories in a space.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|||
 | View space notifications	   |View the list of notification targets and configuration of a space.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|||
@@ -72,12 +72,12 @@ As such, there are 4 roles in Stack Automation:
 | View space cost dashboard	   |View the cost dashboard of a space.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|||
 | Update Grains (Iac Assets)	   |Update the IaC code to a different version.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|||
 | View Catalog   |View the list of published blueprints in the blueprint catalog. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
-| Launch environments   |Provision an environment from a blueprint. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
-| Extend environments   |Extend the duration of an environment. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
-| Terminate environments   |End the environment before the scheduled end time. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
-| Manage environment drift   |View the diff between the plan (blueprint) and the reality (resources in the cloud) and revert the cloud status to the plan. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
+| Launch deployments   |Provision a deployment from a blueprint. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
+| Extend deployments   |Extend the duration of a deployment. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
+| Terminate deployments   |End the deployment before the scheduled end time. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
+| Manage deployment drift   |View the diff between the plan (blueprint) and the reality (resources in the cloud) and revert the cloud status to the plan. | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
 | [Run API calls](/rest-api)   |Use Stack Automation's REST API to perform different operations (based on permissions). | ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|  ![Locale Dropdown](/img/green-dot.png)|
-| View environment cost data	   |View expected cost of the environment at launch time and the actual cost of an environment on the environment page.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|
+| View deployment cost data	   |View expected cost of the deployment at launch time and the actual cost of a deployment on the deployment page.| ![Locale Dropdown](/img/green-dot.png)        |![Locale Dropdown](/img/green-dot.png)  |![Locale Dropdown](/img/green-dot.png)|![Locale Dropdown](/img/green-dot.png)|
 
 ## Invite Users to Stack Automation
 

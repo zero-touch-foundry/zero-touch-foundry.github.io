@@ -13,7 +13,7 @@ In the realm of infrastructure automation, Stack Automation streamlines the setu
 
     The Updates feature in Quali Stack Automation significantly accelerates the development and testing phase by offering a streamlined process for implementing and validating IaC changes. DevOps engineers can leverage this feature to seamlessly redeploy specific IaC components with new code, sourced directly from git commits. This capability eliminates the need to restart the entire deployment from scratch, saving valuable time and effort.
 
-    By using Updates, DevOps engineers can make the necessary code adjustments, such as bug fixes or feature enhancements, and redeploy the affected components. This allows them to continue the deployment deployment from the point of failure or modification, without wasting time on unnecessary repetitions. Engineers can focus on the specific issue at hand, analyze logs, and determine if there are problems with the IaC code.
+    By using Updates, DevOps engineers can make the necessary code adjustments, such as bug fixes or feature enhancements, and redeploy the affected components. This allows them to continue the deployment from the point of failure or modification, without wasting time on unnecessary repetitions. Engineers can focus on the specific issue at hand, analyze logs, and determine if there are problems with the IaC code.
 
 2. Efficient Customization and Adaptation:
    
@@ -21,7 +21,7 @@ In the realm of infrastructure automation, Stack Automation streamlines the setu
 
 3. Seamless Deployment of IaC Code Changes:
    
-    Keeping infrastructure up-to-date with the latest enhancements and bug fixes is vital for maintaining performance and security. The Updates feature simplifies the deployment of IaC code changes by automatically detecting new commits in associated git repositories. DevOps teams can effortlessly introduce the latest improvements, ensuring that users benefit from an deployment built on the most recent codebase. This streamlined process minimizes disruptions, eliminates compatibility concerns, and enhances the overall stability and reliability of provisioned infrastructures.
+    Keeping infrastructure up-to-date with the latest enhancements and bug fixes is vital for maintaining performance and security. The Updates feature simplifies the deployment of IaC code changes by automatically detecting new commits in associated git repositories. DevOps teams can effortlessly introduce the latest improvements, ensuring that users benefit from a deployment built on the most recent codebase. This streamlined process minimizes disruptions, eliminates compatibility concerns, and enhances the overall stability and reliability of provisioned infrastructures.
 
 ### Deployment Updates
 
@@ -66,7 +66,7 @@ If at any point in time a new change is committed, you will be alerted again.
 
 
 ### Auto-Retry failed deployments
-In some situations, deployment deployment may fail with transient errors - ones that if you just retried, will deploy successfully. 
+In some situations, a deployment may fail with transient errors - ones that if you just retried, will deploy successfully. 
 Stack Automation comes with out-of-the-box knowledge of such errors, and will automatically retry to deploy failed grains in case the failure matches one of the transient error signatures.
 This capability currently applies only to terraform grains. 
 If you encounter such a failure which Stack Automation did not recognize as transient, yet you believe should be auto-retried, please send us an email to torque-feedback@quali.com, or leave a post in our [community](https://github.com/orgs/QualiTorque/discussions).

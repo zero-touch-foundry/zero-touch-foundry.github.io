@@ -8,33 +8,33 @@ title: Cross Account Provisioning (AWS)
 Stack Automation supports multiple options for provisioning resources across multiple AWS accounts. 
 
 **Here are two common approaches**
-  - [Option A: Stack Automation Agent in each account](#option-a-torque-agent-in-each-account)
-  - [Option B: Single Stack Automation Agent in the Master Account](#option-b-single-torque-agent-in-the-master-account)
+  - [Option A: Stack Automation Management Server in each account](#option-a-stack-automation-management-server-in-each-account)
+  - [Option B: Single Stack Automation Management Server in the Master Account](#option-b-single-stack-automation-management-server-in-the-master-account)
 
 
-## Option A: Stack Automation Agent in each account
+## Option A: Stack Automation Management Server in each account
 
 ### Requirements and Setup
 
-- Each Stack Automation Agent is sitting in a different AWS account.
-- Each Agent is deployed in a different EKS cluster.
+- Each Stack Automation Management Server is sitting in a different AWS account.
+- Each Management Server is deployed in a different EKS cluster.
 - OIDC is enabled on the clusters, and they each have a valid default service account with an IAM role annotation.
 
 ### Benefits and Usage
 
-- Changing the agent on a grain (via an agent type Blueprint input with/without allowed values restriction) will change the AWS account that the grain contents will be deployed on.
-- Agent name can also be an Account/Space parameter, which will allow switching target accounts on all blueprints/grains that reference it at once.
+- Changing the Management Server on a grain (via an agent type Blueprint input with/without allowed values restriction) will change the AWS account that the grain contents will be deployed on.
+- Management Server name can also be an Account/Space parameter, which will allow switching target accounts on all blueprints/grains that reference it at once.
 
 ### Architectural Diagram
 
-> *Option A Diagram: Cross Accounts provisioning with Stack Automation Agent in each account*
+> *Option A Diagram: Cross Accounts provisioning with Stack Automation Management Server in each account*
 ![Option A Architectural Diagram](/img/cross-account-option-a.png)
 
-## Option B: Single Stack Automation Agent in the Master Account
+## Option B: Single Stack Automation Management Server in the Master Account
 
 ### Requirements and Setup
 
-- Stack Automation agent is configured with a valid default service account that authenticates into an IAM role via OIDC (known as Master account role).
+- Stack Automation Management Server is configured with a valid default service account that authenticates into an IAM role via OIDC (known as Master account role).
 - Each target AWS account has an IAM role with an identical name, with a trust policy set up to allow the Master account role to assume it (known as Target account role).
 - These Target Account roles have the permissions necessary to perform the actions Terraform will describe on the respective account.
 - By utilizing identical names, the only difference in the IAM role ARNs is the account number.
@@ -102,17 +102,17 @@ grains:
 
 ### Benefits and Usage
 
-- With this structure, multiple AWS accounts are supported without requiring multiple EKS clusters or agents.
+- With this structure, multiple AWS accounts are supported without requiring multiple EKS clusters or Management Servers.
 - Changing the account is as simple as changing the blueprint input value.
 - If accounts are pre-set but need to be swappable, an account/space parameter can be used instead of a blueprint input (and this allows multiple spaces to share the same blueprint but target different accounts).
 
 ### Architectural Diagram
 
-> *Option B Diagram: Cross Accounts provisioning with a Single Stack Automation Agent in the Master Account
+> *Option B Diagram: Cross Accounts provisioning with a Single Stack Automation Management Server in the Master Account
 ![Option B Architectural Diagram](/img/cross-account-option-b.png)
 
 ## Summary
 
 Both options provide flexibility in provisioning resources across multiple AWS accounts based on your specific requirements and setup. 
 
-Option A is suitable when you have separate EKS clusters for each account, while Option B allows you to manage multiple accounts from a single Stack Automation agent in the master account.
+Option A is suitable when you have separate EKS clusters for each account, while Option B allows you to manage multiple accounts from a single Stack Automation Management Server in the master account.

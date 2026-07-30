@@ -16,7 +16,7 @@ With the AWS CDK grain, you can:
 - Deploy AWS infrastructure as code using CDK apps.
 - Pass environment variables and inputs to parameterize your deployments.
 - Use workspace directories to provide additional files or configuration to your CDK app.
-- Control deployment agents and service accounts for secure execution.
+- Control deployment management servers and service accounts for secure execution.
 
 ## Example: Basic AWS CDK Grain
 
@@ -41,7 +41,7 @@ grains:
 In this example:
 
 - The CDK app is sourced from the `cdk-repo` store at `cdk/python/dev/s3`.
-- The deployment runs on the agent specified by the blueprint input.
+- The deployment runs on the management server specified by the blueprint input.
 
 
 ## Example: Advanced AWS CDK Grain
@@ -92,7 +92,7 @@ This example demonstrates:
 
 - Using a specific branch of a CDK app from a connected store.
 - Passing multiple environment variables, including dynamic values from blueprint inputs.
-- Specifying both the agent and the service account for execution.
+- Specifying both the management server and the service account for execution.
 - The environment variable `CDK_CONFIG_FILE` is set, referencing a workspace directory.
 - The `workspace-directories` section mounts additional files from another repository.
 
@@ -114,7 +114,7 @@ Defines where the CDK app is located. Supports:
 
 ### `agent`
 
-Specifies the agent on which to run the CDK deployment. You can also specify a `service-account` for AWS credentials.
+Specifies the management server on which to run the CDK deployment. You can also specify a `service-account` for AWS credentials.
 
 ### `env-vars`
 
@@ -144,7 +144,7 @@ Defines dependencies on other grains, ensuring this grain runs after the specifi
 ## Notes
 
 - The AWS CDK grain expects a valid CDK app (e.g., Python, TypeScript, etc.) in the specified path.
-- Ensure that your agent has the necessary AWS credentials and permissions to deploy the resources defined in your CDK app.
+- Ensure that your management server has the necessary AWS credentials and permissions to deploy the resources defined in your CDK app.
 - Use environment variables to pass configuration and secrets securely.
 - You can use Stack Automation's templating engine to inject dynamic values from blueprint inputs or parameters.
 

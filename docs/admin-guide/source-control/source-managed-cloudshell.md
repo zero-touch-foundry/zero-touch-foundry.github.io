@@ -8,7 +8,7 @@ Stack Automation supports connecting Quali CloudShell as an asset repository. Cl
 ## Prerequisites
 
 1. CloudShell user with at least "External Extended" permissions in the CloudShell Domains that you want to use.
-2. A self-hosted Stack Automation agent that can reach the Sandbox Api of your CloudShell instance.
+2. A self-hosted Stack Automation management server that can reach the Sandbox Api of your CloudShell instance.
 3. CloudShell version 2021.2 and higher.
 
 ## Configuration
@@ -16,7 +16,7 @@ Stack Automation supports connecting Quali CloudShell as an asset repository. Cl
 1. Register CloudShell as a Repository Provider via Stack Automation REST API. If the API call is successful it will return a GUID representing the ID of the new repository provider. Save this ID for the next step.
   
 ```jsx
-curl -L 'https://portal.qtorque.io/api/settings/repository_providers' \
+curl -L 'https://stackautomation.cisco.com/api/settings/repository_providers' \
 -H 'Authorization: Bearer <TOKEN>' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -35,7 +35,7 @@ curl -L 'https://portal.qtorque.io/api/settings/repository_providers' \
 
   * Replace __&lt;TOKEN&gt;__ with a valid Stack Automation token with Stack Automation Admin permissions
   * Replace __&lt;PROVIDER_NAME&gt;__ with a display name for the CloudShell instance. Example: "CloudShell_Dev"
-  * Replace __&lt;CLOUDSHELL_SERVER_URL&gt;__ with the IP or DNS of your CloudShell instance. The CloudShell instance needs to be reachable from at least one of your self-hosted Stack Automation agents. Stack Automation will automatically select an agent for communicating with CloudShell
+  * Replace __&lt;CLOUDSHELL_SERVER_URL&gt;__ with the IP or DNS of your CloudShell instance. The CloudShell instance needs to be reachable from at least one of your self-hosted Stack Automation management servers. Stack Automation will automatically select a management server for communicating with CloudShell
   * Replace __&lt;SANDBOX_API_PORT&gt;__ with the port of the CloudShell Sandbox API. The default port is 82
   * Replace __&lt;CLOUDSHELL_USER&gt;__ and __&lt;CLOUDSHELL_PASSWORD&gt;__ with a valid CloudShell username and password
   * Replace __&lt;CLOUDSHELL_DOMAIN&gt;__ with the CloudShell Domain that will be used as the default Domain. If needed you can later set a different Domain per each space
@@ -44,7 +44,7 @@ curl -L 'https://portal.qtorque.io/api/settings/repository_providers' \
 2. Connect the repository as an asset repository to a space.
 
 ```jsx
-curl -L 'https://portal.qtorque.io/api/spaces/<SPACE_NAME>/repositories/cloudshell' \
+curl -L 'https://stackautomation.cisco.com/api/spaces/<SPACE_NAME>/repositories/cloudshell' \
 -H 'Authorization: Bearer <TOKEN>' \
 -H 'Content-Type: application/json' \
 -d '{

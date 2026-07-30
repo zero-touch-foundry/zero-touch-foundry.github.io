@@ -22,7 +22,7 @@ title: Install a Management Server on your Kubernetes Cluster
   - To create K8s resources (Pods, services, secrets... etc.) using K8s manifests or helm charts, create a service account with sufficient permissions to create the K8s resources. 
     For Example:
 
-    Let's say that you would like to deploy your deployments into a namespace called "my-ns". 
+    Let's say that you would like to run your deployments in a namespace called "my-ns". 
     Use the below commands (change to your real namespace name) to create the appropriate service-account:
 
     ```bash

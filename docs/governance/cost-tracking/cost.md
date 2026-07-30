@@ -3,14 +3,14 @@ sidebar_position: 9
 title: Cost
 ---
 
-Stack Automation's __Cost__ dashboard provides you with actionable insights into the costs of your environments. Cost data is collected using the __torque-environment-id__ and __torque-account-id__ tags which are assigned (with a unique value) to every new environment's resources. To learn more about Stack Automation tagging, see [Tags](/governance/tags).
+Stack Automation's __Cost__ dashboard provides you with actionable insights into the costs of your deployments. Cost data is collected using the __torque-environment-id__ and __torque-account-id__ tags which are assigned (with a unique value) to every new deployment's resources. To learn more about Stack Automation tagging, see [Tags](/governance/tags).
 
 > ![Locale Dropdown](/img/cost-dashboard1.png)
 
 With the cost dashboard, you can understand your business activities cost:
 * Understand the total monthly cost
 * Group by cloud account
-* Group by application (blueprint) , Space (team), manual/automation, and by specific environment.
+* Group by application (blueprint) , Space (team), manual/automation, and by specific deployment.
 
 
 [Read more about Stack Automation reports](/reports/reports-overview)

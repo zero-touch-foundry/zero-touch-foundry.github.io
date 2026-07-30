@@ -11,16 +11,16 @@ Before using the CloudShell grain, ensure you have:
 
 - A healthy CloudShell instance with proper connectivity
 - Configured integration between Stack Automation and CloudShell
-- An agent with direct connectivity to the self-hosted CloudShell instance
+- A management server with direct connectivity to the self-hosted CloudShell instance
 
 For detailed setup instructions, see [Self-Managed Quali CloudShell](/admin-guide/source-control/source-managed-cloudshell).
 
-## Environment lifecycle management
+## Deployment lifecycle management
 
-When launching an environment in Stack Automation with the CloudShell grain, Stack Automation will start a sandbox in CloudShell with the same duration. The lifecycle is fully synchronized:
+When launching a deployment in Stack Automation with the CloudShell grain, Stack Automation will start a sandbox in CloudShell with the same duration. The lifecycle is fully synchronized:
 
-- **Extension**: If the Stack Automation environment is extended, the CloudShell sandbox will be extended accordingly
-- **Termination**: When the Stack Automation environment ends, the CloudShell sandbox will be terminated as well
+- **Extension**: If the Stack Automation deployment is extended, the CloudShell sandbox will be extended accordingly
+- **Termination**: When the Stack Automation deployment ends, the CloudShell sandbox will be terminated as well
 
 ## Usage example
 
@@ -76,7 +76,7 @@ The `path` must match the exact name of the CloudShell Blueprint in your CloudSh
 
 ### `agent`
 
-The agent executing the CloudShell grain must have direct network connectivity to the self-hosted CloudShell instance. This includes access to CloudShell Portal API and the CloudShell orchestration services.
+The management server executing the CloudShell grain must have direct network connectivity to the self-hosted CloudShell instance. This includes access to CloudShell Portal API and the CloudShell orchestration services.
 
 Please see [the grain agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent) for more details.
 
@@ -114,10 +114,10 @@ The inputs are passed to CloudShell when the sandbox is created, allowing you to
 The CloudShell grain has the following current limitations:
 
 - **Drift detection**: Not supported for CloudShell resources
-- **Update operations**: Environment updates are not supported
+- **Update operations**: Deployment updates are not supported
 - **Auto-tagging**: Automatic resource tagging is not available
 - **Outputs**: CloudShell grain outputs are not currently supported
-- **Unlimited environments**: Not supported for CloudShell grains
+- **Unlimited deployments**: Not supported for CloudShell grains
 
 :::warning
 These limitations are specific to the CloudShell grain integration. Other grain types in the same blueprint may support these features.

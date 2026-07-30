@@ -40,7 +40,7 @@ Use the **Announcements** feature to display **important messages across the pla
 This feature allows you to create and manage announcement banners to notify users about critical updates. You can:  
 - Set banners for specific spaces or apply them globally.  
 - Customize the message, and banner color.  
-- Enable Maintenance Mode to prevent environment launches in selected spaces.
+- Enable Maintenance Mode to prevent deployment launches in selected spaces.
 
 **How to set up an Announcement**
 
@@ -48,7 +48,7 @@ This feature allows you to create and manage announcement banners to notify user
 2.  Use the ‘Preview Mode’ toggle to see how your banner will eventually look like.
 3.  Enter your message and customize the **banner color**.
 4.  Choose specific **spaces** to display the announcement or apply it system-wide.
-5.  Enable the **Maintenance Mode** if needed. This mode enables preventing selected spaces from launching new environments during your scheduled downtime.
+5.  Enable the **Maintenance Mode** if needed. This mode enables preventing selected spaces from launching new deployments during your scheduled downtime.
 6.  Save changes to instantly publish the announcement.
 
 ---
@@ -82,7 +82,7 @@ These settings include 2 features:
 2.  Toggle on the ‘Stack Automation Copilot’ toggle to show the AI chatbot button at the top header, next to the rest of the utilities.
 3.  Toggle off to hide the AI chatbot and to prevent access from all users.
 
-**2. Cloud Copilot** – Your internal AI assistance to create and customize Blueprints, auto-generate descriptions, and resolve live environment errors.  
+**2. Cloud Copilot** – Your internal AI assistance to create and customize Blueprints, auto-generate descriptions, and resolve live deployment errors.  
 This AI assistant tool is subject to the [Stack Automation MSA](https://www.quali.com/legal-torque-master-subscription-agreement/) and requires user consent.  
   
 With this feature you can:  
@@ -90,7 +90,7 @@ With this feature you can:
 - **(Blueprint) Cloud Copilot** - Create and customize blueprints from your Building Blocks Library, using simple language prompts and the power of AI.
   ![Cloud Copilot](/img/cloud_copilot_panel.png)
 
-- **AI Insights** - Get AI assistant when you need it. Resolve issues in live environments, by clicking the “Get AI Insights” button, on every error log in your environment.
+- **AI Insights** - Get AI assistant when you need it. Resolve issues in live deployments, by clicking the “Get AI Insights” button, on every error log in your deployment.
 
   ![AI Insights](/img/ai_insights.png)
 
@@ -139,7 +139,7 @@ The Stack Automation ‘Weekly Digest’ emails are being sent to administrators
 
 -   Cloud usage
 -   Users activity
--   Environments usage
+-   Deployments usage
 -   Cloud Cost
 -   Top used IaC modules
 -   Top contributors to the operation
@@ -166,14 +166,14 @@ Control the visibility of the Approval Requests page. Approval policies will sti
 2.  Toggle the setting to **show or hide** the Approval Requests page.
 
 :::tip __Important__
-Notice that hiding the page does NOT prevent users from applying approval requests for launching, or extending environments.
+Notice that hiding the page does NOT prevent users from applying approval requests for launching, or extending deployments.
 :::
 
 ---
 
 ### 8.	Quick Launch
 
-Enable your team to Quick Launch — this configuration skips the summary step and launches environments instantly.
+Enable your team to Quick Launch — this configuration skips the summary step and launches deployments instantly.
 
 When enabled by the account admin:
 -> The 'Review Summary' step is removed.

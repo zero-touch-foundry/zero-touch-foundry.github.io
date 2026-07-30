@@ -7,7 +7,7 @@ The Helm grain is Stack Automation's native support for Helm v3 charts. Stack Au
 
 ## Tools and technologies
 
-The following tools and technologies are installed out of the box on our agents in the Kubernetes and Helm runners and can be used when writing grain scripts (pre/post, etc.):
+The following tools and technologies are installed out of the box on our management servers in the Kubernetes and Helm runners and can be used when writing grain scripts (pre/post, etc.):
 
 - dotnet
 - curl
@@ -72,7 +72,7 @@ Stack Automation will install the helm release in the namespace referred to in `
 
 :::info
 - The target namespace must exist in the cluster prior to the deployment
-- It must not be equal to the namespaces used by Stack Automation for agent deployments
+- It must not be equal to the namespaces used by Stack Automation for management server deployments
 - Make sure the service account has enough permissions to create/read/delete everything in the helm chart and also create/read/delete secrets and volumes
 - To automatically create the namespace if it doesn't exist, see [Creating Namespace Automatically](#use-case-creating-namespace-automatically)
 :::
@@ -103,7 +103,7 @@ Please see [the grain source](/blueprint-designer-guide/blueprints/blueprints-ya
 Please see [the grain agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent) for more details.
 
 :::tip
-It's also possible to use `parameters` for the service-account name. Note that when service account is not provided in the grain, the default service account provided on the agent will be used.
+It's also possible to use `parameters` for the service-account name. Note that when service account is not provided in the grain, the default service account provided on the management server will be used.
 
 __Example:__
 
@@ -160,7 +160,7 @@ grains:
 ```
 
 :::info
-Note that in the above example, blueprint input is used as the value of the Helm grain input, so the environment's owner is able to choose the replicaCount required for his need. The information provided by the user will be passed to Helm chart as values and affect the deployment process.
+Note that in the above example, blueprint input is used as the value of the Helm grain input, so the deployment's owner is able to choose the replicaCount required for his need. The information provided by the user will be passed to Helm chart as values and affect the deployment process.
 :::
 
 ### `values-files`
@@ -195,7 +195,7 @@ grains:
 
 ### `outputs`
 
-Helm does not natively expose outputs. However, this can be done using a `post-helm-install` script that assigns environment variables after the grain's deployment. The script must be referenced, along with the names of the environment variables in the grain's [`scripts`](#scripts). To expose the outputs to the environment, the names of the environment variables must be referenced in the blueprint's `outputs` section.
+Helm does not natively expose outputs. However, this can be done using a `post-helm-install` script that assigns environment variables after the grain's deployment. The script must be referenced, along with the names of the environment variables in the grain's [`scripts`](#scripts). To expose the outputs to the deployment, the names of the environment variables must be referenced in the blueprint's `outputs` section.
 
 
 __Example:__

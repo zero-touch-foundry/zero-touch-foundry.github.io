@@ -5,7 +5,6 @@ title: Terraform AKS/Azure Authentication
 
 
 If you're using an AKS cluster for your management server, and you want to run Terraform that deploys resources on Azure, you can use a Azure Workload Identity (valid for AKS clusters version 1.22+) that allows the cluster to securely authenticate with Azure using K8s service account and an Open ID connect (OIDC) token.
-For a step-by-step tutorial, see [Video: Connecting a new management server and using it in a blueprint](#video-connecting-a-new-management-server-and-using-it-in-a-blueprint).
 
 :::tip __IMPORTANT__
 Stack Automation does not support running the Stack Automation Management Server on an AKS cluster using [Burst Type VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable) as cluster worker nodes.  Please use a different VM type.
@@ -19,7 +18,6 @@ The basic process is as follows:
 - [__Stack Automation Configuration__](#stack-automation-configuration)
   - [__Prerequisites__](#prerequisites-1)
   - [__Configure the AKS authentication in Stack Automation__](#configure-the-aks-authentication-in-stack-automation)
-- [Video: Connecting a new management server and using it in a blueprint](#video-connecting-a-new-management-server-and-using-it-in-a-blueprint)
 
 ## __Azure Configuration__
 

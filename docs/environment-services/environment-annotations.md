@@ -13,19 +13,19 @@ Thank you for your understanding and support.
 
 ## __Deployment Annotations: What They Are and How you can leverage them to optimize processes__
 
-Deployment annotations are labels or metadata that can be added to deployments to provide additional information about them. Annotations can be used to define the purpose, status, or configuration of an deployment, as well as to track changes or updates.
+Deployment annotations are labels or metadata that can be added to deployments to provide additional information about them. Annotations can be used to define the purpose, status, or configuration of a deployment, as well as to track changes or updates.
 
-Annotations in Stack Automation are key-value pairs that can be added to an deployment or resource using a specific syntax or format. They can be used to add descriptive information, such as the description of an deployment, or to provide dynamic updates, such as the current status of a deployment or the results of a test.
+Annotations in Stack Automation are key-value pairs that can be added to a deployment or resource using a specific syntax or format. They can be used to add descriptive information, such as the description of a deployment, or to provide dynamic updates, such as the current status of a deployment or the results of a test.
 
 Annotations can help teams manage and organize deployments in Stack Automation by providing an easy way to track and communicate important information about them. For example, annotations can be used to indicate the power-state status of virtual machines in the deployment. 
 
 Deployment annotations are a powerful tool for managing and organizing deployments, and can help teams streamline their software development and testing processes by providing clear and concise information about the resources they are working with.
 
-> ![Locale Dropdown](/img/annotations.png)
+<!-- > ![Locale Dropdown](/img/annotations.png) -->
 
-## __To create an deployment annotation:__
+## __To create a deployment annotation:__
 
-Since deployment annotations are __dynamic__ attributes of the deployments, Stack Automation uses __rego__ files and the policy engine to evaluate the annotation upon any chance in the deployment. 
+Since deployment annotations are __dynamic__ attributes of the deployments, Stack Automation uses __rego__ files and the policy engine to evaluate the annotation upon any change in the deployment. 
 
 **Step 1: Create a rego file**
 
@@ -80,13 +80,10 @@ Currently the only supported annotations are "power:on", "power:off" and "power:
 **Step 2: Import the rego file into Stack Automation**
 
 1. If the git repository where the relevant rego file resides was not yet connected to Stack Automation, perform the following :
-   1. Go to __Administration > Policy Repositories__ and click __Add a Repository__.
+   1. Go to __Governance > Policy Repositories__ and click __Add a Repository__.
    2. Select the git repository, specify the repository's URL, and give it a name.
    > ![Locale Dropdown](/img/repository-information.png)
    3. Click __Connect__. Provide authorization credentials if the repository is private.
-
-    A green checkmark next to the repository's URL indicates that the repository has been added successfully.
-      > ![Locale Dropdown](/img/repository-connection.png)
 2. On the added (or existing) repository where the file resides, Click __Discover Policies__.
 3. Select the policies you want to import into Stack Automation, and click __Generate Policies__.
    > ![Locale Dropdown](/img/policy-import.png)

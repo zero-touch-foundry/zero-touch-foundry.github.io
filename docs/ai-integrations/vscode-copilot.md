@@ -2,7 +2,7 @@
 
 **GitHub Copilot in Visual Studio Code** supports *agent mode*, where Copilot can call MCP
 servers. Connecting Stack Automation gives Copilot Chat the ability to manage your spaces,
-blueprints, and environments while you stay in your editor.
+blueprints, and deployments while you stay in your editor.
 
 Setup is: install the Stack Automation VS Code extension, add one MCP server entry to your
 `mcp.json`, and start the server.
@@ -60,7 +60,7 @@ will call the `stack-automation` server and may ask you to confirm tool calls.
 **Everyday examples:**
 
 - "Launch the `aws-eks-sandbox` blueprint in the `dev` space."
-- "Show me the status and endpoints of my running environments."
+- "Show me the status and endpoints of my running deployments."
 - "Open the blueprint definition for `terraform-vpc` so I can edit it."
 - "Deploy the module in this repo as a Stack Automation blueprint."
 

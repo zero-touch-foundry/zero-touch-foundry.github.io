@@ -6,7 +6,7 @@ title: AWS Secrets Manager for Git Integration
 # Using AWS Secrets Manager for Git Repository Access
 
 ## Overview
-This guide explains how to use AWS Secrets Manager to manage and retrieve credentials for accessing a Git repository within the Stack Automation platform. By using Secrets Manager, you can securely store and retrieve access tokens, which are then utilized by Stack Automation's asset discovery (agent) and provisioning (runner) components, simplifying repository credential management while adhering to organizational security policies.
+This guide explains how to use AWS Secrets Manager to manage and retrieve credentials for accessing a Git repository within the Stack Automation platform. By using Secrets Manager, you can securely store and retrieve access tokens, which are then utilized by Stack Automation's asset discovery (management server) and provisioning (runner) components, simplifying repository credential management while adhering to organizational security policies.
 
 ## Scope
 This guide supports the use of third-party secret management services, specifically AWS Secrets Manager, to retrieve repository tokens for use in the Stack Automation platform. This provides a flexible and secure way to manage repository credentials during asset discovery and provisioning processes.
@@ -49,7 +49,7 @@ Integrating AWS Secrets Manager into Stack Automation allows users to manage rep
    ```
 
 ### Step 3: Configure Git Credentials in Stack Automation
-1. **Install the Agent**: Ensure that the Stack Automation agent is installed.
+1. **Install the Management Server**: Ensure that the Stack Automation management server is installed.
 2. **Navigate to Stack Automation Credentials**: In the Stack Automation portal, navigate to the **Account Admin** -> **Credentials** page.
 3. **Add New Git Credential**: Click on **Add New Credential** and select the credential type as **Gitlab**. In the dropdown list, choose the **Secret Manager** option.
 
@@ -67,7 +67,7 @@ import pic1 from '/img/git-secret-manager.png';
      - **Secret Path**: Represents the hierarchy of fields inside the secret's value.
    - **External ID** is optional but can be provided if required by your security policies.
 
-   The secret will be used by Stack Automation's asset discovery (agent) or provisioning (runner) components to interact securely with the Git repository.
+   The secret will be used by Stack Automation's asset discovery (management server) or provisioning (runner) components to interact securely with the Git repository.
 
 ## Troubleshooting
 1. **Verify Secret Retrieval**: You can manually verify that the secret can be retrieved using the AWS CLI or SDK to ensure proper configuration.

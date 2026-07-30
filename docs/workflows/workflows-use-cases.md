@@ -521,7 +521,7 @@ grains:
 ## Stack Automation Built-in Workflows
 
 :::info
-Usage example can be found [here](workflows-overview#torque-built-in-workflows)
+Usage example can be found [here](workflows-overview#stack-automation-built-in-workflows)
 :::
 
 ### 1. AWS EC2 Power Management

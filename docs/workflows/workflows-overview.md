@@ -78,7 +78,7 @@ workflow:
 grains: ...
 ```
 
-By specifying the appropriate scope for your workflows, you can ensure that they are available and applicable to the desired level of your infrastructure. Whether you need to automate processes at the environment level or target specific resources, Stack Automation workflows provide the flexibility to meet your automation needs.
+By specifying the appropriate scope for your workflows, you can ensure that they are available and applicable to the desired level of your infrastructure. Whether you need to automate processes at the deployment level or target specific resources, Stack Automation workflows provide the flexibility to meet your automation needs.
 
 ### `labels-selector`
 
@@ -163,7 +163,7 @@ The `timeout` field allows you to specify the maximum duration (in minutes) that
 The timeout value can be specified as either a string or an integer, and supports Liquid templating for dynamic values (for example, from inputs or parameters).
 
 :::info
-The minimum timeout value is 5 minutes. This ensures that the workflow environment has sufficient time to initialize and start deployment properly.
+The minimum timeout value is 5 minutes. This ensures that the workflow deployment has sufficient time to initialize and start properly.
 :::
 
 **Example - static timeout:**
@@ -270,7 +270,7 @@ grains:
             - 'echo "--->> {{.bindings.attributes.arn}}"'
 ```
 
-### Environment `contract.json`
+### Deployment `contract.json`
 
 
 When a workflow is executed with a specific scope, the deployment **context** JSON object is provided in a file called `contract.json`. This file is accessible from the Runner and contains information about the deployment, such as its ID, name, owner email, inputs and all grains introspection data.
@@ -614,7 +614,7 @@ grains:
 
 ## Deployment References Support
 
-Workflows support `env_references` similar to blueprints, allowing workflows to reference and consume published deployments. For more information about environment publishing and references, see [Deployment Publishing](/environment-services/environment-publishing).
+Workflows support `env_references` similar to blueprints, allowing workflows to reference and consume published deployments. For more information about deployment publishing and references, see [Deployment Publishing](/environment-services/environment-publishing).
 
 :::info Supported scenarios
 - **Manual workflows**: Workflows with `env_references` can be launched manually, and users can specify the deployment reference values during execution

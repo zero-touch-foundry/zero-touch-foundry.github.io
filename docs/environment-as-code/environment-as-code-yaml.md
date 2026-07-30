@@ -3,14 +3,14 @@ sidebar_position: 1
 title: The Environment YAML
 ---
 
-Environment as Code (EaC) allows you to define and manage Stack Automation environments using YAML files. If you know how to write Stack Automation blueprints, you can write EaC YAML files. The structure of an EaC YAML file is similar to a blueprint, with the addition of an 'environment' section that defines the properties of the specific environment instance.
+Environment as Code (EaC) allows you to define and manage Stack Automation deployments using YAML files. If you know how to write Stack Automation blueprints, you can write EaC YAML files. The structure of an EaC YAML file is similar to a blueprint, with the addition of an 'environment' section that defines the properties of the specific deployment instance.
 
-## Environment Discovery
+## Deployment Discovery
 
-Environment YAML files must be placed under the 'environments' directory in the repository. Stack Automation periodically scans this directory for environment YAML files and stores them internally.
+Deployment YAML files must be placed under the 'environments' directory in the repository. Stack Automation periodically scans this directory for deployment YAML files and stores them internally.
 
 :::note
-Environments are written in YAML files that reside in an __/environments__ folder within a source control repository onboarded to Stack Automation (the folder name is case-sensitive and must be "environments"). Environments kept in the __/environments__ folder must be of type ".yaml" and not ".yml" to be used in Stack Automation.
+Deployments are written in YAML files that reside in an __/environments__ folder within a source control repository onboarded to Stack Automation (the folder name is case-sensitive and must be "environments"). Deployments kept in the __/environments__ folder must be of type ".yaml" and not ".yml" to be used in Stack Automation.
 :::
 
 The directory structure should be as follows:
@@ -22,14 +22,14 @@ environments/
     devbox.yaml
 ```
 
-When a new environment YAML file is detected or an existing one is modified, Stack Automation performs validations on the file. If the file is valid, a snapshot is saved, which will be used to create or reconcile the environment. If the file is invalid, it will not affect the existing snapshot or the environment.
+When a new deployment YAML file is detected or an existing one is modified, Stack Automation performs validations on the file. If the file is valid, a snapshot is saved, which will be used to create or reconcile the deployment. If the file is invalid, it will not affect the existing snapshot or the deployment.
 
-If a user modifies the environment YAML file, the changes will be applied to the corresponding environment.
+If a user modifies the deployment YAML file, the changes will be applied to the corresponding deployment.
 
 Possible applicable changes:
 - Add/remove grains
 - Change commit/tag
-- Environment inputs
+- Deployment inputs
 - Grain inputs
 
 :::info
@@ -38,7 +38,7 @@ All sources must contain a commit hash or tag.
 
 ## Usage Example
 
-Here's an example of a Stack Automation environment YAML file:
+Here's an example of a Stack Automation deployment YAML file:
 
 ```yaml
 spec_version: 2
@@ -122,13 +122,13 @@ grains:
 
 In this example, the `environment` section defines the environment name, description, owner email, and state. The `inputs` and `outputs` sections define the environment-level inputs and outputs, respectively.
 
-The `grains` section contains the list of grains that make up the environment, similar to a blueprint. Each grain specifies its kind (e.g., `terraform`, `blueprint`, etc.), version, and other configuration details specific to that grain type.
+The `grains` section contains the list of grains that make up the deployment, similar to a blueprint. Each grain specifies its kind (e.g., `terraform`, `blueprint`, etc.), version, and other configuration details specific to that grain type.
 
-By following this structure, users can define and manage their environments as code, allowing for version control, collaboration, and automated deployments using Stack Automation's Environment as Code (EaC) functionality.
+By following this structure, users can define and manage their deployments as code, allowing for version control, collaboration, and automated deployments using Stack Automation's Environment as Code (EaC) functionality.
 
 ## Environment section
 
-The environment section contains all of the specific data related to the environment instance. This is the main configuration block that defines how the environment should be created and managed.
+The environment section contains all of the specific data related to the deployment instance. This is the main configuration block that defines how the deployment should be created and managed.
 
 ```yaml
 environment:
@@ -155,7 +155,7 @@ environment:
 
 ### `environment_name`
 
-The unique name identifier for the environment. This field is required and must be unique within the space.
+The unique name identifier for the deployment. This field is required and must be unique within the space.
 
 ```yaml
 environment:
@@ -164,7 +164,7 @@ environment:
 
 ### `description`
 
-An optional description providing additional context about the environment's purpose or contents.
+An optional description providing additional context about the deployment's purpose or contents.
 
 ```yaml
 environment:
@@ -173,7 +173,7 @@ environment:
 
 ### `owner_email`
 
-The email address of the environment owner. This field is required and must be a valid email address of a user in the Stack Automation system.
+The email address of the deployment owner. This field is required and must be a valid email address of a user in the Stack Automation system.
 
 ```yaml
 environment:
@@ -181,14 +181,14 @@ environment:
 ```
 
 :::info
-Updating the owner email does not update the owner of active environments. Owner changes only apply to new environment deployments.
+Updating the owner email does not update the owner of active deployments. Owner changes only apply to new deployments.
 :::
 
 ### `state`
 
-The desired state of the environment. Possible values are:
-- `active`: The environment should be running and available
-- `inactive`: The environment should be stopped/terminated
+The desired state of the deployment. Possible values are:
+- `active`: The deployment should be running and available
+- `inactive`: The deployment should be stopped/terminated
 
 ```yaml
 environment:
@@ -197,7 +197,7 @@ environment:
 
 ### `collaborators`
 
-Defines users and groups that have collaborative access to the environment. Collaborators can view and potentially modify the environment based on their permissions.
+Defines users and groups that have collaborative access to the deployment. Collaborators can view and potentially modify the deployment based on their permissions.
 
 ```yaml
 environment:
@@ -216,7 +216,7 @@ environment:
 
 ### `spaces`
 
-Specifies which Stack Automation spaces this environment belongs to. Environments can be associated with multiple spaces for organization and access control purposes.
+Specifies which Stack Automation spaces this deployment belongs to. Deployments can be associated with multiple spaces for organization and access control purposes.
 
 ```yaml
 environment:
@@ -228,7 +228,7 @@ environment:
 
 ### `tags`
 
-Key-value pairs for categorizing and organizing environments. Tags can be used for filtering, reporting, and applying policies.
+Key-value pairs for categorizing and organizing deployments. Tags can be used for filtering, reporting, and applying policies.
 
 ```yaml
 environment:
@@ -241,7 +241,7 @@ environment:
 
 ### `labels`
 
-Similar to tags but used specifically for workflow attachment and selection. Labels help determine which workflows are available for this environment.
+Similar to tags but used specifically for workflow attachment and selection. Labels help determine which workflows are available for this deployment.
 
 ```yaml
 environment:
@@ -253,7 +253,7 @@ environment:
 
 ### `duration`
 
-Specifies the maximum lifetime of the environment. The environment will be automatically terminated after this duration expires.
+Specifies the maximum lifetime of the deployment. The deployment will be automatically terminated after this duration expires.
 
 ```yaml
 environment:
@@ -267,7 +267,7 @@ environment:
 
 ### `auto_approve`
 
-Controls whether the environment deployment should proceed automatically without requiring manual approval, even if approval policies are configured.
+Controls whether the deployment should proceed automatically without requiring manual approval, even if approval policies are configured.
 
 ```yaml
 environment:
@@ -276,7 +276,7 @@ environment:
 
 ### `blueprint_commit`
 
-Specifies a specific commit hash or tag for the blueprint source, allowing for precise version control of the environment definition.
+Specifies a specific commit hash or tag for the blueprint source, allowing for precise version control of the deployment definition.
 
 ```yaml
 environment:
@@ -287,11 +287,11 @@ environment:
 
 ## EaC Management APIs
 
-Stack Automation provides REST APIs for managing Environment as Code (EaC) files and their associated environments. These APIs allow you to control the lifecycle and behavior of EaC-managed environments.
+Stack Automation provides REST APIs for managing Environment as Code (EaC) files and their associated deployments. These APIs allow you to control the lifecycle and behavior of EaC-managed deployments.
 
 ### Enable/Disable EaC Record
 
-Control whether the reconcile loop processes a specific EaC file. When disabled, the reconcile loop will skip the EaC file and will not launch or modify environments based on its contents.
+Control whether the reconcile loop processes a specific EaC file. When disabled, the reconcile loop will skip the EaC file and will not launch or modify deployments based on its contents.
 
 **Endpoint:**
 ```
@@ -312,11 +312,11 @@ PUT /api/spaces/{space_name}/eac/enable
 
 **Behavior:**
 - **Enabled (default)**: New EaC files are enabled by default. The reconcile loop will process the file and apply any changes
-- **Disabled**: The reconcile loop will skip this EaC file and will not attempt to launch or modify environments based on its contents
+- **Disabled**: The reconcile loop will skip this EaC file and will not attempt to launch or modify deployments based on its contents
 
 **Example:**
 ```bash
-curl -X PUT "https://portal.qtorque.io/api/spaces/my-space/eac/enable" \
+curl -X PUT "https://stackautomation.cisco.com/api/spaces/my-space/eac/enable" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <token>" \
   -d '{
@@ -325,9 +325,9 @@ curl -X PUT "https://portal.qtorque.io/api/spaces/my-space/eac/enable" \
   }'
 ```
 
-### Detach EaC Environment
+### Detach EaC Deployment
 
-Detach an EaC-managed environment so that it will no longer be subject to changes that occur in the EaC file. The environment becomes a regular environment that is managed independently.
+Detach an EaC-managed deployment so that it will no longer be subject to changes that occur in the EaC file. The deployment becomes a regular deployment that is managed independently.
 
 **Endpoint:**
 ```
@@ -335,24 +335,24 @@ PUT /api/spaces/{space_name}/environments/{eac_env_id}/eac/detach
 ```
 
 **Parameters:**
-- `space_name` (string, required): The name of the space containing the environment
-- `eac_env_id` (string, required): The ID of the EaC-managed environment to detach
+- `space_name` (string, required): The name of the space containing the deployment
+- `eac_env_id` (string, required): The ID of the EaC-managed deployment to detach
 
 **What happens when detaching:**
 1. The associated EaC file is automatically disabled
-2. The environment ID is removed from the EaC record in the database
-3. The EaC path reference is removed from the environment state
-4. The environment continues to run but is no longer managed by the EaC file
+2. The deployment ID is removed from the EaC record in the database
+3. The EaC path reference is removed from the deployment state
+4. The deployment continues to run but is no longer managed by the EaC file
 
 **Example:**
 ```bash
-curl -X PUT "https://portal.qtorque.io/api/spaces/my-space/environments/env-123/eac/detach" \
+curl -X PUT "https://stackautomation.cisco.com/api/spaces/my-space/environments/env-123/eac/detach" \
   -H "Authorization: Bearer <token>"
 ```
 
-### Terminate EaC Environment
+### Terminate EaC Deployment
 
-Terminate an EaC-managed environment, which automatically detaches it first and then terminates the environment.
+Terminate an EaC-managed deployment, which automatically detaches it first and then terminates the deployment.
 
 **Endpoint:**
 ```
@@ -360,24 +360,24 @@ DELETE /api/spaces/{space_name}/environments/{eac_env_id}/eac
 ```
 
 **Parameters:**
-- `space_name` (string, required): The name of the space containing the environment
-- `eac_env_id` (string, required): The ID of the EaC-managed environment to terminate
+- `space_name` (string, required): The name of the space containing the deployment
+- `eac_env_id` (string, required): The ID of the EaC-managed deployment to terminate
 
 **Query Parameters:**
-- `interrupt` (boolean, optional): Set to `true` to force termination, `false` for graceful termination (same as normal environment termination)
+- `interrupt` (boolean, optional): Set to `true` to force termination, `false` for graceful termination (same as normal deployment termination)
 
 **What happens when terminating:**
-1. The environment is first detached (same process as the detach API)
-2. The environment is then terminated following the normal termination process
+1. The deployment is first detached (same process as the detach API)
+2. The deployment is then terminated following the normal termination process
 
 **Example:**
 ```bash
 # Graceful termination
-curl -X DELETE "https://portal.qtorque.io/api/spaces/my-space/environments/env-123/eac" \
+curl -X DELETE "https://stackautomation.cisco.com/api/spaces/my-space/environments/env-123/eac" \
   -H "Authorization: Bearer <token>"
 
 # Force termination
-curl -X DELETE "https://portal.qtorque.io/api/spaces/my-space/environments/env-123/eac?interrupt=true" \
+curl -X DELETE "https://stackautomation.cisco.com/api/spaces/my-space/environments/env-123/eac?interrupt=true" \
   -H "Authorization: Bearer <token>"
 ```
 
@@ -385,14 +385,14 @@ curl -X DELETE "https://portal.qtorque.io/api/spaces/my-space/environments/env-1
 
 **Development Workflow:**
 1. **Disable EaC during maintenance**: Temporarily disable an EaC file while making significant changes to prevent unwanted deployments
-2. **Detach for customization**: Detach an environment when you need to make manual changes that shouldn't be overwritten by the EaC file
-3. **Clean termination**: Use the terminate API to properly clean up EaC environments and their associations
+2. **Detach for customization**: Detach a deployment when you need to make manual changes that shouldn't be overwritten by the EaC file
+3. **Clean termination**: Use the terminate API to properly clean up EaC deployments and their associations
 
 **Production Management:**
-- Disable EaC files for environments that require manual oversight
-- Detach environments before performing manual maintenance or testing
-- Use terminate for clean decommissioning of EaC-managed environments
+- Disable EaC files for deployments that require manual oversight
+- Detach deployments before performing manual maintenance or testing
+- Use terminate for clean decommissioning of EaC-managed deployments
 
 :::warning
-Once an environment is detached from its EaC file, it cannot be re-attached. The environment becomes a standard Stack Automation environment and must be managed manually or through regular APIs.
+Once a deployment is detached from its EaC file, it cannot be re-attached. The deployment becomes a standard Stack Automation deployment and must be managed manually or through regular APIs.
 :::

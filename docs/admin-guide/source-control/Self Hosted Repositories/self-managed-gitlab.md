@@ -7,7 +7,7 @@ Stack Automation supports connecting to self-managed GitLab repositories, allowi
 
 ## Prerequisites
 
-1. **Agent Installation**: You must have the Stack Automation Agent installed with access to your self-managed GitLab instance.
+1. **Management Server Installation**: You must have the Stack Automation Management Server installed with access to your self-managed GitLab instance.
 2. **GitLab Access Token**: You will need a GitLab Personal Access Token with the following permission scopes:
    1.  `api`
    2.  `read_api`

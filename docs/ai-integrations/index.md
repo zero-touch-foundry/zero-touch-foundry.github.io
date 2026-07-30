@@ -10,9 +10,9 @@ description: This section describes the way to integrate AI agents with Stack Au
 Connect your AI tools to Stack Automation.
 
 Stack Automation exposes a **Model Context Protocol (MCP) server** so that AI agents and
-assistants can interact with your environments, blueprints, and deployments in natural
+assistants can interact with your blueprints and deployments in natural
 language. Instead of switching to the Stack Automation UI, your team can list spaces,
-launch blueprints, inspect running environments, and troubleshoot deployments directly
+launch blueprints, inspect running deployments, and troubleshoot deployments directly
 from the AI tools they already use — Claude, OpenAI Codex, GitHub Copilot in VS Code, or
 any other MCP-compatible client.
 
@@ -26,7 +26,7 @@ The whole flow is designed to take a couple of minutes per tool.
 Bringing Stack Automation into your AI agent turns infrastructure operations into a
 conversation. The main benefits:
 
-- **Self-service, in the tools you already use.** Developers ask for environments and
+- **Self-service, in the tools you already use.** Developers ask for deployments and
   launch blueprints from their editor, terminal, or desktop assistant — no context
   switching to a separate console.
 - **Natural-language operations.** "List my Stack Automation spaces", "launch the
@@ -48,7 +48,7 @@ script inject it) into whichever tool you're connecting. Under the hood, all cli
 to the same hosted MCP endpoint over HTTP, sending the token as a bearer credential.
 
 ```
-AI tool  ──(MCP over HTTP, Bearer <API token>)──▶  Stack Automation MCP Server  ──▶  Spaces · Blueprints · Environments
+AI tool  ──(MCP over HTTP, Bearer <API token>)──▶  Stack Automation MCP Server  ──▶  Spaces · Blueprints · Deployments
 ```
 
 ### Generate your API token
@@ -94,7 +94,7 @@ If the agent returns your real spaces or deployments, the connection is working.
 ## Next steps
 
 - Pick a tool above and follow its guide.
-- Once connected, try launching a blueprint or inspecting an environment by asking the
+- Once connected, try launching a blueprint or inspecting a deployment by asking the
   agent in plain language.
 - Add the [Skills Pack](skills-pack.md) to give your agent ready-made blueprint and
   Infrastructure-as-Code know-how.

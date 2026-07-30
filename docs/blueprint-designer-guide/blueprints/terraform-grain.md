@@ -9,7 +9,7 @@ Note that to deploy Terraform modules, you will need to authenticate Terraform o
 
 ## Tools and Technologies
 
-The following tools and technologies are installed out of the box on our agents in the Kubernetes pods and can be used when writing grain scripts (pre/post, etc.):
+The following tools and technologies are installed out of the box on our management servers in the Kubernetes pods and can be used when writing grain scripts (pre/post, etc.):
 
 * dotnet
 * terraform
@@ -157,7 +157,7 @@ Please see [the grain agent](/blueprint-designer-guide/blueprints/blueprints-yam
 
 By default, Terraform runners mount storage to store the state (when no backend is specified in the blueprint or in the Terraform configuration) and for code caching optimization. This storage helps improve performance by caching downloaded modules and providers between runs.
 
-In case a complete stateless mode is desired, you can specify the `use-storage: false` flag under the agent section to run without storage:
+In case a complete stateless mode is desired, you can specify the `use-storage: false` flag under the management server section to run without storage:
 
 ```yaml
 grains:
@@ -177,7 +177,7 @@ When `use-storage: false` is specified, ensure you have a remote backend configu
 
 ### `authentication`
 
-To authenticate with AWS and deploy the terraform module, Stack Automation will try to use the default service account configured for the selected agent. You can also supply different credentials in the grain's `authentication` section. This is done by referencing a [credential](/admin-guide/credentials) that contains these authentication details. There are two ways to specify the credential, literally by name or using an input:
+To authenticate with AWS and deploy the terraform module, Stack Automation will try to use the default service account configured for the selected management server. You can also supply different credentials in the grain's `authentication` section. This is done by referencing a [credential](/admin-guide/credentials) that contains these authentication details. There are two ways to specify the credential, literally by name or using an input:
 
 ```yaml
 grains:
@@ -294,7 +294,7 @@ Liquid templating is supported in the `attributes` values, allowing blueprint in
 
 ### `backend`
 
-When launching the environment, Stack Automation creates a tfstate file for each Terraform grain in the blueprint. By default, the state is saved locally on the PVC of the grain runner (volume for Docker agents). However, Stack Automation allows you to optionally choose to save the terraform state in a backend of your choice. Stack Automation supports the following backends:
+When launching the deployment, Stack Automation creates a tfstate file for each Terraform grain in the blueprint. By default, the state is saved locally on the PVC of the grain runner (volume for Docker management servers). However, Stack Automation allows you to optionally choose to save the terraform state in a backend of your choice. Stack Automation supports the following backends:
 * [S3](https://developer.hashicorp.com/terraform/language/settings/backends/s3)
 * [GCS](https://developer.hashicorp.com/terraform/language/settings/backends/gcs)
 * [Azure RM](https://developer.hashicorp.com/terraform/language/settings/backends/azurerm)
@@ -436,7 +436,7 @@ The `cloud` backend configuration allows you to use [Terraform Cloud](https://de
 
 :::note
 
-Stack Automation uses a "1 to many" model, meaning that one blueprint definition is used to launch many standalone environments. When using a backend for Terraform grains, it is important to ensure that each live instance of the grain has its own unique tfstate file, so Stack Automation will auto-generate the tfstate file name. 
+Stack Automation uses a "1 to many" model, meaning that one blueprint definition is used to launch many standalone deployments. When using a backend for Terraform grains, it is important to ensure that each live instance of the grain has its own unique tfstate file, so Stack Automation will auto-generate the tfstate file name. 
 
 For s3, gcs, azurerm backends, the tfstate file location will be: 
 
@@ -505,7 +505,7 @@ grains:
 ```
 
 :::info
-Note that in the above example, some blueprint inputs are used as the values of the Terraform grain inputs, so the environment's owner is able to choose the db_size and db_name required for his need. The information provided by the user will be passed to Terraform and affect the deployment process. The blueprint input type is always "string". the actual parsing of the json type will be done automatically.
+Note that in the above example, some blueprint inputs are used as the values of the Terraform grain inputs, so the deployment's owner is able to choose the db_size and db_name required for his need. The information provided by the user will be passed to Terraform and affect the deployment process. The blueprint input type is always "string". the actual parsing of the json type will be done automatically.
 :::
 
 
@@ -587,7 +587,7 @@ grains:
 ```
 
 ### `scripts`
-Stack Automation provides the ability to execute custom code before the executing the Terraform module init and before the Terraform destroy process. Scripts allows to run CLI commands to make sure authentication and requirements are set prior to the Terraform execution at the environment's initialization and destroy process.
+Stack Automation provides the ability to execute custom code before the executing the Terraform module init and before the Terraform destroy process. Scripts allows to run CLI commands to make sure authentication and requirements are set prior to the Terraform execution at the deployment's initialization and destroy process.
 
 The available script hooks are:
 - pre-tf-init: The script will run before the command ```terraform init```
@@ -683,7 +683,7 @@ In this example, terraform is using a backend of type [remote](https://developer
 You can mount the Terraform Runner, a Kubernetes secret containing the certificate file(s) to a directory in the container, and the certificate(s) will be available for use **without** running any additional commands (like "sudo update-ca-certificates")
 
 :::tip
-*Learn how to mount secrets to a runner - [Agent Advanced Settings](/torque-agent/advanced-settings#secret-mount) *
+*Learn how to mount secrets to a runner - [Management Server Advanced Settings](/torque-agent/advanced-settings#secret-mount) *
 :::
 
 **Environment variables usage example:**
@@ -750,12 +750,12 @@ For more details on resource targeting, see the [Terraform documentation](https:
 
 ### `mode`
 
-The `mode` field controls how Terraform resources are managed during environment termination and grain deletion. There are two supported modes:
+The `mode` field controls how Terraform resources are managed during deployment termination and grain deletion. There are two supported modes:
 
-- **`managed`** (default): Standard behavior where resources are destroyed using `terraform destroy` when the environment is terminated or grain is deleted/edited
+- **`managed`** (default): Standard behavior where resources are destroyed using `terraform destroy` when the deployment is terminated or grain is deleted/edited
 - **`no-termination`**: Resources are "released" rather than destroyed. The Terraform state is removed but the actual cloud resources remain intact
 
-This is particularly useful for production environments where you want to preserve critical infrastructure (databases, storage, networks) even when the Stack Automation environment is terminated.
+This is particularly useful for production deployments where you want to preserve critical infrastructure (databases, storage, networks) even when the Stack Automation deployment is terminated.
 
 ```yaml
 spec_version: 2
@@ -786,7 +786,7 @@ grains:
 
 **When to use `no-termination` mode:**
 
-- Production databases that should persist beyond environment lifecycles
+- Production databases that should persist beyond deployment lifecycles
 - Shared infrastructure components (VPCs, subnets, security groups)
 - Storage resources containing important data
 - Any resources that are expensive to recreate or contain state that must be preserved

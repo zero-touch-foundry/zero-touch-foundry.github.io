@@ -8,7 +8,7 @@ The Stack Automation REST API allows client applications to perform some of the 
 * Update/delete editable blueprints
 * Manage blueprint policy
 * Launch/manage deployments
-* Get/create agents
+* Get/create management servers
 * Manage account security policies
 * Manage Stack Automation settings*
 
