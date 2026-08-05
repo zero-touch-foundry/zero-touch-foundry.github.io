@@ -50,7 +50,7 @@ title: Install a Management Server on your Kubernetes Cluster
 5. In the **Generate Agent** step, give the management server a name (and, for Azure, optionally a tenant ID), then click __Next__.
 6. On the **Installation Instructions** step, copy the generated command.
 7. Paste the command in a command-line window connected to your cluster to deploy the management server. For example:     
-    ```jsx title=
+    ```jsx
     kubectl apply -f https://stackautomation.cisco.com/api/settings/executionhosts/deployment/k***roi/deployment.yaml
     ```
 8. A __Connected__ status is displayed in Stack Automation, indicating that the management server was successfully installed and can communicate with Stack Automation. 
