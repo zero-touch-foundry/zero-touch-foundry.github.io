@@ -76,9 +76,9 @@ description: Complete Stack Automation Solutions Hub catalog with category count
 
 | Solution | Version | Description |
 |---|---|---|
-| Baremetal GPU (Reserved) - AWS | — | GPU-as-a-Service - reserved (Capacity Block) NVIDIA training hosts on AWS EC2: A100 (p4d/p4de), H100 (p5), H200 (p5e/p5en), and B300 Blackwell Ultra (p6-b300). These are full 8-GPU instances that AWS almost never has available on demand - you must hold a reservation (an EC2 Capacity Block for ML,... |
-| Baremetal GPU - AWS | — | GPU-as-a-Service - on-demand NVIDIA GPU host on AWS EC2. One blueprint for the whole on-demand GPU range: T4 (g4dn), A10G (g5), L4 (g6), L40S (g6e), and RTX PRO 6000 Blackwell (g7e), plus legacy V100 (p3) - and a bare-metal g4dn.metal option for a full physical host. Provisions a dedicated GPU in... |
-| Baremetal GPU - Azure | — | GPU-as-a-Service - on-demand NVIDIA GPU host on Azure (N-series). One blueprint for the GPU range: T4 (NCasT4_v3), V100 (NCSv3), A10 (NVadsA10_v5), A100 (NCadsA100_v4 / NDASv4), and H100 (NCadsH100_v5 / NDSH100v5), including 8-GPU ND training clusters with InfiniBand. Provisions a dedicated GPU V... |
+| Baremetal GPU (Reserved) - AWS | — | GPU-as-a-Service - reserved (Capacity Block) NVIDIA training hosts on AWS EC2: A100 (`p4d`/`p4de`), H100 (`p5`), H200 (`p5e`/`p5en`), and B300 Blackwell Ultra (`p6-b300`). These are full 8-GPU instances that AWS almost never has available on demand - you must hold a reservation (an EC2 Capacity Block for ML,... |
+| Baremetal GPU - AWS | — | GPU-as-a-Service - on-demand NVIDIA GPU host on AWS EC2. One blueprint for the whole on-demand GPU range: T4 (`g4dn`), A10G (`g5`), L4 (`g6`), L40S (`g6e`), and RTX PRO 6000 Blackwell (`g7e`), plus legacy V100 (`p3`) - and a bare-metal `g4dn.metal` option for a full physical host. Provisions a dedicated GPU in... |
+| Baremetal GPU - Azure | — | GPU-as-a-Service - on-demand NVIDIA GPU host on Azure (N-series). One blueprint for the GPU range: T4 (`NCasT4_v3`), V100 (`NCSv3`), A10 (`NVadsA10_v5`), A100 (`NCadsA100_v4` / `NDASv4`), and H100 (`NCadsH100_v5` / `NDSH100v5`), including 8-GPU ND training clusters with InfiniBand. Provisions a dedicated GPU V... |
 | SageMaker - AWS | — | Managed Amazon SageMaker dev environment on AWS. Pick the type: a single SageMaker Notebook Instance (simplest - browser JupyterLab, CPU or T4/A10G/L4 GPU), or full SageMaker Studio (JupyterLab + Code Editor / VS Code on a space, supports newer GPUs incl. L40S/g6e). From either, drive the rest of... |
 
 ## LLM (22)
