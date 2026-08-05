@@ -62,9 +62,9 @@ As mentioned above, there are two types of blueprints, blueprints stored in Stac
 * To delete a "repository" Blueprint, simply delete the blueprint file from the repository's branch that the Stack Automation space is connected to.
 
 ## Example multi-grain blueprint 1: Helm Application with MySQL and S3 Deployed by Terraform
-This blueprint is available in the __Sample__ space [here](https://stackautomation.cisco.com/Sample/blueprints/[Sample]Helm%20Application%20with%20MySql%20and%20S3%20Deployed%20by%20Terraform), which deploys 2 Terraform modules and a Helm chart:
+This blueprint is available in the __Sample__ space [here](<https://stackautomation.cisco.com/Sample/blueprints/[Sample]Helm%20Application%20with%20MySql%20and%20S3%20Deployed%20by%20Terraform>), which deploys 2 Terraform modules and a Helm chart:
 
-```yaml title=
+```yaml
 spec_version: 2
 description: Robotshop microservices application deployed on K8S with Helm and RDS deployed with TF
 
