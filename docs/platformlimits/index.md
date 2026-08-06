@@ -7,7 +7,7 @@ description: Limits and specifications for the Stack Automation SaaS platform an
 
 # Platform Limits and Specifications
 
-The following limits characterize the Stack Automation SaaS platform and its management server component.
+The following limits characterize the Stack Automation SaaS platform and its Management Server component.
 
 | Segment | Topic | Value |
 |---|---|---|
