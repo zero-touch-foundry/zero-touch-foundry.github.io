@@ -12,7 +12,7 @@ The following limits characterize the Stack Automation SaaS platform and its man
 | Segment | Topic | Value |
 |---|---|---|
 | Management Server | Maximum concurrent simultaneous blueprint deploys (2 vCPUs / 16GB RAM) | 10 |
-| Management Server | Storage space allocated for ISO caching | 200GB |
+| Management Server | Storage space allocated for ISO caching | 200 GB |
 | Account | Maximum spaces per account | 200 |
 | Blueprint | Maximum grains per blueprint | 200 |
 | Repository | Maximum attached repositories | 300 repositories |
