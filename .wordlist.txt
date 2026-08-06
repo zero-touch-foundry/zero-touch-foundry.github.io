@@ -556,7 +556,7 @@ stateful
 Customizable
 OpenStack
 virtualized
-Gapped
+gapped
 PodDisruptionBudgets
 autoscaler
 vCPU
@@ -719,3 +719,12 @@ schemas
 LTS
 cisco
 Edan
+Anthropic
+CDG
+SVM
+JumpStart
+SKU
+TPM
+embeddings
+topologies
+disaggregated
