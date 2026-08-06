@@ -2,7 +2,7 @@
 title: Platform Limits and Specifications
 sidebar_label: Platform Limits and Specifications
 sidebar_position: 1
-description: Limits and specifications for the Stack Automation SaaS platform and its management server component.
+description: Limits and specifications for the Stack Automation SaaS platform and its Management Server component.
 ---
 
 # Platform Limits and Specifications
