@@ -1,7 +1,7 @@
 ---
 title: ai-integrations
 sidebar_label: AI Integrations
-sidebar_position: 12
+sidebar_position: 13
 description: This section describes the way to integrate AI agents with Stack Automation.
 ---
 
