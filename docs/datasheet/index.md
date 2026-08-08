@@ -7,26 +7,9 @@ description: Product and platform data sheet for Stack Automation, including sup
 
 # Stack Automation Data Sheet 
 
-## Index
-
-- Disclaimer
-- Document Revision
-- Supported Solutions
-- Product Overview
-- Management Server - System Requirements
-- Software Downloads
-- Required Network Ports
-- Proxy Configuration Considerations
-- Licensing
-- Platform Limits and Specifications
-- Supported Inventory Providers
-- SKUs
-- OS and Platform Blueprint - Deployment Prerequisites
-- For More Information
-
 ## Supported Solutions
 
-Stack Automation ships with a growing, Cisco-validated catalog of self-service blueprints spanning networking, security, storage, compute provisioning, observability, and AI/ML infrastructure. The table below summarizes the catalog by category as of July 30, 2026; the current, authoritative list is always available at stackautomation.cisco.com/help/solutions-hub.
+Stack Automation ships with a growing, Cisco-validated catalog of self-service blueprints spanning networking, security, storage, compute provisioning, observability, and AI/ML infrastructure. The table below summarizes the catalog by category as of July 30, 2026; the current, authoritative list is always available at [Solutions Hub Reference](./solutions-hub).
 
 | Category | Representative Solutions |
 |---|---|
@@ -66,13 +49,13 @@ The management server requires outbound connectivity to the Stack Automation Saa
 
 | Source | Destination | Port | Protocol |
 |---|---|---|---|
-| Management Server | stackautomation.cisco.com | 443 | TCP (HTTPS) |
+| Management Server | `stackautomation.cisco.com` | 443 | TCP (HTTPS) |
 
-DNS resolution for stackautomation.cisco.com must succeed from the management server. Firewalls, DNS servers, and any upstream proxy in the path must permit both the outbound connection and name resolution for this domain.
+DNS resolution for `stackautomation.cisco.com` must succeed from the management server. Firewalls, DNS servers, and any upstream proxy in the path must permit both the outbound connection and name resolution for this domain.
 
 ## Proxy Configuration Considerations
 
-If an HTTP/HTTPS proxy is required for outbound access, configure the proxy allow-list with the explicit hostname stackautomation.cisco.com.
+If an HTTP/HTTPS proxy is required for outbound access, configure the proxy allow-list with the explicit hostname `stackautomation.cisco.com`.
 
 - Do not use a wildcard entry such as *.cisco.com - wildcard allow-listing is not supported and may cause connectivity or security-policy issues.
 
@@ -118,8 +101,8 @@ Ordering information for Stack Automation license tiers:
 
 | Billing PID | Description | Unit of Quantity | Pricing quantity | Initial term (months) |
 |---|---|---|---|---|
-| STKAUTO-SAAS-ESS | Stack Automation SaaS Essentials Support (optional) | Yearly support | 1 (for up to 100 CCUs) | 12-60 |
-| STKAUTO-SAAS-AD | Stack Automation SaaS Subscription Advantage | CCUs | 100-999,999 | 12-60 |
+| `STKAUTO-SAAS-ESS` | Stack Automation SaaS Essentials Support (optional) | Yearly support | 1 (for up to 100 CCUs) | 12-60 |
+| `STKAUTO-SAAS-AD` | Stack Automation SaaS Subscription Advantage | CCUs | 100-999,999 | 12-60 |
 
 Note: Ordering optional support for the Stack Automation Essentials tier. For more information, review **cisco-stack-automation-quali-ordering-guide**.
 
@@ -129,7 +112,7 @@ Bare-metal OS and Platform blueprints (Category: "OS and Platform" in the Stack 
 
 ### UCS B-Series and X-Series (Intersight-managed, Fabric Interconnect-attached)
 
-- Boot storage: M.2 (MSTOR-RAID mirrored) or SD/SAS (SDA / FMEZZ1-SAS) RAID controller, selectable at launch.
+- Boot storage: `M.2` (`MSTOR-RAID` mirrored) or `SD`/`SAS` (`SDA` / `FMEZZ1-SAS`) RAID controller, selectable at launch.
 - Networking: the blueprint provisions dual vNICs across the A and B fabric paths.
 - Virtual volumes created by the boot/RAID policy: to be confirmed against the install-script output.
 - Supported from Cisco UCS M6-generation servers and later.
@@ -139,6 +122,3 @@ Bare-metal OS and Platform blueprints (Category: "OS and Platform" in the Stack 
 - All physical network ports must be cabled and connected for server discovery and provisioning to complete successfully.
 - Disk/RAID and OS install prerequisites follow the same M6-and-later support boundary as B-Series/X-Series.
 
-## For More Information
-
-For the latest documentation, blueprint catalog, and how-tos, visit stackautomation.cisco.com/help.
