@@ -741,4 +741,6 @@ CCUs
 PID
 SKUs
 vNICs
+TCP
+UDP
 
