@@ -261,7 +261,7 @@ data:
 The `iframe-card` capability is currently in beta and may change in behavior or schema.
 :::
 
-Supports direct URL or a fetch-to-`srcDoc` flow with optional auth.
+Supports direct URL or a `fetch-to-srcDoc` flow with optional auth.
 
 ```yaml
 type: iframe-card
