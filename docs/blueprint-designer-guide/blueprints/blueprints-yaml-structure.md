@@ -1290,6 +1290,7 @@ In the above example, the `cp` command copies files from the `src/main/config` d
 
 In this case, the entire repository will be checked out, and the `name` specified (`ROOT_DIR`) can be used to access the root directory in the workspace.
 
+<!-- 
 #### Working with Artifactory as Binary Repository
 
 Artifactory is a popular binary repository manager that can store and manage various types of artifacts, including Docker images, Helm charts, and other binary files. In Stack Automation, you can use Artifactory as a source for binary files that are required during the deployment process. This can be particularly useful for scenarios such as:
@@ -1348,7 +1349,7 @@ In this example, we have two workspace directories (`file1` and `file2`) that ar
 
 To use Artifactory with Stack Automation, you need to configure an Artifactory credential in the Credentials Store. 
 
-In Stack Automation portal, navigate to the `Account Settings` and to the Credentials page. Click on the `Add Credentials` button and choose `JFrog Artifactory`.
+In Stack Automation portal, navigate to `Automation` -> `Integration` and to the Credentials tab. Click on the `Add Credentials` button and choose `JFrog Artifactory`.
 
 Provide a `Name` and a `Description`, select the allowed `Spaces` that can use that Artifactory server, fill in the `Server URL` and the `Token` and hit the `Apply` button.
 
@@ -1373,7 +1374,8 @@ POST {{host}}/api/spaces/{{space}}/settings/credentialstore
 
 In this example, we're creating an Artifactory credential named `my-artifactory` with the server URL and a token for authentication. Currently, Stack Automation supports Artifactory token authentication.
 
-Once the Artifactory credential is configured, you can reference it in your blueprint's `workspace-directories` section using the `store` parameter, as shown in the usage example above.
+Once the Artifactory credential is configured, you can reference it in your blueprint's `workspace-directories` section using the `store` parameter, as shown in the usage example above. 
+-->
 
 ## Customization
 
