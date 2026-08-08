@@ -5,14 +5,18 @@ title: API Tokens
 
 For programmatic access to Stack Automation and to use the different integrations Stack Automation has to offer, you will need to get a __Stack Automation API Token__.
 
-To get a new API Token:
+### Generate your API token
 
-1. On your Stack Automation UI, navigate to one of your spaces.
-2. On the left panel, under settings, click on "Community".
-3. Choose one of the CI/CI integrations, and click on "Connect".
-4. A right panel will open, click on "Configure" and then "Generate New Token".
-5. A new token will be generate.
+1. Open Stack Automation and click the **AI Integrations** on the top bar (the side pane shown above will open).
+2. Click the **Generate token** button under **API TOKEN** and copy the generated **Stack Automation API token**.
+3. Store it somewhere safe — for security, the token is shown **only once**. If you lose
+   it, use **Regenerate** to create a new one.
 
-:::tip 
-Please take a note of the generated token, you will not be able to retrieve it again.
+:::warning Important
+Treat this token like a password. It grants the same access you have in Stack Automation. Do not commit it to source control or share it in plain text. If a token is exposed, click **Regenerate** to revoke the old one immediately.
 :::
+
+### Manage API Tokens
+
+As an Admin, you can access the API Keys page under the Admin menu.
+This allows you to revoke or create new API tokens.
