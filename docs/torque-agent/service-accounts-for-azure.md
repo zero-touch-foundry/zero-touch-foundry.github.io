@@ -160,7 +160,7 @@ There are 2 ways to accomplish this:
 2. You may override the default credentials defined for the AKS management server, or define the credentials if no credentials were configured as the default.
   
     a. In the Terraform grain, specify the service-account name under spec > agent:
-      ```yaml title=
+      ```yaml
       spec:
         source:
           ...
@@ -172,7 +172,7 @@ There are 2 ways to accomplish this:
 
     b. Under `env-vars`, add the following (will override the default definition of the AKS management server):
           
-          ```jsx title=
+          ```jsx
           ARM_SUBSCRIPTION_ID: <Subscription_ID>
           ARM_TENANT_ID: <Tenant_ID>
           ARM_CLIENT_ID: <Client_ID>

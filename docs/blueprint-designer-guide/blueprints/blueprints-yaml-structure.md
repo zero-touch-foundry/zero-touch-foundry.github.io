@@ -729,8 +729,6 @@ layout:
     - grain_name_2
 ```
 
-The **layout** element is where the blueprint references the layout that will be applied to deployments created from it. To learn more, visit [layouts](blueprint-designer-guide/layouts/layouts.md)
-
 The **exclude-from-layout** element is optional, use it in case you need to apply the layout only to part of the grains but not all of them.
 
 ### `metadata`
@@ -1380,6 +1378,8 @@ Once the Artifactory credential is configured, you can reference it in your blue
 ## Customization
 
 The customization section allows you to control the user interface and presentation aspects of your blueprint, including the visual layout of grains and the behavior of the launch form. This section provides two main customization capabilities: grains-map visualization and launch-form input control.
+
+For environment dashboard card layouts under `customization.layout`, see [Dynamic Cards (Environment Layout)](/blueprint-designer-guide/dynamic-cards-environment-layout).
 
 :::note Preview Feature
 This feature is currently in preview. To get access to customization capabilities, please contact Stack Automation support.

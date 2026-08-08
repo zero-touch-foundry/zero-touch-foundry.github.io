@@ -14,8 +14,8 @@ through a Cowork marketplace, so there's nothing to configure by hand.
 
 ## Install
 
-1. In the **Cowork** tab, go to **Customize**, click **Add a Plugin**, then choose
-   **Create Plugin → Add Marketplace**.
+1. In the **Home** tab, go to **Customize**, in the left menu click **Plugins**, in the center panel click  **Add** then choose
+   **→ Add Marketplace**.
 2. Paste the Stack Automation marketplace GitHub URL when prompted:
 
    ```
@@ -65,3 +65,5 @@ roles and policies.
 - [AI Integrations overview](index.md)
 - [MCP Server Config](mcp-server-config.md) — connect other MCP clients
 - [Skills Pack](skills-pack.md) — add blueprint & IaC skills
+
+
