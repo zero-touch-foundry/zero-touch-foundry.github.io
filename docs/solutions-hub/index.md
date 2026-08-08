@@ -6,6 +6,8 @@ description: Complete Stack Automation Solutions Hub catalog with category count
 ---
 # Stack Automation — Solutions Hub Catalog
 
+The Solutions Hub is the catalog of ready-to-use blueprints available in Stack Automation, organized by category. Each entry below lists the solution name and a description of what it deploys and automates. Use this page as a quick reference to find the right blueprint before browsing or launching it in Stack Automation.
+
 ## Applications (13)
 
 | Solution | Version | Description |
