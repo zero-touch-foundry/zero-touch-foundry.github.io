@@ -2,7 +2,7 @@
 title: Stack Automation Data Sheet
 sidebar_label: Data Sheet
 sidebar_position: 1
-description: Product and platform datasheet for Stack Automation, including supported solutions, requirements, limits, and deployment prerequisites.
+description: Product and platform data sheet for Stack Automation, including supported solutions, requirements, limits, and deployment prerequisites.
 ---
 
 # Stack Automation Data Sheet 
