@@ -7,7 +7,7 @@ For programmatic access to Stack Automation and to use the different integration
 
 ### Generate your API token
 
-1. Open Stack Automation and click the **AI Integrations** on the top bar (the side pane shown above will open).
+1. Open Stack Automation and click the **AI Integrations** on the top bar (the side pane shown below will open).
 2. Click the **Generate token** button under **API TOKEN** and copy the generated **Stack Automation API token**.
 3. Store it somewhere safe — for security, the token is shown **only once**. If you lose
    it, use **Regenerate** to create a new one.
@@ -15,6 +15,8 @@ For programmatic access to Stack Automation and to use the different integration
 :::warning Important
 Treat this token like a password. It grants the same access you have in Stack Automation. Do not commit it to source control or share it in plain text. If a token is exposed, click **Regenerate** to revoke the old one immediately.
 :::
+
+![The AI Integrations side pane, showing the API token and the list of available integrations](/img/ai-integrations-panel.png)
 
 ### Manage API Tokens
 
