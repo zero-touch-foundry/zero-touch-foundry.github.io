@@ -120,15 +120,6 @@ const config = {
                 href: 'https://www.cisco.com/',
               },
             ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'GitHub Community',
-                href: 'https://github.com/zero-touch-foundry/zero-touch-foundry.github.io/discussions',
-              },
-            ],
           },          
         ]
       },

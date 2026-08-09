@@ -349,13 +349,6 @@ md
 unmanaged
 eco
 BCM
-AbokF
-BbUVFn
-GJ
-KEn
-MiZjLXF
-fqSWuw
-kBwI
 Docusaurus
 kubernetes
 tooltip
@@ -685,6 +678,7 @@ uplinks
 vHBAs
 rebrand
 Webex
+webex
 donut
 scrollable
 KVM

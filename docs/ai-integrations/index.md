@@ -53,15 +53,14 @@ AI tool  ──(MCP over HTTP, Bearer <API token>)──▶  Stack Automation MC
 
 ### Generate your API token
 
-1. Open Stack Automation and go to **Admin → Agents → AI Integrations** (the side pane
-   shown above).
-2. Under **API TOKEN**, copy the generated **Stack Automation API token**.
+1. Open Stack Automation and click the **AI Integrations** on the top bar (the side pane shown above will open).
+2. Click the **Generate token** button under **API TOKEN** and copy the generated **Stack Automation API token**.
 3. Store it somewhere safe — for security, the token is shown **only once**. If you lose
    it, use **Regenerate** to create a new one.
 
-> **Important:** Treat this token like a password. It grants the same access you have in
-> Stack Automation. Do not commit it to source control or share it in plain text. If a
-> token is exposed, click **Regenerate** to revoke the old one immediately.
+:::warning Important
+Treat this token like a password. It grants the same access you have in Stack Automation. Do not commit it to source control or share it in plain text. If a token is exposed, click **Regenerate** to revoke the old one immediately.
+:::
 
 In the examples throughout this section, the token is written as
 `<YOUR_STACK_AUTOMATION_TOKEN>`. Replace it with the value you copied.

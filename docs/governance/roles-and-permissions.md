@@ -83,25 +83,23 @@ As such, there are 4 roles in Stack Automation:
 
 Stack Automation role: Account admin
 
-1. Open the **Administration** page.
-2. Select **Users**.
-3. Click the **Invite User** button.
-4. Enter a user's email address and press the **[ENTER]** key. Repeat to add additional users.
-5. Select the space settings to apply to the users. For details about each role's permissions, see the **Roles** tab in the **Administration** page.
-6. Click **Send Invitation**.
+1. Under the **Admin** menu, select the **User Management** option.
+2. Click the **Invite Users** button to invite users using their email addresses, or click the **Add Cisco ID User** button to invite users using their Cisco ID email addresses.
+3. Enter a user's email address and press the **[ENTER]** key. Repeat to add additional users.
+4. Select the account and space settings to apply to the users. For details about each role's permissions, see the **Roles** tab in the **User Management** page.
+5. Click **Send**.
   The users will get a "Welcome to Stack Automation" invitation email, prompting them to login to the space. Once they log in, they will be granted the space role and permissions you specified.
 
 ## Add Existing Users to Your Space
 
 Stack Automation role: Account admin, space admin
 
-1. In the suitable Stack Automation space, select **Settings** from the left menu.
-2. Click the **Users** tab.
-3. Click the **Add Users** button.
-4. Select the Stack Automation user you wish to add to this space. Repeat to add additional users.
-5. Click **Done**.
+1. In the suitable Stack Automation space, under the **Governance** menu, select **Space Users** from the left menu.
+2. Click the **Add Users** button.
+3. Select the Stack Automation user you wish to add to this space. Repeat to add additional users.
+4. Click **Add**.
    By default, new users are assigned the **Space Member** role. 
-6. Change the roles as needed.
+5. Change the roles as needed.
 
 ## Adding Users Without Invitation
 

@@ -14,8 +14,6 @@ The Stack Automation management server can be hosted in various ways, one of the
     5. On the **Installation Instructions** step, you can move on without downloading anything here — a management server entry is created in Stack Automation and will wait for a valid connection once the VMSS installer script (below) registers it
 2. Stack Automation API long token - Stack Automation long token allows API access without the need to refresh token once it's expires. It's possible to use the API references or the Stack Automation self-service web interface to generate such a token.
 
-   > ![Long token generation](/img/vmss-token.gif)
-
 #### Creating an VMSS in Azure
 1. Navigate to [portal.azure.com](https://portal.azure.com) and search for VMSS.
 2. click on "Create"
