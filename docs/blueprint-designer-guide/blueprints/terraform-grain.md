@@ -153,6 +153,20 @@ grains:
 
 Please see [the grain agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent) for more details.
 
+### `target`
+
+As an alternative to `agent`, you can set `target` to a Provider from the Resources Inventory, which supplies both the management server and credentials in one selection, removing the need for a separate `authentication` block. Provide only one of `agent` or `target`. Please see [the grain target](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#target) for more details.
+
+```yaml
+grains:
+  rds:
+    kind: terraform
+    spec:
+      source: ..
+      target:
+        name: '{{ .inputs.Target }}'
+```
+
 #### Storage Configuration
 
 By default, Terraform runners mount storage to store the state (when no backend is specified in the blueprint or in the Terraform configuration) and for code caching optimization. This storage helps improve performance by caching downloaded modules and providers between runs.
@@ -176,6 +190,10 @@ When `use-storage: false` is specified, ensure you have a remote backend configu
 :::
 
 ### `authentication`
+
+:::tip
+Not needed when the grain uses `target` instead of `agent` — the target's Deploy credential is used automatically.
+:::
 
 To authenticate with AWS and deploy the terraform module, Stack Automation will try to use the default service account configured for the selected management server. You can also supply different credentials in the grain's `authentication` section. This is done by referencing a [credential](/admin-guide/credentials) that contains these authentication details. There are two ways to specify the credential, literally by name or using an input:
 

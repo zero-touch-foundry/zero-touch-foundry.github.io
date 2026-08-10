@@ -102,6 +102,20 @@ Please see [the grain source](/blueprint-designer-guide/blueprints/blueprints-ya
 
 Please see [the grain agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent) for more details.
 
+### `target`
+
+As an alternative to `agent`, you can set `target` to a Provider from the Resources Inventory, which supplies both the management server and credentials in one selection. Provide only one of `agent` or `target`. Please see [the grain target](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#target) for more details.
+
+```yaml
+grains:
+  nginx:
+    kind: helm
+    spec:
+      source: ..
+      target:
+        name: '{{ .inputs.Target }}'
+```
+
 :::tip
 It's also possible to use `parameters` for the service-account name. Note that when service account is not provided in the grain, the default service account provided on the management server will be used.
 
