@@ -7,7 +7,7 @@ Stack Automation Workflows are a powerful way to automate and orchestrate comple
 
 ## Workflow Discovery
 
-Workflow discovery is done in the same way as Blueprints. The YAML files need to be under the `blueprints/` directory in the repository. Stack Automation automatically scans for workflow files and makes them available based on their scope and configuration.
+Workflow discovery is done in the same way as Blueprints. The YAML files need to be under the `blueprints/` directory in the repository. Stack Automation will automatically scan for workflow files and make them available based on their scope and configuration.
 
 The Workflow YAML standard is similar to the Blueprint standard. The only addition to the Workflow specification is the `workflow` block, which defines the workflow-specific configuration.
 
@@ -54,7 +54,7 @@ grains:
 
 ### `scope`
 
-The `scope` field in a Stack Automation workflow determines where the workflow is available. There are two possible values for the `scope` field:
+The `scope` field in a Stack Automation workflow determines where the workflow is available. There are three possible values for the `scope` field:
 
 1. `space`: Workflows with this scope are available at the space level, and can be triggered and executed without any dependencies.
 2. `env`: Workflows with this scope are available at the deployment level. This means that they can be triggered and executed for the entire deployment. These workflows can be used to automate and orchestrate processes that involve multiple resources within the deployment.
@@ -62,7 +62,7 @@ The `scope` field in a Stack Automation workflow determines where the workflow i
 
 ### `resource-types`
 
-When scoping a the workflow to an `env_resource`, the `resource-types` field allow to attach that workflow to the specified resource types.
+When scoping a workflow to an `env_resource`, the `resource-types` field allow to attach that workflow to the specified resource types.
 
 In this example, we scope this workflow only AWS EC2 instances resources:
 
