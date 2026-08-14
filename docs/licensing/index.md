@@ -32,7 +32,7 @@ account.
 **Admin → Account and Billing → External Licenses**
 
 Direct link:
-[https://stackautomation.cisco.com/admin/account_billing#external_licenses](https://stackautomation.cisco.com/admin/account_billing#external_licenses)
+[`https://stackautomation.cisco.com/admin/account_billing#external_licenses`](<https://stackautomation.cisco.com/admin/account_billing#external_licenses>)
 :::
 
 ## Before you begin
