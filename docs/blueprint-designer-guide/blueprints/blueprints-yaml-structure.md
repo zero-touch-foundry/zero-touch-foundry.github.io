@@ -57,11 +57,11 @@ The input definition is composed out of the following fields:
 - ```description``` is presented to all users in the Stack Automation UI and API's (Optional)
 - ```type``` of the input. Options are:
   - ```string```
-  - ```agent``` allows the deployment end-user to select the management server that will deploy the grain(s) from a dropdown list. By default, all management servers are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the management servers. For details, see [agent](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#agent).
+  - ```agent``` allows the deployment end-user to select the management server that will deploy the grain(s) from a dropdown list. By default, all management servers are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the management servers. For details, see [agent](#agent).
   - ```parameter``` will take the input's allowed values from the parameter-store, from a parameter with the name ```parameter-name```. The parameter can be defined either in the account level or in the space level. If the parameter's value is built as a comma separated list, Stack Automation will convert them to a set of values and present it to the end-user as a drop down list of the values. See an example below. For more info about the parameter store, click [here](admin-guide/params.md).
   - ```credentials``` allows the deployment end-user to select the credentials that will be used to deploy the grain(s) from a dropdown list. By default, all credentials in the account are listed in the dropdown list, but you can add ```allowed-values``` to only display a subset of the credentials, or use ```allowed-credential-providers``` to filter by credential provider type.
-  - ```target``` allows the deployment end-user to select a [Provider](/getting-started/Resources-Inventory/adding-a-provider) (a connected cloud account, virtualization platform, or infrastructure controller) from a dropdown list, combining what would otherwise be a separate ```agent``` input and a credentials input into one. Use ```target-filters``` to narrow the dropdown to specific provider types. For details, see [Target Input Type](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#target-input-type).
-  - ```file``` allows the deployment end-user to upload one or more files from the launch form. The uploaded files are made available to the blueprint designer using the [`workspace-directories`](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#workspace-directories) section and the **env-storage** store - [See details below](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#file-input-type).
+  - ```target``` allows the deployment end-user to select a [Provider](/getting-started/Resources-Inventory/adding-a-provider) (a connected cloud account, virtualization platform, or infrastructure controller) from a dropdown list, combining what would otherwise be a separate ```agent``` input and a credentials input into one. Use ```target-filters``` to narrow the dropdown to specific provider types. For details, see [Target Input Type](#target-input-type).
+  - ```file``` allows the deployment end-user to upload one or more files from the launch form. The uploaded files are made available to the blueprint designer using the [`workspace-directories`](#workspace-directories) section and the **env-storage** store - [See details below](#file-input-type).
   - ```input-source``` allows the deployment end-user to select from a list of values provided by a dynamic source. The source is defined in the [`input-sources`](/admin-guide/input-sources) section.
 - ```style``` (Optional): Defines how the input is presented to the user. For example:
   - ```radio``` displays the allowed values as radio buttons. This is useful for binary or mutually exclusive choices. The input `type` must be `string` when using this style.
@@ -72,7 +72,7 @@ The input definition is composed out of the following fields:
   - ```multi-select``` displays the allowed values as a multi-select dropdown, allowing the user to select multiple values. The input `type` can be ```string```, `parameter` or `input-source`. The captured value is a JSON array of strings. This is useful for cases where multiple selections are needed, such as a list of IPs, Compute types or tags.
 
 :::tip
-For advanced input visibility control and organization, see the [customization](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#customization) section which allows you to create conditional inputs and group them into categories.
+For advanced input visibility control and organization, see the [customization](#customization) section which allows you to create conditional inputs and group them into categories.
 :::
 
     **Example:**
@@ -235,7 +235,7 @@ The `target` input type allows the deployment end-user to select a [Provider](/g
 
 Only Providers with a **Deploy** capability appear in the dropdown, since a Deploy capability is what allows the provider to host the grain. Use `target-filters.cloud-providers` to narrow the dropdown to one or more provider types. See [Provider Capabilities](/getting-started/Resources-Inventory/provider-capabilities) for details on how Discovery and Deploy capabilities are configured on a Provider.
 
-To use the selected target on a grain, set it under the grain's `target` field instead of `agent`. See [target](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#target) below for details, including why only one of `agent` or `target` should be provided on a grain.
+To use the selected target on a grain, set it under the grain's `target` field instead of `agent`. See [target](#target) below for details, including why only one of `agent` or `target` should be provided on a grain.
 
 **Example:**
 
@@ -286,7 +286,7 @@ inputs:
 
 #### File Input Type
 
-The `file` input type allows users to upload files from the launch form. These files are made available to the blueprint designer using the [`workspace-directories`](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#workspace-directories) section and the `env-storage` store. This is useful for scenarios where the deployment requires user-provided files (such as configuration, data, or scripts) at launch time.
+The `file` input type allows users to upload files from the launch form. These files are made available to the blueprint designer using the [`workspace-directories`](#workspace-directories) section and the `env-storage` store. This is useful for scenarios where the deployment requires user-provided files (such as configuration, data, or scripts) at launch time.
 
 **File input fields:**
 - `type: file` (required)
@@ -352,7 +352,7 @@ outputs:
 The ```quick: true``` attribute is optional and defaults to false. Setting it to `true` will cause the specific output to be presented in the __Quick Access__ section of the deployment for ease of use.
 
 :::info
-The example above includes some of the Stack Automation's YAML templating engine capabilities allowing the blueprint designer more flexibility and leads to less code that will require maintenance. More examples for templating will be described [Stack Automation Templating engine](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#torque-templating-engine).
+The example above includes some of the Stack Automation's YAML templating engine capabilities allowing the blueprint designer more flexibility and leads to less code that will require maintenance. More examples for templating will be described [Stack Automation Templating engine](#stack-automation-templating-engine).
 :::
 
 The outputs section in the Stack Automation blueprint YAML also supports spaces to make outputs more user friendly in the following way:
@@ -501,7 +501,7 @@ grains:
         name: my-agent
  ``` 
 
-- Using an input of type "agent", which allows the deployment end-user to select the management server to use from a dropdown list. For details, see the [blueprint yaml's inputs](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#inputs) section.
+- Using an input of type "agent", which allows the deployment end-user to select the management server to use from a dropdown list. For details, see the [blueprint yaml's inputs](#inputs) section.
 
 ```yaml 
 grains:
@@ -587,7 +587,7 @@ grains:
 Provide only one of `agent` or `target` on a grain — not both.
 :::
 
-For details on how to publish `target` as a blueprint input (including filtering the dropdown by provider type), see the [Target Input Type](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#target-input-type) section above.
+For details on how to publish `target` as a blueprint input (including filtering the dropdown by provider type), see the [Target Input Type](#target-input-type) section above.
 
 :::info
 `target` is supported on every grain kind except CloudShell. The [CloudFormation grain](/blueprint-designer-guide/blueprints/cloudformation-grain#target) is a partial exception: it still requires an `authentication` block even when `target` is used, though it doesn't require a separately created credential — see that grain's docs for the naming convention that lets `authentication` reference the target's own Deploy credential.
@@ -1237,7 +1237,7 @@ In the below example the [downcase](https://shopify.github.io/liquid/filters/dow
         - bucket_name: '{{ .inputs.bucket_name | strip }}-bucket-{{ envid | downcase }}'
 ```
 
-For details and examples of how to use the parameters from the parameter store inside blueprints, check [this article](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#parameters).
+For details and examples of how to use the parameters from the parameter store inside blueprints, check [this article](#parameters).
 
 ### Dynamic Attributes
 Blueprint designers might need extra details about the account, space or deployment during the deployment's orchestration. Stack Automation provides dynamic attributes which are pre-defined parameters blueprints designers can use. The currently supported dynamic attributes are:
