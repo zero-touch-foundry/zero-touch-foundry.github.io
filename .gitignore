@@ -20,3 +20,5 @@ yarn-debug.log*
 yarn-error.log*
 
 copilot-instructions.md
+
+.vscode/settings.json
