@@ -68,11 +68,19 @@ Liquid templates resolve against the live environment context. Key paths you can
 - `grains.<grainName>.drift.deployment.detected`
 - `workflows.<workflowName>.outputs.<name>`
 
+If an output's value is a JSON object encoded as a string (for example, a script/ansible grain returning
+`data: "{\"gitlab\": {\"url\": \"...\"}}"`), it is automatically parsed: the output itself becomes the
+parsed object (`{{ outputs.data }}` / `{{ outputs.data.gitlab.url }}`), and its top-level fields are
+also merged into `outputs` (and into `grains.<grainName>.outputs` for grain-level outputs), so you can
+also address them directly without the original output name, for example `{{ outputs.gitlab.url }}`.
+
 Examples:
 
 - `{{ outputs.api_url }}`
 - `{% if environment.status == 'Active' %}positive{% else %}info{% endif %}`
 - `{{ grains.my_grain.outputs.resources }}`
+- `{{ outputs.gitlab.url }}`: Field from a JSON-encoded output, accessed by its parsed key
+- `{{ outputs }}`: Full outputs object, including parsed JSON fields (renders as a data-card breakdown)
 
 ## Conditions and visibility
 
@@ -255,6 +263,19 @@ data:
     value: "dbs-akxlqtf3gjly.s3.amazonaws.com"
 ```
 
+:::note
+On `data-card`, `icon-card`, `status-card`, `image-card`, and `resource-card`, any data row whose
+`name` looks like a secret is masked with a reveal toggle instead of shown in the clear. This is
+automatic; there is no config flag to opt in.
+
+A name counts as a secret when it contains a word like `password`, `passwd`, `pwd`, `secret`,
+`token`, or `credential` (singular or plural), or a qualified key such as `api_key`, `sshKey`,
+`private_key`, `access_key` or `secret_key`. Bare `key` on its own does not qualify, so public
+references like `public_key`, `kms_key_id` and `Key Pair` stay readable. A name ending in a
+pointer word (`ssh_key_name`, `api_key_arn`) is treated as a reference to the secret rather than
+the secret itself and is also left readable.
+:::
+
 ### 6) Iframe Card (`iframe-card`)
 
 :::warning Beta
@@ -327,7 +348,20 @@ size: 2
 height: 1.5
 ```
 
-### 9) Stack Card (`stack-card`)
+### 9) Runtime Card (`runtime-card`)
+
+Embeds the environment runtime widget (uptime, time-remaining, and progress), so you do not need
+to reconstruct it from outputs. It has no extra fields beyond the base card fields.
+
+```yaml
+type: runtime-card
+name: runtime
+display_name: "Runtime"
+size: 2
+height: 1
+```
+
+### 10) Stack Card (`stack-card`)
 
 Stacks multiple cards vertically inside one grid cell.
 
@@ -354,7 +388,7 @@ items:
         value: "{{ outputs.bottom_value }}"
 ```
 
-### 10) Container Card (`container-card`)
+### 11) Container Card (`container-card`)
 
 Groups cards vertically **without borders and headers** for the inner cards.
 
