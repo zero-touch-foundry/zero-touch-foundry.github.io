@@ -62,7 +62,7 @@ The `scope` field in a Stack Automation workflow determines where the workflow i
 
 ### `resource-types`
 
-When scoping a workflow to an `env_resource`, the `resource-types` field allow to attach that workflow to the specified resource types.
+When scoping a workflow to an `env_resource`, the `resource-types` field allows that workflow to attach to the specified resource types.
 
 In this example, we scope this workflow only AWS EC2 instances resources:
 
