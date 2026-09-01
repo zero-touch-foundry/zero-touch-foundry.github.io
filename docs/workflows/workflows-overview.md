@@ -205,7 +205,7 @@ For both `env` and `env_resource` scoped workflows, accessing the env ("bound en
 * `{{ .bindings.inputs.<the env input name> }}`
 * `{{ .bindings.outputs.<the env output name> }}`
 
-For `env` scoped workflows, environment `introspection` can be accessed like so:
+For `env` scoped workflows, environment introspection can be accessed like so:
 * `{{ bindings.resource_type.<the resource type>.attributes.<the attribute>}}`
 
 :::info
