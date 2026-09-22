@@ -83,7 +83,7 @@ grains:
       agent:
         name: eks-demo
       inputs:
-        - sandbox_id: '{{ sandboxid | downcase }}'
+        - sandbox_id: '{{ envId | downcase }}'
         - size: small 
         - allocated_storage: 20
         - db_name: demo_db
@@ -106,7 +106,7 @@ grains:
       inputs:
         - region: eu-west-1
         - acl: public-read
-        - name: 'robotshop-s3-{{ sandboxid | downcase }}'
+        - name: 'robotshop-s3-{{ envId | downcase }}'
       outputs:
         - s3_bucket_arn
 
@@ -119,7 +119,7 @@ grains:
       agent:
         name: eks-demo
       inputs:
-        - hostname: 'robotshop-{{ sandboxid | downcase }}'
+        - hostname: 'robotshop-{{ envId | downcase }}'
         - version: 0.4.3
         - connectionString: '{{ .grains.mySqlDB.outputs.connection_string }}'
         - objectStore.s3BucketArn: '{{ .grains.s3Bucket.outputs.s3_bucket_arn }}'
@@ -171,7 +171,7 @@ grains:
         service-account: app-sa
       inputs:
         - AccessControl: '{{ .inputs.["Access Control"] }}'
-        - BucketName: '{{ .inputs.["Bucket Name"] }}-{{ sandboxid | downcase }}'
+        - BucketName: '{{ .inputs.["Bucket Name"] }}-{{ envId | downcase }}'
       outputs:
          - Arn
          - DomainName
@@ -187,7 +187,7 @@ grains:
         name: demo-prod
         service-account: app-sa
       inputs:
-      - bucket_name: '{{ .inputs.["Bucket Name"] }}-{{ sandboxid | downcase }}'
+      - bucket_name: '{{ .inputs.["Bucket Name"] }}-{{ envId | downcase }}'
       - region: '{{ .inputs.["AWS Region"] }}'
       outputs:
       - website_link

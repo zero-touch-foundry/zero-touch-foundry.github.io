@@ -195,14 +195,12 @@ eks
 hostname
 mySqlDB
 rds
-sandboxid
 vpc
 acl
 arn
 downcase
 eks
 robotshop
-sandboxid
 BucketArn
 arn
 connectionString
@@ -215,7 +213,6 @@ objectStore
 redis
 robotShopMicroservices
 robotshop
-sandboxid
 storageClassName
 OIDC
 MSI
