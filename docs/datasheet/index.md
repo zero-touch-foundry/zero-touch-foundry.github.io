@@ -101,7 +101,7 @@ Ordering information for Stack Automation license tiers:
 
 | Billing PID | Description | Unit of Quantity | Pricing quantity | Initial term (months) |
 |---|---|---|---|---|
-| `STKAUTO-SAAS-ESS` | Stack Automation SaaS Essentials Support (optional) | Yearly support | 1 (for up to 100 CCUs) | 12-60 |
+| `STKAUTO-SAAS-ESS` | Stack Automation SaaS Essentials Support (optional) | Yearly support | 1 (for up to 40 CCUs) | 12-60 |
 | `STKAUTO-SAAS-AD` | Stack Automation SaaS Subscription Advantage | CCUs | 100-999,999 | 12-60 |
 
 Note: Ordering optional support for the Stack Automation Essentials tier. For more information, review **cisco-stack-automation-quali-ordering-guide**.
