@@ -63,7 +63,7 @@ If an HTTP/HTTPS proxy is required for outbound access, configure the proxy allo
 
 Stack Automation is offered in two license tiers:
 
-- **Essentials** - consumption-based access to the full solutions catalog, for up to 100 concurrent compute units (CCUs).
+- **Essentials** - consumption-based access to the full solutions catalog, for up to 40 concurrent compute units (CCUs).
 - **Advantage** - includes everything in Essentials, plus blueprint customization, custom repository integration, and agentic Copilot capabilities.
 
 ## Platform Limits and Specifications
