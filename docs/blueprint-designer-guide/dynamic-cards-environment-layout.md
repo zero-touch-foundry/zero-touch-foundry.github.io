@@ -1,9 +1,9 @@
 ---
 sidebar_position: 19
-title: Dynamic Cards (Environment Layout)
+title: Dynamic Cards (Deployment Layout)
 ---
 
-This guide describes the **dynamic cards** feature for the environment dashboard. You can define cards and categories using YAML, then bind data via Liquid templates to show environment outputs, grain data, workflow outputs, and more.
+This guide describes the **dynamic cards** feature for the deployment dashboard. You can define cards and categories using YAML, then bind data via Liquid templates to show deployment outputs, grain data, workflow outputs, and more.
 
 ## Where to configure
 
@@ -57,10 +57,10 @@ The layout renderer uses a 4-column grid. Each card declares `size` (width) and 
 
 ## Data context
 
-Liquid templates resolve against the live environment context. Key paths you can use:
+Liquid templates resolve against the live deployment context. Key paths you can use:
 
-- `outputs.<name>`: Environment outputs
-- `inputs.<name>`: Environment inputs
+- `outputs.<name>`: Deployment outputs
+- `inputs.<name>`: Deployment inputs
 - `environment.name | id | status | blueprint | space`
 - `grains.<grainName>.outputs.<name>`
 - `grains.<grainName>.inputs.<name>`
@@ -145,7 +145,7 @@ height: 2
 
 ### 2) Icon Card (`icon-card`)
 
-`image` is optional. If omitted, the card uses the environment blueprint icon (and falls back to the default blueprint icon if unavailable).
+`image` is optional. If omitted, the card uses the deployment blueprint icon (and falls back to the default blueprint icon if unavailable).
 
 ```yaml
 type: icon-card
@@ -350,7 +350,7 @@ height: 1.5
 
 ### 9) Runtime Card (`runtime-card`)
 
-Embeds the environment runtime widget (uptime, time-remaining, and progress), so you do not need
+Embeds the deployment runtime widget (uptime, time-remaining, and progress), so you do not need
 to reconstruct it from outputs. It has no extra fields beyond the base card fields.
 
 ```yaml
@@ -423,7 +423,7 @@ customization:
     cards:
       - type: status-card
         name: env-status
-        display_name: "Environment Status"
+        display_name: "Deployment Status"
         status: "{% if environment.status == 'Active' %}positive{% else %}info{% endif %}"
         data:
           - name: "Status"
@@ -433,7 +433,7 @@ customization:
         size: 2
         height: 1
         actions:
-          - label: "Open Environment"
+          - label: "Open Deployment"
             url: "{{ outputs.environment_url }}"
             icon: "ExternalLink"
             visible: "{% if outputs.environment_url %}true{% else %}false{% endif %}"
