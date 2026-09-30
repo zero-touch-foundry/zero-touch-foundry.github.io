@@ -2,7 +2,7 @@
 id: install-the-management-server
 title: Install the Management Server
 sidebar_label: Install the Management Server
-sidebar_position: 4
+sidebar_position: 2
 description: Quickly onboard a management server so Stack Automation can create and manage your deployment resources.
 ---
 
