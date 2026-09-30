@@ -736,3 +736,13 @@ TCP
 UDP
 CCW
 sortable
+preconfigured
+AlmaLinux
+guestinfo
+devpi
+httpd
+sshd
+vmtoolsd
+zt
+tcp
+udp
