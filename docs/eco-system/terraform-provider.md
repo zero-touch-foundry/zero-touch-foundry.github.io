@@ -41,7 +41,7 @@ resource "torque_introspection_resource" "example" {
 ```
 The complete terraform example can be found here: https://github.com/QualiTorque/terraform-provider-torque/blob/main/examples/provider-install-verification/main.tf
 
-Once deployed, Stack Automation will represent the "torque_introspection_resource" resource in the resource catalog.
+Once deployed, Stack Automation will represent the "torque_introspection_resource" resource in the deployment overview.
 > ![Resource Catalog](/img/tf-intro-provider.png)
 
 
