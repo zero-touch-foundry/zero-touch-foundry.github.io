@@ -30,7 +30,7 @@ The Stack Automation management server can be installed on a [SUSE Rancher Kuber
   - To create resources on your cloud using Terraform, there is no built-in authentication between `RKE2` and Stack Automation. Store your cloud credentials in the Stack Automation [Credentials](/admin-guide/credentials) store and use them in your Terraform deployment.
 
 :::tip
-If your `RKE2` cluster runs with the CIS hardening profile (`profile: cis`), Pod Security Admission is enforced cluster-wide. Make sure the namespaces used by the management server and by your deployments allow the workloads Stack Automation creates in them.
+If your `RKE2` cluster runs with the `CIS` hardening profile (`profile: cis`), Pod Security Admission is enforced cluster-wide. Make sure the namespaces used by the management server and by your deployments allow the workloads Stack Automation creates in them.
 :::
 
 ## Setup
