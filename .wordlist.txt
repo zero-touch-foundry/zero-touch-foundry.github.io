@@ -108,6 +108,7 @@ GitLab
 AKS
 EKS
 GKE
+RKE
 runtime
 boolean
 tf
