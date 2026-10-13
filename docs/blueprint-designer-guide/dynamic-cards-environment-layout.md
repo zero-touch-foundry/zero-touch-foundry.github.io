@@ -52,7 +52,7 @@ The `size` value is the **number of cards that fit across one row**, not the num
 - `3`: 1/3 width (three cards per row)
 - `4`: 1/4 width (four cards per row, default)
 
-The exact width is `(row width - 20px * (size - 1)) / size`, so cards of the same size always fill a row with 20px gaps between them. Cards of different sizes can share a row; a card wraps to the next row when it does not fit. Cards never shrink below 250px wide, so on narrow screens they wrap earlier.
+The exact width is `(row width - 20px * (size - 1)) / size`, so cards of the same size always fill a row with 20-pixel gaps between them. Cards of different sizes can share a row; a card wraps to the next row when it does not fit. Cards never shrink below 250 pixels wide, so on narrow screens they wrap earlier.
 
 Fractional values are allowed. For example, `size: 2.1` renders a card slightly narrower than half width so that it fits on one row next to two quarter-width (`size: 4`) cards.
 
@@ -63,7 +63,7 @@ Cards nested inside a `stack-card` or `container-card` ignore their own `size` a
 - `1`: Standard height (`85px`)
 - `1.5`, `2`, `2.5`, `3`, `3.5`, `4`, `4.5`: Proportional vertical span
 
-The exact height is `height * 85px + (height - 1) * 20px`, so a card with `height: 2` is exactly as tall as two `height: 1` cards stacked with the standard 20px gap. Fractional values such as `2.7` are allowed. The default is `1`, except for `blueprint-card`, which defaults to `2`.
+The exact height is `height * 85px + (height - 1) * 20px`, so a card with `height: 2` is exactly as tall as two `height: 1` cards stacked with the standard 20-pixel gap. Fractional values such as `2.7` are allowed. The default is `1`, except for `blueprint-card`, which defaults to `2`.
 
 ## Data context
 
