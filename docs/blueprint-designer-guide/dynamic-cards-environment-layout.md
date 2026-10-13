@@ -38,22 +38,32 @@ customization:
 ```
 
 :::note
-The layout renderer uses a 4-column grid. Each card declares `size` (width) and `height` (vertical span).
+The layout renderer places cards in rows that wrap. Each card declares `size` (how many cards of that size fit side by side in one row) and `height` (vertical span).
 :::
 
 ## Grid system
 
 ### Width (`size`)
 
-- `1`: 1/4 width
-- `2`: 1/2 width
-- `3`: 3/4 width
-- `4`: Full width (default)
+The `size` value is the **number of cards that fit across one row**, not the number of columns the card spans. A larger value therefore produces a *narrower* card.
+
+- `1`: Full width (one card per row)
+- `2`: 1/2 width (two cards per row)
+- `3`: 1/3 width (three cards per row)
+- `4`: 1/4 width (four cards per row, default)
+
+The exact width is `(row width - 20px * (size - 1)) / size`, so cards of the same size always fill a row with 20px gaps between them. Cards of different sizes can share a row; a card wraps to the next row when it does not fit. Cards never shrink below 250px wide, so on narrow screens they wrap earlier.
+
+Fractional values are allowed. For example, `size: 2.1` renders a card slightly narrower than half width so that it fits on one row next to two quarter-width (`size: 4`) cards.
+
+Cards nested inside a `stack-card` or `container-card` ignore their own `size` and always fill the width of the parent card.
 
 ### Height (`height`)
 
-- `1`: Standard height (about `85px * 1 + spacing`)
+- `1`: Standard height (`85px`)
 - `1.5`, `2`, `2.5`, `3`, `3.5`, `4`, `4.5`: Proportional vertical span
+
+The exact height is `height * 85px + (height - 1) * 20px`, so a card with `height: 2` is exactly as tall as two `height: 1` cards stacked with the standard 20px gap. Fractional values such as `2.7` are allowed. The default is `1`, except for `blueprint-card`, which defaults to `2`.
 
 ## Data context
 
@@ -117,7 +127,7 @@ type: <card-type>
 name: <unique-name>
 display_name: <title>             # Optional
 condition: <Liquid expression>    # Optional
-size: 1|2|3|4                     # Optional (default 4)
+size: 1|2|3|4                     # Optional (default 4). Cards per row: 1 = full width, 4 = 1/4 width
 height: 1|1.5|2|2.5|3|3.5|4|4.5   # Optional (default 1)
 actions:                          # Optional
   - label: <string>
@@ -158,7 +168,7 @@ data:
     value: "{{ outputs.ocp_version }}"
   - name: "Nodes"
     value: "{{ outputs.node_count }}"
-size: 1
+size: 4
 height: 1
 ```
 
@@ -174,7 +184,7 @@ data:
     value: "{{ outputs.uptime }}"
   - name: "SLA"
     value: "99.9%"
-size: 1
+size: 4
 ```
 
 ### 4) Resource Card (`resource-card`)
@@ -194,7 +204,7 @@ items:
     value: "Offline"
     status: "negative"
     icon: "server"
-size: 3
+size: 2
 height: 1.5
 ```
 
@@ -205,7 +215,7 @@ type: resource-card
 name: servers-dynamic
 display_name: "Compute Resources"
 items: "{{ grains.compute.outputs.resources }}"
-size: 3
+size: 2
 height: 1.5
 ```
 
@@ -294,7 +304,7 @@ sandbox: "allow-scripts allow-same-origin"
 loading: "lazy"
 focusOverlay: true
 focusOverlayText: "Click to enable keyboard"
-size: 4
+size: 1
 height: 3
 ```
 
@@ -314,7 +324,7 @@ request:
     token: "{{ outputs.console_token }}"
 focusOnClick: true
 autoFocus: true
-size: 4
+size: 1
 height: 3
 ```
 
@@ -368,7 +378,7 @@ Stacks multiple cards vertically inside one grid cell.
 ```yaml
 type: stack-card
 name: stack-example
-size: 1
+size: 4
 height: 2
 items:
   - type: icon-card
@@ -396,7 +406,7 @@ Groups cards vertically **without borders and headers** for the inner cards.
 type: container-card
 name: infra-container
 display_name: "Infrastructure"
-size: 3
+size: 2
 height: 4
 items:
   - type: image-card
@@ -462,7 +472,7 @@ customization:
         items:
           - type: container-card
             name: infra
-            size: 3
+            size: 2
             height: 4
             display_name: "Core Systems"
             items:
@@ -483,7 +493,7 @@ customization:
 
           - type: stack-card
             name: status-stack
-            size: 1
+            size: 4
             height: 4
             items:
               - type: icon-card
