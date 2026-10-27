@@ -5,7 +5,7 @@ sidebar_position: 6
 
 # Architecture
 
-<!-- ![Locale Dropdown](/img/torque-arch.png) -->
+<!-- ![Locale Dropdown](/img/arch.png) -->
 
 Stack Automation is a comprehensive environment-as-a-service platform designed to bridge the gap between infrastructure complexity and user accessibility. The platform operates across three core domains that work together to deliver governed, self-service infrastructure and application deployment capabilities.
 
@@ -88,7 +88,7 @@ Automated notifications for deployment lifecycle events through:
 <!--
 ### Developer Tools
 - **CI/CD Integration**: [Azure DevOps](/eco-system/ci-cd-tooling/azure-devops.md), [CircleCI](/eco-system/ci-cd-tooling/circle-ci.md), [Jenkins](/eco-system/ci-cd-tooling/jenkins.md), [GitHub Actions](/eco-system/ci-cd-tooling/github-actions.md), [Spinnaker](/eco-system/ci-cd-tooling/spinnaker.md), TeamCity, Bamboo CI
-- **Development Interface**: [VSCode Extension](/eco-system/dev-tools/vs-plugin.md), [Stack Automation CLI](/eco-system/dev-tools/torque-cli.md), comprehensive [REST API](/rest-api/rest-api.md)
+- **Development Interface**: [VSCode Extension](/eco-system/dev-tools/vs-plugin.md), [Stack Automation CLI](/eco-system/dev-tools/cli.md), comprehensive [REST API](/rest-api/rest-api.md)
 -->
 
 ### ITSM Integration

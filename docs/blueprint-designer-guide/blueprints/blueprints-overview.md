@@ -8,7 +8,7 @@ Stack Automation blueprints are reusable components designed to model a required
 :::tip __Note__
 Blueprints are written in YAML files that reside in a __/blueprints__ folder within a Github, Gitlab or BitBucket repository (the folder name is case-sensitive and must be "blueprints"). The __/blueprints__ folder must be defined as the blueprint repository in the space's __Settings > Repositories__ page. Blueprints file type must be ".yaml" and not ".yml". 
 
-For enhanced asset discovery and organization, see [Stack Automation Assets Markers](/blueprint-designer-guide/torque-assets-markers).
+For enhanced asset discovery and organization, see [Stack Automation Assets Markers](/blueprint-designer-guide/assets-markers).
 :::
 
 Common example will be a platform team or a DevOps team building Dev, Test and staging deployments for their development, QA and product teams. With Stack Automation, the DevOps team can focus on design, best practices, and security for the deployment, while their end users are being self-served from the Stack Automation UI or API based on governance and policies without having the 'keys-to-the-cloud'.

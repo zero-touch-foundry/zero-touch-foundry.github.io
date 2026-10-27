@@ -5,7 +5,7 @@ title: How to Use this documentation
 
 The Stack Automation documentation is our one-stop-shop for all your Stack Automation education needs. Here you will learn everything you need to know about Stack Automation and how to use it.
 
-Before you start, please familiarize yourself with the [Main Concepts](/overview/torque-terminology) of Stack Automation.
+Before you start, please familiarize yourself with the [Main Concepts](/overview/terminology) of Stack Automation.
 
 ### We value your feedback
 We take our documentation very seriously, and your feedback is always welcome. So, if you find any errors, gaps or areas we could improve, please send us feedback in the __Discussions__ section of the Stack Automation documentation repo.

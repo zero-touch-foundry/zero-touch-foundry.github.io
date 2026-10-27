@@ -63,7 +63,7 @@ When connecting a repository, Stack Automation installs an OAuth app called __St
       > ![Locale Dropdown](/img/revoke-access.png)
   3. In Stack Automation, go to the space's __Settings > Repositories__ area and connect the repository.
   4. Authorize the organization. 
-      > ![Locale Dropdown](/img/torque-access.png)
+      > ![Locale Dropdown](/img/access.png)
   
   At this point, the Stack Automation app is installed in the organization without permissions.
 
