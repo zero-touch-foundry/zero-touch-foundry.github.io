@@ -8,7 +8,7 @@ The Stack Automation management server can be installed on a [SUSE Rancher Kuber
 ## Prerequisites
 
 - A running `RKE2` cluster. Please note that Stack Automation __does not support__ cluster nodes on ARM architecture.
-- [Outbound Ports for Self-hosted Management Servers](/torque-agent/torque-outbound-ports) must be open to allow Stack Automation to access and communicate with the cluster.
+- [Outbound Ports for Self-hosted Management Servers](/agent/outbound-ports) must be open to allow Stack Automation to access and communicate with the cluster.
 - Command-line access to the cluster, using one of the following:
   - __Directly on an `RKE2` server node__ (recommended) - `RKE2` ships its own `kubectl` binary under `/var/lib/rancher/rke2/bin` and writes the admin kubeconfig to `/etc/rancher/rke2/rke2.yaml`. The kubeconfig file is readable by `root` only, so run the commands as root (for example, `sudo -i`).
   - __From a remote machine__ with [kubectl installed](https://kubernetes.io/docs/tasks/tools/#kubectl) - copy `/etc/rancher/rke2/rke2.yaml` from a server node to your machine, replace `127.0.0.1` in the `server` field with the IP address or hostname of the `RKE2` server node, and set it as your kubeconfig. For details, see [Cluster Access](https://docs.rke2.io/cluster_access) in the `RKE2` documentation.
@@ -90,7 +90,7 @@ _Resources → Management Servers → Identify your management server → Click 
      ```bash
      kubectl exec -it $(kubectl get pods -n <agent-namespace> | grep torque-agent | awk '/'$2'/ {print $1;exit}') -n <agent-namespace> -- /bin/sh -c "curl -v https://stackautomation.cisco.com/hub/agent";
      ```
-     If the cluster nodes sit behind a firewall or proxy, confirm that every target listed in [Outbound Ports for Self-hosted Management Servers](/torque-agent/torque-outbound-ports) is reachable from the node.
+     If the cluster nodes sit behind a firewall or proxy, confirm that every target listed in [Outbound Ports for Self-hosted Management Servers](/agent/outbound-ports) is reachable from the node.
 4. Check the management server pod logs. You can run the following command:
      ```bash
      kubectl logs $(kubectl get pods -n <agent-namespace> | grep torque-agent | awk '/'$2'/ {print $1;exit}') -n <agent-namespace>

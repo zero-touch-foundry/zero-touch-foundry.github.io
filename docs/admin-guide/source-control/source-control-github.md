@@ -34,14 +34,14 @@ Either type works with Stack Automation. For instructions on generating one, see
 Stack Automation connects to GitHub using a Personal Access Token (PAT). Both classic and fine-grained tokens are supported.
 
 1. In Stack Automation, go to __Automation > Repositories__ and click __Add Repository__.
-   > ![Add Repository](/img/stack-automation-repository.png)
+   > ![Add Repository](/img/pat-github-repository.png)
 2. In __Select a Repository Provider__, choose __GitHub__ and click __Next__.
-   > ![Select a repository provider](/img/stack-automation-pat-github-provider.png)
+   > ![Select a repository provider](/img/pat-github-provider.png)
 3. On the __Connection__ step, fill in the __Repository URL__, __Repository Name__, and optionally a __Branch__ under __Details__.
 4. Under __Integrations__, click __Create new Credentials Set__ (or __Select from Existing Credentials__ to reuse a saved one).
-   > ![Connection details and integrations](/img/stack-automation-pat-github-connection.png)
+   > ![Connection details and integrations](/img/pat-github-connection.png)
 5. Give the new set an __Integrations Name__, then enter your __Personal Access Token__.
-   > ![Enter your Personal Access Token](/img/stack-automation-pat-github-token.png)
+   > ![Enter your Personal Access Token](/img/pat-github-token.png)
    :::info 
    Click the __Auto-Track Deployment Files__ option if you want to automatically discover and track Deployment Files from this repository.
    :::

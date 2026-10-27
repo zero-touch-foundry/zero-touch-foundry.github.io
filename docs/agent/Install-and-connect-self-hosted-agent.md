@@ -6,7 +6,7 @@ title: Install a Management Server on your Kubernetes Cluster
 ## Prerequisites
 
 - Kuberentes cluster - can be any cluster, including on your on-premise network. Please note that Stack Automation __does not support__ cluster nodes on ARM architecture.
-- [Outbound Ports for Kubernetes Cluster Nodes](/torque-agent/torque-outbound-ports) must be open to allow Stack Automation to access and communicate with the cluster.
+- [Outbound Ports for Kubernetes Cluster Nodes](/agent/outbound-ports) must be open to allow Stack Automation to access and communicate with the cluster.
 - Command-line with [kubectl installed](https://kubernetes.io/docs/tasks/tools/#kubectl) connected to your cluster.
   To connect to the cluster use: 
   
@@ -34,10 +34,10 @@ title: Install a Management Server on your Kubernetes Cluster
 
   - To create resources on your cloud using Terraform:
       - If your cluster is an __EKS__ (resources will be created on AWS):
-        - (Recommended) Create a designated __service account__ annotated with an AWS role. See [Terraform Authentication on EKS](/torque-agent/service-accounts-for-aws) for details. Or,
+        - (Recommended) Create a designated __service account__ annotated with an AWS role. See [Terraform Authentication on EKS](/agent/service-accounts-for-aws) for details. Or,
         - Ensure that the Cluster service role has sufficient permissions to create the deployment.
-      - If your cluster is an __AKS__ (resources will be created on Azure): Provide the account's authentication credentials when creating the management server in Stack Automation. For details, see [Terraform Authentication on AKS](/torque-agent/service-accounts-for-azure).
-      - If your cluster is a __GKE__ (resources will be created on GCP), see [Terraform GKE Authentication](/torque-agent/service-accounts-for-gcp).
+      - If your cluster is an __AKS__ (resources will be created on Azure): Provide the account's authentication credentials when creating the management server in Stack Automation. For details, see [Terraform Authentication on AKS](/agent/service-accounts-for-azure).
+      - If your cluster is a __GKE__ (resources will be created on GCP), see [Terraform GKE Authentication](/agent/service-accounts-for-gcp).
       - For other types of clusters, or if you want to connect to your AWS/Azure with your basic credentials, there is no built-in authentication with Stack Automation so there are no pre-requisites related to authentication and permissions. You can store your cloud credentials in the Stack Automation secret store and use them for your TF deployment.
 
 ## Setup

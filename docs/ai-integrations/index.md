@@ -55,7 +55,7 @@ AI tool  ──(MCP over HTTP, Bearer <API key>)──▶  Stack Automation MCP 
 ### Get your API key into the pane
 
 1. Open Stack Automation and click **AI Integrations** on the top bar (the side pane shown above will open).
-2. If you do not have a key yet, click **Go to API Keys** and generate one. See [API Tokens](/rest-api/torque_api_tokens) for the steps.
+2. If you do not have a key yet, click **Go to API Keys** and generate one. See [API Tokens](/rest-api/api-tokens) for the steps.
 3. Paste the key into **Paste your API key** and click **Use key**. The pane shows **Using key** with the last characters of the key, and the integration panels become available.
 
 The key is kept in this browser only. On another device, or after you click **Clear**, paste it again.

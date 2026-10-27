@@ -47,7 +47,7 @@ For running the management server on a Docker host, you'll need:
 **Network Requirements:**
 - Outbound HTTPS (port 443) access to Stack Automation SaaS
 - Internet connectivity for pulling Docker images
-- See [Stack Automation Outbound Ports](/torque-agent/torque-outbound-ports.md) for detailed network requirements
+- See [Stack Automation Outbound Ports](/agent/outbound-ports.md) for detailed network requirements
 
 **Example VM Configuration:**
 ```yaml
@@ -79,7 +79,7 @@ For running the management server on Kubernetes, you'll need:
 **Network Requirements:**
 - Outbound HTTPS (port 443) access to Stack Automation SaaS
 - Internet connectivity for pulling container images
-- See [Stack Automation Outbound Ports](/torque-agent/torque-outbound-ports.md) for detailed network requirements
+- See [Stack Automation Outbound Ports](/agent/outbound-ports.md) for detailed network requirements
 
 ## Kubernetes Management Server Manifest
 
@@ -195,12 +195,12 @@ Notes:
 
 Once you've prepared your infrastructure, proceed with management server installation:
 
-- **Docker Host**: See [Stack Automation Docker Management Server](/torque-agent/torque-docker-agent.md)
-- **Kubernetes Cluster**: See [Install and Connect Self-Hosted Management Server](/torque-agent/Install-and-connect-self-hosted-agent.md)
+- **Docker Host**: See [Stack Automation Docker Management Server](/agent/docker-agent.md)
+- **Kubernetes Cluster**: See [Install and Connect Self-Hosted Management Server](/agent/Install-and-connect-self-hosted-agent.md)
 
 ## Additional Resources
 
-- [What is a Stack Automation Management Server?](/torque-agent/Torque-Agent-Intro.md)
-- [Advanced Management Server Settings](/torque-agent/advanced-settings.md)
-- [Network Requirements](/torque-agent/torque-outbound-ports.md)
-- [Azure VMSS Deployment](/torque-agent/torque-agent-on-azure-vmss.md)
+- [What is a Stack Automation Management Server?](/agent/Agent-Intro.md)
+- [Advanced Management Server Settings](/agent/advanced-settings.md)
+- [Network Requirements](/agent/outbound-ports.md)
+- [Azure VMSS Deployment](/agent/agent-on-azure-vmss.md)

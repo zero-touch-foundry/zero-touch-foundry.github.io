@@ -45,7 +45,7 @@ As such, there are 4 roles in Stack Automation:
 | Permission      | Description |Account admin | Space admin | Space developer   | Space member |
 | ----------- | ----------- | :--------: | :--------: | :--------: | :--------: |
 | Manage account	   |1. Config audit log target.<br />2. Delete the account.<br />3. View account usage and cost.| ![Locale Dropdown](/img/green-dot.png)      |||||
-| [Manage management servers](/torque-agent/Install-and-connect-self-hosted-agent)	   |Install new Stack Automation management servers (requires K8s cluster or Vcenter access), delete management servers, edit management server properties.| ![Locale Dropdown](/img/green-dot.png)      |||||
+| [Manage management servers](/agent/Install-and-connect-self-hosted-agent)	   |Install new Stack Automation management servers (requires K8s cluster or Vcenter access), delete management servers, edit management server properties.| ![Locale Dropdown](/img/green-dot.png)      |||||
 | [Manage cloud accounts for cost collection](/governance/cost-tracking/cost)	   |Add/remove cloud accounts for Stack Automation to collect deployment cost from.| ![Locale Dropdown](/img/green-dot.png)      |||||
 | Manage spaces	   |1. Create/delete/rename spaces.<br />2. Associate/remove management servers to/from spaces.| ![Locale Dropdown](/img/green-dot.png)        |||||
 | Manage users	   |Invite users to Stack Automation, cancel users invitations, add users to space, change users roles.| ![Locale Dropdown](/img/green-dot.png)        ||||

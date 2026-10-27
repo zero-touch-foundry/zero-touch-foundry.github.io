@@ -521,7 +521,7 @@ The management server's configuration must include:
 
 
 Optionally, the management server configuration may include:
-* **storage-size** - Set the size of storage allocated to this grain. The size is in MB. The size must be smaller than the overall storage size which was defined in the [management server settings](torque-agent/advanced-settings.md). If not defined, Stack Automation will use the default size. This is an advanced configuration option, it is recommended to consult with Stack Automation's support team before making a change.
+* **storage-size** - Set the size of storage allocated to this grain. The size is in MB. The size must be smaller than the overall storage size which was defined in the [management server settings](agent/advanced-settings.md). If not defined, Stack Automation will use the default size. This is an advanced configuration option, it is recommended to consult with Stack Automation's support team before making a change.
 * **runner-namespace** - The namespace where the runner pod will be provisioned. If not defined, the runners will be provisioned in the default namespace defined in the management server level. This is an advanced configuration option, it is recommended to consult with Stack Automation's support team before making a change.
 * **service-account** - The service-account name configured within the kubernetes cluster that will be used to execute the grain. A kubernetes 
 service account provides an identity for processes that run in a pod. If not specified, Stack Automation will use the default service account defined for the management server. The service account must be defined in the runner namespace.

@@ -42,7 +42,7 @@ Now, that you have a new space configured, we will associate a repository to the
 In this step, we will configure our newly created blueprint (Created in step #2) to use "Quali Hosted Management Server"
 
 :::info
-__Quali Hosted Management Server__ is a free pre-configured management server hosted by Quali allowing you to execute automation without the need to install, configure and maintain a "self-hosted management server". In case you wish to use your own management server, follow the steps in [this](/torque-agent/Install-and-connect-self-hosted-agent) article and continue to step #4 in this article once you fully configured your management server.
+__Quali Hosted Management Server__ is a free pre-configured management server hosted by Quali allowing you to execute automation without the need to install, configure and maintain a "self-hosted management server". In case you wish to use your own management server, follow the steps in [this](/agent/Install-and-connect-self-hosted-agent) article and continue to step #4 in this article once you fully configured your management server.
 :::
 
 1. In the "Connect a Management Server" dialog, select the __"Quali Hosted Management Server"__. This will associate the "Quali Hosted Management Server" with the newly created space allowing automation in the space to be execute on it.
