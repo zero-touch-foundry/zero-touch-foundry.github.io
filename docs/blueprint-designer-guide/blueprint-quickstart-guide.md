@@ -53,7 +53,7 @@ Beyond hand-writing YAML, Stack Automation also provides a visual, drag-and-drop
 4. Give the blueprint a name, an optional description, and a default management server (used to automatically populate every grain's agent input), then click **Create**.
 5. On the **Designer Canvas**, click the **Add Grains** button to open the Building Blocks Library, then add your Building-Block-marked assets onto the canvas as grains, connect them to define dependencies, and configure each grain's inputs and outputs directly in the UI.
 6. Switch to the **Blueprint YAML** tab at any time to view the underlying YAML — since this blueprint is backend-stored (not yet pushed to a repository), you can also edit the YAML directly here.
-7. Use the blueprint's **Overview**, **Instructions**, and **Policies** tabs to configure its Solution Hub/Building Block visibility, end-user instructions, and consumption policies.
+7. Use the blueprint's **Overview**, **Instructions**, **Tags**, and **Policies** tabs to configure its Solution Hub/Building Block visibility, end-user instructions, tag values, and consumption policies.
 
 ## Removing a blueprint
 As mentioned above, there are two types of blueprints, blueprints stored in Stack Automation (whether wrapped automatically via Option A or built visually via Option C) and source-controlled blueprints (stored in your repository, per Option B). 
