@@ -69,7 +69,7 @@ will call the `stack-automation` server and may ask you to confirm tool calls.
 - **Server won't start.** Re-check the `mcp.json` snippet for valid JSON and confirm the
   `url` matches your panel. Then click **Start** again.
 - **401 / unauthorized.** The `Authorization` header must read `Bearer <token>` with a
-  valid, current token. Regenerate in Stack Automation if needed and update `mcp.json`.
+  valid, current key. Generate a new key on the API Keys page if needed and update `mcp.json`.
 - **Copilot doesn't call the tool.** Make sure you're in **Agent mode** (not Ask mode) and
   that the `stack-automation` server shows as *running*.
 

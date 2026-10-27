@@ -42,27 +42,29 @@ conversation. The main benefits:
 
 ## How it works
 
-Every integration authenticates with a single **Stack Automation API token**. You generate
-the token once in the **AI Integrations** side pane, then paste it (or let the setup
-script inject it) into whichever tool you're connecting. Under the hood, all clients talk
-to the same hosted MCP endpoint over HTTP, sending the token as a bearer credential.
+Every integration authenticates with a **Stack Automation API key**. You generate the key
+once on the **API Keys** page, paste it into the **AI Integrations** side pane, and the pane
+fills it into the setup steps and downloads for whichever tool you're connecting. Under the
+hood, all clients talk to the same hosted MCP endpoint over HTTP, sending the key as a bearer
+credential.
 
 ```
-AI tool  ──(MCP over HTTP, Bearer <API token>)──▶  Stack Automation MCP Server  ──▶  Spaces · Blueprints · Deployments
+AI tool  ──(MCP over HTTP, Bearer <API key>)──▶  Stack Automation MCP Server  ──▶  Spaces · Blueprints · Deployments
 ```
 
-### Generate your API token
+### Get your API key into the pane
 
-1. Open Stack Automation and click the **AI Integrations** on the top bar (the side pane shown above will open).
-2. Click the **Generate token** button under **API TOKEN** and copy the generated **Stack Automation API token**.
-3. Store it somewhere safe — for security, the token is shown **only once**. If you lose
-   it, use **Regenerate** to create a new one.
+1. Open Stack Automation and click **AI Integrations** on the top bar (the side pane shown above will open).
+2. If you do not have a key yet, click **Go to API Keys** and generate one. See [API Tokens](/rest-api/torque_api_tokens) for the steps.
+3. Paste the key into **Paste your API key** and click **Use key**. The pane shows **Using key** with the last characters of the key, and the integration panels become available.
+
+The key is kept in this browser only. On another device, or after you click **Clear**, paste it again.
 
 :::warning Important
-Treat this token like a password. It grants the same access you have in Stack Automation. Do not commit it to source control or share it in plain text. If a token is exposed, click **Regenerate** to revoke the old one immediately.
+Treat the key like a password. It grants the same access you have in Stack Automation. Do not commit it to source control or share it in plain text. If a key is exposed, revoke it on the API Keys page and generate a new one.
 :::
 
-In the examples throughout this section, the token is written as
+In the examples throughout this section, the key is written as
 `<YOUR_STACK_AUTOMATION_TOKEN>`. Replace it with the value you copied.
 
 ## Choose your integration

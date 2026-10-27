@@ -55,8 +55,9 @@ roles and policies.
 
 - **The plugin doesn't appear after adding the marketplace.** Re-open **Customize** and
   confirm the marketplace URL matches the one in the panel exactly, then reload.
-- **The agent can't see your data.** Make sure you generated and are using a valid API
-  token. If in doubt, **Regenerate** the token in Stack Automation and re-run the task.
+- **The agent can't see your data.** Make sure the key you pasted into the AI Integrations
+  pane is valid and has not been revoked. If in doubt, generate a new key on the API Keys
+  page, paste it into the pane, and re-run the task.
 - **Actions are denied.** The token inherits your permissions — confirm your Stack
   Automation user has access to the space or blueprint you're targeting.
 
