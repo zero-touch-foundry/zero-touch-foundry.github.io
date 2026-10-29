@@ -3,30 +3,32 @@ sidebar_position: 2
 title: GitLab Source Control
 ---
 
-Stack Automation supports connecting asset/blueprint repositories on GitLab out of the box. To connect a repository, you must have access to the repository and grant Stack Automation permission to the repository's organization, as explained below. For details about connecting a repository, see [Discover Your Assets](/getting-started/asset-discovery). You should be able to sign in with an account on any one of these online services and immediately get going with connecting asset repositories and launching deployments.
+Stack Automation supports connecting asset, blueprint, and policy repositories hosted on GitLab. Repositories are connected per space from the **Add Repository** wizard, and the credentials you provide are saved in the Stack Automation [Integrations](/admin-guide/credentials) store so you can reuse them when you connect more repositories from the same provider.
 
-**This article refers to the SAAS version of GitLab. If you're using self hosted GitLab, check [here](/admin-guide/source-control/Self%20Hosted%20Repositories/overview)**.
+**This article refers to the SAAS version of GitLab. If you're using self-hosted GitLab, select **Self Managed Repository** in the wizard and check [here](/admin-guide/source-control/Self%20Hosted%20Repositories/overview).**
 
-## Ensure the Stack Automation application was added to the GitLab organization you're connecting
+## Prerequisites
 
-1. Go to [https://gitlab.com/-/profile/applications](https://gitlab.com/-/profile/applications).
-2. Scroll down to the __Authorized application__ section and make sure __Stack Automation Control Plane-Social__ has the __openid profile email read_user__ scope.
+* Read access to the GitLab project you want to connect.
+* A GitLab [access token](https://docs.gitlab.com/user/profile/personal_access_tokens/) with read access to the repository.
 
-## Ensure your organization has granted access to Stack Automation
+## Connect a GitLab repository
 
-When connecting a repository, Stack Automation installs an OAuth app called __Stack Automation Control Plane__ on the organization. This app provides Stack Automation with the necessary permissions to the organization's repositories. If Stack Automation doesn't have access, you will be prompted to grant the proper authorizations when connecting the asset repository. The approved applications are listed in the [GitLab Applications](https://gitlab.com/-/profile/applications) page. 
+1. Select the space in the space selection dropdown, go to **Automation > Repositories**, and click **Add Repository**.
+2. In the **Select a Repository Provider** step, select **GitLab** and click **Next**.
+3. In the **Connection** step, fill in the **Details**:
+   * **Repository URL** - the HTTPS URL of the project, for example `https://gitlab.com/{group}/{project}`.
+   * **Repository Name** - the name the repository will have in Stack Automation.
+   * **Branch** (optional) - the branch to use. If you leave it empty, Stack Automation uses the repository's default branch.
+   * **Auto-Track Deployment Files** (optional) - automatically discover and track deployment files from this repository.
+   * **Self Managed Repository** - select this if your git server is hosted by you and not on the SAAS. For details, see [Self Hosted Repositories](/admin-guide/source-control/Self%20Hosted%20Repositories/overview).
+4. Under **Integrations**, provide the access details:
+   * If the credentials you need already exist in the Integrations store, choose **Select from Existing Credentials** and pick them.
+   * Otherwise, choose **Create New Credentials** (when the option is shown) and enter an **Integrations Name**, select the **Access Token Type**, and enter the **Personal Access Token** that grants Stack Automation read access to the repository.
+5. Click **Connect**.
 
-  1. In Stack Automation, go to the space's __Settings > Repositories__ area and connect the repository.
-  2. Authorize the organization. 
-  > ![Locale Dropdown](/img/gitlab-1.png)
-  3. Go to [GitLab Applications](https://gitlab.com/-/profile/applications) and make sure the Stack Automation application has been authorized.
-  > ![Locale Dropdown](/img/gitlab-2.png) 
-    
-    At this point, the Stack Automation app is installed in the organization with the necessary permissions. 
+   Stack Automation connects to the repository, saves the credentials in the Integrations store, and discovers the repository's assets. The confirmation screen lists the number of assets discovered and lets you open them in the **Assets** page.
 
-     * If you're not an administrator in the organization, ask the administrator to grant access to the app in the [GitLab Applications](https://gitlab.com/-/profile/applications) page. 
-     * If you already authorized the __Stack Automation Control Plane__ app without also granting access to a group with repositories you want to connect, make sure your GitLab user is added to that group (__Guest__ role is enough).
-  
-  6. Return to Stack Automation and continue setting up the connection.
-
-
+:::tip
+Once connected, the repository appears in **Automation > Repositories** with its default branch, assets, and last sync time. Use the repository's **⋮** (3-dot) menu to view its details, sync from git, or disconnect it.
+:::

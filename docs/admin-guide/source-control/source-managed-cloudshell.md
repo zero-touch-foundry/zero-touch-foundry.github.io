@@ -1,67 +1,35 @@
 ---
-sidebar_position: 6
+sidebar_position: 10
 title: Self-Managed Quali CloudShell
 ---
 
-Stack Automation supports connecting Quali CloudShell as an asset repository. CloudShell blueprints are treated as assets in Stack Automation and can be referenced using the 'CloudShell' grain type.
+Stack Automation supports connecting asset, blueprint, and policy repositories hosted on Quali CloudShell. Repositories are connected per space from the **Add Repository** wizard, and the credentials you provide are saved in the Stack Automation [Integrations](/admin-guide/credentials) store so you can reuse them when you connect more repositories from the same provider.
+
 
 ## Prerequisites
 
-1. CloudShell user with at least "External Extended" permissions in the CloudShell Domains that you want to use.
-2. A self-hosted Stack Automation management server that can reach the Sandbox Api of your CloudShell instance.
-3. CloudShell version 2021.2 and higher.
+Stack Automation supports connecting Quali CloudShell as an asset repository. CloudShell blueprints are treated as assets in Stack Automation and can be referenced using the `CloudShell` grain type.
 
-## Configuration
+1. A CloudShell user with at least **External Extended** permissions in the CloudShell domains that you want to use.
+2. A self-hosted Stack Automation management server that can reach the Sandbox API of your CloudShell instance.
+3. CloudShell version 2021.2 or higher.
 
-1. Register CloudShell as a Repository Provider via Stack Automation REST API. If the API call is successful it will return a GUID representing the ID of the new repository provider. Save this ID for the next step.
-  
-```jsx
-curl -L 'https://stackautomation.cisco.com/api/settings/repository_providers' \
--H 'Authorization: Bearer <TOKEN>' \
--H 'Content-Type: application/json' \
--d '{
-    "name": "<PROVIDER_NAME>",
-    "type": "CloudShell",
-    "details": {        
-        "base_url": "<CLOUDSHELL_SERVER_URL>:<SANDBOX_API_PORT>",
-        "username": "<CLOUDSHELL_USER>",
-        "password": "<CLOUDSHELL_PASSWORD>",
-        "domain": "<CLOUDSHELL_DOMAIN>",
-        "token_ttl": 300
-    },
-    "repos": []
-}'
-```
+## Connect a Quali CloudShell repository
 
-  * Replace __&lt;TOKEN&gt;__ with a valid Stack Automation token with Stack Automation Admin permissions
-  * Replace __&lt;PROVIDER_NAME&gt;__ with a display name for the CloudShell instance. Example: "CloudShell_Dev"
-  * Replace __&lt;CLOUDSHELL_SERVER_URL&gt;__ with the IP or DNS of your CloudShell instance. The CloudShell instance needs to be reachable from at least one of your self-hosted Stack Automation management servers. Stack Automation will automatically select a management server for communicating with CloudShell
-  * Replace __&lt;SANDBOX_API_PORT&gt;__ with the port of the CloudShell Sandbox API. The default port is 82
-  * Replace __&lt;CLOUDSHELL_USER&gt;__ and __&lt;CLOUDSHELL_PASSWORD&gt;__ with a valid CloudShell username and password
-  * Replace __&lt;CLOUDSHELL_DOMAIN&gt;__ with the CloudShell Domain that will be used as the default Domain. If needed you can later set a different Domain per each space
-  * [Optional] You can also set a value for the "token_ttl", this property defines the expiration in seconds of the token received from the CloudShell Sandbox API . Default: 300 sec
-  
-2. Connect the repository as an asset repository to a space.
+1. Select the space in the space selection dropdown, go to **Automation > Repositories**, and click **Add Repository**.
+2. In the **Select a Repository Provider** step, select **CloudShell** and click **Next**.
+3. In the **Connection** step, fill in the **Details**:
+   * **Repository URL** - the URL of your CloudShell instance.
+   * **Repository Name** - the name the repository will have in Stack Automation.
+   * **Branch** (optional) - the branch to use. If you leave it empty, Stack Automation uses the repository's default branch.
+   * **Auto-Track Deployment Files** (optional) - automatically discover and track deployment files from this repository.
+4. Under **Integrations**, provide the access details:
+   * If the credentials you need already exist in the Integrations store, choose **Select from Existing Credentials** and pick them.
+   * Otherwise, choose **Create New Credentials** (when the option is shown) and enter an **Integrations Name**, the CloudShell **Server Address**, optionally a **Token TTL**, and the **User Name** and **Password** of the CloudShell user from the prerequisites.
+5. Click **Connect**.
 
-```jsx
-curl -L 'https://stackautomation.cisco.com/api/spaces/<SPACE_NAME>/repositories/cloudshell' \
--H 'Authorization: Bearer <TOKEN>' \
--H 'Content-Type: application/json' \
--d '{
-    "provider_id": "<PROVIDER_ID>", 
-    "repository_url": "<CLOUDSHELL_SERVER_URL>:<SANDBOX_API_PORT>",
-    "repository_name": "<REPOSITORY_NAME>",
-    "branch": "<CLOUDSHELL_DOMAIN>"
-}'
-```
+   Stack Automation connects to the repository, saves the credentials in the Integrations store, and discovers the repository's assets. The confirmation screen lists the number of assets discovered and lets you open them in the **Assets** page.
 
-  * Replace __&lt;SPACE_NAME&gt;__ with the relevant Stack Automation space 
-  * Replace __&lt;TOKEN&gt;__ with a valid Stack Automation token with Stack Automation Admin permissions
-  * Replace __&lt;PROVIDER_ID&gt;__ with the GUID received from the API in step #1 
-  * Replace __&lt;CLOUDSHELL_SERVER_URL&gt;__ with the IP or DNS of your CloudShell instance.
-  * Replace __&lt;SANDBOX_API_PORT>&gt;__ with the port of the CloudShell Sandbox API. The default port is 82
-  * Replace __&lt;REPOSITORY_NAME&gt;__ with the name you would like to assign to this repository. This name will be used in Stack Automation Blueprints to reference this repo
-  * [Optional] Replace __&lt;CLOUDSHELL_DOMAIN&gt;__ with the domain name to use for this repository. If omitted, the default Domain name provided in step #1 will be used. 
-    __Note__: The user provided in step #1 must have correct access to the provided Domain.
-
-3. Discover suitable assets. For details, see [Discover Your Assets](/getting-started/asset-discovery). 
+:::tip
+Once connected, the repository appears in **Automation > Repositories** with its default branch, assets, and last sync time. Use the repository's **⋮** (3-dot) menu to view its details, sync from git, or disconnect it.
+:::
