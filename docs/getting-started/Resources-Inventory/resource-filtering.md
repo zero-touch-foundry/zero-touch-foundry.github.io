@@ -26,12 +26,11 @@ Within a provider's resource view:
 - Apply filters by type, model, location, or other attributes 
 - Select multiple resources using row checkboxes for bulk operations
 
-## Advanced Filtering with Logical Conditions (Feature #19947)
+## Advanced Filtering with Logical Conditions
 
-Starting with feature #19947, Stack Automation supports enhanced filtering logic for:
+Stack Automation supports enhanced filtering logic for:
 - **AND conditions** - match all specified criteria
 - **OR conditions** - match any of the specified alternatives  
-- **Contains operator** - check if string attributes contain specific values
 
 ### Syntax Examples
 
@@ -45,20 +44,6 @@ selector:
       provider-name: lab_vcenter
       attributes:
         - pool: builds
-```
-
-#### Using Contains operator
-```yaml
-attributes:
-  - region:
-      contains: us-east
-```
-
-#### Using IN operator with multiple values
-```yaml
-attributes:
-  - environment:
-      in: [production, staging]
 ```
 
 ### Selector Structure
