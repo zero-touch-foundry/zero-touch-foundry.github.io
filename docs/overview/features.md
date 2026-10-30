@@ -5,7 +5,7 @@ title: Main Features and Capabilities
 
 ## Orchestration
 
-* __Blueprint YAML__: Deployment plans are stored in YAML files. Stack Automation can generate a single-asset blueprint YAMLs for each IaC or container technology file in your repository, while multi-asset blueprints can easily be written in YAML files stored in your source control repositories.
+* __Blueprint YAML__: Deployment plans are stored in YAML files. Stack Automation can generate single-asset blueprint YAMLs for each IaC or container technology file in your repository, while multi-asset blueprints can easily be written in YAML files stored in your source control repositories.
 * __Policies__: [Limit deployment durations](/blueprint-designer-guide/blueprint-consumption-policies) and apply [OPA security policies](/governance/policies) to deployments.
 * __Spaces__ and __Role-based Access Control (RBAC)__: Set up a space for different business units, teams, and projects. Assign assets, [users and roles](/governance/roles-and-permissions) to the users, limiting capabilities based on their needs and access only to the blueprints and deployments that apply to that space. 
 * Secret management in Stack Automation: Stack Automation manages Secrets in 3 different ways 
@@ -30,5 +30,5 @@ Stack Automation provides out-of-the-box support for Terraform modules, Helm cha
 ## Monitoring and control
 * __[Cost management and estimation](/governance/cost-tracking/cost)__: Easily view the cloud costs of your deployments, as well as current/estimated spending by blueprint, deployment or space.
 * __[Introspection](/environment-services/Introspection and layouts)__: Drill-down into each deployment's cloud resources, elements and metadata directly from Stack Automation.
-* __[CI/CD Integration](/overview/supported-platforms#cicd-tooling)__: Configure deployments to be spun up and tested as part of a CI/CD process using some of the leading tools on the market, including Jenkins, Azure DevOps, CircleCI, Bamboo, and more.
+* __[CI/CD Integration](/overview/supported-platforms)__: Configure deployments to be spun up and tested as part of a CI/CD process using some of the leading tools on the market, including Jenkins, Azure DevOps, CircleCI, Bamboo, and more.
 * __[Slack and Teams notifications](/admin-guide/notifications)__: Get notifications for different deployment lifecycle phases to the Webex/Teams/Slack channel of your choice.

@@ -138,7 +138,7 @@ Stack Automation's weekly digest reports condense the most important information
 The Stack Automation ‘Weekly Digest’ emails are being sent to administrators and will highlight:
 
 -   Cloud usage
--   Users activity
+-   User activity
 -   Deployments usage
 -   Cloud Cost
 -   Top used IaC modules

@@ -48,7 +48,7 @@ Absolutely! Stack Automation supports integration with some of the leading CI/CD
 - Bamboo
 - And more
 
-Click [here](/overview/supported-platforms#cicd-tooling) and follow our documentation to set up your pipelines and start seeing value.
+Click [here](/overview/supported-platforms) and follow our documentation to set up your pipelines and start seeing value.
 
 #### How do you protect my access credentials?
 It's no secret that working with the cloud requires the use of very powerful admin credentials, which can cause some serious damage if they fall in the wrong hands. In Stack Automation, your admin credentials are safely tucked away in the system, within what we call **Stack Automation Management Servers**, which allow Stack Automation to access and use the Kubernetes cluster on the cloud. 

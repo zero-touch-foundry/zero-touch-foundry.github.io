@@ -1,8 +1,7 @@
 ---
 sidebar_position: 26
+title: VS Code Extension
 ---
-
-# VS Code Extension
 
 This extension facilitates the blueprint yaml development process by providing developers with auto-complete, instant error checks and schema validations. For details, see [VS Code Extension for Stack Automation](https://github.com/QualiTorque/torque-vs-code-extensions).
 

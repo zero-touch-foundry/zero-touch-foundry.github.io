@@ -397,7 +397,9 @@ This will run `helm upgrade` with the `--create-namespace` flag, automatically c
 
 Managing Helm charts through registries allows for centralized storage and version control of Kubernetes application packages. By using registries, teams can efficiently share and deploy consistent application versions across environments. This approach enhances security, simplifies updates, and improves collaboration.
 
+<!-- The Artifactory section of blueprints-yaml-structure.md is commented out in the Stack Automation docs, so this link is hidden with it.
 For more detailed information about working with binary repositories, see [Working with Artifactory as Binary Repository](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#working-with-artifactory-as-binary-repository).
+-->
 
 ### Use-case example
 

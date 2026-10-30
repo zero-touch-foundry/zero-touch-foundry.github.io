@@ -266,7 +266,7 @@ ok: [host2] => {
 }
 ```
 
-Any section of the “inventory-file:” can contain dynamic values from dependent grains, from the blueprint’s inputs or from Stack Automation’s parameter storage. For more information, see  [Stack Automation Templating engine](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#torque-templating-engine).
+Any section of the “inventory-file:” can contain dynamic values from dependent grains, from the blueprint’s inputs or from Stack Automation’s parameter storage. For more information, see  [Stack Automation Templating engine](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#stack-automation-templating-engine).
 __Example:__ Below is an example of a grains section of a blueprint, containing an Ansible grain:
 
 ```yaml

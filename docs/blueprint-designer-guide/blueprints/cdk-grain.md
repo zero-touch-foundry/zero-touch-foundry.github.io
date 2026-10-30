@@ -167,5 +167,5 @@ Defines dependencies on other grains, ensuring this grain runs after the specifi
 ## See Also
 
 - [AWS CDK Documentation](https://docs.aws.amazon.com/cdk/latest/guide/home.html)
-- [Stack Automation Templating Engine](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#torque-templating-engine)
+- [Stack Automation Templating Engine](/blueprint-designer-guide/blueprints/blueprints-yaml-structure#stack-automation-templating-engine)
 - [Blueprint YAML Structure](/blueprint-designer-guide/blueprints/blueprints-yaml-structure)

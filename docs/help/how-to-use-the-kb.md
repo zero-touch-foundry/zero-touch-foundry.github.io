@@ -1,6 +1,6 @@
 ---
 sidebar_position: 15
-title: How to Use this documentation
+title: How to Use this Documentation
 ---
 
 The Stack Automation documentation is our one-stop-shop for all your Stack Automation education needs. Here you will learn everything you need to know about Stack Automation and how to use it.
