@@ -30,5 +30,6 @@ Stack Automation provides out-of-the-box support for Terraform modules, Helm cha
 ## Monitoring and control
 * __[Cost management and estimation](/governance/cost-tracking/cost)__: Easily view the cloud costs of your deployment, as well as current/estimated spending by blueprint, deployment or space.
 * __[Introspection](/environment-services/Introspection and layouts)__: Drill-down into each deployment's cloud resources, elements and metadata directly from Stack Automation.
+* __[Resource filtering with logical conditions](/getting-started/Resources-Inventory/resource-filtering)__: Filter resources using AND, OR, and Contains operators for more powerful querying capabilities.
 * __[CI/CD Integration](/overview/supported-platforms#cicd-tooling)__: Configure deployments to be spun up and tested as part of a CI/CD process using some of the leading tools on the market, including Jenkins, Azure DevOps, CircleCI, Bamboo, and more.
 * __[Slack and Teams notifications](/admin-guide/notifications)__: Get notifications for different deployment lifecycle phases to the Webex/Teams/Slack channel of your choice.
