@@ -23,7 +23,7 @@ Setup is: install the Stack Automation VS Code extension, add one MCP server ent
    code --install-extension stack-automation.vsix
    ```
 
-3. Open the Command Palette and run **MCP: Open User Configuration**, then merge the
+3. The extension configures MCP automatically. For a manual installation, open the Command Palette and run **MCP: Open User Configuration**, then merge the
    snippet below into your `mcp.json`. Replace the token with your own:
 
    ```json

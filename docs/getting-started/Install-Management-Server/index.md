@@ -49,16 +49,16 @@ In the **Setup** step, select where you would like to install your management se
 Make your selection and click **Next**.
 
 :::note
-The remaining steps depend on your choice. Installing on **VMware** adds a dedicated **vCenter Credentials** step (covered below) so Stack Automation can deploy the VM directly into your vSphere environment. Cloud installations skip that step and go straight to the installation instructions.
+The remaining steps depend on your choice. Installing on **VMware** adds an optional **Add Credentials** step for your vCenter (covered below). Cloud installations skip that step and go straight to the installation instructions.
 :::
 
 This guide follows the **On-Premises → VM → VMWare** path as an example.
 
 ---
 
-## Step #3: Generate the management server (Generate Agent)
+## Step #3: Generate the management server (Generate Management Server)
 
-In the **Generate Agent** step, fill in the details Stack Automation needs to build a deployment for your management server.
+In the **Generate Management Server** step, fill in the details Stack Automation needs to build a deployment for your management server.
 
 ![Generate Management Server details form](/img/generate-agent-details.png)
 
@@ -71,7 +71,9 @@ In the **Generate Agent** step, fill in the details Stack Automation needs to bu
 | **Subnet Mask Bits (CIDR Notation)** | Yes | The subnet mask expressed as CIDR bits. | `24` |
 | **NTP Servers** | Yes | One or more NTP servers (comma-separated) used to keep the VM's clock in sync. | `pool.ntp.org,pool2.ntp.org` |
 | **DNS Server** | No | The DNS server IP address the VM should use for name resolution. | `192.168.1.53` |
+| **Location** | No | The geographic location of the management server, selected from the city search. | `Austin, United States` |
 | **Proxy** | No | Toggle on to route the management server's outbound traffic through an HTTP/HTTPS proxy, then provide the proxy details. | — |
+| **VPC** | No | Toggle on to provide the VPC settings for the appliance. Hover over the ⓘ icon for details. | — |
 
 When all required fields are complete, click **Next**.
 
@@ -81,26 +83,32 @@ Hover over the ⓘ icon next to any field for inline guidance. Use a static IP t
 
 ---
 
-## Step #4: Provide vCenter credentials (VMware only)
+## Step #4: Add vCenter credentials (VMware only, optional)
 
-For the VMware path, the **vCenter Credentials** step collects the connection details Stack Automation uses to deploy the management-server VM directly into your vSphere environment — the vCenter address and the credentials of an account with permission to deploy and power on virtual machines, along with the target placement (such as datacenter, cluster/resource pool, datastore, and network).
+For the VMware path, the wizard adds an **Add vCenter Credentials (Optional)** step (shown as **Add Credentials** in the step list). It lets you store the vCenter credentials that Stack Automation will later use when this vCenter is added as a target [Provider](/getting-started/Resources-Inventory/adding-a-provider).
 
-Enter your vCenter details and click **Next**.
+This step is optional: you can skip it now and add the target credentials later from **Resources → Inventory**. Adding them now can save time if the management server is deployed in a network with access to your internal vCenter, because you complete the setup in one flow instead of returning later to create the same credentials.
 
 :::note
-Credentials are used only to deploy and manage the management-server VM. Choose an account scoped to the target datacenter or cluster rather than a full administrator account where possible.
+Credential connectivity can be tested only after the management server is deployed and connected to Stack Automation. Choose an account scoped to the target datacenter or cluster rather than a full administrator account where possible.
 :::
+
+Enter the credentials (or leave the step empty) and click **Next**.
 
 ---
 
 ## Step #5: Install the management server (Installation Instructions)
 
-In the final **Installation Instructions** step, click **Generate**. Stack Automation produces the deployment package and instructions for your chosen target:
+The final **Installation Instructions** step prepares the management server appliance for your chosen target:
 
-- For **VMware / on-premises**, this is a VM image (OVA/OVF) and the steps to deploy it into your hypervisor.
-- For **cloud** targets, this is a command (for example a `kubectl`-based command for Kubernetes) that you run against your environment.
+1. **SSH private key** - Stack Automation generates an SSH key for authenticating to the appliance. Copy and save it now; it is not accessible after you close the wizard.
+2. **Download Management Server File** - Stack Automation builds the management server OVA file (this takes approximately two minutes). Click **Download** to save it. **Finish** stays disabled until the OVA file has been downloaded.
+3. Follow the on-screen **Instructions** to deploy the appliance:
+   1. Go to your ESX server.
+   2. Click **Create or Register a VM** and follow the steps.
+   3. Select the downloaded `.ova` file and make sure the network adapter that allows external connectivity is selected before you click **Finish**.
 
-Follow the generated instructions to deploy the management server.
+For **cloud** targets, this step instead shows a command (for example a `kubectl`-based command for Kubernetes) that you run against your cluster, followed by a **Connections Status** panel.
 
 :::info
 It may take up to a couple of minutes for a freshly deployed management server to start up and register. Wait for the **Connected** indication before continuing.

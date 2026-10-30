@@ -19,8 +19,8 @@ authoring blueprints, writing Terraform/IaC, and following your organization's c
 
 ## Install
 
-1. Open the **Skills Pack** panel in **Admin → Agents → AI Integrations** and click
-   **Setup**.
+1. Click **AI Integrations** on the top bar, expand the **Skills Pack** panel, and click
+   **Download `stack-automation-skills.zip`**.
 2. Follow the steps shown in the panel to add the Skills Pack to your agent. The exact
    steps depend on the client:
    - **Claude Cowork:** the Stack Automation plugin already bundles the skills, so they are

@@ -9,7 +9,7 @@ description: The Stack Automation provider-and-capability model and key inventor
 
 Stack Automation Resources Inventory gives you a single, governed view of every infrastructure and cloud endpoint your organization connects to. Each entry in the inventory is a **provider** — a connection to a cloud account, virtualization platform, Kubernetes cluster, or infrastructure controller — that doubles as a **target** for discovery and deployment operations.
 
-Providers are typed on creation (for example AWS, Azure, vCenter, Intersight, Kubernetes, GCP, or Custom). A provider's type determines which **capabilities** it can offer. The two core capabilities are:
+Providers are typed on creation (for example AWS, Azure, vCenter, Intersight, Nexus Dashboard, Kubernetes, OpenShift, RKE2, GCP, or Custom). A provider's type determines which **capabilities** it can offer. The two core capabilities are:
 
 - **Discovery** — the provider can be scanned to enumerate the resources it manages (for example blades, rack units, virtual machines, or cloud objects), which are then browsable inside the inventory.
 - **Deploy** — the provider can be used as a target for deploying blueprints and launching deployments.
@@ -25,7 +25,7 @@ The inventory surface aggregates health and distribution metrics across all prov
 | Term | Description |
 |------|-------------|
 | **Provider** | A connection to an external system (cloud, virtualization, Kubernetes, infrastructure controller). Each provider is also a deployment target. |
-| **Provider Type** | The category selected at creation (AWS, Azure, vCenter, Intersight, Kubernetes, GCP, Custom). Determines available capabilities. |
+| **Provider Type** | The category selected at creation (AWS, Azure, vCenter, Intersight, Nexus Dashboard, Kubernetes, OpenShift, RKE2, GCP, Custom). Determines available capabilities. |
 | **Capability** | A function a provider exposes — primarily Discovery and Deploy. Availability depends on provider type and configuration. |
 | **Resource** | An individual item discovered under a provider (e.g., a Blade, Rack Unit, VM, or cloud object). |
 | **Deployment Space** | The space(s) a provider is shared with; controls which blueprints can use the provider's content. |

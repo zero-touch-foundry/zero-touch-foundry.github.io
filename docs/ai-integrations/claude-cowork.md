@@ -14,8 +14,7 @@ through a Cowork marketplace, so there's nothing to configure by hand.
 
 ## Install
 
-1. In the **Home** tab, go to **Customize**, in the left menu click **Plugins**, in the center panel click  **Add** then choose
-   **→ Add Marketplace**.
+1. In the **Cowork** tab, go to **Customize**, click **Add a Plugin**, then choose **Create Plugin → Add Marketplace**.
 2. Paste the Stack Automation marketplace GitHub URL when prompted:
 
    ```
@@ -29,6 +28,7 @@ through a Cowork marketplace, so there's nothing to configure by hand.
    button.
 4. Go back to the **Cowork** tab and **start a new task**. The plugin's tools are now
    available to the agent.
+5. Configure credentials (one time): run `/zero-touch-quickstart` after installing the plugin, and Claude walks you through pasting your API token.
 
 When you're done, tick **"I've completed the setup — mark as connected"** in the panel.
 

@@ -14,7 +14,7 @@ The Providers Inventory page (**Resources → Inventory**) is the central hub. I
 Three metric cards sit above the provider list and update as providers are added or change state. Toggle them with the **Metrics** button next to the search bar.
 
 - **Providers Health** — a donut chart and counts showing how many providers are Healthy vs. Unhealthy, with an overall status badge.
-- **Inventory Types** — a breakdown of providers by type (for example Intersight, AWS, vCenter, and Others) with per-type counts and percentages.
+- **Inventory Types** — a breakdown of providers by type (for example Kubernetes, AWS, vCenter, and Others) with per-type counts and percentages.
 - **Capabilities Health** — progress bars summarizing the health of the Discovery and Deploy capabilities across all providers (e.g., Discovery 52%, Deploy 86%).
 
 <!-- ![Inventory metrics cards — Providers Health, Inventory Types, Capabilities Health](./images/inventory-metrics.png) -->
@@ -30,7 +30,7 @@ Each row represents one provider. The columns are:
 | **Capabilities** | Icons indicating Discovery and Deploy. A green icon means the capability is healthy; a red icon means it is unavailable or unhealthy. |
 | **Labels** | Optional key/value labels applied to the provider for organization and filtering. |
 | **Deployment Spaces** | The spaces the provider is shared with (e.g., "All spaces"). |
-| **Actions (⋮)** | Row-level menu for editing, testing connectivity, or removing the provider. |
+| **Actions (⋮)** | Row-level menu with **View Resources**, **Edit**, and **Delete**. |
 
 <!-- ![Provider list rows showing Type, Capabilities icons, Labels, and Deployment spaces](./images/provider-list.png) -->
 

@@ -13,7 +13,7 @@ Use **+ Add Provider** (top right of the inventory) to launch the two-step Add P
 
 Select the **provider type** and supply core identity and sharing settings.
 
-1. **Choose a provider type.** Select from Intersight, Azure, AWS, vCenter, Kubernetes, GCP, or Custom. You can also start from a Sample. The selected type determines which capabilities become available in Step 2.
+1. **Choose a provider type.** Select from Intersight, Nexus Dashboard, Azure, AWS, vCenter, Kubernetes, OpenShift, RKE2, GCP, or Custom. You can also start from a Sample. The selected type determines which capabilities become available in Step 2.
 2. **Provider Alias Name.** Enter a unique, human-readable name. This alias appears in the inventory list and wherever the provider is referenced as a target.
 3. **Connected Space(s).** Toggle **Share with all spaces**, or select specific spaces. Any blueprint in a connected space can use this provider's content.
 4. **Labels (optional).** Add or create `key:value` labels to organize and later filter providers.
@@ -44,6 +44,7 @@ Available capabilities differ by provider type. The matrix below shows typical s
 | Azure | Yes | Yes | Cloud objects (compute, storage, networking) |
 | GCP | Yes | Yes | Cloud objects (compute, storage, networking) |
 | vCenter | Yes | Yes | Virtual machines, datastores, networks |
-| Kubernetes | Yes | Yes | Clusters, namespaces, workloads |
+| Kubernetes, OpenShift, RKE2 | Yes | Yes | Clusters, namespaces, workloads |
 | Intersight | Yes | Yes | Blades, Rack Units, chassis, server profiles |
+| Nexus Dashboard | Varies | Varies | Fabrics and switches managed by Nexus Dashboard |
 | Custom | Varies | Varies | Defined by the custom integration |
