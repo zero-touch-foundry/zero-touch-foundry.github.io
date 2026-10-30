@@ -28,7 +28,7 @@ Stack Automation provides out-of-the-box support for Terraform modules, Helm cha
 * __[Automatic drift detection](/environment-services/Drift and update)__: See what external changes have occurred to your deployment and its resources, revert the changes to bring your deployment back to its initial state.
 
 ## Monitoring and control
-* __[Cost management and estimation](/governance/cost-tracking/cost)__: Easily view the cloud costs of your deployment, as well as current/estimated spending by blueprint, deployment or space.
+* __[Cost management and estimation](/governance/cost-tracking/cost)__: Easily view the cloud costs of your deployments, as well as current/estimated spending by blueprint, deployment or space.
 * __[Introspection](/environment-services/Introspection and layouts)__: Drill-down into each deployment's cloud resources, elements and metadata directly from Stack Automation.
 * __[CI/CD Integration](/overview/supported-platforms#cicd-tooling)__: Configure deployments to be spun up and tested as part of a CI/CD process using some of the leading tools on the market, including Jenkins, Azure DevOps, CircleCI, Bamboo, and more.
 * __[Slack and Teams notifications](/admin-guide/notifications)__: Get notifications for different deployment lifecycle phases to the Webex/Teams/Slack channel of your choice.

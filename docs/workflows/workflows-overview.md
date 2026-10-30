@@ -212,7 +212,7 @@ For `env` scoped workflows, environment introspection can be accessed like so:
 If more than 1 resource type like this exists in this deployment, then we take the first one.
 :::
 
-For `env_resource` scoped workflow, the env `introspection` can be access like so:
+For `env_resource` scoped workflow, the env `introspection` can be accessed like so:
 * `{{ bindings.attributes.<the attribute>}}`
 
 

@@ -5,7 +5,7 @@ title: Install a Management Server on your Kubernetes Cluster
 
 ## Prerequisites
 
-- Kuberentes cluster - can be any cluster, including on your on-premise network. Please note that Stack Automation __does not support__ cluster nodes on ARM architecture.
+- Kubernetes cluster - can be any cluster, including on your on-premise network. Please note that Stack Automation __does not support__ cluster nodes on ARM architecture.
 - [Outbound Ports for Kubernetes Cluster Nodes](/agent/outbound-ports) must be open to allow Stack Automation to access and communicate with the cluster.
 - Command-line with [kubectl installed](https://kubernetes.io/docs/tasks/tools/#kubectl) connected to your cluster.
   To connect to the cluster use: 
@@ -47,14 +47,14 @@ title: Install a Management Server on your Kubernetes Cluster
 3. In the **Setup** step, choose **Cloud**, then **Public Cloud**, and select the tile for your Kubernetes provider — **Azure**, **AWS**, **GCP**, **Oracle**, or the generic **Kubernetes** tile for a self-managed or other cluster.
    > ![Setup step: choose a cloud provider or Kubernetes](/img/add-k8s-wizard.png)
 4. Click __Next__.
-5. In the **Generate Agent** step, give the management server a name (and, for Azure, optionally a tenant ID), then click __Next__.
+5. In the **Generate Management Server** step, fill in the **Management Server Name**. You can also set the management server's **Location** and, for Azure, the optional **Azure Tenant ID**. Then click __Next__.
 6. On the **Installation Instructions** step, copy the generated command.
 7. Paste the command in a command-line window connected to your cluster to deploy the management server. For example:     
     ```jsx
     kubectl apply -f https://stackautomation.cisco.com/api/settings/executionhosts/deployment/k***roi/deployment.yaml
     ```
 8. A __Connected__ status is displayed in Stack Automation, indicating that the management server was successfully installed and can communicate with Stack Automation. 
-    > ![Locale Dropdown](/img/agent-connected-status.png)
+    > ![Installation Instructions step with the Connections Status panel](/img/agent-connected-status.png)
 9. Click __Associate to Space__ to connect the management server to a space, and provide the details you obtained in the prerequisites section.
 
 
@@ -64,7 +64,7 @@ If the management server fails to connect with Stack Automation, you can try the
 
 Replace the "agent-namespace" with your management server's namespace. You can find it in: 
 
-_Resources → Management Servers → Identify your management server → Click on the 3-dot menu → Edit Management Server → Advanced K8s settings:_
+_Resources → Management Servers → Identify your management server → Click on the 3-dot menu → Edit Management Server → Advanced Kubernetes Settings:_
 
 1. Make sure the management server pod is running and healthy. You can run the following command on your cluster: 
      ```bash

@@ -6,7 +6,7 @@ title: Blueprint YAML Overview
 Stack Automation blueprints are reusable components designed to model a required deployment from the infrastructure to the application. **Blueprint designers** utilize Stack Automation's VSCode plugin or the Stack Automation's self-service UI to build a YAML based imperative blueprints that aimed to fulfill business requirements in a self-service manner for their end-users. 
 
 :::tip __Note__
-Blueprints are written in YAML files that reside in a __/blueprints__ folder within a Github, Gitlab or BitBucket repository (the folder name is case-sensitive and must be "blueprints"). The __/blueprints__ folder must be defined as the blueprint repository in the space's __Settings > Repositories__ page. Blueprints file type must be ".yaml" and not ".yml". 
+Blueprints are written in YAML files that reside in a __/blueprints__ folder within a Github, Gitlab or BitBucket repository (the folder name is case-sensitive and must be "blueprints"). The repository must be connected to the space from the __Automation > Repositories__ page. Blueprints file type must be ".yaml" and not ".yml". 
 
 For enhanced asset discovery and organization, see [Stack Automation Assets Markers](/blueprint-designer-guide/assets-markers).
 :::

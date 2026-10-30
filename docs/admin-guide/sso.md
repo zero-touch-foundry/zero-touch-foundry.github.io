@@ -31,7 +31,7 @@ This is done by integrating your organization's identity provider with Stack Aut
    1. Include the users that will access Stack Automation.
    2. For each user, specify the following:
       * __space_name__: Stack Automation Space in which the user will operate.
-      * __space_role__: User's role in that space, as defined in __Administration > Roles > Space Roles__. To add a user to multiple spaces, see Associating a user to multiple spaces section below.
+      * __space_role__: User's role in that space, as defined in the __Roles & Permissions__ tab of __Admin > User Management__. To add a user to multiple spaces, see Associating a user to multiple spaces section below.
       * (Optional) __timezone__ : The user's timezone in IANA format (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 3. Save the application.
 4. Copy the relevant details from the application. These may change depending on your IdP - see this Okta help article for details. For example, these are the details for SAML 2.0:
@@ -63,19 +63,19 @@ __Points to consider:__
 
 ## Mapping Stack Automation user groups to IdP groups
 
-Each group in Stack Automation as an ‘IdP identifier’ field. For SSO users to be assigned to the group automatically, the field must contain the same identifier (usually a GUID) as the group in the IdP (the groups don’t have to have the exact same name)
+Each group in Stack Automation has an ‘IdP identifier’ field. For SSO users to be assigned to the group automatically, the field must contain the same identifier (usually a GUID) as the group in the IdP (the groups don’t have to have the exact same name)
 
-In Stack Automation, this is can be set by editing a group in the ‘Groups’ page under account settings.
+In Stack Automation, this can be set by editing a group in the __Groups__ tab of __Admin > User Management__.
 
 > ![Locale Dropdown](/img/groups-1.png)
 
-Finding the group identifier in the IdP is specific for each IdP, in the case of Azure active directory, this is the ‘Object Id’ field of a group:
+Finding the group identifier in the IdP is specific for each IdP. In the case of Azure Active Directory, this is the ‘Object Id’ field of a group:
 
 > ![Locale Dropdown](/img/groups-2.png)
 
 For groups that have this field set, users are assigned and unassigned automatically with each login based on the groups they belong to in the IdP.
 
-Users that do not come from an IdP (have a password) or come from an unsupported IdP (all but Okta and Azure AD) can still be added and removed manually from mapped groups.
+Users who do not come from an IdP (have a password) or come from an unsupported IdP (all but Okta and Azure AD) can still be added and removed manually from mapped groups.
 
 ### Configuring Azure Active Directory (Entra) to include group information.
 
@@ -150,17 +150,17 @@ This shows what to expect when using SAML-tracer:
 Stack Automation supports the SCIM protocol for user provisioning and deprovisioning (group provisioning is currently not supported).
 User provisioning is the ability to create and delete users in your Stack Automation account in real-time as they are created and deleted in the IdP (identity provider). When SCIM is configured, an http call will be issued from the IdP to Stack Automation with each new user that is added or removed from the app on the IdP that is used to manage Stack Automation users in the basic SSO process.
 
-User provisioning with SCIM is optional when configuring SSO. When it is not configured, users can still SSO login normally and their Stack Automation user will be created "just in time" at the moment of login. details about the user are updated with each subsequent login. There are advantages to configuring User provisioning, though.
-* Users are created in Stack Automation when added in the IdP, potentially before their first log in. - This allows an admin to get a better picture of who are the users in the Stack Automation account and to perform actions on them before the first time they logged in such as already associating them to spaces, setting them as collaborators on some deployments and so on.
-* Users are deprovisioned - Normally, when a user is removed from the IdP, they can no longer login to the Stack Automation account, but the Stack Automation user still appears in the account. Deprovisioning means that once a user cannot SSO into a Stack Automation account, he is removed from it.
+User provisioning with SCIM is optional when configuring SSO. When it is not configured, users can still SSO login normally, and their Stack Automation user will be created "just in time" at the moment of login. Details about the user are updated with each subsequent login. There are advantages to configuring User provisioning, though.
+* Users are created in Stack Automation when added in the IdP, potentially before their first login. This allows an admin to get a better picture of who the users are in the Stack Automation account and to perform actions on them before the first time they logged in such as already associating them to spaces, setting them as collaborators on some deployments, and so on.
+* Users are deprovisioned - Normally, when a user is removed from the IdP, they can no longer log in to the Stack Automation account, but the Stack Automation user still appears in the account. Deprovisioning means that once a user cannot SSO into a Stack Automation account, he is removed from it.
 
-The process of user provisioning/deprovisioning is one directional. Changes to users in Stack Automation do not affect the IdP.
+The process of user provisioning/deprovisioning is one-directional. Changes to users in Stack Automation do not affect the IdP.
 
 ### Relation to SSO
 User provisioning (SCIM) is an optional component of SSO and can be omitted, as mentioned above, but when active, it would create a new user in Stack Automation to match a user created or associated in the IdP.
-The new user created is considered 'pending', meaning that this user has never actually logged in before, and also that the only way for that user to login is via SSO (pending users do not have a password).
-When that same user later logins with SSO for the first time, Stack Automation identifies that this is the same user as the one created via provisioning and performs a normal login.
-When a user is removed from the IdP, they can no longer login to Stack Automation. If user provisioning was enabled at the time of deletion, then he is deleted from Stack Automation. Regardless, that user can no longer login to the account.
+The new user created is considered 'pending', meaning that this user has never actually logged in before, and also that the only way for that user to log in is via SSO (pending users do not have a password).
+When that same user later logs in with SSO for the first time, Stack Automation identifies that this is the same user as the one created via provisioning and performs a normal login.
+When a user is removed from the IdP, they can no longer log in to Stack Automation. If user provisioning was enabled at the time of deletion, then he is deleted from Stack Automation. Regardless, that user can no longer login to the account.
 The same app in the IdP is used for both SSO (e.g., using SAML) and for user provisioning.
 Note that while SSO is usually 
 
@@ -168,7 +168,7 @@ Note that while SSO is usually
 In order to set up user provisioning with SCIM, the following is needed.
 * SSO is configured and working in the account.
 * Access to the IdP and app that is used for SSO.
-* A long token from Stack Automation with the account level permission of "Manage Users" (e.g., a token generated by an account admin)
+* A long token from Stack Automation with the account-level permission of "Manage Users" (e.g., a token generated by an account admin)
 
 See [**Stack Automation API Tokens**](/rest-api/api-tokens) for generating a token.
 
@@ -176,7 +176,7 @@ The process itself is slightly different for different identity providers, two e
 
 ### Okta
 Login to Okta's admin console and locate the application that is used for SSO with Stack Automation under "Applications" and then "Applications" again under it.
-Under the 'General' tab, set the checkbox on "Enable SCIM provisioning"
+Under the 'General' tab, set the checkbox on "Enable SCIM provisioning".
 
 > ![Locale Dropdown](/img/scim-1.png)
 
@@ -186,9 +186,9 @@ SCIM connector base URL: `https://stackautomation.cisco.com/api/scim`
 Unique identifier field for users: userName
 Supported provisioning actions: set "Push New Users" and "Push Profile Updates" (the other checkboxes should remain unchecked)
 Authentication Mode: HTTP header
-Authorization: This field should contain the long token generated above. Do not include word "Bearer" if it appears at the start of the token.
+Authorization: This field should contain the long token generated above. Do not include the word "Bearer" if it appears at the start of the token.
 
-Click "Test connector configuration"
+Click "Test connector configuration".
 A screen similar to the one below should appear.
 If the connection is unsuccessful, an error message appears with additional details.
 
@@ -209,8 +209,8 @@ Click 'Edit' under "Provisioning to App" and enable the checkboxes on "Create Us
 
 At this point, user provisioning should be working. Associate a user to the app normally (under the "Assignments" tab) and observe that it gets created in the Stack Automation account. in case of an error, a red mark will appear next to the user, this links to the "Dashboard" / "Tasks" page where additional information can be found and the operation can be retried.
 
-### Azure active directory (Entra)
-Login to Azure and navigate to "Enterprise applications", then locate the application used for SSO with your Stack Automation account.
+### Azure Active Directory (Entra)
+Log in to Azure and navigate to "Enterprise applications", then locate the application used for SSO with your Stack Automation account.
 On the left-hand side menu, pick "Provisioning" and click "Get started".
 Set "Provisioning Mode" to Automatic.
 Under Admin Credential, set the following.
@@ -262,7 +262,7 @@ In the app's 'Authentication' section, add a redirect URL matching your applicat
 ```https://your_app_instance.stackautomation.cisco.com/api/accounts/idp-callback```
 
 ### Configurations needed
-To complete the configuration, once successfully registered an AzureAD application, you'll need to provider the following to your Stack Automation Account Manager/Tech support:
+To complete the configuration, once successfully registered an AzureAD application, you'll need to provide the following to your Stack Automation Account Manager/Tech support:
 
 * `Tenant ID`: Your Azure AD tenant ID
 * `Client ID`: The client ID of your Azure AD app registration

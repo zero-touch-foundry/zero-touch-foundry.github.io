@@ -44,7 +44,7 @@ If your `RKE2` cluster runs with the `CIS` hardening profile (`profile: cis`), P
    Select **Cloud → Public Cloud → RKE2** even when your cluster runs in your own datacenter. The **On-Premises** option in the Setup step installs the management server as a virtual-machine appliance (VMware, Redhat KVM, or Nutanix) and does not deploy into an existing Kubernetes cluster.
    :::
 4. Click __Next__.
-5. In the **Generate Agent** step, fill in the **Management Server Details**:
+5. In the **Generate Management Server** step, fill in the **Management Server Details**:
    - **Management Server Name** (required) - a unique, human-readable name, for example `rke2-prod-01`.
    - **Location** - the geographic location of the cluster, for example `Austin, United States`.
 

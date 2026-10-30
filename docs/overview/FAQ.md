@@ -90,7 +90,7 @@ Stack Automation's elastic architecture has been proven to handle enterprise-sca
 - **Multi-Cloud Footprint**: Spans AWS, Azure, GCP, and hybrid cloud deployments at massive scale
 
 **Performance in Production:**
-- **Concurrent Deployment**: Enterprise customers routinely run 7,000 concurrent deployments per week
+- **Concurrent Deployments**: Enterprise customers routinely run 7,000 concurrent deployments per week
 - **Resource Density**: Each deployment averages 2-5 compute resources, demonstrating efficient resource orchestration
 - **Horizontal Scaling**: Linear scaling based on Kubernetes cluster capacity with no architectural bottlenecks
 

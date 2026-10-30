@@ -141,20 +141,23 @@ Have the following formation ready (from the previous section)
 
 There are 2 ways to accomplish this:
 
-1. (Recommended) When adding a new AKS management server, you can provide the **Azure Tenant ID**, and when attaching it to a space you can provide the **default_subscription**.
+1. (Recommended) When adding a new AKS management server, you can provide the **Azure Tenant ID**, and when attaching it to a space you can provide the **Subscription ID** together with the default namespace and service account.
 
     a. Navigate to **Resources → Management Servers** and click **New Management Server** in the top-right corner to open the **Connect a Management Server** wizard.
 
     b. In the **Setup** step, choose **Cloud**, then **Public Cloud**, then select the **Azure** tile, and click **Next**.
     > ![Setup step: Azure selected under Public Cloud](/img/AKS-doc-2.png)
 
-    c. In the **Generate Agent** step, give the management server a name and, optionally, the **Azure Tenant ID**, then click **Next**.
-      > ![Locale Dropdown](/img/AKS-doc-2-a.png)
+    c. In the **Generate Management Server** step, give the management server a name and, optionally, the **Azure Tenant ID**, then click **Next**.
+      > ![Generate Management Server step with the Azure Tenant ID field](/img/AKS-doc-2-a.png)
 
     d. On the **Installation Instructions** step, copy the generated `kubectl apply` command and run it in Azure CLI against your AKS cluster.
 
     e. Return to Stack Automation and wait for the connection status to change to a green **Connected**.
-    > ![Locale Dropdown](/img/AKS-doc-3.png)
+    > ![Installation Instructions step with the Connections Status panel](/img/AKS-doc-3.png)
+
+    f. Click **Associate to Space** to connect the management server to a space. (You can also do this later from the management server's 3-dot menu: choose **Manage Spaces** and click **Add**.) In the **Associate the Management Server to your Space** dialog, select the **Space**, then the **Default Namespace** and **Default Service Account** you configured in the previous step, enter the **Subscription ID**, and click **Associate**.
+      > ![Associate the management server to a space](/img/AKS-doc-4.png)
 
 
 2. You may override the default credentials defined for the AKS management server, or define the credentials if no credentials were configured as the default.

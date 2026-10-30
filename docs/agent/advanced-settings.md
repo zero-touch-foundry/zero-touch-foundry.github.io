@@ -1,27 +1,38 @@
 ---
 sidebar_position: 7
-title: Changing advanced K8s settings
+title: Changing Advanced K8s Settings
 ---
 
-While Stack Automation offers a best practice configuration settings for deploying environments from your cluster, there may arise certain situations where overriding Stack Automation's default settings becomes necessary based on your specific requirements. You can modify certain settings of the Stack Automation runners (i.e. it will NOT affect your workloads, only the Stack Automation workloads).
+While Stack Automation offers a best practice configuration settings for running deployments from your cluster, there may arise certain situations where overriding Stack Automation's default settings becomes necessary based on your specific requirements. You can modify certain settings of the Stack Automation runners (i.e. it will NOT affect your workloads, only the Stack Automation workloads).
 
 Modifying these settings should be performed by the cluster administrator or subject to their approval, ensuring alignment with other existing cluster configurations you may have in place.
 
 To modify these advanced settings, navigate to `Resources --> Management Servers` and select the management server which resides on the relevant cluster. 
 On the right 3-dot menu, click on "Edit Management Server" --> Then open the "Advanced Kubernetes Settings" dropdown.
 
-In this panel, you can edit the management server name and tenant-id (for AKS management servers). 
-In addition, you can view which namespace the Stack Automation management server is running at.
+![management-server-advanced-settings](/img/k8s-advanced-settings2.png)
+
+In this panel, you can edit the management server name, description, and location, as well as the tenant-id for AKS management servers. 
+In addition, you can retrieve the namespace where the Stack Automation management server is running (but not change it).
 
 ## Advanced Settings
 
 :::note
-Changes to the configuration only takes effect on new deployments. Existing deployments will keep the values configured at the time of the launch.
+Changes to the configuration only take effect on new deployments. Existing deployments will keep the values configured at the time of the launch.
+:::
+
+### Use runner storage (PVC)
+
+**Use runner storage (PVC)** - When selected, runners will use PVC for storing state and relevant repository configurations. When not selected, runners will run stateless.
+
+:::info
+Backend recommendation  
+When storage is disabled, configuring a backend is usually recommended. Some grains (for example Helm grains) can still run without it.
 :::
 
 ### Storage class
 
-**Storage Class** is a K8s resource which allows you to request to create persistent volumes with certain properties. The storage class describes the properties Stack Automation will request the runner to create storage based to these properties. By default it is set to "Cluster's default" which means the Stack Automation runners will request the storage properties according to what is defined as the default storage class in the cluster. If you change it to other values, Stack Automation runners will request the storage class based on the new values.
+**Storage Class** is a K8s resource which allows you to request to create persistent volumes with certain properties. The storage class describes the properties that Stack Automation will request when the runner creates its storage. By default it is set to "Cluster's default" which means the Stack Automation runners will request the storage properties according to what is defined as the default storage class in the cluster. If you change it to other values, Stack Automation runners will request the storage class based on the new values.
 
 :::tip
 For reclaimPolicy (delete|retain) - we recommend using "delete" (extra care should be taken if the policy is set to "retain").
@@ -29,18 +40,32 @@ For reclaimPolicy (delete|retain) - we recommend using "delete" (extra care shou
 
 Learn more [here](https://kubernetes.io/docs/concepts/storage/storage-classes/)
 
-### Startup timeout
 
-**Runners pod startup timeout (seconds)** - The time Stack Automation will wait for a runner pod to be provisioned. If your cluster is slow in creating pods/nodes in autoscaling, you may need to increase it. Be careful of setting too large timeouts, because if there is an inherent problem in the POD the error will suffice later. 
+### Storage class supports ReadWriteMany
 
-### Idle timeout
-
-**Runner pod idle timeout (seconds)** - The time Stack Automation will wait before terminating an idle Runner. Any non-negative value is accepted. As runners are allocated from a shared pool, setting the timeout to higher values will optimize the current operation which already "owns" the runner, but will decrease the average pool size so the next operations may need to wait longer before they get a runner. Higher values can also be used for debugging purposes, as it allows more time to connect to the runner, look at its logs and debug issues.
-
+**Storage class supports ReadWriteMany** - Check this checkbox if the storage class supports ReadWriteMany capability. Only storage classes which support this capability can share resources. If it is unchecked, there will not be sharing and each operation will spawn a new runner pod. Stack Automation cannot query the cluster to understand if it does or does not have this capability so we rely on your information. If you check this checkbox, you must also set the storage_class_name and not leave it empty. Even if the default storage class supports ReadWriteMany, please state the name explicitly.  
 
 ### Storage size
 
 **Total storage size (PVC size in MB)** - The total size of PVC storage that will be allocated to Stack Automation runners. 
+
+### Terraform backend type
+
+**Terraform backend type** - Configure a global runner-level backend once on the management server. This setting is relevant for Terraform, OpenTofu, and Terragrunt grain kinds.
+
+For backend types and details, see [Terraform backend](/blueprint-designer-guide/blueprints/terraform-grain#backend).
+
+:::info
+If a backend is specified in the blueprint or in the IaC configuration, it overrides the backend configured on the management server.
+:::
+
+### Startup timeout
+
+**Runners pod startup timeout (seconds)** - The time Stack Automation will wait for a runner pod to be provisioned. If your cluster is slow in creating pods/nodes in autoscaling, you may need to increase it. Be careful of setting too large timeouts, because if there is an inherent problem in the POD the error will surface later. 
+
+### Idle timeout
+
+**Runner pod idle timeout (seconds)** - The time Stack Automation will wait before terminating an idle Runner. Any non-negative value is accepted. As runners are allocated from a shared pool, setting the timeout to higher values will optimize the current operation which already "owns" the runner, but will decrease the average pool size so the next operations may need to wait longer before they get a runner. Higher values can also be used for debugging purposes, as it allows more time to connect to the runner, look at its logs and debug issues.
 
 
 ### Resource consumption
@@ -66,23 +91,12 @@ There are 8 available consumption levels for better control over performance and
 
 In the API, these levels are represented by `0` through `7`.
 
-
-### Storage class
-
-**Storage class supports ReadWriteMany** - Check this checkbox if the storage class supports ReadWriteMany capability. Only storage classes which support this capability can share resources. If it is unchecked, there will not be sharing and each operation will spawn a new runner pod. Stack Automation cannot query the cluster to understand if it does or does not have this capability so we rely on your information. If you check this checkbox, you must also set the storage_class_name and not leave it empty. Even if the default storage class supports ReadWriteMany, please state the name explicitly.  
-
 ### Environment variables
 
 **Environment variables** - key-values pairs of environment variables to set on the runner pod. This can be useful for setting global configuration such as HTTP_PROXY. It will affect all runners in the cluster.
 
-> ![agent-advanced-settings](/img/k8s-advanced-settings-env-vars.png)
+> ![management-server-advanced-settings](/img/k8s-advanced-settings-env-vars.png)
 
-
-### Secret mount
-
-**Secret mount** - key-values pairs of Secret name to mount path to set on the runner pod. This can be useful for mounting a certificate located in a Kubernetes secret to a directory in the container. It will affect all runners in the cluster.
-
-> ![agent-advanced-settings](/img/k8s-advanced-settings-secrets.png)
 
 ### Pod labels
 
@@ -167,9 +181,16 @@ In the above example, the `pod-annotations` section under `kubernetes` defines a
 Using annotations can help you organize and manage your runner pods more effectively. You can leverage annotations for various purposes, such as filtering, grouping, or applying policies to specific sets of pods. Additionally, annotations can be used for integration with external tools or services that rely on an annotation for their operations.
 
 
+### Secret mount
+
+**Secret mount** - key-values pairs of Secret name to mount path to set on the runner pod. This can be useful for mounting a certificate located in a Kubernetes secret to a directory in the container. It will affect all runners in the cluster.
+
+> ![management-server-advanced-settings](/img/k8s-advanced-settings-secrets.png)
+
+
 ### Node selector
 
-You can add the `node-selector` sections to your grain and specify the node labels you want the target node(s) to have. The `node-selector` and its labels will be applied on the pod specification. Kubernetes only schedules the pod onto nodes that have each of the labels you specify. 
+You can add the `node-selector` sections to your grain and specify the node labels you want the target node(s) to have. The `node-selector` and its labels will be applied on the pod specification. Kubernetes only schedules the pod onto nodes that have each of the labels you specify. 
 
 For example:
 
