@@ -99,16 +99,23 @@ With this feature you can:
 **How to Enable Cloud Copilot**
 
 1.  Navigate to **Configuration > Copilot Settings**.
-2.  Under the ‘Cloud Copilot’ section > click on the **‘AI Provider’ button** to select where to host your AI Data while using Copilot:  
-    - Host in **Stack Automation’s Open AI  
-    **There’s no further configuration, just click ‘Connect’  
-    - Host in your own **Azure OpenAI service  
-    **You’ll have to provide: API key, Endpoint URL, GPT-4o deployment name, and GPT-4o mini deployment name.  
-    - Host in your own **OpenAI  
-    **You’ll have to provide only the API key.
-3.  To apply this settings, it requires a specific licensing feature - please contact us to enable Cloud Copilot for the account.
-4.  Once your request was applied, and your selected provider was connected successfully, you’ll be able to enjoy the Cloud Copilot capabilities.
-5.  You can toggle off to hide all the Cloud Copilot capabilities and prevent access from all users.  
+2.  In the **AI Provider** section, choose where to host the AI data you use with Copilot:
+    - **Stack Automation AI** – hosted by Stack Automation (OpenAI). There is no further configuration for this option.
+    - **Your own AI model** – connect your own AI model endpoint as the engine behind Cloud Copilot.
+3.  To connect your own model endpoint, click **Connect AI** and select **Connect Model** in the "Choose the AI engine Copilot will use:" dialog. Read the note "Please read Stack Automation's requirements before connecting the AI engine", then complete these fields:
+    - **Set as Active Connection** – toggle. Only one connection can be Active at a time.
+    - **Connection Name** * – name the connection (placeholder: "Name your connection").
+    - **Endpoint URL** * – the full URL of the model's endpoint (placeholder: "Type the full URL address of the model's endpoint"), for example `https://api.openai.com/v1`.
+    - **Key (optional)** – "Start typing to create a new key or search for existing keys." Select an existing stored key or create a new one.
+    - **Use your own Management Server** – toggle, if the endpoint is served by your own management server.
+4.  Click **Test Connection**. A successful test shows **Successful Connection** and populates the **Available Models** selector.
+5.  In **Available Models**, choose which models from this endpoint to expose to users (for example, "1 of 142 selected"). The selected models appear in the model picker of the Copilot chat composer, next to the **Auto** and **Default Approvals** selectors.
+6.  In **Embedding Model** *, choose the embedding model to use (for example, `text-embedding-3-small`), then click **Save**.
+7.  In the **AI Provider** list, your connection appears with its name and endpoint URL. The connection currently in use is marked with an **Active** badge, and the built-in **Stack Automation AI** entry is always listed. Use the ⋮ menu to edit or delete a connection. When the status line shows **Activated and applied**, your models are live.
+
+:::info
+Connecting, editing, or deleting AI model connections requires the **Manage AI Model Connections** permission ("Can connect, edit and delete the AI models Copilot uses.").
+:::
 
 
 ---
